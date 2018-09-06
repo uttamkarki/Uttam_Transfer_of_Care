@@ -5,8 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using System.Drawing.Drawing2D;
 
 namespace Uttam_Transfer_Of_Care
@@ -35,6 +35,7 @@ namespace Uttam_Transfer_Of_Care
         public static bool backleftlowarm_on = false;
         public static bool backrightarm_on = false;
         public static bool backrightlowarm_on = false;
+        public static float GP_scaler = 1.25F;
 
         //set colors for the torso button areas 
 
@@ -64,189 +65,304 @@ namespace Uttam_Transfer_Of_Care
         public static string var_injury_type_text = "no entry";
         public static string var_injury_location_text = "no entry";
         public static DateTime endtime;
+        public static int Size_multiplier = 1;
+
         public inputform()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Inputform_Load(object sender, EventArgs e)
         {
             #region make shaped buttons   
             #region shape the buttons
             Point[] pts = {
-                new Point( 20,  60),
-                new Point(140,  60),
-                new Point(140,  20),
-                new Point(300, 100),
-                new Point(140, 180),
-                new Point(140, 140),
-                new Point( 20, 140)
+                new Point(20 * Size_multiplier,  60 * Size_multiplier),
+                new Point(140 * Size_multiplier,  60 * Size_multiplier),
+                new Point(140 * Size_multiplier,  20 * Size_multiplier),
+                new Point(300 * Size_multiplier, 100 * Size_multiplier),
+                new Point(140 * Size_multiplier, 180 * Size_multiplier),
+                new Point(140 * Size_multiplier, 140 * Size_multiplier),
+                new Point( 20 * Size_multiplier, 140 * Size_multiplier)
             };
             Point[] pts2 = {
-                new Point(20,  20),
-                new Point(20,  60),
-                new Point(500,  60),
-                new Point(500, 100),
-                new Point(520, 100),
-                new Point(520, 40),
-                new Point(80, 40),
-                new Point(80, 20)
+                new Point(20 * Size_multiplier,  20 * Size_multiplier),
+                new Point(20 * Size_multiplier,  60 * Size_multiplier),
+                new Point(500 * Size_multiplier,  60 * Size_multiplier),
+                new Point(500 * Size_multiplier, 100 * Size_multiplier),
+                new Point(520 * Size_multiplier, 100 * Size_multiplier),
+                new Point(520 * Size_multiplier, 40 * Size_multiplier),
+                new Point(80 * Size_multiplier, 40 * Size_multiplier),
+                new Point(80 * Size_multiplier, 20 * Size_multiplier)
             };
             Point[] head = {
                 //new Point(20,  150),
-                new Point(20,  250),
-                new Point(36,  234),
-                new Point(32,  172),
-                new Point(22, 170),
-                new Point(8, 140),
-                new Point(8, 122),
-                new Point(18, 118),
-                new Point(14, 64),
-                new Point(24, 42),
-                new Point(42, 22),
-                new Point(90, 12),
-                new Point(138,  22),
-                new Point(156,  42),
-                new Point(166,  64),
-                new Point(162, 118),
-                new Point(172, 122),
-                new Point(172, 140),
-                new Point(158, 170),
-                new Point(148, 172),
-                new Point(144, 234),
-                new Point(160, 250),
+                new Point(20 * Size_multiplier,  250 * Size_multiplier),
+                new Point(36 * Size_multiplier,  234 * Size_multiplier),
+                new Point(32 * Size_multiplier,  172 * Size_multiplier),
+                new Point(22 * Size_multiplier, 170 * Size_multiplier),
+                new Point(8 * Size_multiplier, 140 * Size_multiplier),
+                new Point(8 * Size_multiplier, 122 * Size_multiplier),
+                new Point(18 * Size_multiplier, 118 * Size_multiplier),
+                new Point(14 * Size_multiplier, 64 * Size_multiplier),
+                new Point(24 * Size_multiplier, 42 * Size_multiplier),
+                new Point(42 * Size_multiplier, 22 * Size_multiplier),
+                new Point(90 * Size_multiplier, 12 * Size_multiplier),
+                new Point(138 * Size_multiplier,  22 * Size_multiplier),
+                new Point(156 * Size_multiplier,  42 * Size_multiplier),
+                new Point(166 * Size_multiplier,  64 * Size_multiplier),
+                new Point(162 * Size_multiplier, 118 * Size_multiplier),
+                new Point(172 * Size_multiplier, 122 * Size_multiplier),
+                new Point(172 * Size_multiplier, 140 * Size_multiplier),
+                new Point(158 * Size_multiplier, 170 * Size_multiplier),
+                new Point(148 * Size_multiplier, 172 * Size_multiplier),
+                new Point(144 * Size_multiplier, 234 * Size_multiplier),
+                new Point(160 * Size_multiplier, 250 * Size_multiplier),
+                //new Point(90,  150),
+                };
+            Point[] headbig = {
+                new Point(25 * Size_multiplier,  312 * Size_multiplier),
+                new Point(45 * Size_multiplier,  293 * Size_multiplier),
+                new Point(40 * Size_multiplier,  215 * Size_multiplier),
+                new Point(28 * Size_multiplier, 213 * Size_multiplier),
+                new Point(10 * Size_multiplier, 175 * Size_multiplier),
+                new Point(10 * Size_multiplier, 153 * Size_multiplier),
+                new Point(23 * Size_multiplier, 148 * Size_multiplier),
+                new Point(18 * Size_multiplier, 80 * Size_multiplier),
+                new Point(30 * Size_multiplier, 53 * Size_multiplier),
+                new Point(53 * Size_multiplier, 28 * Size_multiplier),
+                new Point(113 * Size_multiplier, 15 * Size_multiplier),
+                new Point(173 * Size_multiplier,  28 * Size_multiplier),
+                new Point(195 * Size_multiplier,  53 * Size_multiplier),
+                new Point(208 * Size_multiplier,  80 * Size_multiplier),
+                new Point(203 * Size_multiplier, 148 * Size_multiplier),
+                new Point(215 * Size_multiplier, 153 * Size_multiplier),
+                new Point(215 * Size_multiplier, 175 * Size_multiplier),
+                new Point(198 * Size_multiplier, 213 * Size_multiplier),
+                new Point(185 * Size_multiplier, 215 * Size_multiplier),
+                new Point(180 * Size_multiplier, 293 * Size_multiplier),
+                new Point(200 * Size_multiplier, 312 * Size_multiplier),
                 //new Point(90,  150),
             };
             Point[] torso = {
-                new Point(50,  0),
-                new Point(28,  14),
-                new Point(0,  28),
-                new Point(0, 80),
-                new Point(6, 294),
-                new Point(8, 350),
-                new Point(0, 380),
-                new Point(0, 400),
-                new Point(240, 400),
-                new Point(240, 380),
-                new Point(232, 350),
-                new Point(234, 294),
-                new Point(240, 80),
-                new Point(240, 28),
-                new Point(212, 14),
-                new Point(190,0)
+                new Point(50 * Size_multiplier,  0 * Size_multiplier),
+                new Point(28 * Size_multiplier,  14 * Size_multiplier),
+                new Point(0 * Size_multiplier,  28 * Size_multiplier),
+                new Point(0 * Size_multiplier, 80 * Size_multiplier),
+                new Point(6 * Size_multiplier, 294 * Size_multiplier),
+                new Point(8 * Size_multiplier, 350 * Size_multiplier),
+                new Point(0 * Size_multiplier, 380 * Size_multiplier),
+                new Point(0 * Size_multiplier, 400 * Size_multiplier),
+                new Point(240 * Size_multiplier, 400 * Size_multiplier),
+                new Point(240 * Size_multiplier, 380 * Size_multiplier),
+                new Point(232 * Size_multiplier, 350 * Size_multiplier),
+                new Point(234 * Size_multiplier, 294 * Size_multiplier),
+                new Point(240 * Size_multiplier, 80 * Size_multiplier),
+                new Point(240 * Size_multiplier, 28 * Size_multiplier),
+                new Point(212 * Size_multiplier, 14 * Size_multiplier),
+                new Point(190 * Size_multiplier,0 * Size_multiplier)
+            };
+            Point[] torsobig = {
+                new Point(63 * Size_multiplier,  0 * Size_multiplier),
+                new Point(35 * Size_multiplier,  18 * Size_multiplier),
+                new Point(0 * Size_multiplier,  35 * Size_multiplier),
+                new Point(0 * Size_multiplier, 100 * Size_multiplier),
+                new Point(8 * Size_multiplier, 368 * Size_multiplier),
+                new Point(10 * Size_multiplier, 438 * Size_multiplier),
+                new Point(0 * Size_multiplier, 475 * Size_multiplier),
+                new Point(0 * Size_multiplier, 500 * Size_multiplier),
+                new Point(300 * Size_multiplier, 500 * Size_multiplier),
+                new Point(300 * Size_multiplier, 475 * Size_multiplier),
+                new Point(290 * Size_multiplier, 438 * Size_multiplier),
+                new Point(293 * Size_multiplier, 368 * Size_multiplier),
+                new Point(300 * Size_multiplier, 100 * Size_multiplier),
+                new Point(300 * Size_multiplier, 35 * Size_multiplier),
+                new Point(265 * Size_multiplier, 18 * Size_multiplier),
+                new Point(238 * Size_multiplier,0 * Size_multiplier)
             };
             Point[] midsection = {
-                new Point(0,  0),
-                new Point(2,  18),
-                new Point(6,  40),
-                new Point(50, 50),
-                new Point(70, 60),
-                new Point(110, 80),
-                new Point(130, 80),
-                new Point(170, 60),
-                new Point(190, 50),
-                new Point(234, 40),
-                new Point(238, 18),
-                new Point(240, 0),
+                new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                new Point(2 * Size_multiplier,  18 * Size_multiplier),
+                new Point(6 * Size_multiplier,  40 * Size_multiplier),
+                new Point(50 * Size_multiplier, 50 * Size_multiplier),
+                new Point(70 * Size_multiplier, 60 * Size_multiplier),
+                new Point(110 * Size_multiplier, 80 * Size_multiplier),
+                new Point(130 * Size_multiplier, 80 * Size_multiplier),
+                new Point(170 * Size_multiplier, 60 * Size_multiplier),
+                new Point(190 * Size_multiplier, 50 * Size_multiplier),
+                new Point(234 * Size_multiplier, 40 * Size_multiplier),
+                new Point(238 * Size_multiplier, 18 * Size_multiplier),
+                new Point(240 * Size_multiplier, 0 * Size_multiplier),
+            };
+            Point[] midsectionbig = {
+                new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                new Point(3 * Size_multiplier,  23 * Size_multiplier),
+                new Point(8 * Size_multiplier,  50 * Size_multiplier),
+                new Point(63 * Size_multiplier, 62 * Size_multiplier),
+                new Point(88 * Size_multiplier, 75 * Size_multiplier),
+                new Point(138 * Size_multiplier, 100 * Size_multiplier),
+                new Point(163 * Size_multiplier, 100 * Size_multiplier),
+                new Point(213 * Size_multiplier, 75 * Size_multiplier),
+                new Point(238 * Size_multiplier, 62 * Size_multiplier),
+                new Point(293 * Size_multiplier, 50 * Size_multiplier),
+                new Point(298 * Size_multiplier, 23 * Size_multiplier),
+                new Point(300 * Size_multiplier, 0 * Size_multiplier),
             };
             Point[] rightleg = {
-                new Point(6,  0),
-                new Point(50,  10),
-                new Point(70,  20),
-                new Point(110, 40),
-                new Point(106, 200),
-                new Point(100, 320),
-                new Point(30, 320),
-                new Point(14, 200),
+                new Point(6 * Size_multiplier,  0 * Size_multiplier),
+                new Point(50 * Size_multiplier,  10 * Size_multiplier),
+                new Point(70 * Size_multiplier,  20 * Size_multiplier),
+                new Point(110 * Size_multiplier, 40 * Size_multiplier),
+                new Point(106 * Size_multiplier, 200 * Size_multiplier),
+                new Point(100 * Size_multiplier, 320 * Size_multiplier),
+                new Point(30 * Size_multiplier, 320 * Size_multiplier),
+                new Point(14 * Size_multiplier, 200 * Size_multiplier),
+            };
+            Point[] rightlegbig = {
+                new Point(8 * Size_multiplier,  0 * Size_multiplier),
+                new Point(63 * Size_multiplier,  13 * Size_multiplier),
+                new Point(88 * Size_multiplier,  25 * Size_multiplier),
+                new Point(138 * Size_multiplier, 50 * Size_multiplier),
+                new Point(133 * Size_multiplier, 250 * Size_multiplier),
+                new Point(125 * Size_multiplier, 400 * Size_multiplier),
+                new Point(38 * Size_multiplier, 400 * Size_multiplier),
+                new Point(18 * Size_multiplier, 250 * Size_multiplier),
             };
             Point[] lowleg = {
-                new Point(30,  0),
-                new Point(100,  0),
-                new Point(90,  160),
-                new Point(80, 240),
-                new Point(50, 240),
-                new Point(40, 160),
+                new Point(30 * Size_multiplier,  0 * Size_multiplier),
+                new Point(100 * Size_multiplier,  0 * Size_multiplier),
+                new Point(90 * Size_multiplier,  160 * Size_multiplier),
+                new Point(80 * Size_multiplier, 240 * Size_multiplier),
+                new Point(50 * Size_multiplier, 240 * Size_multiplier),
+                new Point(40 * Size_multiplier, 160 * Size_multiplier),
+            };
+            Point[] lowlegbig = {
+                new Point(38 * Size_multiplier,  0 * Size_multiplier),
+                new Point(125 * Size_multiplier,  0 * Size_multiplier),
+                new Point(113 * Size_multiplier,  200 * Size_multiplier),
+                new Point(100 * Size_multiplier, 300 * Size_multiplier),
+                new Point(53 * Size_multiplier, 300 * Size_multiplier),
+                new Point(50 * Size_multiplier, 200 * Size_multiplier),
             };
             Point[] leftleg = {
-                new Point(104,  0),
-                new Point(60,  10),
-                new Point(40,  20),
-                new Point(0, 40),
-                new Point(4, 200),
-                new Point(10, 320),
-                new Point(80, 320),
-                new Point(96, 200),
+                new Point(104 * Size_multiplier,  0 * Size_multiplier),
+                new Point(60 * Size_multiplier,  10 * Size_multiplier),
+                new Point(40 * Size_multiplier,  20 * Size_multiplier),
+                new Point(0 * Size_multiplier, 40 * Size_multiplier),
+                new Point(4 * Size_multiplier, 200 * Size_multiplier),
+                new Point(10 * Size_multiplier, 320 * Size_multiplier),
+                new Point(80 * Size_multiplier, 320 * Size_multiplier),
+                new Point(96 * Size_multiplier, 200 * Size_multiplier),
             };
-
+            Point[] leftlegbig = {
+                new Point(130 * Size_multiplier,  0 * Size_multiplier),
+                new Point(75 * Size_multiplier,  13 * Size_multiplier),
+                new Point(50 * Size_multiplier,  25 * Size_multiplier),
+                new Point(0 * Size_multiplier, 50 * Size_multiplier),
+                new Point(5 * Size_multiplier, 250 * Size_multiplier),
+                new Point(13 * Size_multiplier, 400 * Size_multiplier),
+                new Point(100 * Size_multiplier, 400 * Size_multiplier),
+                new Point(120 * Size_multiplier, 250 * Size_multiplier),
+            };
             Point[] leftarm = {
-                new Point(0,  0),
-                new Point(30,  12),
-                new Point(40,  18),
-                new Point(46, 28),
-                new Point(52, 38),
-                new Point(60, 120),
-                new Point(66, 240),
-                new Point(20, 240),
-                new Point(0, 100),
+                new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                new Point(30 * Size_multiplier,  12 * Size_multiplier),
+                new Point(40 * Size_multiplier,  18 * Size_multiplier),
+                new Point(46 * Size_multiplier, 28 * Size_multiplier),
+                new Point(52 * Size_multiplier, 38 * Size_multiplier),
+                new Point(60 * Size_multiplier, 120 * Size_multiplier),
+                new Point(66 * Size_multiplier, 240 * Size_multiplier),
+                new Point(20 * Size_multiplier, 240 * Size_multiplier),
+                new Point(0 * Size_multiplier, 100 * Size_multiplier),
             };
-
+            Point[] leftarmbig = {
+                new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                new Point(38 * Size_multiplier,  15 * Size_multiplier),
+                new Point(50 * Size_multiplier,  23 * Size_multiplier),
+                new Point(57 * Size_multiplier, 35 * Size_multiplier),
+                new Point(65 * Size_multiplier, 47 * Size_multiplier),
+                new Point(75 * Size_multiplier, 150 * Size_multiplier),
+                new Point(82 * Size_multiplier, 300 * Size_multiplier),
+                new Point(25 * Size_multiplier, 300 * Size_multiplier),
+                new Point(0 * Size_multiplier, 125 * Size_multiplier),
+            };
             Point[] rightarm = {
-                new Point(66,  0),
-                new Point(36,  12),
-                new Point(26,  18),
-                new Point(24, 28),
-                new Point(18, 38),
-                new Point(6, 120),
-                new Point(0, 240),
-                new Point(46, 240),
-                new Point(66, 100),
+                new Point(66 * Size_multiplier,  0 * Size_multiplier),
+                new Point(36 * Size_multiplier,  12 * Size_multiplier),
+                new Point(26 * Size_multiplier,  18 * Size_multiplier),
+                new Point(24 * Size_multiplier, 28 * Size_multiplier),
+                new Point(18 * Size_multiplier, 38 * Size_multiplier),
+                new Point(6 * Size_multiplier, 120 * Size_multiplier),
+                new Point(0 * Size_multiplier, 240 * Size_multiplier),
+                new Point(46 * Size_multiplier, 240 * Size_multiplier),
+                new Point(66 * Size_multiplier, 100 * Size_multiplier),
+            };
+            Point[] rightarmbig = {
+                new Point(82 * Size_multiplier,  0 * Size_multiplier),
+                new Point(45 * Size_multiplier,  15 * Size_multiplier),
+                new Point(33 * Size_multiplier,  23 * Size_multiplier),
+                new Point(30 * Size_multiplier, 35 * Size_multiplier),
+                new Point(23 * Size_multiplier, 47 * Size_multiplier),
+                new Point(8 * Size_multiplier, 150 * Size_multiplier),
+                new Point(0 * Size_multiplier, 300 * Size_multiplier),
+                new Point(58 * Size_multiplier, 300 * Size_multiplier),
+                new Point(82 * Size_multiplier, 125 * Size_multiplier),
             };
             Point[] lowarm = {
-                new Point(0,  0),
-                new Point(46,  0),
-                new Point(40,  120),
-                new Point(4, 120),
+                new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                new Point(46 * Size_multiplier,  0 * Size_multiplier),
+                new Point(40 * Size_multiplier,  120 * Size_multiplier),
+                new Point(4 * Size_multiplier, 120 * Size_multiplier),
             };
-            #endregion
+            Point[] lowarmbig = {
+                new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                new Point(58 * Size_multiplier,  0 * Size_multiplier),
+                new Point(50 * Size_multiplier,  150 * Size_multiplier),
+                new Point(5 * Size_multiplier, 150 * Size_multiplier),
+            };
 
+            #endregion
             #region Make Graphics paths
+
+
+            // path.Transform(m);
+
             // Polygon path for the head
             GraphicsPath polygon_path_head = new GraphicsPath(FillMode.Winding);
-            polygon_path_head.AddPolygon(head);
+            polygon_path_head.AddPolygon(headbig);
 
             // Polygon path for the torso
             GraphicsPath polygon_path_torso = new GraphicsPath(FillMode.Winding);
-            polygon_path_torso.AddPolygon(torso);
+            polygon_path_torso.AddPolygon(torsobig);
 
             // Polygon path for the midsection
             GraphicsPath polygon_path_ms = new GraphicsPath(FillMode.Winding);
-            polygon_path_ms.AddPolygon(midsection);
+            polygon_path_ms.AddPolygon(midsectionbig);
 
             // Polygon path for the rightleg
             GraphicsPath polygon_path_rightleg = new GraphicsPath(FillMode.Winding);
-            polygon_path_rightleg.AddPolygon(rightleg);
+            polygon_path_rightleg.AddPolygon(rightlegbig);
 
             // Polygon path for the right low leg
             GraphicsPath polygon_path_lowleg = new GraphicsPath(FillMode.Winding);
-            polygon_path_lowleg.AddPolygon(lowleg);
+            polygon_path_lowleg.AddPolygon(lowlegbig);
 
             // Polygon path for the left leg
             GraphicsPath polygon_path_leftleg = new GraphicsPath(FillMode.Winding);
-            polygon_path_leftleg.AddPolygon(leftleg);
+            polygon_path_leftleg.AddPolygon(leftlegbig);
 
             // Polygon path for the right arm
             GraphicsPath polygon_path_rightarm = new GraphicsPath(FillMode.Winding);
-            polygon_path_rightarm.AddPolygon(rightarm);
+            polygon_path_rightarm.AddPolygon(rightarmbig);
 
             // Polygon path for the left arm
             GraphicsPath polygon_path_leftarm = new GraphicsPath(FillMode.Winding);
-            polygon_path_leftarm.AddPolygon(leftarm);
+            polygon_path_leftarm.AddPolygon(leftarmbig);
 
             // Polygon path for the low arm
             GraphicsPath polygon_path_lowarm = new GraphicsPath(FillMode.Winding);
-            polygon_path_lowarm.AddPolygon(lowarm);
+            polygon_path_lowarm.AddPolygon(lowarmbig);
             #endregion
-
             #region Convert_paths_to_regions
             // Convert the GraphicsPaths into a Region.
             Region polygon_region_head = new Region(polygon_path_head); // head
@@ -260,7 +376,6 @@ namespace Uttam_Transfer_Of_Care
             Region polygon_region_lowarm = new Region(polygon_path_lowarm); // low arm (all 4)
 
             #endregion
-
             #region Constrain the buttons to the regions
             //front buttons
             button_head.Region = polygon_region_head; //head
@@ -289,124 +404,124 @@ namespace Uttam_Transfer_Of_Care
             button_backrightlowarm.Region = polygon_region_lowarm; // back right low arm
 
             #endregion
-
             #region Enlarge buttons to fit 
 
 
-            //head
-            button_head.SetBounds(
-                 button_head.Location.X,
-                 button_head.Location.Y,
-                 200, 250);
-            //torso
-            button_torso.SetBounds(
-                 button_torso.Location.X,
-                 button_torso.Location.Y,
-                 280, 400);
-            // midsection
-            button_ms.SetBounds(
-                 button_ms.Location.X,
-                 button_ms.Location.Y,
-                 300, 130);
-            // rightleg
-            button_rightleg.SetBounds(
-                 button_rightleg.Location.X,
-                 button_rightleg.Location.Y,
-                 116, 340);
-            //right low leg
-            button_rightlowleg.SetBounds(
-                 button_rightlowleg.Location.X,
-                 button_rightlowleg.Location.Y,
-                 100, 260);
-            //left leg
-            button_leftleg.SetBounds(
-                 button_leftleg.Location.X,
-                 button_leftleg.Location.Y,
-                 116, 340);
-            //left low leg
-            button_leftlowleg.SetBounds(
-                 button_leftlowleg.Location.X,
-                 button_leftlowleg.Location.Y,
-                 100, 2600);
-            //left arm
-            button_leftarm.SetBounds(
-                 button_leftarm.Location.X,
-                 button_leftarm.Location.Y,
-                 100, 260);
-            //right arm
-            button_rightarm.SetBounds(
-                 button_rightarm.Location.X,
-                 button_rightarm.Location.Y,
-                 100, 260);
-            //left low arm
-            button_leftlowarm.SetBounds(
-                 button_leftlowarm.Location.X,
-                 button_leftlowarm.Location.Y,
-                 100, 260);
-            //right low arm
-            button_rightlowarm.SetBounds(
-                 button_rightlowarm.Location.X,
-                 button_rightlowarm.Location.Y,
-                 100, 260);
+            ////head
+            //button_head.SetBounds(
+            //     button_head.Location.X,
+            //     button_head.Location.Y,
+            //     (200 * Size_multiplier), 100);
+            ////torso
+            //button_torso.SetBounds(
+            //     button_torso.Location.X,
+            //     button_torso.Location.Y,
+            //     280, 400);
+            //// midsection
+            //button_ms.SetBounds(
+            //     button_ms.Location.X,
+            //     button_ms.Location.Y,
+            //     300, 130);
+            //// rightleg
+            //button_rightleg.SetBounds(
+            //     button_rightleg.Location.X,
+            //     button_rightleg.Location.Y,
+            //     116, 340);
+            ////right low leg
+            //button_rightlowleg.SetBounds(
+            //     button_rightlowleg.Location.X,
+            //     button_rightlowleg.Location.Y,
+            //     100, 260);
+            ////left leg
+            //button_leftleg.SetBounds(
+            //     button_leftleg.Location.X,
+            //     button_leftleg.Location.Y,
+            //     116, 340);
+            ////left low leg
+            //button_leftlowleg.SetBounds(
+            //     button_leftlowleg.Location.X,
+            //     button_leftlowleg.Location.Y,
+            //     100, 2600);
+            ////left arm
+            //button_leftarm.SetBounds(
+            //     button_leftarm.Location.X,
+            //     button_leftarm.Location.Y,
+            //     100, 260);
+            ////right arm
+            //button_rightarm.SetBounds(
+            //     button_rightarm.Location.X,
+            //     button_rightarm.Location.Y,
+            //     100, 260);
+            ////left low arm
+            //button_leftlowarm.SetBounds(
+            //     button_leftlowarm.Location.X,
+            //     button_leftlowarm.Location.Y,
+            //     100, 260);
+            ////right low arm
+            //button_rightlowarm.SetBounds(
+            //     button_rightlowarm.Location.X,
+            //     button_rightlowarm.Location.Y,
+            //     100, 260);
 
-            //backhead
-            button_backhead.SetBounds(
-                button_backhead.Location.X,
-                button_backhead.Location.Y,
-                 200, 250);
-            //backtorso
-            button_backtorso.SetBounds(
-                 button_backtorso.Location.X,
-                 button_backtorso.Location.Y,
-                 280, 400);
-            // back midsection
-            button_backms.SetBounds(
-                 button_backms.Location.X,
-                 button_backms.Location.Y,
-                 300, 130);
-            // rightleg
-            button_backleftleg.SetBounds(
-                 button_backleftleg.Location.X,
-                 button_backleftleg.Location.Y,
-                 116, 340);
-            //back right low leg
-            button_backrightlowleg.SetBounds(
-                 button_backrightlowleg.Location.X,
-                 button_backrightlowleg.Location.Y,
-                 100, 260);
-            //back left leg
-            button_backrightleg.SetBounds(
-                 button_backrightleg.Location.X,
-                 button_backrightleg.Location.Y,
-                 116, 340);
-            //back left low leg
-            button_backleftlowleg.SetBounds(
-                 button_backleftlowleg.Location.X,
-                 button_backleftlowleg.Location.Y,
-                 100, 260);
-            //back left arm
-            button_backleftarm.SetBounds(
-                 button_backleftarm.Location.X,
-                 button_backleftarm.Location.Y,
-                 100, 260);
-            //back right arm
-            button_backrightarm.SetBounds(
-                 button_backrightarm.Location.X,
-                 button_backrightarm.Location.Y,
-                 100, 260);
-            //back left low arm
-            button_backleftlowarm.SetBounds(
-                 button_backleftlowarm.Location.X,
-                 button_backleftlowarm.Location.Y,
-                 100, 260);
-            //back right low arm
-            button_backrightarm.SetBounds(
-                 button_backrightarm.Location.X,
-                 button_backrightarm.Location.Y,
-                 100, 260);
+            ////backhead
+            //button_backhead.SetBounds(
+            //    button_backhead.Location.X,
+            //    button_backhead.Location.Y,
+            //     200, 250);
+            ////backtorso
+            //button_backtorso.SetBounds(
+            //     button_backtorso.Location.X,
+            //     button_backtorso.Location.Y,
+            //     280, 400);
+            //// back midsection
+            //button_backms.SetBounds(
+            //     button_backms.Location.X,
+            //     button_backms.Location.Y,
+            //     300, 130);
+            //// rightleg
+            //button_backleftleg.SetBounds(
+            //     button_backleftleg.Location.X,
+            //     button_backleftleg.Location.Y,
+            //     116, 340);
+            ////back right low leg
+            //button_backrightlowleg.SetBounds(
+            //     button_backrightlowleg.Location.X,
+            //     button_backrightlowleg.Location.Y,
+            //     100, 260);
+            ////back left leg
+            //button_backrightleg.SetBounds(
+            //     button_backrightleg.Location.X,
+            //     button_backrightleg.Location.Y,
+            //     116, 340);
+            ////back left low leg
+            //button_backleftlowleg.SetBounds(
+            //     button_backleftlowleg.Location.X,
+            //     button_backleftlowleg.Location.Y,
+            //     100, 260);
+            ////back left arm
+            //button_backleftarm.SetBounds(
+            //     button_backleftarm.Location.X,
+            //     button_backleftarm.Location.Y,
+            //     100, 260);
+            ////back right arm
+            //button_backrightarm.SetBounds(
+            //     button_backrightarm.Location.X,
+            //     button_backrightarm.Location.Y,
+            //     100, 260);
+            ////back left low arm
+            //button_backleftlowarm.SetBounds(
+            //     button_backleftlowarm.Location.X,
+            //     button_backleftlowarm.Location.Y,
+            //     100, 260);
+            ////back right low arm
+            //button_backrightarm.SetBounds(
+            //     button_backrightarm.Location.X,
+            //     button_backrightarm.Location.Y,
+            //     100, 260);
             #endregion
             #endregion
         }
+
 
         #region front button events
         //head
@@ -1778,6 +1893,7 @@ namespace Uttam_Transfer_Of_Care
 
         #region Radio Button Events //all radio button events in here - arranged in sub groups
         #region Breathing group events
+
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -1798,7 +1914,7 @@ namespace Uttam_Transfer_Of_Care
         private void rb_breathing_bad_CheckedChanged(object sender, EventArgs e)
         {
             var_breathing = 1;
-            //var_breathing_text = rb_breathing_bad.Text;
+            var_breathing_text = rb_breathingstopped.Text;
         }
         private void rb_breathing_restart_CheckedChanged(object sender, EventArgs e)
         {
@@ -1806,6 +1922,7 @@ namespace Uttam_Transfer_Of_Care
             var_breathing_text = rb_breathing_restart.Text;
         }
         #endregion
+
         #region Circulation group events
         private void rb_circgood_CheckedChanged(object sender, EventArgs e)
         {
@@ -1822,7 +1939,7 @@ namespace Uttam_Transfer_Of_Care
         private void rb_circbad_CheckedChanged(object sender, EventArgs e)
         {
             var_circulation = 1;
-            //var_circulation_text = rb_circbad.Text;
+            var_circulation_text = rb_circstopped.Text;
         }
 
         private void rb_circstopped_CheckedChanged(object sender, EventArgs e)
@@ -1849,7 +1966,7 @@ namespace Uttam_Transfer_Of_Care
         private void rb_airwaybad_CheckedChanged(object sender, EventArgs e)
         {
             var_airways = 1;
-            //var_airways_text = rb_airwaybad.Text;
+            var_airways_text = rb_airwayblocked.Text;
         }
 
         private void rb_airwayblocked_CheckedChanged(object sender, EventArgs e)
@@ -2019,27 +2136,13 @@ namespace Uttam_Transfer_Of_Care
             var_injury_type = textentry_injury.Text;
             var_injury_type_text = textentry_injury.Text;
         }
+
         public void Submit_toc_button_Click(object sender, EventArgs e)
         {
 
             endtime = DateTime.Now;
             var output = new Output();
             output.Show();
-        }
-
-        private void Submit_toc_button_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void inputform_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textentry_injury_TextChanged_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

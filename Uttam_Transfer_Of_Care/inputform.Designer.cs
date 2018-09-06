@@ -927,7 +927,7 @@
             this.textentry_injury.Name = "textentry_injury";
             this.textentry_injury.Size = new System.Drawing.Size(692, 217);
             this.textentry_injury.TabIndex = 107;
-            this.textentry_injury.TextChanged += new System.EventHandler(this.textentry_injury_TextChanged_1);
+            this.textentry_injury.TextChanged += new System.EventHandler(this.textentry_injury_TextChanged);
             // 
             // groupBox1
             // 
@@ -1029,7 +1029,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "inputform";
             this.Text = "inputform";
-            this.Load += new System.EventHandler(this.inputform_Load);
+            this.Load += new System.EventHandler(this.Inputform_Load);
             this.BreathingGroup.ResumeLayout(false);
             this.BreathingGroup.PerformLayout();
             this.groupBox3.ResumeLayout(false);
