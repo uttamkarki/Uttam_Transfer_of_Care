@@ -2423,5 +2423,17 @@ namespace Uttam_Transfer_Of_Care
         {
 
         }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AI_patient_transfer_button_Click_1(object sender, EventArgs e)
+        {
+            var transfer_form_start = new inputform();
+            transfer_form_start.Show();
+
+        }
     }
 }
