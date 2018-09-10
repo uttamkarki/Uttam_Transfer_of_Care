@@ -27,6 +27,7 @@ namespace Uttam_Transfer_Of_Care
         public static DateTime starttime;
 
         // Uttam Model Start
+        #region Uttam Sim Model
         //Adding Speech Recogniton Engine
         SpeechRecognitionEngine recognize = new SpeechRecognitionEngine();
         SpeechRecognitionEngine secondbot = new SpeechRecognitionEngine();
@@ -2363,6 +2364,7 @@ namespace Uttam_Transfer_Of_Care
             return result.Output;*/
             return null;
         }
+        #endregion
 
         //button click events
         #region button events        
@@ -2375,54 +2377,9 @@ namespace Uttam_Transfer_Of_Care
             inputform_click.Show();
 
         }
-
-        public void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sim_age_label_Click(object sender, EventArgs e)
-        {
-
-        }
        
 
         #endregion
-
-        private void sim_inthem_box_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sim_intcirc_box_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sim_intbreath_box_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sim_intair_box_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sim_intconc_box_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
@@ -2431,6 +2388,7 @@ namespace Uttam_Transfer_Of_Care
 
         private void AI_patient_transfer_button_Click_1(object sender, EventArgs e)
         {
+            starttime = DateTime.Now;
             var transfer_form_start = new inputform();
             transfer_form_start.Show();
 

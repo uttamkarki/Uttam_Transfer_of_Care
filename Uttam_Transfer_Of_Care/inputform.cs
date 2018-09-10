@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows;
 
 using System.Drawing.Drawing2D;
 
@@ -41,6 +42,7 @@ namespace Uttam_Transfer_Of_Care
 
         public static Color onColor = Color.Red;
         public static Color offColor = Color.LightGray;
+        #region set initial metric definintions (5 = no input)
 
         public static int var_breathing = 5;
         public static int var_hemorrage = 5;
@@ -52,7 +54,8 @@ namespace Uttam_Transfer_Of_Care
         public static int var_age = 5;
         public static int var_gender = 5;
         public static string var_injury_type = "no injury mechanism given";
-
+        #endregion
+        #region set metric strings ("no data entered")
         public static string var_breathing_text = "no entry";
         public static string var_hemorrage_text = "no entry";
         public static string var_consciousness_text = "no entry";
@@ -67,6 +70,8 @@ namespace Uttam_Transfer_Of_Care
         public static DateTime endtime;
         public static int Size_multiplier = 1;
 
+        #endregion
+
         public inputform()
         {
             InitializeComponent();
@@ -74,27 +79,15 @@ namespace Uttam_Transfer_Of_Care
 
         private void Inputform_Load(object sender, EventArgs e)
         {
+            //var Screenres = System.Windows.SystemParameters.PrimaryScreenHeight;
+            var screenheight = Screen.PrimaryScreen.Bounds.Height;
+            var screenwidth = Screen.PrimaryScreen.Bounds.Width;
+
+
+
             #region make shaped buttons   
             #region shape the buttons
-            Point[] pts = {
-                new Point(20 * Size_multiplier,  60 * Size_multiplier),
-                new Point(140 * Size_multiplier,  60 * Size_multiplier),
-                new Point(140 * Size_multiplier,  20 * Size_multiplier),
-                new Point(300 * Size_multiplier, 100 * Size_multiplier),
-                new Point(140 * Size_multiplier, 180 * Size_multiplier),
-                new Point(140 * Size_multiplier, 140 * Size_multiplier),
-                new Point( 20 * Size_multiplier, 140 * Size_multiplier)
-            };
-            Point[] pts2 = {
-                new Point(20 * Size_multiplier,  20 * Size_multiplier),
-                new Point(20 * Size_multiplier,  60 * Size_multiplier),
-                new Point(500 * Size_multiplier,  60 * Size_multiplier),
-                new Point(500 * Size_multiplier, 100 * Size_multiplier),
-                new Point(520 * Size_multiplier, 100 * Size_multiplier),
-                new Point(520 * Size_multiplier, 40 * Size_multiplier),
-                new Point(80 * Size_multiplier, 40 * Size_multiplier),
-                new Point(80 * Size_multiplier, 20 * Size_multiplier)
-            };
+
             Point[] head = {
                 //new Point(20,  150),
                 new Point(20 * Size_multiplier,  250 * Size_multiplier),
@@ -120,6 +113,95 @@ namespace Uttam_Transfer_Of_Care
                 new Point(160 * Size_multiplier, 250 * Size_multiplier),
                 //new Point(90,  150),
                 };
+            Point[] torso = {
+                new Point(50 * Size_multiplier,  0 * Size_multiplier),
+                new Point(28 * Size_multiplier,  14 * Size_multiplier),
+                new Point(0 * Size_multiplier,  28 * Size_multiplier),
+                new Point(0 * Size_multiplier, 80 * Size_multiplier),
+                new Point(6 * Size_multiplier, 294 * Size_multiplier),
+                new Point(8 * Size_multiplier, 350 * Size_multiplier),
+                new Point(0 * Size_multiplier, 380 * Size_multiplier),
+                new Point(0 * Size_multiplier, 400 * Size_multiplier),
+                new Point(240 * Size_multiplier, 400 * Size_multiplier),
+                new Point(240 * Size_multiplier, 380 * Size_multiplier),
+                new Point(232 * Size_multiplier, 350 * Size_multiplier),
+                new Point(234 * Size_multiplier, 294 * Size_multiplier),
+                new Point(240 * Size_multiplier, 80 * Size_multiplier),
+                new Point(240 * Size_multiplier, 28 * Size_multiplier),
+                new Point(212 * Size_multiplier, 14 * Size_multiplier),
+                new Point(190 * Size_multiplier,0 * Size_multiplier)
+            };
+            Point[] midsection = {
+                new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                new Point(2 * Size_multiplier,  18 * Size_multiplier),
+                new Point(6 * Size_multiplier,  40 * Size_multiplier),
+                new Point(50 * Size_multiplier, 50 * Size_multiplier),
+                new Point(70 * Size_multiplier, 60 * Size_multiplier),
+                new Point(110 * Size_multiplier, 80 * Size_multiplier),
+                new Point(130 * Size_multiplier, 80 * Size_multiplier),
+                new Point(170 * Size_multiplier, 60 * Size_multiplier),
+                new Point(190 * Size_multiplier, 50 * Size_multiplier),
+                new Point(234 * Size_multiplier, 40 * Size_multiplier),
+                new Point(238 * Size_multiplier, 18 * Size_multiplier),
+                new Point(240 * Size_multiplier, 0 * Size_multiplier),
+            };
+            Point[] rightleg = {
+                new Point(6 * Size_multiplier,  0 * Size_multiplier),
+                new Point(50 * Size_multiplier,  10 * Size_multiplier),
+                new Point(70 * Size_multiplier,  20 * Size_multiplier),
+                new Point(110 * Size_multiplier, 40 * Size_multiplier),
+                new Point(106 * Size_multiplier, 200 * Size_multiplier),
+                new Point(100 * Size_multiplier, 320 * Size_multiplier),
+                new Point(30 * Size_multiplier, 320 * Size_multiplier),
+                new Point(14 * Size_multiplier, 200 * Size_multiplier),
+            };
+            Point[] lowleg = {
+                new Point(30 * Size_multiplier,  0 * Size_multiplier),
+                new Point(100 * Size_multiplier,  0 * Size_multiplier),
+                new Point(90 * Size_multiplier,  160 * Size_multiplier),
+                new Point(80 * Size_multiplier, 240 * Size_multiplier),
+                new Point(50 * Size_multiplier, 240 * Size_multiplier),
+                new Point(40 * Size_multiplier, 160 * Size_multiplier),
+            };
+            Point[] leftleg = {
+                new Point(104 * Size_multiplier,  0 * Size_multiplier),
+                new Point(60 * Size_multiplier,  10 * Size_multiplier),
+                new Point(40 * Size_multiplier,  20 * Size_multiplier),
+                new Point(0 * Size_multiplier, 40 * Size_multiplier),
+                new Point(4 * Size_multiplier, 200 * Size_multiplier),
+                new Point(10 * Size_multiplier, 320 * Size_multiplier),
+                new Point(80 * Size_multiplier, 320 * Size_multiplier),
+                new Point(96 * Size_multiplier, 200 * Size_multiplier),
+            };
+            Point[] leftarm = {
+                new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                new Point(30 * Size_multiplier,  12 * Size_multiplier),
+                new Point(40 * Size_multiplier,  18 * Size_multiplier),
+                new Point(46 * Size_multiplier, 28 * Size_multiplier),
+                new Point(52 * Size_multiplier, 38 * Size_multiplier),
+                new Point(60 * Size_multiplier, 120 * Size_multiplier),
+                new Point(66 * Size_multiplier, 240 * Size_multiplier),
+                new Point(20 * Size_multiplier, 240 * Size_multiplier),
+                new Point(0 * Size_multiplier, 100 * Size_multiplier),
+            };
+            Point[] rightarm = {
+                new Point(66 * Size_multiplier,  0 * Size_multiplier),
+                new Point(36 * Size_multiplier,  12 * Size_multiplier),
+                new Point(26 * Size_multiplier,  18 * Size_multiplier),
+                new Point(24 * Size_multiplier, 28 * Size_multiplier),
+                new Point(18 * Size_multiplier, 38 * Size_multiplier),
+                new Point(6 * Size_multiplier, 120 * Size_multiplier),
+                new Point(0 * Size_multiplier, 240 * Size_multiplier),
+                new Point(46 * Size_multiplier, 240 * Size_multiplier),
+                new Point(66 * Size_multiplier, 100 * Size_multiplier),
+            };
+            Point[] lowarm = {
+                new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                new Point(46 * Size_multiplier,  0 * Size_multiplier),
+                new Point(40 * Size_multiplier,  120 * Size_multiplier),
+                new Point(4 * Size_multiplier, 120 * Size_multiplier),
+            };
+
             Point[] headbig = {
                 new Point(25 * Size_multiplier,  312 * Size_multiplier),
                 new Point(45 * Size_multiplier,  293 * Size_multiplier),
@@ -144,24 +226,6 @@ namespace Uttam_Transfer_Of_Care
                 new Point(200 * Size_multiplier, 312 * Size_multiplier),
                 //new Point(90,  150),
             };
-            Point[] torso = {
-                new Point(50 * Size_multiplier,  0 * Size_multiplier),
-                new Point(28 * Size_multiplier,  14 * Size_multiplier),
-                new Point(0 * Size_multiplier,  28 * Size_multiplier),
-                new Point(0 * Size_multiplier, 80 * Size_multiplier),
-                new Point(6 * Size_multiplier, 294 * Size_multiplier),
-                new Point(8 * Size_multiplier, 350 * Size_multiplier),
-                new Point(0 * Size_multiplier, 380 * Size_multiplier),
-                new Point(0 * Size_multiplier, 400 * Size_multiplier),
-                new Point(240 * Size_multiplier, 400 * Size_multiplier),
-                new Point(240 * Size_multiplier, 380 * Size_multiplier),
-                new Point(232 * Size_multiplier, 350 * Size_multiplier),
-                new Point(234 * Size_multiplier, 294 * Size_multiplier),
-                new Point(240 * Size_multiplier, 80 * Size_multiplier),
-                new Point(240 * Size_multiplier, 28 * Size_multiplier),
-                new Point(212 * Size_multiplier, 14 * Size_multiplier),
-                new Point(190 * Size_multiplier,0 * Size_multiplier)
-            };
             Point[] torsobig = {
                 new Point(63 * Size_multiplier,  0 * Size_multiplier),
                 new Point(35 * Size_multiplier,  18 * Size_multiplier),
@@ -180,20 +244,6 @@ namespace Uttam_Transfer_Of_Care
                 new Point(265 * Size_multiplier, 18 * Size_multiplier),
                 new Point(238 * Size_multiplier,0 * Size_multiplier)
             };
-            Point[] midsection = {
-                new Point(0 * Size_multiplier,  0 * Size_multiplier),
-                new Point(2 * Size_multiplier,  18 * Size_multiplier),
-                new Point(6 * Size_multiplier,  40 * Size_multiplier),
-                new Point(50 * Size_multiplier, 50 * Size_multiplier),
-                new Point(70 * Size_multiplier, 60 * Size_multiplier),
-                new Point(110 * Size_multiplier, 80 * Size_multiplier),
-                new Point(130 * Size_multiplier, 80 * Size_multiplier),
-                new Point(170 * Size_multiplier, 60 * Size_multiplier),
-                new Point(190 * Size_multiplier, 50 * Size_multiplier),
-                new Point(234 * Size_multiplier, 40 * Size_multiplier),
-                new Point(238 * Size_multiplier, 18 * Size_multiplier),
-                new Point(240 * Size_multiplier, 0 * Size_multiplier),
-            };
             Point[] midsectionbig = {
                 new Point(0 * Size_multiplier,  0 * Size_multiplier),
                 new Point(3 * Size_multiplier,  23 * Size_multiplier),
@@ -208,16 +258,6 @@ namespace Uttam_Transfer_Of_Care
                 new Point(298 * Size_multiplier, 23 * Size_multiplier),
                 new Point(300 * Size_multiplier, 0 * Size_multiplier),
             };
-            Point[] rightleg = {
-                new Point(6 * Size_multiplier,  0 * Size_multiplier),
-                new Point(50 * Size_multiplier,  10 * Size_multiplier),
-                new Point(70 * Size_multiplier,  20 * Size_multiplier),
-                new Point(110 * Size_multiplier, 40 * Size_multiplier),
-                new Point(106 * Size_multiplier, 200 * Size_multiplier),
-                new Point(100 * Size_multiplier, 320 * Size_multiplier),
-                new Point(30 * Size_multiplier, 320 * Size_multiplier),
-                new Point(14 * Size_multiplier, 200 * Size_multiplier),
-            };
             Point[] rightlegbig = {
                 new Point(8 * Size_multiplier,  0 * Size_multiplier),
                 new Point(63 * Size_multiplier,  13 * Size_multiplier),
@@ -228,14 +268,6 @@ namespace Uttam_Transfer_Of_Care
                 new Point(38 * Size_multiplier, 400 * Size_multiplier),
                 new Point(18 * Size_multiplier, 250 * Size_multiplier),
             };
-            Point[] lowleg = {
-                new Point(30 * Size_multiplier,  0 * Size_multiplier),
-                new Point(100 * Size_multiplier,  0 * Size_multiplier),
-                new Point(90 * Size_multiplier,  160 * Size_multiplier),
-                new Point(80 * Size_multiplier, 240 * Size_multiplier),
-                new Point(50 * Size_multiplier, 240 * Size_multiplier),
-                new Point(40 * Size_multiplier, 160 * Size_multiplier),
-            };
             Point[] lowlegbig = {
                 new Point(38 * Size_multiplier,  0 * Size_multiplier),
                 new Point(125 * Size_multiplier,  0 * Size_multiplier),
@@ -243,16 +275,6 @@ namespace Uttam_Transfer_Of_Care
                 new Point(100 * Size_multiplier, 300 * Size_multiplier),
                 new Point(53 * Size_multiplier, 300 * Size_multiplier),
                 new Point(50 * Size_multiplier, 200 * Size_multiplier),
-            };
-            Point[] leftleg = {
-                new Point(104 * Size_multiplier,  0 * Size_multiplier),
-                new Point(60 * Size_multiplier,  10 * Size_multiplier),
-                new Point(40 * Size_multiplier,  20 * Size_multiplier),
-                new Point(0 * Size_multiplier, 40 * Size_multiplier),
-                new Point(4 * Size_multiplier, 200 * Size_multiplier),
-                new Point(10 * Size_multiplier, 320 * Size_multiplier),
-                new Point(80 * Size_multiplier, 320 * Size_multiplier),
-                new Point(96 * Size_multiplier, 200 * Size_multiplier),
             };
             Point[] leftlegbig = {
                 new Point(130 * Size_multiplier,  0 * Size_multiplier),
@@ -263,17 +285,6 @@ namespace Uttam_Transfer_Of_Care
                 new Point(13 * Size_multiplier, 400 * Size_multiplier),
                 new Point(100 * Size_multiplier, 400 * Size_multiplier),
                 new Point(120 * Size_multiplier, 250 * Size_multiplier),
-            };
-            Point[] leftarm = {
-                new Point(0 * Size_multiplier,  0 * Size_multiplier),
-                new Point(30 * Size_multiplier,  12 * Size_multiplier),
-                new Point(40 * Size_multiplier,  18 * Size_multiplier),
-                new Point(46 * Size_multiplier, 28 * Size_multiplier),
-                new Point(52 * Size_multiplier, 38 * Size_multiplier),
-                new Point(60 * Size_multiplier, 120 * Size_multiplier),
-                new Point(66 * Size_multiplier, 240 * Size_multiplier),
-                new Point(20 * Size_multiplier, 240 * Size_multiplier),
-                new Point(0 * Size_multiplier, 100 * Size_multiplier),
             };
             Point[] leftarmbig = {
                 new Point(0 * Size_multiplier,  0 * Size_multiplier),
@@ -286,17 +297,6 @@ namespace Uttam_Transfer_Of_Care
                 new Point(25 * Size_multiplier, 300 * Size_multiplier),
                 new Point(0 * Size_multiplier, 125 * Size_multiplier),
             };
-            Point[] rightarm = {
-                new Point(66 * Size_multiplier,  0 * Size_multiplier),
-                new Point(36 * Size_multiplier,  12 * Size_multiplier),
-                new Point(26 * Size_multiplier,  18 * Size_multiplier),
-                new Point(24 * Size_multiplier, 28 * Size_multiplier),
-                new Point(18 * Size_multiplier, 38 * Size_multiplier),
-                new Point(6 * Size_multiplier, 120 * Size_multiplier),
-                new Point(0 * Size_multiplier, 240 * Size_multiplier),
-                new Point(46 * Size_multiplier, 240 * Size_multiplier),
-                new Point(66 * Size_multiplier, 100 * Size_multiplier),
-            };
             Point[] rightarmbig = {
                 new Point(82 * Size_multiplier,  0 * Size_multiplier),
                 new Point(45 * Size_multiplier,  15 * Size_multiplier),
@@ -308,62 +308,141 @@ namespace Uttam_Transfer_Of_Care
                 new Point(58 * Size_multiplier, 300 * Size_multiplier),
                 new Point(82 * Size_multiplier, 125 * Size_multiplier),
             };
-            Point[] lowarm = {
-                new Point(0 * Size_multiplier,  0 * Size_multiplier),
-                new Point(46 * Size_multiplier,  0 * Size_multiplier),
-                new Point(40 * Size_multiplier,  120 * Size_multiplier),
-                new Point(4 * Size_multiplier, 120 * Size_multiplier),
-            };
             Point[] lowarmbig = {
                 new Point(0 * Size_multiplier,  0 * Size_multiplier),
                 new Point(58 * Size_multiplier,  0 * Size_multiplier),
                 new Point(50 * Size_multiplier,  150 * Size_multiplier),
                 new Point(5 * Size_multiplier, 150 * Size_multiplier),
             };
-
             #endregion
             #region Make Graphics paths
 
+            // this section commented out as not working
+            #region resoultion dependent button sizing
+            //if (screenheight > 3000)
+            //{
+            #region Generate large paths for button shapes
+            //    // Polygon path for the head
+            //    GraphicsPath polygon_path_head = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_head.AddPolygon(headbig);
 
-            // path.Transform(m);
+            //    // Polygon path for the torso
+            //    GraphicsPath polygon_path_torso = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_torso.AddPolygon(torsobig);
 
+            //    // Polygon path for the midsection
+            //    GraphicsPath polygon_path_ms = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_ms.AddPolygon(midsectionbig);
+
+            //    // Polygon path for the rightleg
+            //    GraphicsPath polygon_path_rightleg = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_rightleg.AddPolygon(rightlegbig);
+
+            //    // Polygon path for the right low leg
+            //    GraphicsPath polygon_path_lowleg = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_lowleg.AddPolygon(lowlegbig);
+
+            //    // Polygon path for the left leg
+            //    GraphicsPath polygon_path_leftleg = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_leftleg.AddPolygon(leftlegbig);
+
+            //    // Polygon path for the right arm
+            //    GraphicsPath polygon_path_rightarm = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_rightarm.AddPolygon(rightarmbig);
+
+            //    // Polygon path for the left arm
+            //    GraphicsPath polygon_path_leftarm = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_leftarm.AddPolygon(leftarmbig);
+
+            //    // Polygon path for the low arm
+            //    GraphicsPath polygon_path_lowarm = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_lowarm.AddPolygon(lowarmbig);
+            #endregion // currently commented
+            //}
+            //else
+            //{
+            #region Generate medium paths for button shapes
+            //    // Polygon path for the head
+            //    GraphicsPath polygon_path_head = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_head.AddPolygon(head);
+
+            //    // Polygon path for the torso
+            //    GraphicsPath polygon_path_torso = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_torso.AddPolygon(torso);
+
+            //    // Polygon path for the midsection
+            //    GraphicsPath polygon_path_ms = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_ms.AddPolygon(midsection);
+
+            //    // Polygon path for the rightleg
+            //    GraphicsPath polygon_path_rightleg = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_rightleg.AddPolygon(rightleg);
+
+            //    // Polygon path for the right low leg
+            //    GraphicsPath polygon_path_lowleg = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_lowleg.AddPolygon(lowleg);
+
+            //    // Polygon path for the left leg
+            //    GraphicsPath polygon_path_leftleg = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_leftleg.AddPolygon(leftleg);
+
+            //    // Polygon path for the right arm
+            //    GraphicsPath polygon_path_rightarm = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_rightarm.AddPolygon(rightarm);
+
+            //    // Polygon path for the left arm
+            //    GraphicsPath polygon_path_leftarm = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_leftarm.AddPolygon(leftarm);
+
+            //    // Polygon path for the low arm
+            //    GraphicsPath polygon_path_lowarm = new GraphicsPath(FillMode.Winding);
+            //    polygon_path_lowarm.AddPolygon(lowarm);
+            #endregion // currently commented out as not working
+            //}
+            #endregion
+
+            //non-variable sizing code
+            #region Generate medium paths for button shapes
             // Polygon path for the head
             GraphicsPath polygon_path_head = new GraphicsPath(FillMode.Winding);
-            polygon_path_head.AddPolygon(headbig);
+            polygon_path_head.AddPolygon(head);
 
             // Polygon path for the torso
             GraphicsPath polygon_path_torso = new GraphicsPath(FillMode.Winding);
-            polygon_path_torso.AddPolygon(torsobig);
+            polygon_path_torso.AddPolygon(torso);
 
             // Polygon path for the midsection
             GraphicsPath polygon_path_ms = new GraphicsPath(FillMode.Winding);
-            polygon_path_ms.AddPolygon(midsectionbig);
+            polygon_path_ms.AddPolygon(midsection);
 
             // Polygon path for the rightleg
             GraphicsPath polygon_path_rightleg = new GraphicsPath(FillMode.Winding);
-            polygon_path_rightleg.AddPolygon(rightlegbig);
+            polygon_path_rightleg.AddPolygon(rightleg);
 
             // Polygon path for the right low leg
             GraphicsPath polygon_path_lowleg = new GraphicsPath(FillMode.Winding);
-            polygon_path_lowleg.AddPolygon(lowlegbig);
+            polygon_path_lowleg.AddPolygon(lowleg);
 
             // Polygon path for the left leg
             GraphicsPath polygon_path_leftleg = new GraphicsPath(FillMode.Winding);
-            polygon_path_leftleg.AddPolygon(leftlegbig);
+            polygon_path_leftleg.AddPolygon(leftleg);
 
             // Polygon path for the right arm
             GraphicsPath polygon_path_rightarm = new GraphicsPath(FillMode.Winding);
-            polygon_path_rightarm.AddPolygon(rightarmbig);
+            polygon_path_rightarm.AddPolygon(rightarm);
 
             // Polygon path for the left arm
             GraphicsPath polygon_path_leftarm = new GraphicsPath(FillMode.Winding);
-            polygon_path_leftarm.AddPolygon(leftarmbig);
+            polygon_path_leftarm.AddPolygon(leftarm);
 
             // Polygon path for the low arm
             GraphicsPath polygon_path_lowarm = new GraphicsPath(FillMode.Winding);
-            polygon_path_lowarm.AddPolygon(lowarmbig);
+            polygon_path_lowarm.AddPolygon(lowarm);
+            #endregion
+
             #endregion
             #region Convert_paths_to_regions
+
             // Convert the GraphicsPaths into a Region.
             Region polygon_region_head = new Region(polygon_path_head); // head
             Region polygon_region_torso = new Region(polygon_path_torso); // torso
@@ -521,7 +600,6 @@ namespace Uttam_Transfer_Of_Care
             #endregion
             #endregion
         }
-
 
         #region front button events
         //head
@@ -2125,12 +2203,6 @@ namespace Uttam_Transfer_Of_Care
 
         #endregion
 
-        public void button1_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void textentry_injury_TextChanged(object sender, EventArgs e)
         {
             var_injury_type = textentry_injury.Text;
@@ -2139,7 +2211,6 @@ namespace Uttam_Transfer_Of_Care
 
         public void Submit_toc_button_Click(object sender, EventArgs e)
         {
-
             endtime = DateTime.Now;
             var output = new Output();
             output.Show();
