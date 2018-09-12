@@ -607,153 +607,166 @@
             this.button_backrightlowarm.BackColor = System.Drawing.Color.LightGray;
             this.button_backrightlowarm.FlatAppearance.BorderSize = 0;
             this.button_backrightlowarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backrightlowarm.Location = new System.Drawing.Point(1422, 575);
+            this.button_backrightlowarm.Location = new System.Drawing.Point(1438, 592);
             this.button_backrightlowarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_backrightlowarm.Name = "button_backrightlowarm";
-            this.button_backrightlowarm.Size = new System.Drawing.Size(57, 140);
+            this.button_backrightlowarm.Size = new System.Drawing.Size(46, 120);
             this.button_backrightlowarm.TabIndex = 103;
             this.button_backrightlowarm.UseVisualStyleBackColor = false;
+            this.button_backrightlowarm.Click += new System.EventHandler(this.button_backrightlowarm_Click);
             // 
             // button_backrightarm
             // 
             this.button_backrightarm.BackColor = System.Drawing.Color.LightGray;
             this.button_backrightarm.FlatAppearance.BorderSize = 0;
             this.button_backrightarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backrightarm.Location = new System.Drawing.Point(1402, 352);
+            this.button_backrightarm.Location = new System.Drawing.Point(1418, 352);
             this.button_backrightarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_backrightarm.Name = "button_backrightarm";
-            this.button_backrightarm.Size = new System.Drawing.Size(57, 225);
+            this.button_backrightarm.Size = new System.Drawing.Size(66, 240);
             this.button_backrightarm.TabIndex = 102;
             this.button_backrightarm.UseVisualStyleBackColor = false;
+            this.button_backrightarm.Click += new System.EventHandler(this.button_backrightarm_Click);
             // 
             // button_backleftlowarm
             // 
             this.button_backleftlowarm.BackColor = System.Drawing.Color.LightGray;
             this.button_backleftlowarm.FlatAppearance.BorderSize = 0;
             this.button_backleftlowarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backleftlowarm.Location = new System.Drawing.Point(1118, 575);
+            this.button_backleftlowarm.Location = new System.Drawing.Point(1113, 592);
             this.button_backleftlowarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_backleftlowarm.Name = "button_backleftlowarm";
-            this.button_backleftlowarm.Size = new System.Drawing.Size(57, 140);
+            this.button_backleftlowarm.Size = new System.Drawing.Size(46, 120);
             this.button_backleftlowarm.TabIndex = 101;
             this.button_backleftlowarm.UseVisualStyleBackColor = false;
+            this.button_backleftlowarm.Click += new System.EventHandler(this.button_backleftlowarm_Click);
             // 
             // button_backleftarm
             // 
             this.button_backleftarm.BackColor = System.Drawing.Color.LightGray;
             this.button_backleftarm.FlatAppearance.BorderSize = 0;
             this.button_backleftarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backleftarm.Location = new System.Drawing.Point(1118, 352);
+            this.button_backleftarm.Location = new System.Drawing.Point(1113, 352);
             this.button_backleftarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_backleftarm.Name = "button_backleftarm";
-            this.button_backleftarm.Size = new System.Drawing.Size(57, 225);
+            this.button_backleftarm.Size = new System.Drawing.Size(66, 240);
             this.button_backleftarm.TabIndex = 100;
             this.button_backleftarm.UseVisualStyleBackColor = false;
+            this.button_backleftarm.Click += new System.EventHandler(this.button_backleftarm_Click);
             // 
             // button_leftlowarm
             // 
             this.button_leftlowarm.BackColor = System.Drawing.Color.LightGray;
             this.button_leftlowarm.FlatAppearance.BorderSize = 0;
             this.button_leftlowarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_leftlowarm.Location = new System.Drawing.Point(954, 575);
+            this.button_leftlowarm.Location = new System.Drawing.Point(970, 592);
             this.button_leftlowarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_leftlowarm.Name = "button_leftlowarm";
-            this.button_leftlowarm.Size = new System.Drawing.Size(57, 140);
+            this.button_leftlowarm.Size = new System.Drawing.Size(46, 120);
             this.button_leftlowarm.TabIndex = 99;
             this.button_leftlowarm.UseVisualStyleBackColor = false;
+            this.button_leftlowarm.Click += new System.EventHandler(this.button_leftlowarm_Click);
             // 
             // button_rightlowarm
             // 
             this.button_rightlowarm.BackColor = System.Drawing.Color.LightGray;
             this.button_rightlowarm.FlatAppearance.BorderSize = 0;
             this.button_rightlowarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_rightlowarm.Location = new System.Drawing.Point(650, 575);
+            this.button_rightlowarm.Location = new System.Drawing.Point(645, 592);
             this.button_rightlowarm.Name = "button_rightlowarm";
-            this.button_rightlowarm.Size = new System.Drawing.Size(57, 140);
+            this.button_rightlowarm.Size = new System.Drawing.Size(46, 120);
             this.button_rightlowarm.TabIndex = 98;
             this.button_rightlowarm.UseVisualStyleBackColor = false;
+            this.button_rightlowarm.Click += new System.EventHandler(this.button_rightlowarm_Click);
             // 
             // button_rightarm
             // 
             this.button_rightarm.BackColor = System.Drawing.Color.LightGray;
             this.button_rightarm.FlatAppearance.BorderSize = 0;
             this.button_rightarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_rightarm.Location = new System.Drawing.Point(650, 352);
+            this.button_rightarm.Location = new System.Drawing.Point(645, 352);
             this.button_rightarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_rightarm.Name = "button_rightarm";
-            this.button_rightarm.Size = new System.Drawing.Size(57, 225);
+            this.button_rightarm.Size = new System.Drawing.Size(66, 240);
             this.button_rightarm.TabIndex = 97;
             this.button_rightarm.UseVisualStyleBackColor = false;
+            this.button_rightarm.Click += new System.EventHandler(this.button_rightarm_Click);
             // 
             // button_leftarm
             // 
             this.button_leftarm.BackColor = System.Drawing.Color.LightGray;
             this.button_leftarm.FlatAppearance.BorderSize = 0;
             this.button_leftarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_leftarm.Location = new System.Drawing.Point(934, 352);
+            this.button_leftarm.Location = new System.Drawing.Point(950, 352);
             this.button_leftarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_leftarm.Name = "button_leftarm";
-            this.button_leftarm.Size = new System.Drawing.Size(57, 225);
+            this.button_leftarm.Size = new System.Drawing.Size(66, 240);
             this.button_leftarm.TabIndex = 96;
             this.button_leftarm.UseVisualStyleBackColor = false;
+            this.button_leftarm.Click += new System.EventHandler(this.button_leftarm_Click);
             // 
             // button_backleftlowleg
             // 
             this.button_backleftlowleg.BackColor = System.Drawing.Color.LightGray;
             this.button_backleftlowleg.FlatAppearance.BorderSize = 0;
             this.button_backleftlowleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backleftlowleg.Location = new System.Drawing.Point(1178, 1055);
+            this.button_backleftlowleg.Location = new System.Drawing.Point(1178, 1080);
             this.button_backleftlowleg.Name = "button_backleftlowleg";
-            this.button_backleftlowleg.Size = new System.Drawing.Size(93, 156);
+            this.button_backleftlowleg.Size = new System.Drawing.Size(100, 240);
             this.button_backleftlowleg.TabIndex = 95;
             this.button_backleftlowleg.UseVisualStyleBackColor = false;
+            this.button_backleftlowleg.Click += new System.EventHandler(this.button_backleftlowleg_Click);
             // 
             // button_backrightlowleg
             // 
             this.button_backrightlowleg.BackColor = System.Drawing.Color.LightGray;
             this.button_backrightlowleg.FlatAppearance.BorderSize = 0;
             this.button_backrightlowleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backrightlowleg.Location = new System.Drawing.Point(1282, 1055);
+            this.button_backrightlowleg.Location = new System.Drawing.Point(1287, 1080);
             this.button_backrightlowleg.Margin = new System.Windows.Forms.Padding(0);
             this.button_backrightlowleg.Name = "button_backrightlowleg";
-            this.button_backrightlowleg.Size = new System.Drawing.Size(93, 156);
+            this.button_backrightlowleg.Size = new System.Drawing.Size(100, 240);
             this.button_backrightlowleg.TabIndex = 94;
             this.button_backrightlowleg.UseVisualStyleBackColor = false;
+            this.button_backrightlowleg.Click += new System.EventHandler(this.button_backrightlowleg_Click);
             // 
             // button_backrightleg
             // 
             this.button_backrightleg.BackColor = System.Drawing.Color.LightGray;
             this.button_backrightleg.FlatAppearance.BorderSize = 0;
             this.button_backrightleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backrightleg.Location = new System.Drawing.Point(1300, 748);
+            this.button_backrightleg.Location = new System.Drawing.Point(1307, 760);
             this.button_backrightleg.Margin = new System.Windows.Forms.Padding(0);
             this.button_backrightleg.Name = "button_backrightleg";
-            this.button_backrightleg.Size = new System.Drawing.Size(93, 306);
+            this.button_backrightleg.Size = new System.Drawing.Size(110, 320);
             this.button_backrightleg.TabIndex = 93;
             this.button_backrightleg.UseVisualStyleBackColor = false;
+            this.button_backrightleg.Click += new System.EventHandler(this.button_backrightleg_Click);
             // 
             // button_backleftleg
             // 
             this.button_backleftleg.BackColor = System.Drawing.Color.LightGray;
             this.button_backleftleg.FlatAppearance.BorderSize = 0;
             this.button_backleftleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backleftleg.Location = new System.Drawing.Point(1178, 748);
+            this.button_backleftleg.Location = new System.Drawing.Point(1178, 760);
             this.button_backleftleg.Name = "button_backleftleg";
-            this.button_backleftleg.Size = new System.Drawing.Size(93, 306);
+            this.button_backleftleg.Size = new System.Drawing.Size(110, 320);
             this.button_backleftleg.TabIndex = 92;
             this.button_backleftleg.UseVisualStyleBackColor = false;
+            this.button_backleftleg.Click += new System.EventHandler(this.button_backleftleg_Click);
             // 
             // button_backms
             // 
             this.button_backms.BackColor = System.Drawing.Color.LightGray;
             this.button_backms.FlatAppearance.BorderSize = 0;
             this.button_backms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backms.Location = new System.Drawing.Point(1178, 711);
+            this.button_backms.Location = new System.Drawing.Point(1178, 723);
             this.button_backms.Margin = new System.Windows.Forms.Padding(0);
             this.button_backms.Name = "button_backms";
-            this.button_backms.Size = new System.Drawing.Size(225, 127);
+            this.button_backms.Size = new System.Drawing.Size(240, 80);
             this.button_backms.TabIndex = 91;
             this.button_backms.UseVisualStyleBackColor = false;
+            this.button_backms.Click += new System.EventHandler(this.button_backms_Click);
             // 
             // button_backtorso
             // 
@@ -763,91 +776,99 @@
             this.button_backtorso.Location = new System.Drawing.Point(1178, 323);
             this.button_backtorso.Margin = new System.Windows.Forms.Padding(0);
             this.button_backtorso.Name = "button_backtorso";
-            this.button_backtorso.Size = new System.Drawing.Size(225, 390);
+            this.button_backtorso.Size = new System.Drawing.Size(240, 400);
             this.button_backtorso.TabIndex = 90;
             this.button_backtorso.UseVisualStyleBackColor = false;
+            this.button_backtorso.Click += new System.EventHandler(this.button_backtorso_Click);
             // 
             // button_backhead
             // 
             this.button_backhead.BackColor = System.Drawing.Color.LightGray;
             this.button_backhead.FlatAppearance.BorderSize = 0;
             this.button_backhead.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backhead.Location = new System.Drawing.Point(1206, 81);
+            this.button_backhead.Location = new System.Drawing.Point(1206, 73);
             this.button_backhead.Margin = new System.Windows.Forms.Padding(0);
             this.button_backhead.Name = "button_backhead";
-            this.button_backhead.Size = new System.Drawing.Size(188, 244);
+            this.button_backhead.Size = new System.Drawing.Size(172, 250);
             this.button_backhead.TabIndex = 89;
             this.button_backhead.UseVisualStyleBackColor = false;
+            this.button_backhead.Click += new System.EventHandler(this.button_backhead_Click);
             // 
             // button_leftlowleg
             // 
             this.button_leftlowleg.BackColor = System.Drawing.Color.LightGray;
             this.button_leftlowleg.FlatAppearance.BorderSize = 0;
             this.button_leftlowleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_leftlowleg.Location = new System.Drawing.Point(814, 1055);
+            this.button_leftlowleg.Location = new System.Drawing.Point(819, 1080);
             this.button_leftlowleg.Margin = new System.Windows.Forms.Padding(0);
             this.button_leftlowleg.Name = "button_leftlowleg";
-            this.button_leftlowleg.Size = new System.Drawing.Size(108, 156);
+            this.button_leftlowleg.Size = new System.Drawing.Size(100, 240);
             this.button_leftlowleg.TabIndex = 88;
             this.button_leftlowleg.UseVisualStyleBackColor = false;
+            this.button_leftlowleg.Click += new System.EventHandler(this.button_leftlowleg_Click);
             // 
             // button_leftleg
             // 
             this.button_leftleg.BackColor = System.Drawing.Color.LightGray;
             this.button_leftleg.FlatAppearance.BorderSize = 0;
             this.button_leftleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_leftleg.Location = new System.Drawing.Point(832, 748);
+            this.button_leftleg.Location = new System.Drawing.Point(839, 760);
             this.button_leftleg.Name = "button_leftleg";
-            this.button_leftleg.Size = new System.Drawing.Size(93, 306);
+            this.button_leftleg.Size = new System.Drawing.Size(110, 320);
             this.button_leftleg.TabIndex = 87;
             this.button_leftleg.UseVisualStyleBackColor = false;
+            this.button_leftleg.Click += new System.EventHandler(this.button_leftleg_Click);
             // 
             // button_rightlowleg
             // 
             this.button_rightlowleg.BackColor = System.Drawing.Color.LightGray;
             this.button_rightlowleg.FlatAppearance.BorderSize = 0;
             this.button_rightlowleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_rightlowleg.Location = new System.Drawing.Point(710, 1055);
+            this.button_rightlowleg.Location = new System.Drawing.Point(710, 1080);
             this.button_rightlowleg.Margin = new System.Windows.Forms.Padding(0);
             this.button_rightlowleg.Name = "button_rightlowleg";
-            this.button_rightlowleg.Size = new System.Drawing.Size(93, 156);
+            this.button_rightlowleg.Size = new System.Drawing.Size(100, 240);
             this.button_rightlowleg.TabIndex = 86;
             this.button_rightlowleg.UseVisualStyleBackColor = false;
+            this.button_rightlowleg.Click += new System.EventHandler(this.button_rightlowleg_Click);
             // 
             // button_rightleg
             // 
             this.button_rightleg.BackColor = System.Drawing.Color.LightGray;
             this.button_rightleg.FlatAppearance.BorderSize = 0;
             this.button_rightleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_rightleg.Location = new System.Drawing.Point(710, 748);
+            this.button_rightleg.Location = new System.Drawing.Point(710, 760);
             this.button_rightleg.Margin = new System.Windows.Forms.Padding(0);
             this.button_rightleg.Name = "button_rightleg";
-            this.button_rightleg.Size = new System.Drawing.Size(93, 306);
+            this.button_rightleg.Size = new System.Drawing.Size(110, 320);
             this.button_rightleg.TabIndex = 85;
             this.button_rightleg.UseVisualStyleBackColor = false;
+            this.button_rightleg.Click += new System.EventHandler(this.button_rightleg_Click);
             // 
             // button_ms
             // 
             this.button_ms.BackColor = System.Drawing.Color.LightGray;
             this.button_ms.FlatAppearance.BorderSize = 0;
             this.button_ms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_ms.Location = new System.Drawing.Point(710, 711);
+            this.button_ms.Location = new System.Drawing.Point(710, 723);
             this.button_ms.Margin = new System.Windows.Forms.Padding(0);
             this.button_ms.Name = "button_ms";
-            this.button_ms.Size = new System.Drawing.Size(225, 127);
+            this.button_ms.Size = new System.Drawing.Size(240, 80);
             this.button_ms.TabIndex = 84;
             this.button_ms.UseVisualStyleBackColor = false;
+            this.button_ms.Click += new System.EventHandler(this.button_ms_Click);
             // 
             // button_head
             // 
             this.button_head.BackColor = System.Drawing.Color.LightGray;
             this.button_head.FlatAppearance.BorderSize = 0;
             this.button_head.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_head.Location = new System.Drawing.Point(740, 81);
+            this.button_head.Location = new System.Drawing.Point(740, 73);
             this.button_head.Name = "button_head";
-            this.button_head.Size = new System.Drawing.Size(188, 244);
+            this.button_head.Size = new System.Drawing.Size(172, 250);
             this.button_head.TabIndex = 82;
             this.button_head.UseVisualStyleBackColor = false;
+            this.button_head.Click += new System.EventHandler(this.button_head_Click_1);
             // 
             // timeline
             // 
@@ -921,9 +942,10 @@
             this.button_torso.Location = new System.Drawing.Point(710, 323);
             this.button_torso.Margin = new System.Windows.Forms.Padding(0);
             this.button_torso.Name = "button_torso";
-            this.button_torso.Size = new System.Drawing.Size(225, 390);
+            this.button_torso.Size = new System.Drawing.Size(240, 400);
             this.button_torso.TabIndex = 83;
             this.button_torso.UseVisualStyleBackColor = false;
+            this.button_torso.Click += new System.EventHandler(this.button_torso_Click);
             // 
             // inputform
             // 

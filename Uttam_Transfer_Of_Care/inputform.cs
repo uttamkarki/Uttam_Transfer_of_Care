@@ -85,7 +85,8 @@ namespace Uttam_Transfer_Of_Care
 
 
 
-            #region make shaped buttons   
+            #region make shaped buttons  
+            
             #region shape the buttons
 
             Point[] head = {
@@ -315,6 +316,7 @@ namespace Uttam_Transfer_Of_Care
                 new Point(5 * Size_multiplier, 150 * Size_multiplier),
             };
             #endregion
+
             #region Make Graphics paths
 
             // this section commented out as not working
