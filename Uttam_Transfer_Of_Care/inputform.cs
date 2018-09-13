@@ -83,369 +83,420 @@ namespace Uttam_Transfer_Of_Care
             var screenheight = Screen.PrimaryScreen.Bounds.Height;
             var screenwidth = Screen.PrimaryScreen.Bounds.Width;
 
-
-
             #region make shaped buttons  
-            
+
             #region shape the buttons
-
-            Point[] head = {
-                //new Point(20,  150),
-                new Point(20 * Size_multiplier,  250 * Size_multiplier),
-                new Point(36 * Size_multiplier,  234 * Size_multiplier),
-                new Point(32 * Size_multiplier,  172 * Size_multiplier),
-                new Point(22 * Size_multiplier, 170 * Size_multiplier),
-                new Point(8 * Size_multiplier, 140 * Size_multiplier),
-                new Point(8 * Size_multiplier, 122 * Size_multiplier),
-                new Point(18 * Size_multiplier, 118 * Size_multiplier),
-                new Point(14 * Size_multiplier, 64 * Size_multiplier),
-                new Point(24 * Size_multiplier, 42 * Size_multiplier),
-                new Point(42 * Size_multiplier, 22 * Size_multiplier),
-                new Point(90 * Size_multiplier, 12 * Size_multiplier),
-                new Point(138 * Size_multiplier,  22 * Size_multiplier),
-                new Point(156 * Size_multiplier,  42 * Size_multiplier),
-                new Point(166 * Size_multiplier,  64 * Size_multiplier),
-                new Point(162 * Size_multiplier, 118 * Size_multiplier),
-                new Point(172 * Size_multiplier, 122 * Size_multiplier),
-                new Point(172 * Size_multiplier, 140 * Size_multiplier),
-                new Point(158 * Size_multiplier, 170 * Size_multiplier),
-                new Point(148 * Size_multiplier, 172 * Size_multiplier),
-                new Point(144 * Size_multiplier, 234 * Size_multiplier),
-                new Point(160 * Size_multiplier, 250 * Size_multiplier),
-                //new Point(90,  150),
+                #region 4k standard button shapes
+                    Point[] head = {
+                    //new Point(20,  150),
+                    new Point(20 * Size_multiplier,  250 * Size_multiplier),
+                    new Point(36 * Size_multiplier,  234 * Size_multiplier),
+                    new Point(32 * Size_multiplier,  172 * Size_multiplier),
+                    new Point(22 * Size_multiplier, 170 * Size_multiplier),
+                    new Point(8 * Size_multiplier, 140 * Size_multiplier),
+                    new Point(8 * Size_multiplier, 122 * Size_multiplier),
+                    new Point(18 * Size_multiplier, 118 * Size_multiplier),
+                    new Point(14 * Size_multiplier, 64 * Size_multiplier),
+                    new Point(24 * Size_multiplier, 42 * Size_multiplier),
+                    new Point(42 * Size_multiplier, 22 * Size_multiplier),
+                    new Point(90 * Size_multiplier, 12 * Size_multiplier),
+                    new Point(138 * Size_multiplier,  22 * Size_multiplier),
+                    new Point(156 * Size_multiplier,  42 * Size_multiplier),
+                    new Point(166 * Size_multiplier,  64 * Size_multiplier),
+                    new Point(162 * Size_multiplier, 118 * Size_multiplier),
+                    new Point(172 * Size_multiplier, 122 * Size_multiplier),
+                    new Point(172 * Size_multiplier, 140 * Size_multiplier),
+                    new Point(158 * Size_multiplier, 170 * Size_multiplier),
+                    new Point(148 * Size_multiplier, 172 * Size_multiplier),
+                    new Point(144 * Size_multiplier, 234 * Size_multiplier),
+                    new Point(160 * Size_multiplier, 250 * Size_multiplier),
+                    //new Point(90,  150),
+                    };
+                    Point[] torso = {
+                    new Point(50 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(28 * Size_multiplier,  14 * Size_multiplier),
+                    new Point(0 * Size_multiplier,  28 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 80 * Size_multiplier),
+                    new Point(6 * Size_multiplier, 294 * Size_multiplier),
+                    new Point(8 * Size_multiplier, 350 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 380 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 400 * Size_multiplier),
+                    new Point(240 * Size_multiplier, 400 * Size_multiplier),
+                    new Point(240 * Size_multiplier, 380 * Size_multiplier),
+                    new Point(232 * Size_multiplier, 350 * Size_multiplier),
+                    new Point(234 * Size_multiplier, 294 * Size_multiplier),
+                    new Point(240 * Size_multiplier, 80 * Size_multiplier),
+                    new Point(240 * Size_multiplier, 28 * Size_multiplier),
+                    new Point(212 * Size_multiplier, 14 * Size_multiplier),
+                    new Point(190 * Size_multiplier,0 * Size_multiplier)
                 };
-            Point[] torso = {
-                new Point(50 * Size_multiplier,  0 * Size_multiplier),
-                new Point(28 * Size_multiplier,  14 * Size_multiplier),
-                new Point(0 * Size_multiplier,  28 * Size_multiplier),
-                new Point(0 * Size_multiplier, 80 * Size_multiplier),
-                new Point(6 * Size_multiplier, 294 * Size_multiplier),
-                new Point(8 * Size_multiplier, 350 * Size_multiplier),
-                new Point(0 * Size_multiplier, 380 * Size_multiplier),
-                new Point(0 * Size_multiplier, 400 * Size_multiplier),
-                new Point(240 * Size_multiplier, 400 * Size_multiplier),
-                new Point(240 * Size_multiplier, 380 * Size_multiplier),
-                new Point(232 * Size_multiplier, 350 * Size_multiplier),
-                new Point(234 * Size_multiplier, 294 * Size_multiplier),
-                new Point(240 * Size_multiplier, 80 * Size_multiplier),
-                new Point(240 * Size_multiplier, 28 * Size_multiplier),
-                new Point(212 * Size_multiplier, 14 * Size_multiplier),
-                new Point(190 * Size_multiplier,0 * Size_multiplier)
-            };
-            Point[] midsection = {
-                new Point(0 * Size_multiplier,  0 * Size_multiplier),
-                new Point(2 * Size_multiplier,  18 * Size_multiplier),
-                new Point(6 * Size_multiplier,  40 * Size_multiplier),
-                new Point(50 * Size_multiplier, 50 * Size_multiplier),
-                new Point(70 * Size_multiplier, 60 * Size_multiplier),
-                new Point(110 * Size_multiplier, 80 * Size_multiplier),
-                new Point(130 * Size_multiplier, 80 * Size_multiplier),
-                new Point(170 * Size_multiplier, 60 * Size_multiplier),
-                new Point(190 * Size_multiplier, 50 * Size_multiplier),
-                new Point(234 * Size_multiplier, 40 * Size_multiplier),
-                new Point(238 * Size_multiplier, 18 * Size_multiplier),
-                new Point(240 * Size_multiplier, 0 * Size_multiplier),
-            };
-            Point[] rightleg = {
-                new Point(6 * Size_multiplier,  0 * Size_multiplier),
-                new Point(50 * Size_multiplier,  10 * Size_multiplier),
-                new Point(70 * Size_multiplier,  20 * Size_multiplier),
-                new Point(110 * Size_multiplier, 40 * Size_multiplier),
-                new Point(106 * Size_multiplier, 200 * Size_multiplier),
-                new Point(100 * Size_multiplier, 320 * Size_multiplier),
-                new Point(30 * Size_multiplier, 320 * Size_multiplier),
-                new Point(14 * Size_multiplier, 200 * Size_multiplier),
-            };
-            Point[] lowleg = {
-                new Point(30 * Size_multiplier,  0 * Size_multiplier),
-                new Point(100 * Size_multiplier,  0 * Size_multiplier),
-                new Point(90 * Size_multiplier,  160 * Size_multiplier),
-                new Point(80 * Size_multiplier, 240 * Size_multiplier),
-                new Point(50 * Size_multiplier, 240 * Size_multiplier),
-                new Point(40 * Size_multiplier, 160 * Size_multiplier),
-            };
-            Point[] leftleg = {
-                new Point(104 * Size_multiplier,  0 * Size_multiplier),
-                new Point(60 * Size_multiplier,  10 * Size_multiplier),
-                new Point(40 * Size_multiplier,  20 * Size_multiplier),
-                new Point(0 * Size_multiplier, 40 * Size_multiplier),
-                new Point(4 * Size_multiplier, 200 * Size_multiplier),
-                new Point(10 * Size_multiplier, 320 * Size_multiplier),
-                new Point(80 * Size_multiplier, 320 * Size_multiplier),
-                new Point(96 * Size_multiplier, 200 * Size_multiplier),
-            };
-            Point[] leftarm = {
-                new Point(0 * Size_multiplier,  0 * Size_multiplier),
-                new Point(30 * Size_multiplier,  12 * Size_multiplier),
-                new Point(40 * Size_multiplier,  18 * Size_multiplier),
-                new Point(46 * Size_multiplier, 28 * Size_multiplier),
-                new Point(52 * Size_multiplier, 38 * Size_multiplier),
-                new Point(60 * Size_multiplier, 120 * Size_multiplier),
-                new Point(66 * Size_multiplier, 240 * Size_multiplier),
-                new Point(20 * Size_multiplier, 240 * Size_multiplier),
-                new Point(0 * Size_multiplier, 100 * Size_multiplier),
-            };
-            Point[] rightarm = {
-                new Point(66 * Size_multiplier,  0 * Size_multiplier),
-                new Point(36 * Size_multiplier,  12 * Size_multiplier),
-                new Point(26 * Size_multiplier,  18 * Size_multiplier),
-                new Point(24 * Size_multiplier, 28 * Size_multiplier),
-                new Point(18 * Size_multiplier, 38 * Size_multiplier),
-                new Point(6 * Size_multiplier, 120 * Size_multiplier),
-                new Point(0 * Size_multiplier, 240 * Size_multiplier),
-                new Point(46 * Size_multiplier, 240 * Size_multiplier),
-                new Point(66 * Size_multiplier, 100 * Size_multiplier),
-            };
-            Point[] lowarm = {
-                new Point(0 * Size_multiplier,  0 * Size_multiplier),
-                new Point(46 * Size_multiplier,  0 * Size_multiplier),
-                new Point(40 * Size_multiplier,  120 * Size_multiplier),
-                new Point(4 * Size_multiplier, 120 * Size_multiplier),
-            };
+                    Point[] midsection = {
+                    new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(2 * Size_multiplier,  18 * Size_multiplier),
+                    new Point(6 * Size_multiplier,  40 * Size_multiplier),
+                    new Point(50 * Size_multiplier, 50 * Size_multiplier),
+                    new Point(70 * Size_multiplier, 60 * Size_multiplier),
+                    new Point(110 * Size_multiplier, 80 * Size_multiplier),
+                    new Point(130 * Size_multiplier, 80 * Size_multiplier),
+                    new Point(170 * Size_multiplier, 60 * Size_multiplier),
+                    new Point(190 * Size_multiplier, 50 * Size_multiplier),
+                    new Point(234 * Size_multiplier, 40 * Size_multiplier),
+                    new Point(238 * Size_multiplier, 18 * Size_multiplier),
+                    new Point(240 * Size_multiplier, 0 * Size_multiplier),
+                };
+                    Point[] rightleg = {
+                    new Point(6 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(50 * Size_multiplier,  10 * Size_multiplier),
+                    new Point(70 * Size_multiplier,  20 * Size_multiplier),
+                    new Point(110 * Size_multiplier, 40 * Size_multiplier),
+                    new Point(106 * Size_multiplier, 200 * Size_multiplier),
+                    new Point(100 * Size_multiplier, 320 * Size_multiplier),
+                    new Point(30 * Size_multiplier, 320 * Size_multiplier),
+                    new Point(14 * Size_multiplier, 200 * Size_multiplier),
+                };
+                    Point[] lowleg = {
+                    new Point(30 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(100 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(90 * Size_multiplier,  160 * Size_multiplier),
+                    new Point(80 * Size_multiplier, 240 * Size_multiplier),
+                    new Point(50 * Size_multiplier, 240 * Size_multiplier),
+                    new Point(40 * Size_multiplier, 160 * Size_multiplier),
+                };
+                    Point[] leftleg = {
+                    new Point(104 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(60 * Size_multiplier,  10 * Size_multiplier),
+                    new Point(40 * Size_multiplier,  20 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 40 * Size_multiplier),
+                    new Point(4 * Size_multiplier, 200 * Size_multiplier),
+                    new Point(10 * Size_multiplier, 320 * Size_multiplier),
+                    new Point(80 * Size_multiplier, 320 * Size_multiplier),
+                    new Point(96 * Size_multiplier, 200 * Size_multiplier),
+                };
+                    Point[] leftarm = {
+                    new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(30 * Size_multiplier,  12 * Size_multiplier),
+                    new Point(40 * Size_multiplier,  18 * Size_multiplier),
+                    new Point(46 * Size_multiplier, 28 * Size_multiplier),
+                    new Point(52 * Size_multiplier, 38 * Size_multiplier),
+                    new Point(60 * Size_multiplier, 120 * Size_multiplier),
+                    new Point(66 * Size_multiplier, 240 * Size_multiplier),
+                    new Point(20 * Size_multiplier, 240 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 100 * Size_multiplier),
+                };
+                    Point[] rightarm = {
+                    new Point(66 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(36 * Size_multiplier,  12 * Size_multiplier),
+                    new Point(26 * Size_multiplier,  18 * Size_multiplier),
+                    new Point(24 * Size_multiplier, 28 * Size_multiplier),
+                    new Point(18 * Size_multiplier, 38 * Size_multiplier),
+                    new Point(6 * Size_multiplier, 120 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 240 * Size_multiplier),
+                    new Point(46 * Size_multiplier, 240 * Size_multiplier),
+                    new Point(66 * Size_multiplier, 100 * Size_multiplier),
+                };
+                    Point[] lowarm = {
+                    new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(46 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(40 * Size_multiplier,  120 * Size_multiplier),
+                    new Point(4 * Size_multiplier, 120 * Size_multiplier),
+                };
+                #endregion
+                #region  Larger buttons
+                    Point[] headbig = {
+                    new Point(25 * Size_multiplier,  312 * Size_multiplier),
+                    new Point(45 * Size_multiplier,  293 * Size_multiplier),
+                    new Point(40 * Size_multiplier,  215 * Size_multiplier),
+                    new Point(28 * Size_multiplier, 213 * Size_multiplier),
+                    new Point(10 * Size_multiplier, 175 * Size_multiplier),
+                    new Point(10 * Size_multiplier, 153 * Size_multiplier),
+                    new Point(23 * Size_multiplier, 148 * Size_multiplier),
+                    new Point(18 * Size_multiplier, 80 * Size_multiplier),
+                    new Point(30 * Size_multiplier, 53 * Size_multiplier),
+                    new Point(53 * Size_multiplier, 28 * Size_multiplier),
+                    new Point(113 * Size_multiplier, 15 * Size_multiplier),
+                    new Point(173 * Size_multiplier,  28 * Size_multiplier),
+                    new Point(195 * Size_multiplier,  53 * Size_multiplier),
+                    new Point(208 * Size_multiplier,  80 * Size_multiplier),
+                    new Point(203 * Size_multiplier, 148 * Size_multiplier),
+                    new Point(215 * Size_multiplier, 153 * Size_multiplier),
+                    new Point(215 * Size_multiplier, 175 * Size_multiplier),
+                    new Point(198 * Size_multiplier, 213 * Size_multiplier),
+                    new Point(185 * Size_multiplier, 215 * Size_multiplier),
+                    new Point(180 * Size_multiplier, 293 * Size_multiplier),
+                    new Point(200 * Size_multiplier, 312 * Size_multiplier),
+                    //new Point(90,  150),
+                };
+                    Point[] torsobig = {
+                    new Point(63 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(35 * Size_multiplier,  18 * Size_multiplier),
+                    new Point(0 * Size_multiplier,  35 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 100 * Size_multiplier),
+                    new Point(8 * Size_multiplier, 368 * Size_multiplier),
+                    new Point(10 * Size_multiplier, 438 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 475 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 500 * Size_multiplier),
+                    new Point(300 * Size_multiplier, 500 * Size_multiplier),
+                    new Point(300 * Size_multiplier, 475 * Size_multiplier),
+                    new Point(290 * Size_multiplier, 438 * Size_multiplier),
+                    new Point(293 * Size_multiplier, 368 * Size_multiplier),
+                    new Point(300 * Size_multiplier, 100 * Size_multiplier),
+                    new Point(300 * Size_multiplier, 35 * Size_multiplier),
+                    new Point(265 * Size_multiplier, 18 * Size_multiplier),
+                    new Point(238 * Size_multiplier,0 * Size_multiplier)
+                };
+                    Point[] midsectionbig = {
+                    new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(3 * Size_multiplier,  23 * Size_multiplier),
+                    new Point(8 * Size_multiplier,  50 * Size_multiplier),
+                    new Point(63 * Size_multiplier, 62 * Size_multiplier),
+                    new Point(88 * Size_multiplier, 75 * Size_multiplier),
+                    new Point(138 * Size_multiplier, 100 * Size_multiplier),
+                    new Point(163 * Size_multiplier, 100 * Size_multiplier),
+                    new Point(213 * Size_multiplier, 75 * Size_multiplier),
+                    new Point(238 * Size_multiplier, 62 * Size_multiplier),
+                    new Point(293 * Size_multiplier, 50 * Size_multiplier),
+                    new Point(298 * Size_multiplier, 23 * Size_multiplier),
+                    new Point(300 * Size_multiplier, 0 * Size_multiplier),
+                };
+                    Point[] rightlegbig = {
+                    new Point(8 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(63 * Size_multiplier,  13 * Size_multiplier),
+                    new Point(88 * Size_multiplier,  25 * Size_multiplier),
+                    new Point(138 * Size_multiplier, 50 * Size_multiplier),
+                    new Point(133 * Size_multiplier, 250 * Size_multiplier),
+                    new Point(125 * Size_multiplier, 400 * Size_multiplier),
+                    new Point(38 * Size_multiplier, 400 * Size_multiplier),
+                    new Point(18 * Size_multiplier, 250 * Size_multiplier),
+                };
+                    Point[] lowlegbig = {
+                    new Point(38 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(125 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(113 * Size_multiplier,  200 * Size_multiplier),
+                    new Point(100 * Size_multiplier, 300 * Size_multiplier),
+                    new Point(53 * Size_multiplier, 300 * Size_multiplier),
+                    new Point(50 * Size_multiplier, 200 * Size_multiplier),
+                };
+                    Point[] leftlegbig = {
+                    new Point(130 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(75 * Size_multiplier,  13 * Size_multiplier),
+                    new Point(50 * Size_multiplier,  25 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 50 * Size_multiplier),
+                    new Point(5 * Size_multiplier, 250 * Size_multiplier),
+                    new Point(13 * Size_multiplier, 400 * Size_multiplier),
+                    new Point(100 * Size_multiplier, 400 * Size_multiplier),
+                    new Point(120 * Size_multiplier, 250 * Size_multiplier),
+                };
+                    Point[] leftarmbig = {
+                    new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(38 * Size_multiplier,  15 * Size_multiplier),
+                    new Point(50 * Size_multiplier,  23 * Size_multiplier),
+                    new Point(57 * Size_multiplier, 35 * Size_multiplier),
+                    new Point(65 * Size_multiplier, 47 * Size_multiplier),
+                    new Point(75 * Size_multiplier, 150 * Size_multiplier),
+                    new Point(82 * Size_multiplier, 300 * Size_multiplier),
+                    new Point(25 * Size_multiplier, 300 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 125 * Size_multiplier),
+                };
+                    Point[] rightarmbig = {
+                    new Point(82 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(45 * Size_multiplier,  15 * Size_multiplier),
+                    new Point(33 * Size_multiplier,  23 * Size_multiplier),
+                    new Point(30 * Size_multiplier, 35 * Size_multiplier),
+                    new Point(23 * Size_multiplier, 47 * Size_multiplier),
+                    new Point(8 * Size_multiplier, 150 * Size_multiplier),
+                    new Point(0 * Size_multiplier, 300 * Size_multiplier),
+                    new Point(58 * Size_multiplier, 300 * Size_multiplier),
+                    new Point(82 * Size_multiplier, 125 * Size_multiplier),
+                };
+                    Point[] lowarmbig = {
+                    new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(58 * Size_multiplier,  0 * Size_multiplier),
+                    new Point(50 * Size_multiplier,  150 * Size_multiplier),
+                    new Point(5 * Size_multiplier, 150 * Size_multiplier),
+                };
+            #endregion
+                #region HD 1080p buttons
+                    Point[] headsmall = {
+                            //new Point(20,  150),
+                            new Point(10 * Size_multiplier,  125 * Size_multiplier),
+                            new Point(18 * Size_multiplier,  117 * Size_multiplier),
+                            new Point(16 * Size_multiplier,  86 * Size_multiplier),
+                            new Point(11 * Size_multiplier, 85 * Size_multiplier),
+                            new Point(4 * Size_multiplier, 70 * Size_multiplier),
+                            new Point(4 * Size_multiplier, 61 * Size_multiplier),
+                            new Point(9 * Size_multiplier, 59 * Size_multiplier),
+                            new Point(7 * Size_multiplier, 32 * Size_multiplier),
+                            new Point(12 * Size_multiplier, 21 * Size_multiplier),
+                            new Point(21 * Size_multiplier, 11 * Size_multiplier),
+                            new Point(45 * Size_multiplier, 6 * Size_multiplier),
+                            new Point(69 * Size_multiplier,  11 * Size_multiplier),
+                            new Point(78 * Size_multiplier,  21 * Size_multiplier),
+                            new Point(83 * Size_multiplier,  32 * Size_multiplier),
+                            new Point(81 * Size_multiplier, 59 * Size_multiplier),
+                            new Point(86 * Size_multiplier, 61 * Size_multiplier),
+                            new Point(86 * Size_multiplier, 70 * Size_multiplier),
+                            new Point(79 * Size_multiplier, 85 * Size_multiplier),
+                            new Point(74 * Size_multiplier, 86 * Size_multiplier),
+                            new Point(72 * Size_multiplier, 117 * Size_multiplier),
+                            new Point(80 * Size_multiplier, 125 * Size_multiplier),
+                            //new Point(90,  150),
+                            }; // made smaller
+                    Point[] torsosmall = {
+                            new Point(25 * Size_multiplier,  0 * Size_multiplier),
+                            new Point(14 * Size_multiplier,  7 * Size_multiplier),
+                            new Point(0 * Size_multiplier,  14 * Size_multiplier),
+                            new Point(0 * Size_multiplier, 40 * Size_multiplier),
+                            new Point(6 * Size_multiplier, 147 * Size_multiplier),
+                            new Point(8 * Size_multiplier, 175 * Size_multiplier),
+                            new Point(0 * Size_multiplier, 190 * Size_multiplier),
+                            new Point(0 * Size_multiplier, 200 * Size_multiplier),
+                            new Point(120 * Size_multiplier, 200 * Size_multiplier),
+                            new Point(120 * Size_multiplier, 190 * Size_multiplier),
+                            new Point(116 * Size_multiplier, 175 * Size_multiplier),
+                            new Point(117 * Size_multiplier, 147 * Size_multiplier),
+                            new Point(120 * Size_multiplier, 40 * Size_multiplier),
+                            new Point(120 * Size_multiplier, 14 * Size_multiplier),
+                            new Point(106 * Size_multiplier, 7 * Size_multiplier),
+                            new Point(95 * Size_multiplier,0 * Size_multiplier)
+                        }; // made smaller
+                    Point[] midsectionsmall = {
+                            new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                            new Point(1 * Size_multiplier,  9 * Size_multiplier),
+                            new Point(3 * Size_multiplier,  20 * Size_multiplier),
+                            new Point(25 * Size_multiplier, 25 * Size_multiplier),
+                            new Point(35 * Size_multiplier, 30 * Size_multiplier),
+                            new Point(55 * Size_multiplier, 40 * Size_multiplier),
+                            new Point(65 * Size_multiplier, 40 * Size_multiplier),
+                            new Point(85 * Size_multiplier, 30 * Size_multiplier),
+                            new Point(95 * Size_multiplier, 25 * Size_multiplier),
+                            new Point(117 * Size_multiplier, 20 * Size_multiplier),
+                            new Point(119 * Size_multiplier, 9 * Size_multiplier),
+                            new Point(120 * Size_multiplier, 0 * Size_multiplier),
+                        }; // made smaller
+                    Point[] rightlegsmall = {
+                            new Point(3 * Size_multiplier,  0 * Size_multiplier),
+                            new Point(25 * Size_multiplier,  5 * Size_multiplier),
+                            new Point(35 * Size_multiplier,  10 * Size_multiplier),
+                            new Point(55 * Size_multiplier, 20 * Size_multiplier),
+                            new Point(53 * Size_multiplier, 100 * Size_multiplier),
+                            new Point(50 * Size_multiplier, 160 * Size_multiplier),
+                            new Point(15 * Size_multiplier, 160 * Size_multiplier),
+                            new Point(7 * Size_multiplier, 100 * Size_multiplier),
+                        };// made smaller
+                    Point[] lowlegsmall = {
+                            new Point(15 * Size_multiplier,  0 * Size_multiplier),
+                            new Point(50 * Size_multiplier,  0 * Size_multiplier),
+                            new Point(45 * Size_multiplier,  80 * Size_multiplier),
+                            new Point(40 * Size_multiplier, 120 * Size_multiplier),
+                            new Point(25 * Size_multiplier, 120 * Size_multiplier),
+                            new Point(20 * Size_multiplier, 80 * Size_multiplier),
+                        }; // made smaller
+                    Point[] leftlegsmall = {
+                            new Point(57 * Size_multiplier,  0 * Size_multiplier),
+                            new Point(30 * Size_multiplier,  5 * Size_multiplier),
+                            new Point(20 * Size_multiplier,  10 * Size_multiplier),
+                            new Point(0 * Size_multiplier, 20 * Size_multiplier),
+                            new Point(2 * Size_multiplier, 100 * Size_multiplier),
+                            new Point(5 * Size_multiplier, 160 * Size_multiplier),
+                            new Point(40 * Size_multiplier, 160 * Size_multiplier),
+                            new Point(48 * Size_multiplier, 100 * Size_multiplier),
+                        }; // made smaller
+                    Point[] leftarmsmall = {
+                            new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                            new Point(15 * Size_multiplier,  6 * Size_multiplier),
+                            new Point(20 * Size_multiplier,  9 * Size_multiplier),
+                            new Point(23 * Size_multiplier, 14 * Size_multiplier),
+                            new Point(26 * Size_multiplier, 19 * Size_multiplier),
+                            new Point(30 * Size_multiplier, 60 * Size_multiplier),
+                            new Point(33 * Size_multiplier, 120 * Size_multiplier),
+                            new Point(10 * Size_multiplier, 120 * Size_multiplier),
+                            new Point(0 * Size_multiplier, 50 * Size_multiplier),
+                        }; // made smaller
+                    Point[] rightarmsmall = {
+                            new Point(33 * Size_multiplier,  0 * Size_multiplier),
+                            new Point(18 * Size_multiplier,  6 * Size_multiplier),
+                            new Point(13 * Size_multiplier,  9 * Size_multiplier),
+                            new Point(12 * Size_multiplier, 14 * Size_multiplier),
+                            new Point(9 * Size_multiplier, 19 * Size_multiplier),
+                            new Point(3 * Size_multiplier, 60 * Size_multiplier),
+                            new Point(0 * Size_multiplier, 120 * Size_multiplier),
+                            new Point(23 * Size_multiplier, 120 * Size_multiplier),
+                            new Point(33 * Size_multiplier, 50 * Size_multiplier),
+                        }; // made smaller
+                    Point[] lowarmsmall = {
+                            new Point(0 * Size_multiplier,  0 * Size_multiplier),
+                            new Point(23 * Size_multiplier,  0 * Size_multiplier),
+                            new Point(20 * Size_multiplier,  60 * Size_multiplier),
+                            new Point(2 * Size_multiplier, 60 * Size_multiplier),
+                        };// made smaller
 
-            Point[] headbig = {
-                new Point(25 * Size_multiplier,  312 * Size_multiplier),
-                new Point(45 * Size_multiplier,  293 * Size_multiplier),
-                new Point(40 * Size_multiplier,  215 * Size_multiplier),
-                new Point(28 * Size_multiplier, 213 * Size_multiplier),
-                new Point(10 * Size_multiplier, 175 * Size_multiplier),
-                new Point(10 * Size_multiplier, 153 * Size_multiplier),
-                new Point(23 * Size_multiplier, 148 * Size_multiplier),
-                new Point(18 * Size_multiplier, 80 * Size_multiplier),
-                new Point(30 * Size_multiplier, 53 * Size_multiplier),
-                new Point(53 * Size_multiplier, 28 * Size_multiplier),
-                new Point(113 * Size_multiplier, 15 * Size_multiplier),
-                new Point(173 * Size_multiplier,  28 * Size_multiplier),
-                new Point(195 * Size_multiplier,  53 * Size_multiplier),
-                new Point(208 * Size_multiplier,  80 * Size_multiplier),
-                new Point(203 * Size_multiplier, 148 * Size_multiplier),
-                new Point(215 * Size_multiplier, 153 * Size_multiplier),
-                new Point(215 * Size_multiplier, 175 * Size_multiplier),
-                new Point(198 * Size_multiplier, 213 * Size_multiplier),
-                new Point(185 * Size_multiplier, 215 * Size_multiplier),
-                new Point(180 * Size_multiplier, 293 * Size_multiplier),
-                new Point(200 * Size_multiplier, 312 * Size_multiplier),
-                //new Point(90,  150),
-            };
-            Point[] torsobig = {
-                new Point(63 * Size_multiplier,  0 * Size_multiplier),
-                new Point(35 * Size_multiplier,  18 * Size_multiplier),
-                new Point(0 * Size_multiplier,  35 * Size_multiplier),
-                new Point(0 * Size_multiplier, 100 * Size_multiplier),
-                new Point(8 * Size_multiplier, 368 * Size_multiplier),
-                new Point(10 * Size_multiplier, 438 * Size_multiplier),
-                new Point(0 * Size_multiplier, 475 * Size_multiplier),
-                new Point(0 * Size_multiplier, 500 * Size_multiplier),
-                new Point(300 * Size_multiplier, 500 * Size_multiplier),
-                new Point(300 * Size_multiplier, 475 * Size_multiplier),
-                new Point(290 * Size_multiplier, 438 * Size_multiplier),
-                new Point(293 * Size_multiplier, 368 * Size_multiplier),
-                new Point(300 * Size_multiplier, 100 * Size_multiplier),
-                new Point(300 * Size_multiplier, 35 * Size_multiplier),
-                new Point(265 * Size_multiplier, 18 * Size_multiplier),
-                new Point(238 * Size_multiplier,0 * Size_multiplier)
-            };
-            Point[] midsectionbig = {
-                new Point(0 * Size_multiplier,  0 * Size_multiplier),
-                new Point(3 * Size_multiplier,  23 * Size_multiplier),
-                new Point(8 * Size_multiplier,  50 * Size_multiplier),
-                new Point(63 * Size_multiplier, 62 * Size_multiplier),
-                new Point(88 * Size_multiplier, 75 * Size_multiplier),
-                new Point(138 * Size_multiplier, 100 * Size_multiplier),
-                new Point(163 * Size_multiplier, 100 * Size_multiplier),
-                new Point(213 * Size_multiplier, 75 * Size_multiplier),
-                new Point(238 * Size_multiplier, 62 * Size_multiplier),
-                new Point(293 * Size_multiplier, 50 * Size_multiplier),
-                new Point(298 * Size_multiplier, 23 * Size_multiplier),
-                new Point(300 * Size_multiplier, 0 * Size_multiplier),
-            };
-            Point[] rightlegbig = {
-                new Point(8 * Size_multiplier,  0 * Size_multiplier),
-                new Point(63 * Size_multiplier,  13 * Size_multiplier),
-                new Point(88 * Size_multiplier,  25 * Size_multiplier),
-                new Point(138 * Size_multiplier, 50 * Size_multiplier),
-                new Point(133 * Size_multiplier, 250 * Size_multiplier),
-                new Point(125 * Size_multiplier, 400 * Size_multiplier),
-                new Point(38 * Size_multiplier, 400 * Size_multiplier),
-                new Point(18 * Size_multiplier, 250 * Size_multiplier),
-            };
-            Point[] lowlegbig = {
-                new Point(38 * Size_multiplier,  0 * Size_multiplier),
-                new Point(125 * Size_multiplier,  0 * Size_multiplier),
-                new Point(113 * Size_multiplier,  200 * Size_multiplier),
-                new Point(100 * Size_multiplier, 300 * Size_multiplier),
-                new Point(53 * Size_multiplier, 300 * Size_multiplier),
-                new Point(50 * Size_multiplier, 200 * Size_multiplier),
-            };
-            Point[] leftlegbig = {
-                new Point(130 * Size_multiplier,  0 * Size_multiplier),
-                new Point(75 * Size_multiplier,  13 * Size_multiplier),
-                new Point(50 * Size_multiplier,  25 * Size_multiplier),
-                new Point(0 * Size_multiplier, 50 * Size_multiplier),
-                new Point(5 * Size_multiplier, 250 * Size_multiplier),
-                new Point(13 * Size_multiplier, 400 * Size_multiplier),
-                new Point(100 * Size_multiplier, 400 * Size_multiplier),
-                new Point(120 * Size_multiplier, 250 * Size_multiplier),
-            };
-            Point[] leftarmbig = {
-                new Point(0 * Size_multiplier,  0 * Size_multiplier),
-                new Point(38 * Size_multiplier,  15 * Size_multiplier),
-                new Point(50 * Size_multiplier,  23 * Size_multiplier),
-                new Point(57 * Size_multiplier, 35 * Size_multiplier),
-                new Point(65 * Size_multiplier, 47 * Size_multiplier),
-                new Point(75 * Size_multiplier, 150 * Size_multiplier),
-                new Point(82 * Size_multiplier, 300 * Size_multiplier),
-                new Point(25 * Size_multiplier, 300 * Size_multiplier),
-                new Point(0 * Size_multiplier, 125 * Size_multiplier),
-            };
-            Point[] rightarmbig = {
-                new Point(82 * Size_multiplier,  0 * Size_multiplier),
-                new Point(45 * Size_multiplier,  15 * Size_multiplier),
-                new Point(33 * Size_multiplier,  23 * Size_multiplier),
-                new Point(30 * Size_multiplier, 35 * Size_multiplier),
-                new Point(23 * Size_multiplier, 47 * Size_multiplier),
-                new Point(8 * Size_multiplier, 150 * Size_multiplier),
-                new Point(0 * Size_multiplier, 300 * Size_multiplier),
-                new Point(58 * Size_multiplier, 300 * Size_multiplier),
-                new Point(82 * Size_multiplier, 125 * Size_multiplier),
-            };
-            Point[] lowarmbig = {
-                new Point(0 * Size_multiplier,  0 * Size_multiplier),
-                new Point(58 * Size_multiplier,  0 * Size_multiplier),
-                new Point(50 * Size_multiplier,  150 * Size_multiplier),
-                new Point(5 * Size_multiplier, 150 * Size_multiplier),
-            };
+            #endregion
             #endregion
 
             #region Make Graphics paths
 
-            // this section commented out as not working
-            #region resoultion dependent button sizing
-            //if (screenheight > 3000)
-            //{
-            #region Generate large paths for button shapes
-            //    // Polygon path for the head
-            //    GraphicsPath polygon_path_head = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_head.AddPolygon(headbig);
-
-            //    // Polygon path for the torso
-            //    GraphicsPath polygon_path_torso = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_torso.AddPolygon(torsobig);
-
-            //    // Polygon path for the midsection
-            //    GraphicsPath polygon_path_ms = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_ms.AddPolygon(midsectionbig);
-
-            //    // Polygon path for the rightleg
-            //    GraphicsPath polygon_path_rightleg = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_rightleg.AddPolygon(rightlegbig);
-
-            //    // Polygon path for the right low leg
-            //    GraphicsPath polygon_path_lowleg = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_lowleg.AddPolygon(lowlegbig);
-
-            //    // Polygon path for the left leg
-            //    GraphicsPath polygon_path_leftleg = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_leftleg.AddPolygon(leftlegbig);
-
-            //    // Polygon path for the right arm
-            //    GraphicsPath polygon_path_rightarm = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_rightarm.AddPolygon(rightarmbig);
-
-            //    // Polygon path for the left arm
-            //    GraphicsPath polygon_path_leftarm = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_leftarm.AddPolygon(leftarmbig);
-
-            //    // Polygon path for the low arm
-            //    GraphicsPath polygon_path_lowarm = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_lowarm.AddPolygon(lowarmbig);
-            #endregion // currently commented
-            //}
-            //else
-            //{
-            #region Generate medium paths for button shapes
-            //    // Polygon path for the head
-            //    GraphicsPath polygon_path_head = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_head.AddPolygon(head);
-
-            //    // Polygon path for the torso
-            //    GraphicsPath polygon_path_torso = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_torso.AddPolygon(torso);
-
-            //    // Polygon path for the midsection
-            //    GraphicsPath polygon_path_ms = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_ms.AddPolygon(midsection);
-
-            //    // Polygon path for the rightleg
-            //    GraphicsPath polygon_path_rightleg = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_rightleg.AddPolygon(rightleg);
-
-            //    // Polygon path for the right low leg
-            //    GraphicsPath polygon_path_lowleg = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_lowleg.AddPolygon(lowleg);
-
-            //    // Polygon path for the left leg
-            //    GraphicsPath polygon_path_leftleg = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_leftleg.AddPolygon(leftleg);
-
-            //    // Polygon path for the right arm
-            //    GraphicsPath polygon_path_rightarm = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_rightarm.AddPolygon(rightarm);
-
-            //    // Polygon path for the left arm
-            //    GraphicsPath polygon_path_leftarm = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_leftarm.AddPolygon(leftarm);
-
-            //    // Polygon path for the low arm
-            //    GraphicsPath polygon_path_lowarm = new GraphicsPath(FillMode.Winding);
-            //    polygon_path_lowarm.AddPolygon(lowarm);
-            #endregion // currently commented out as not working
-            //}
-            #endregion
-
-            //non-variable sizing code
-            #region Generate medium paths for button shapes
-            // Polygon path for the head
+            #region large graphics paths
             GraphicsPath polygon_path_head = new GraphicsPath(FillMode.Winding);
             polygon_path_head.AddPolygon(head);
 
-            // Polygon path for the torso
             GraphicsPath polygon_path_torso = new GraphicsPath(FillMode.Winding);
             polygon_path_torso.AddPolygon(torso);
 
-            // Polygon path for the midsection
             GraphicsPath polygon_path_ms = new GraphicsPath(FillMode.Winding);
             polygon_path_ms.AddPolygon(midsection);
 
-            // Polygon path for the rightleg
             GraphicsPath polygon_path_rightleg = new GraphicsPath(FillMode.Winding);
             polygon_path_rightleg.AddPolygon(rightleg);
 
-            // Polygon path for the right low leg
             GraphicsPath polygon_path_lowleg = new GraphicsPath(FillMode.Winding);
             polygon_path_lowleg.AddPolygon(lowleg);
 
-            // Polygon path for the left leg
             GraphicsPath polygon_path_leftleg = new GraphicsPath(FillMode.Winding);
             polygon_path_leftleg.AddPolygon(leftleg);
 
-            // Polygon path for the right arm
             GraphicsPath polygon_path_rightarm = new GraphicsPath(FillMode.Winding);
             polygon_path_rightarm.AddPolygon(rightarm);
 
-            // Polygon path for the left arm
             GraphicsPath polygon_path_leftarm = new GraphicsPath(FillMode.Winding);
             polygon_path_leftarm.AddPolygon(leftarm);
 
-            // Polygon path for the low arm
             GraphicsPath polygon_path_lowarm = new GraphicsPath(FillMode.Winding);
             polygon_path_lowarm.AddPolygon(lowarm);
             #endregion
 
+            #region small graphics paths 
+            GraphicsPath polygon_path_headsmall = new GraphicsPath(FillMode.Winding);
+            polygon_path_head.AddPolygon(headsmall);
+           
+            GraphicsPath polygon_path_torsosmall = new GraphicsPath(FillMode.Winding);
+            polygon_path_torso.AddPolygon(torsosmall);
+
+            GraphicsPath polygon_path_mssmall = new GraphicsPath(FillMode.Winding);
+            polygon_path_ms.AddPolygon(midsectionsmall);
+
+            GraphicsPath polygon_path_rightlegsmall = new GraphicsPath(FillMode.Winding);
+            polygon_path_rightleg.AddPolygon(rightlegsmall);
+
+            GraphicsPath polygon_path_lowlegsmall = new GraphicsPath(FillMode.Winding);
+            polygon_path_lowleg.AddPolygon(lowlegsmall);
+
+            GraphicsPath polygon_path_leftlegsmall = new GraphicsPath(FillMode.Winding);
+            polygon_path_leftleg.AddPolygon(leftlegsmall);
+
+            GraphicsPath polygon_path_rightarmsmall = new GraphicsPath(FillMode.Winding);
+            polygon_path_rightarm.AddPolygon(rightarmsmall);
+
+            GraphicsPath polygon_path_leftarmsmall = new GraphicsPath(FillMode.Winding);
+            polygon_path_leftarm.AddPolygon(leftarmsmall);
+
+            GraphicsPath polygon_path_lowarmsmall = new GraphicsPath(FillMode.Winding);
+            polygon_path_lowarm.AddPolygon(lowarm);
             #endregion
+
+            #endregion
+
             #region Convert_paths_to_regions
 
-            // Convert the GraphicsPaths into a Region.
             Region polygon_region_head = new Region(polygon_path_head); // head
             Region polygon_region_torso = new Region(polygon_path_torso); // torso
             Region polygon_region_ms = new Region(polygon_path_ms); // midsection
@@ -456,35 +507,83 @@ namespace Uttam_Transfer_Of_Care
             Region polygon_region_leftarm = new Region(polygon_path_leftarm); // left arm
             Region polygon_region_lowarm = new Region(polygon_path_lowarm); // low arm (all 4)
 
+            Region polygon_region_headsmall = new Region(polygon_path_headsmall); // head
+            Region polygon_region_torsosmall = new Region(polygon_path_torsosmall); // torso
+            Region polygon_region_mssmall = new Region(polygon_path_mssmall); // midsection
+            Region polygon_region_rightlegsmall = new Region(polygon_path_rightlegsmall); // rightleg
+            Region polygon_region_lowlegsmall = new Region(polygon_path_lowlegsmall); // low leg (all 4)
+            Region polygon_region_leftlegsmall = new Region(polygon_path_leftlegsmall); // leftleg
+            Region polygon_region_rightarmsmall = new Region(polygon_path_rightarmsmall); // rightarm
+            Region polygon_region_leftarmsmall = new Region(polygon_path_leftarmsmall); // left arm
+            Region polygon_region_lowarmsmall = new Region(polygon_path_lowarmsmall); // low arm (all 4)
             #endregion
+
             #region Constrain the buttons to the regions
-            //front buttons
-            button_head.Region = polygon_region_head; //head
-            button_torso.Region = polygon_region_torso; //torso
-            button_ms.Region = polygon_region_ms; //midsection
-            button_rightleg.Region = polygon_region_rightleg; //rightleg
-            button_rightlowleg.Region = polygon_region_lowleg; //rightlowleg
-            button_leftleg.Region = polygon_region_leftleg; //rightlowleg
-            button_leftlowleg.Region = polygon_region_lowleg; //left low leg (uses right low leg region as identical)
-            button_leftarm.Region = polygon_region_leftarm; // left arm
-            button_rightarm.Region = polygon_region_rightarm; // right arm
-            button_leftlowarm.Region = polygon_region_lowarm; // left arm
-            button_rightlowarm.Region = polygon_region_lowarm; // right arm
+            if (screenheight > 2159)
+            {
+                #region large buttons
+                #region front buttons
+                button_head.Region = polygon_region_head; //head
+                button_torso.Region = polygon_region_torso; //torso
+                button_ms.Region = polygon_region_ms; //midsection
+                button_rightleg.Region = polygon_region_rightleg; //rightleg
+                button_rightlowleg.Region = polygon_region_lowleg; //rightlowleg
+                button_leftleg.Region = polygon_region_leftleg; //rightlowleg
+                button_leftlowleg.Region = polygon_region_lowleg; //left low leg (uses right low leg region as identical)
+                button_leftarm.Region = polygon_region_leftarm; // left arm
+                button_rightarm.Region = polygon_region_rightarm; // right arm
+                button_leftlowarm.Region = polygon_region_lowarm; // left arm
+                button_rightlowarm.Region = polygon_region_lowarm; // right arm
+                #endregion
+                #region back buttons
+                button_backhead.Region = polygon_region_head; //backhead
+                button_backtorso.Region = polygon_region_torso; //backtorso
+                button_backms.Region = polygon_region_ms; //backms
+                button_backleftleg.Region = polygon_region_rightleg; //back right leg
+                button_backrightleg.Region = polygon_region_leftleg; //back left leg 
+                button_backrightlowleg.Region = polygon_region_lowleg; //back left low leg (uses right low leg region as identical)
+                button_backleftlowleg.Region = polygon_region_lowleg; //back left low leg (uses right low leg region as identical)
+                button_backleftarm.Region = polygon_region_rightarm; // back left arm 
+                button_backrightarm.Region = polygon_region_leftarm; // back right arm
+                button_backleftlowarm.Region = polygon_region_lowarm; // back left arm 
+                button_backrightlowarm.Region = polygon_region_lowarm; // back right low arm
+                #endregion
+                #endregion
+            }
+            else
+            {
+                #region small buttons
+                #region front buttons
+                button_head.Region = polygon_region_headsmall; //head
+                button_torso.Region = polygon_region_torsosmall; //torso
+                button_ms.Region = polygon_region_mssmall; //midsection
+                button_rightleg.Region = polygon_region_rightlegsmall; //rightleg
+                button_rightlowleg.Region = polygon_region_lowlegsmall; //rightlowleg
+                button_leftleg.Region = polygon_region_leftlegsmall; //rightlowleg
+                button_leftlowleg.Region = polygon_region_lowlegsmall; //left low leg (uses right low leg region as identical)
+                button_leftarm.Region = polygon_region_leftarmsmall; // left arm
+                button_rightarm.Region = polygon_region_rightarmsmall; // right arm
+                button_leftlowarm.Region = polygon_region_lowarmsmall; // left arm
+                button_rightlowarm.Region = polygon_region_lowarmsmall; // right arm
+                #endregion
 
-            //back buttons
-            button_backhead.Region = polygon_region_head; //backhead
-            button_backtorso.Region = polygon_region_torso; //backtorso
-            button_backms.Region = polygon_region_ms; //backms
-            button_backleftleg.Region = polygon_region_rightleg; //back right leg
-            button_backrightleg.Region = polygon_region_leftleg; //back left leg 
-            button_backrightlowleg.Region = polygon_region_lowleg; //back left low leg (uses right low leg region as identical)
-            button_backleftlowleg.Region = polygon_region_lowleg; //back left low leg (uses right low leg region as identical)
-            button_backleftarm.Region = polygon_region_rightarm; // back left arm 
-            button_backrightarm.Region = polygon_region_leftarm; // back right arm
-            button_backleftlowarm.Region = polygon_region_lowarm; // back left arm 
-            button_backrightlowarm.Region = polygon_region_lowarm; // back right low arm
-
+                #region back buttons
+                button_backhead.Region = polygon_region_headsmall; //backhead
+                button_backtorso.Region = polygon_region_torsosmall; //backtorso
+                button_backms.Region = polygon_region_mssmall; //backms
+                button_backleftleg.Region = polygon_region_rightlegsmall; //back right leg
+                button_backrightleg.Region = polygon_region_leftlegsmall; //back left leg 
+                button_backrightlowleg.Region = polygon_region_lowlegsmall; //back left low leg (uses right low leg region as identical)
+                button_backleftlowleg.Region = polygon_region_lowlegsmall; //back left low leg (uses right low leg region as identical)
+                button_backleftarm.Region = polygon_region_rightarmsmall; // back left arm 
+                button_backrightarm.Region = polygon_region_leftarmsmall; // back right arm
+                button_backleftlowarm.Region = polygon_region_lowarmsmall; // back left arm 
+                button_backrightlowarm.Region = polygon_region_lowarmsmall; // back right low arm
+                #endregion
+                #endregion
+            }
             #endregion
+
             #region Enlarge buttons to fit 
 
 
@@ -600,8 +699,9 @@ namespace Uttam_Transfer_Of_Care
             //     button_backrightarm.Location.Y,
             //     100, 260);
             #endregion
+
             #endregion
-        }
+        }   
 
         #region front button events
         //head
