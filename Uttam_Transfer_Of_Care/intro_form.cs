@@ -59,5 +59,10 @@ namespace Uttam_Transfer_Of_Care
             var standardSimclick = new AI_sim();
             standardSimclick.Show();
         }
+
+        private void Role_entry_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

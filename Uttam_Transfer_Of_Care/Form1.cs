@@ -27,5 +27,10 @@ namespace Uttam_Transfer_Of_Care
             var welstartclick = new intro_form();
             welstartclick.Show();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

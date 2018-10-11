@@ -464,6 +464,11 @@ namespace Uttam_Transfer_Of_Care
             }
         }
         #endregion
+
+        private void Output_transferred_patient_injury_location_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

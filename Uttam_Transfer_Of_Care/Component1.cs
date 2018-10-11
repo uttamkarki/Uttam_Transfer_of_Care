@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Uttam_Transfer_Of_Care
 {
-    public partial class Simulator_agent : Form
+    public partial class Component1 : Component
     {
-        public Simulator_agent()
+        public Component1()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        public Component1(IContainer container)
         {
+            container.Add(this);
 
+            InitializeComponent();
         }
     }
 }

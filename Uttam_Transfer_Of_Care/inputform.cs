@@ -433,94 +433,53 @@ namespace Uttam_Transfer_Of_Care
             #endregion
             #endregion
 
-            #region Make Graphics paths
-
-            #region large graphics paths
-            GraphicsPath polygon_path_head = new GraphicsPath(FillMode.Winding);
-            polygon_path_head.AddPolygon(head);
-
-            GraphicsPath polygon_path_torso = new GraphicsPath(FillMode.Winding);
-            polygon_path_torso.AddPolygon(torso);
-
-            GraphicsPath polygon_path_ms = new GraphicsPath(FillMode.Winding);
-            polygon_path_ms.AddPolygon(midsection);
-
-            GraphicsPath polygon_path_rightleg = new GraphicsPath(FillMode.Winding);
-            polygon_path_rightleg.AddPolygon(rightleg);
-
-            GraphicsPath polygon_path_lowleg = new GraphicsPath(FillMode.Winding);
-            polygon_path_lowleg.AddPolygon(lowleg);
-
-            GraphicsPath polygon_path_leftleg = new GraphicsPath(FillMode.Winding);
-            polygon_path_leftleg.AddPolygon(leftleg);
-
-            GraphicsPath polygon_path_rightarm = new GraphicsPath(FillMode.Winding);
-            polygon_path_rightarm.AddPolygon(rightarm);
-
-            GraphicsPath polygon_path_leftarm = new GraphicsPath(FillMode.Winding);
-            polygon_path_leftarm.AddPolygon(leftarm);
-
-            GraphicsPath polygon_path_lowarm = new GraphicsPath(FillMode.Winding);
-            polygon_path_lowarm.AddPolygon(lowarm);
-            #endregion
-
-            #region small graphics paths 
-            GraphicsPath polygon_path_headsmall = new GraphicsPath(FillMode.Winding);
-            polygon_path_head.AddPolygon(headsmall);
-           
-            GraphicsPath polygon_path_torsosmall = new GraphicsPath(FillMode.Winding);
-            polygon_path_torso.AddPolygon(torsosmall);
-
-            GraphicsPath polygon_path_mssmall = new GraphicsPath(FillMode.Winding);
-            polygon_path_ms.AddPolygon(midsectionsmall);
-
-            GraphicsPath polygon_path_rightlegsmall = new GraphicsPath(FillMode.Winding);
-            polygon_path_rightleg.AddPolygon(rightlegsmall);
-
-            GraphicsPath polygon_path_lowlegsmall = new GraphicsPath(FillMode.Winding);
-            polygon_path_lowleg.AddPolygon(lowlegsmall);
-
-            GraphicsPath polygon_path_leftlegsmall = new GraphicsPath(FillMode.Winding);
-            polygon_path_leftleg.AddPolygon(leftlegsmall);
-
-            GraphicsPath polygon_path_rightarmsmall = new GraphicsPath(FillMode.Winding);
-            polygon_path_rightarm.AddPolygon(rightarmsmall);
-
-            GraphicsPath polygon_path_leftarmsmall = new GraphicsPath(FillMode.Winding);
-            polygon_path_leftarm.AddPolygon(leftarmsmall);
-
-            GraphicsPath polygon_path_lowarmsmall = new GraphicsPath(FillMode.Winding);
-            polygon_path_lowarm.AddPolygon(lowarm);
-            #endregion
-
-            #endregion
-
-            #region Convert_paths_to_regions
-
-            Region polygon_region_head = new Region(polygon_path_head); // head
-            Region polygon_region_torso = new Region(polygon_path_torso); // torso
-            Region polygon_region_ms = new Region(polygon_path_ms); // midsection
-            Region polygon_region_rightleg = new Region(polygon_path_rightleg); // rightleg
-            Region polygon_region_lowleg = new Region(polygon_path_lowleg); // low leg (all 4)
-            Region polygon_region_leftleg = new Region(polygon_path_leftleg); // leftleg
-            Region polygon_region_rightarm = new Region(polygon_path_rightarm); // rightarm
-            Region polygon_region_leftarm = new Region(polygon_path_leftarm); // left arm
-            Region polygon_region_lowarm = new Region(polygon_path_lowarm); // low arm (all 4)
-
-            Region polygon_region_headsmall = new Region(polygon_path_headsmall); // head
-            Region polygon_region_torsosmall = new Region(polygon_path_torsosmall); // torso
-            Region polygon_region_mssmall = new Region(polygon_path_mssmall); // midsection
-            Region polygon_region_rightlegsmall = new Region(polygon_path_rightlegsmall); // rightleg
-            Region polygon_region_lowlegsmall = new Region(polygon_path_lowlegsmall); // low leg (all 4)
-            Region polygon_region_leftlegsmall = new Region(polygon_path_leftlegsmall); // leftleg
-            Region polygon_region_rightarmsmall = new Region(polygon_path_rightarmsmall); // rightarm
-            Region polygon_region_leftarmsmall = new Region(polygon_path_leftarmsmall); // left arm
-            Region polygon_region_lowarmsmall = new Region(polygon_path_lowarmsmall); // low arm (all 4)
-            #endregion
-
             #region Constrain the buttons to the regions
             if (screenheight > 2159)
             {
+                #region large graphics paths
+                GraphicsPath polygon_path_head = new GraphicsPath(FillMode.Winding);
+                polygon_path_head.AddPolygon(head);
+
+                GraphicsPath polygon_path_torso = new GraphicsPath(FillMode.Winding);
+                polygon_path_torso.AddPolygon(torso);
+
+                GraphicsPath polygon_path_ms = new GraphicsPath(FillMode.Winding);
+                polygon_path_ms.AddPolygon(midsection);
+
+                GraphicsPath polygon_path_rightleg = new GraphicsPath(FillMode.Winding);
+                polygon_path_rightleg.AddPolygon(rightleg);
+
+                GraphicsPath polygon_path_lowleg = new GraphicsPath(FillMode.Winding);
+                polygon_path_lowleg.AddPolygon(lowleg);
+
+                GraphicsPath polygon_path_leftleg = new GraphicsPath(FillMode.Winding);
+                polygon_path_leftleg.AddPolygon(leftleg);
+
+                GraphicsPath polygon_path_rightarm = new GraphicsPath(FillMode.Winding);
+                polygon_path_rightarm.AddPolygon(rightarm);
+
+                GraphicsPath polygon_path_leftarm = new GraphicsPath(FillMode.Winding);
+                polygon_path_leftarm.AddPolygon(leftarm);
+
+                GraphicsPath polygon_path_lowarm = new GraphicsPath(FillMode.Winding);
+                polygon_path_lowarm.AddPolygon(lowarm);
+                #endregion
+
+                #region Convert_paths_to_regions
+
+                Region polygon_region_head = new Region(polygon_path_head); // head
+                Region polygon_region_torso = new Region(polygon_path_torso); // torso
+                Region polygon_region_ms = new Region(polygon_path_ms); // midsection
+                Region polygon_region_rightleg = new Region(polygon_path_rightleg); // rightleg
+                Region polygon_region_lowleg = new Region(polygon_path_lowleg); // low leg (all 4)
+                Region polygon_region_leftleg = new Region(polygon_path_leftleg); // leftleg
+                Region polygon_region_rightarm = new Region(polygon_path_rightarm); // rightarm
+                Region polygon_region_leftarm = new Region(polygon_path_leftarm); // left arm
+                Region polygon_region_lowarm = new Region(polygon_path_lowarm); // low arm (all 4)
+
+
+                #endregion
+
                 #region large buttons
                 #region front buttons
                 button_head.Region = polygon_region_head; //head
@@ -552,6 +511,47 @@ namespace Uttam_Transfer_Of_Care
             }
             else
             {
+                #region generate small graphics paths 
+                GraphicsPath polygon_path_headsmall = new GraphicsPath(FillMode.Winding);
+                polygon_path_headsmall.AddPolygon(headsmall);
+
+                GraphicsPath polygon_path_torsosmall = new GraphicsPath(FillMode.Winding);
+                polygon_path_torsosmall.AddPolygon(torsosmall);
+
+                GraphicsPath polygon_path_mssmall = new GraphicsPath(FillMode.Winding);
+                polygon_path_mssmall.AddPolygon(midsectionsmall);
+
+                GraphicsPath polygon_path_rightlegsmall = new GraphicsPath(FillMode.Winding);
+                polygon_path_rightlegsmall.AddPolygon(rightlegsmall);
+
+                GraphicsPath polygon_path_lowlegsmall = new GraphicsPath(FillMode.Winding);
+                polygon_path_lowlegsmall.AddPolygon(lowlegsmall);
+
+                GraphicsPath polygon_path_leftlegsmall = new GraphicsPath(FillMode.Winding);
+                polygon_path_leftlegsmall.AddPolygon(leftlegsmall);
+
+                GraphicsPath polygon_path_rightarmsmall = new GraphicsPath(FillMode.Winding);
+                polygon_path_rightarmsmall.AddPolygon(rightarmsmall);
+
+                GraphicsPath polygon_path_leftarmsmall = new GraphicsPath(FillMode.Winding);
+                polygon_path_leftarmsmall.AddPolygon(leftarmsmall);
+
+                GraphicsPath polygon_path_lowarmsmall = new GraphicsPath(FillMode.Winding);
+                polygon_path_lowarmsmall.AddPolygon(lowarm);
+                #endregion // make graphics paths 
+
+                #region convert small graphics paths to regions
+                Region polygon_region_headsmall = new Region(polygon_path_headsmall); // head
+                Region polygon_region_torsosmall = new Region(polygon_path_torsosmall); // torso
+                Region polygon_region_mssmall = new Region(polygon_path_mssmall); // midsection
+                Region polygon_region_rightlegsmall = new Region(polygon_path_rightlegsmall); // rightleg
+                Region polygon_region_lowlegsmall = new Region(polygon_path_lowlegsmall); // low leg (all 4)
+                Region polygon_region_leftlegsmall = new Region(polygon_path_leftlegsmall); // leftleg
+                Region polygon_region_rightarmsmall = new Region(polygon_path_rightarmsmall); // rightarm
+                Region polygon_region_leftarmsmall = new Region(polygon_path_leftarmsmall); // left arm
+                Region polygon_region_lowarmsmall = new Region(polygon_path_lowarmsmall); // low arm (all 4)
+                #endregion
+
                 #region small buttons
                 #region front buttons
                 button_head.Region = polygon_region_headsmall; //head
@@ -2316,6 +2316,11 @@ namespace Uttam_Transfer_Of_Care
             endtime = DateTime.Now;
             var output = new Output();
             output.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -35,10 +35,9 @@
             // wel_start_button
             // 
             this.wel_start_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wel_start_button.Location = new System.Drawing.Point(254, 208);
-            this.wel_start_button.Margin = new System.Windows.Forms.Padding(2);
+            this.wel_start_button.Location = new System.Drawing.Point(381, 325);
             this.wel_start_button.Name = "wel_start_button";
-            this.wel_start_button.Size = new System.Drawing.Size(317, 108);
+            this.wel_start_button.Size = new System.Drawing.Size(476, 169);
             this.wel_start_button.TabIndex = 3;
             this.wel_start_button.Text = "START";
             this.wel_start_button.UseVisualStyleBackColor = true;
@@ -48,20 +47,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(46, 134);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(69, 209);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(709, 31);
+            this.label1.Size = new System.Drawing.Size(1118, 51);
             this.label1.TabIndex = 2;
             this.label1.Text = "WELCOME TO THE TRANSFER OF CARE SIMULATOR";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 703);
             this.Controls.Add(this.wel_start_button);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

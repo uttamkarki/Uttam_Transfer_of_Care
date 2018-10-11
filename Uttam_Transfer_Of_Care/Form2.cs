@@ -465,5 +465,15 @@ namespace Uttam_Transfer_Of_Care
         {
 
         }
+
+        private void Injury_description_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void display_criticality_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

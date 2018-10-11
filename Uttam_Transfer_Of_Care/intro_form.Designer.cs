@@ -42,10 +42,9 @@
             // aisimstartbutton
             // 
             this.aisimstartbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aisimstartbutton.Location = new System.Drawing.Point(514, 369);
-            this.aisimstartbutton.Margin = new System.Windows.Forms.Padding(2);
+            this.aisimstartbutton.Location = new System.Drawing.Point(771, 577);
             this.aisimstartbutton.Name = "aisimstartbutton";
-            this.aisimstartbutton.Size = new System.Drawing.Size(427, 72);
+            this.aisimstartbutton.Size = new System.Drawing.Size(640, 112);
             this.aisimstartbutton.TabIndex = 15;
             this.aisimstartbutton.Text = "Start AI Sim";
             this.aisimstartbutton.UseVisualStyleBackColor = true;
@@ -54,10 +53,9 @@
             // standardsimstartbutton
             // 
             this.standardsimstartbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.standardsimstartbutton.Location = new System.Drawing.Point(27, 369);
-            this.standardsimstartbutton.Margin = new System.Windows.Forms.Padding(2);
+            this.standardsimstartbutton.Location = new System.Drawing.Point(40, 577);
             this.standardsimstartbutton.Name = "standardsimstartbutton";
-            this.standardsimstartbutton.Size = new System.Drawing.Size(427, 72);
+            this.standardsimstartbutton.Size = new System.Drawing.Size(640, 112);
             this.standardsimstartbutton.TabIndex = 14;
             this.standardsimstartbutton.Text = "Start Standard Sim";
             this.standardsimstartbutton.UseVisualStyleBackColor = true;
@@ -65,38 +63,35 @@
             // Experience_entry
             // 
             this.Experience_entry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Experience_entry.Location = new System.Drawing.Point(164, 326);
-            this.Experience_entry.Margin = new System.Windows.Forms.Padding(2);
+            this.Experience_entry.Location = new System.Drawing.Point(246, 509);
             this.Experience_entry.Name = "Experience_entry";
-            this.Experience_entry.Size = new System.Drawing.Size(401, 26);
+            this.Experience_entry.Size = new System.Drawing.Size(600, 38);
             this.Experience_entry.TabIndex = 13;
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(31, 325);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(46, 508);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 26);
+            this.label4.Size = new System.Drawing.Size(195, 41);
             this.label4.TabIndex = 12;
             this.label4.Text = "Experience";
             // 
             // Role_entry
             // 
             this.Role_entry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Role_entry.Location = new System.Drawing.Point(164, 291);
-            this.Role_entry.Margin = new System.Windows.Forms.Padding(2);
+            this.Role_entry.Location = new System.Drawing.Point(246, 455);
             this.Role_entry.Name = "Role_entry";
-            this.Role_entry.Size = new System.Drawing.Size(401, 26);
+            this.Role_entry.Size = new System.Drawing.Size(600, 38);
             this.Role_entry.TabIndex = 11;
+            this.Role_entry.TextChanged += new System.EventHandler(this.Role_entry_TextChanged);
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(31, 293);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(46, 458);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 26);
+            this.label3.Size = new System.Drawing.Size(148, 41);
             this.label3.TabIndex = 10;
             this.label3.Text = "Role";
             // 
@@ -104,29 +99,27 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(321, 8);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(482, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(321, 29);
+            this.label2.Size = new System.Drawing.Size(495, 44);
             this.label2.TabIndex = 9;
             this.label2.Text = "Transfer of Care Simulator";
             // 
             // Intro_label
             // 
             this.Intro_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Intro_label.Location = new System.Drawing.Point(22, 52);
-            this.Intro_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Intro_label.Location = new System.Drawing.Point(33, 81);
             this.Intro_label.Name = "Intro_label";
-            this.Intro_label.Size = new System.Drawing.Size(933, 224);
+            this.Intro_label.Size = new System.Drawing.Size(1400, 350);
             this.Intro_label.TabIndex = 8;
             this.Intro_label.Text = resources.GetString("Intro_label.Text");
             this.Intro_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // intro_form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(986, 509);
+            this.ClientSize = new System.Drawing.Size(1479, 795);
             this.Controls.Add(this.aisimstartbutton);
             this.Controls.Add(this.standardsimstartbutton);
             this.Controls.Add(this.Experience_entry);
@@ -135,6 +128,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Intro_label);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "intro_form";
             this.Text = "intro_form";
             this.Load += new System.EventHandler(this.intro_form_Load);

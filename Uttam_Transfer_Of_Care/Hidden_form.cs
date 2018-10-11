@@ -21,5 +21,10 @@ namespace Uttam_Transfer_Of_Care
         {
 
         }
+
+        private void textentry_injury_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

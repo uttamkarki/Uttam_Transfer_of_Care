@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BreathingGroup = new System.Windows.Forms.GroupBox();
             this.radioButton24 = new System.Windows.Forms.RadioButton();
             this.rb_breathingstopped = new System.Windows.Forms.RadioButton();
@@ -101,6 +102,7 @@
             this.rb_age_70plus = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button_torso = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.BreathingGroup.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -947,6 +949,10 @@
             this.button_torso.UseVisualStyleBackColor = false;
             this.button_torso.Click += new System.EventHandler(this.button_torso_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // inputform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1092,5 +1098,6 @@
         public System.Windows.Forms.RadioButton rb_age_70plus;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button_torso;
+        private System.Windows.Forms.Timer timer1;
     }
 }

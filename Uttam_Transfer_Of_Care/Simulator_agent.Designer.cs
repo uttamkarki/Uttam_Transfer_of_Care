@@ -40,6 +40,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "This \'agent\' controls the simulation. it carrys out scoring keeps time provides r" +
     "epository for all the intermediate information ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Simulator_agent
             // 

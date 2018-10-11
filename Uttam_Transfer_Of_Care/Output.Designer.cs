@@ -588,6 +588,7 @@
             this.Output_transferred_patient_injury_location.Name = "Output_transferred_patient_injury_location";
             this.Output_transferred_patient_injury_location.Size = new System.Drawing.Size(454, 44);
             this.Output_transferred_patient_injury_location.TabIndex = 98;
+            this.Output_transferred_patient_injury_location.TextChanged += new System.EventHandler(this.Output_transferred_patient_injury_location_TextChanged);
             // 
             // Output_transferred_patient_injury_type
             // 
