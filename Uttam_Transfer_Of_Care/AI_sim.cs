@@ -2395,4 +2395,28 @@ namespace Uttam_Transfer_Of_Care
 
         }
     }
+
+    // Creating patient agent as a new class
+    class Patient
+    {
+        public int age, hemorrhage, consciousness, airway, breathing, circulation;
+        public string gender;
+
+        /* 
+            assigning initial patient attributes randomly 
+            Age [0,100]
+            Gender [M for Male and F for Female]
+            Hemorrhage[0,2] - 0 = No hemorrhage, 1 = hemorrhage present, 2 = High hemorrhage
+            Consciousness[0,2] - 0 = Unconscious, 1 = partially concious , 2 = Fully conscious
+            Airway[0,1] - 0 = Abnormal/Blocked , 1 = Normal/cleared
+            Breathing[0,1] - 0 = Abnormal/Blocked , 1 = Normal/cleared
+            Circulation[0,1] - 0 = Abnormal/Blocked , 1 = Normal/cleared 
+            */
+        public int initial_hemorrhage, initial_consciousness, initial_airway, initial_breathing, initial_circulation;
+        
+        
+
+
+
+    }
 }
