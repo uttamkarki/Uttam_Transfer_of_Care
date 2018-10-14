@@ -22,9 +22,13 @@ using System.Windows.Input;
 
 namespace Uttam_Transfer_Of_Care
 {
+    delegate void message_fPtoEMS(Message msg);
+    delegate void message_fEMStoMax(Message msg);
+    delegate void message_fMaxtoEMS(Message msg);
+    delegate void message_fEMStoP(Message msg);
+
     public partial class AI_sim : Form
     {
-
         public static DateTime starttime;
 
         // Uttam Model Start
@@ -2399,11 +2403,14 @@ namespace Uttam_Transfer_Of_Care
     // Creating patient agent as a new class
     class Patient
     {
-        public int age, hemorrhage, consciousness, airway, breathing, circulation;
-        public string gender;
 
-        /* 
-            assigning initial patient attributes randomly 
+        Random random = new Random();
+        public int age { get; set; } public int hemorrhage { get; set; } public int consciousness { get; set; }
+        public int airway { get; set; } public int breathing { get; set; } public int circulation { get; set; }
+        public string gender { get; set; }
+        private List<Message> messages;
+        public message_fPtoEMS Send_to_EMS;
+        /*  assigning initial patient attributes randomly 
             Age [0,100]
             Gender [M for Male and F for Female]
             Hemorrhage[0,2] - 0 = No hemorrhage, 1 = hemorrhage present, 2 = High hemorrhage
@@ -2412,11 +2419,95 @@ namespace Uttam_Transfer_Of_Care
             Breathing[0,1] - 0 = Abnormal/Blocked , 1 = Normal/cleared
             Circulation[0,1] - 0 = Abnormal/Blocked , 1 = Normal/cleared 
             */
-        public int initial_hemorrhage, initial_consciousness, initial_airway, initial_breathing, initial_circulation;
-        
-        
+        public void assignvalue()
+        {
+            int initial_hemorrhage, initial_consciousness, initial_airway, initial_breathing, initial_circulation,a;
+            age = random.Next(0, 100);
+            a = random.Next(0,1);
+            if (a == 0){
+                gender = "M"; 
+            }
+            else {
+                gender = "F";
+            }
+            a = random.Next(0,2);
+            if (a == 0) {
+                hemorrhage = 0;
+                initial_hemorrhage = hemorrhage;
+            }
+            else if (a == 1)  {
+                hemorrhage = 1;
+                initial_hemorrhage = hemorrhage;
+            }
+            else {
+                hemorrhage = 2;
+                initial_hemorrhage = hemorrhage; ;
+            }
+            a = random.Next(0, 2);
+            if (a == 0)
+            {
+                consciousness = 0;
+                initial_consciousness = consciousness;
+            }
+            else if (a == 1)
+            {
+                consciousness = 1;
+                initial_consciousness = consciousness;
+            }
+            else
+            {
+                consciousness = 2;
+                initial_consciousness = consciousness; ;
+            }
+            a = random.Next(0, 1);
+            if (a == 0)
+            {
+                airway = 0;
+                initial_airway = airway;
+            }
+            else
+            {
+                airway = 1;
+                initial_airway = airway; ;
+            }
+            a = random.Next(0, 1);
+            if (a == 0)
+            {
+                breathing = 0;
+                initial_breathing = breathing;
+            }
+            else
+            {
+                breathing = 1;
+                initial_breathing = breathing; ;
+            }
+            a = random.Next(0, 1);
+            if (a == 0)
+            {
+                circulation = 0;
+                initial_circulation = circulation;
+            }
+            else
+            {
+                circulation = 1;
+                initial_circulation = circulation; ;
+            }
 
 
+        }
+        // Assign Value method end...
+       
+    }
+
+    // Creating AI agent. It will give instruction what action to take by EMS for treatment
+    class Max
+    {
+
+    }
+
+    // Creating EMS agent 
+    class EMS
+    {
 
     }
 }
