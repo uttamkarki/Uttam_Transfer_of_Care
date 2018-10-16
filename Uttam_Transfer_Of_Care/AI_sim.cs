@@ -2412,8 +2412,8 @@ namespace Uttam_Transfer_Of_Care
         private List<Message> messages;
         public message_fPtoEMS Send_to_EMS;
 
-        public delegate void messagesendingEventHandler(object source, EventArgs args);
-        public event messagesendingEventHandler messagesent;
+        /*//public delegate void messagesendingEventHandler(object source, EventArgs args);
+        //public event messagesendingEventHandler messagesent;*/
 
          // creating a new thread to run Patient agent independently
          public void Run()
@@ -2429,7 +2429,10 @@ namespace Uttam_Transfer_Of_Care
                 to = "EMS",
                 subject = "Initial Status generated"
             };
-            Onmessagesent();
+
+            var T1 = new Thread(() => Send_to_EMS(message));
+            T1.Start();
+            //Onmessagesent();
 
         }
 
@@ -2520,13 +2523,13 @@ namespace Uttam_Transfer_Of_Care
         }
         // Assign Value method end...
 
-        protected virtual void Onmessagesent()
+        /*protected virtual void Onmessagesent()
         {
             if(messagesent != null)
             {
                 messagesent(this, EventArgs.Empty);
             }
-        }
+        }*/
        
     }
 
