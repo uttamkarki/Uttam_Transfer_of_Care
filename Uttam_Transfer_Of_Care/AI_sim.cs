@@ -2390,6 +2390,7 @@ namespace Uttam_Transfer_Of_Care
         {
 
         }
+        
 
         private void AI_patient_transfer_button_Click_1(object sender, EventArgs e)
         {
@@ -2410,6 +2411,28 @@ namespace Uttam_Transfer_Of_Care
         public string gender { get; set; }
         private List<Message> messages;
         public message_fPtoEMS Send_to_EMS;
+
+        public delegate void messagesendingEventHandler(object source, EventArgs args);
+        public event messagesendingEventHandler messagesent;
+
+         // creating a new thread to run Patient agent independently
+         public void Run()
+        {
+            Thread T0 = new Thread(assignvalue);
+            T0.Start();
+
+
+            // creating a message that will send its primary information to the EMS
+            Message message = new Message
+            {
+                from = "Patient",
+                to = "EMS",
+                subject = "Initial Status generated"
+            };
+            Onmessagesent();
+
+        }
+
         /*  assigning initial patient attributes randomly 
             Age [0,100]
             Gender [M for Male and F for Female]
@@ -2496,6 +2519,14 @@ namespace Uttam_Transfer_Of_Care
 
         }
         // Assign Value method end...
+
+        protected virtual void Onmessagesent()
+        {
+            if(messagesent != null)
+            {
+                messagesent(this, EventArgs.Empty);
+            }
+        }
        
     }
 
@@ -2509,5 +2540,13 @@ namespace Uttam_Transfer_Of_Care
     class EMS
     {
 
+    }
+
+    // creatinh a messenger class
+    class Message
+    {
+        public string from { get; set; }
+        public string to { get; set; }
+        public string subject { get; set; }
     }
 }
