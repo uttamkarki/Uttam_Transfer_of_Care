@@ -76,69 +76,7 @@ namespace Uttam_Transfer_Of_Care
         Dictionary<string, string> respirationcommand = new Dictionary<string, string>();
         Dictionary<string, string> circulationcommand = new Dictionary<string, string>();
         //Mixer Library will mute and unmute the microphone as per recognition engine state
-        /*public void Loadspeech1()
-        {
-            Choices ch = new Choices();
-            ch.Add(new string[] { "Ok Max", "Max", "Max Start", "Hey Max", "Start" });
-            GrammarBuilder gb1 = new GrammarBuilder();
-            gb1.Append(ch);
-            Grammar gr = new Grammar(gb1);
-            secondbot.LoadGrammarAsync(gr);
-            secondbot.SetInputToDefaultAudioDevice();
-            secondbot.RecognizeAsync(RecognizeMode.Multiple);
-            secondbot.SpeechRecognized += Secondbot_SpeechRecognized;
-        }
-
-        private void Secondbot_SpeechRecognized(object s, SpeechRecognizedEventArgs b)
-        {
-            if (b.Result.Text.Equals("Ok Max"))
-            {
-                //label1.Text = "You:" + b.Result.Text;
-                recognize.RecognizeAsync(RecognizeMode.Multiple);
-                secondbot.RecognizeAsyncStop();
-            }
-            else if (b.Result.Text.Equals("Max"))
-            {
-                //label1.Text = "You:" + b.Result.Text;
-                recognize.RecognizeAsync(RecognizeMode.Multiple);
-                secondbot.RecognizeAsyncStop();
-            }
-            else if (b.Result.Text.Equals("Max Start"))
-            {
-                //label1.Text = "You:" + b.Result.Text;
-                recognize.RecognizeAsync(RecognizeMode.Multiple);
-                secondbot.RecognizeAsyncStop();
-            }
-            else if (b.Result.Text.Equals("Hey Max"))
-            {
-                //label1.Text = "You:" + b.Result.Text;
-                recognize.RecognizeAsync(RecognizeMode.Multiple);
-                secondbot.RecognizeAsyncStop();
-            }
-            else if (b.Result.Text.Equals("Start"))
-            {
-                //label1.Text = "You:" + b.Result.Text;
-                recognize.RecognizeAsync(RecognizeMode.Multiple);
-                secondbot.RecognizeAsyncStop();
-            }
-            SpeechSynthesizer speak1 = new SpeechSynthesizer();
-            if (DateTime.Now.Hour < 12)
-            {
-                speak1.SpeakAsync("Hello! Good Morning Sir. Lets start transfer of care.");
-                //label2.Text = "Virtual Assistant:Hello! Good Morning Sir. Lets start transfer of care.";
-            }
-            else if (DateTime.Now.Hour < 17)
-            {
-                speak1.SpeakAsync("Hello! Good Afternoon Sir. Let's complete the handover");
-                //label2.Text = "Virtual Assistant:Hello! Good Afternoon Sir. Let's complete the handover";
-            }
-            else
-            {
-                speak1.SpeakAsync("Hello! Good Evening Sir. Lets start");
-                //label2.Text = "Virtual Assistant:Hello! Good Evening Sir. Lets start";
-            }
-
-        }*/
+    
         Mixers mmixer = new Mixers();
 
 
@@ -2399,7 +2337,15 @@ namespace Uttam_Transfer_Of_Care
             transfer_form_start.Show();
 
         }
+
+        private void sim_inthem_box_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
+
+
+
 
     // creating a new class for controlling the simulation
     class Controller
@@ -2413,6 +2359,7 @@ namespace Uttam_Transfer_Of_Care
             agentP.fPatienttoEMS = new message_fPtoEMS(agentEMS.Receive_from_Patient);    // executing the method in different agent class to receive message
             agentEMS.fEMStoAI = new message_fEMStoMax(agentAI.Receive_from_EMS);
             agentAI.fAItoEMS = new message_fMaxtoEMS(agentEMS.Receive_from_AI);
+            agentEMS.fEMStoP = new message_fEMStoP(agentP.Receive_from_EMS);
             // add one more delegate to send messaeg from EMS to Patient
 
             // Creating a threads to run tasks independently
@@ -2437,8 +2384,8 @@ namespace Uttam_Transfer_Of_Care
         private List<Message> messages;
         public message_fPtoEMS fPatienttoEMS;
 
-        /*//public delegate void messagesendingEventHandler(object source, EventArgs args);
-        //public event messagesendingEventHandler messagesent;*/
+        AI_sim ai_Sim = new AI_sim();
+
 
          public Patient(string name) { agentname = name; }
 
@@ -2457,10 +2404,9 @@ namespace Uttam_Transfer_Of_Care
                 subject = "Treatment Required",
                 state = "Initial status available"
             };
-
+            messages = new List<Message>();
             var Th_PtoEMS = new Thread(() => fPatienttoEMS(message));
             Th_PtoEMS.Start();
-            //Onmessagesent();
 
         }
 
@@ -2479,15 +2425,23 @@ namespace Uttam_Transfer_Of_Care
             age = random.Next(0, 100);
             a = random.Next(0,1);
             if (a == 0){
-                gender = "M"; 
+                gender = "M";
+                ai_Sim.sim_gender_label.Text = "Male";
             }
             else {
                 gender = "F";
+                ai_Sim.sim_gender_label.Text = "Female";
             }
+
+            a = random.Next(0, 100);
+            age = a;
+            ai_Sim.sim_age_label.Text = Convert.ToString(age);
+
             a = random.Next(0,2);
             if (a == 0) {
                 hemorrhage = 0;
                 initial_hemorrhage = hemorrhage;
+                
             }
             else if (a == 1)  {
                 hemorrhage = 1;
@@ -2547,28 +2501,51 @@ namespace Uttam_Transfer_Of_Care
                 initial_circulation = circulation; ;
             }
 
+            ai_Sim.sim_inthem_box.Text = Convert.ToString(hemorrhage);
+            ai_Sim.sim_intconc_box.Text = Convert.ToString(consciousness);
+            ai_Sim.sim_intair_box.Text = Convert.ToString(airway);
+            ai_Sim.sim_intbreath_box.Text = Convert.ToString(breathing);
+            ai_Sim.sim_intcirc_box.Text = Convert.ToString(circulation);                                  // updating value in UI form
+
+        }   // Assign Value method end...
+
+        // Patient will receiv what EMS had treated 
+        public void Receive_from_EMS(Message treatmentinfo)
+        {
+            if(treatmentinfo.subject == "Applied Treatment")
+            {
+                UIController();
+
+            } // end of if loop
 
         }
-        // Assign Value method end...
 
-        /*protected virtual void Onmessagesent()
+
+        // method to update user interface with most recent patient attributes
+        public void UIController()
         {
-            if(messagesent != null)
-            {
-                messagesent(this, EventArgs.Empty);
-            }
-        }*/
+            ai_Sim.sim_finalair_box.Text = Convert.ToString(airway);                    // changes the final state of the patient at given time in AI_Sim from
+            ai_Sim.sim_finalbreath_box.Text = Convert.ToString(breathing);
+            ai_Sim.sim_finalcirc_box.Text = Convert.ToString(circulation);
+            ai_Sim.sim_finalconc_box.Text = Convert.ToString(consciousness);
+            ai_Sim.sim_finalhem_box.Text = Convert.ToString(hemorrhage);
+        }
+
+        
        
     }
+
+
 
 
     // Creating EMS agent 
     class EMS
     {
-
+        Patient patient = new Patient("patient");
         public string agentname;
         public EMS(string name) { agentname = name; }
         public message_fEMStoMax fEMStoAI;
+        public message_fEMStoP fEMStoP;
 
         public void Run()
         {
@@ -2605,12 +2582,36 @@ namespace Uttam_Transfer_Of_Care
                 if(reply.subject == "Treatment Recommended")                           // if AI had recommended a treatment or not
                 {
                     /* Execute a code to apply for recommended actions  */
+                    Message treatmentinfo = new Message()
+                    {
+                        from = "EMS",
+                        to = "Patient",
+                        subject = "Applied Treatment",
+                        action = "applied torniquet"
+
+                    };
+
+                    Treatment();
+                    var Th_EMStoP = new Thread(() => fEMStoP(treatmentinfo));
                 }
 
             }
         } // end of Receive_from_AI(Message reply)
 
+        public void Treatment()
+        {
+            // copy the transition probability code from previous means
+            /* Write a code for patient treatment. It is same as before. 
+               Depending on the action that is passed, apply recommended actions*/
+
+
+        } // end of Treatment method
+
+
     }
+
+
+
 
 
     // Creating AI agent. It will give instruction what action to take by EMS for treatment
@@ -2648,6 +2649,10 @@ namespace Uttam_Transfer_Of_Care
         }
 
     }
+
+
+
+
 
     // creating a messenger class
     class Message
