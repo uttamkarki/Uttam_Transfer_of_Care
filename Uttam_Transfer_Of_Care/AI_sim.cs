@@ -2401,11 +2401,25 @@ namespace Uttam_Transfer_Of_Care
         }
     }
 
+    // creating a new class for controlling the simulation
+    class Controller
+    {
+        static void Main(string[] args)
+        {
+            Patient agentP = new Patient("agentP");                     /*called agents */ 
+            EMS agentEMS = new EMS("agentEMS");
+            Max agentAI = new Max("agentAI");
+
+            agentP.Send_to_EMS = new message_fPtoEMS(agentEMS.Receive_from_Patient);
+        }
+    }
+
     // Creating patient agent as a new class
     class Patient
     {
 
         Random random = new Random();
+        public string agentname;
         public int age { get; set; } public int hemorrhage { get; set; } public int consciousness { get; set; }
         public int airway { get; set; } public int breathing { get; set; } public int circulation { get; set; }
         public string gender { get; set; }
@@ -2415,7 +2429,9 @@ namespace Uttam_Transfer_Of_Care
         /*//public delegate void messagesendingEventHandler(object source, EventArgs args);
         //public event messagesendingEventHandler messagesent;*/
 
-         // creating a new thread to run Patient agent independently
+         public Patient(string name) { agentname = name; }
+
+            // creating a new thread to run Patient agent independently
          public void Run()
         {
             Thread T0 = new Thread(assignvalue);
@@ -2430,8 +2446,8 @@ namespace Uttam_Transfer_Of_Care
                 subject = "Initial Status generated"
             };
 
-            var T1 = new Thread(() => Send_to_EMS(message));
-            T1.Start();
+            var Thread1 = new Thread(() => Send_to_EMS(message));
+            Thread1.Start();
             //Onmessagesent();
 
         }
@@ -2536,12 +2552,21 @@ namespace Uttam_Transfer_Of_Care
     // Creating AI agent. It will give instruction what action to take by EMS for treatment
     class Max
     {
+        public string agentname;
+        public Max(string name) { agentname = name; }
 
     }
 
     // Creating EMS agent 
     class EMS
     {
+        public string agentname;
+        public EMS(string name) { agentname = name; }
+
+        public void Receive_from_Patient(Message message)
+        {
+
+        }
 
     }
 
