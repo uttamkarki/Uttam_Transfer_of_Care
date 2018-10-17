@@ -2406,11 +2406,22 @@ namespace Uttam_Transfer_Of_Care
     {
         static void Main(string[] args)
         {
-            Patient agentP = new Patient("agentP");                     /*called agents */ 
+            Patient agentP = new Patient("agentP");                                      /*called agents */ 
             EMS agentEMS = new EMS("agentEMS");
             Max agentAI = new Max("agentAI");
 
-            agentP.Send_to_EMS = new message_fPtoEMS(agentEMS.Receive_from_Patient);
+            agentP.fPatienttoEMS = new message_fPtoEMS(agentEMS.Receive_from_Patient);    // executing the method in different agent class to receive message
+            agentEMS.fEMStoAI = new message_fEMStoMax(agentAI.Receive_from_EMS);
+            agentAI.fAItoEMS = new message_fMaxtoEMS(agentEMS.Receive_from_AI);
+            // add one more delegate to send messaeg from EMS to Patient
+
+            // Creating a threads to run tasks independently
+            Thread T_agentP = new Thread(agentP.Run);                               // running thread for patient class
+            T_agentP.Start();
+            Thread T_agentEMS = new Thread(agentEMS.Run);                           // running thread for EMS class
+            T_agentEMS.Start();
+            Thread T_agentAI = new Thread(agentAI.Run);                             // running thread for Max class
+            T_agentAI.Start();
         }
     }
 
@@ -2424,7 +2435,7 @@ namespace Uttam_Transfer_Of_Care
         public int airway { get; set; } public int breathing { get; set; } public int circulation { get; set; }
         public string gender { get; set; }
         private List<Message> messages;
-        public message_fPtoEMS Send_to_EMS;
+        public message_fPtoEMS fPatienttoEMS;
 
         /*//public delegate void messagesendingEventHandler(object source, EventArgs args);
         //public event messagesendingEventHandler messagesent;*/
@@ -2443,11 +2454,12 @@ namespace Uttam_Transfer_Of_Care
             {
                 from = "Patient",
                 to = "EMS",
-                subject = "Initial Status generated"
+                subject = "Treatment Required",
+                state = "Initial status available"
             };
 
-            var Thread1 = new Thread(() => Send_to_EMS(message));
-            Thread1.Start();
+            var Th_PtoEMS = new Thread(() => fPatienttoEMS(message));
+            Th_PtoEMS.Start();
             //Onmessagesent();
 
         }
@@ -2549,32 +2561,101 @@ namespace Uttam_Transfer_Of_Care
        
     }
 
+
+    // Creating EMS agent 
+    class EMS
+    {
+
+        public string agentname;
+        public EMS(string name) { agentname = name; }
+        public message_fEMStoMax fEMStoAI;
+
+        public void Run()
+        {
+            
+        }
+
+        public void Receive_from_Patient(Message message)
+        {
+            if(message.from == "Patient")                                      // to check if the message is from patient or not
+            {
+                if(message.subject == "Treatment Required")                         // to see if patient required treatment of not
+                {
+                    if(message.state == "Initial status available")  
+                    {
+
+                        /*  Execute the code over here */
+                        /* EMS again have to generate a message for AI*/
+
+
+                    } // end of "Initial status available" if loop 
+
+                    var Th_EMStoAI = new Thread(() => fEMStoAI(message));                       // sending info from patient to AI for recommendation
+                    Th_EMStoAI.Start();
+
+                } // end of "Treatment Required" if loop 
+
+            }  // end of "Patient" if loop
+        } // end of Receive_from_Patient(Message message)
+
+        public void Receive_from_AI(Message reply)
+        {
+            if(reply.from == "Max")                                                 // to check if EMS got response from Max
+            {
+                if(reply.subject == "Treatment Recommended")                           // if AI had recommended a treatment or not
+                {
+                    /* Execute a code to apply for recommended actions  */
+                }
+
+            }
+        } // end of Receive_from_AI(Message reply)
+
+    }
+
+
     // Creating AI agent. It will give instruction what action to take by EMS for treatment
     class Max
     {
         public string agentname;
         public Max(string name) { agentname = name; }
+        public message_fMaxtoEMS fAItoEMS;
 
-    }
-
-    // Creating EMS agent 
-    class EMS
-    {
-        public string agentname;
-        public EMS(string name) { agentname = name; }
-
-        public void Receive_from_Patient(Message message)
+        public void Run()
         {
 
         }
 
+        public void Receive_from_EMS(Message message)
+        {
+            if(message.subject == "Treatment Required")                             // AI will recommend what to do 
+            {
+                /*  Get the patient variable value here and recommend EMS to perform that action*/
+                /*  Markov decision process will be coded here and based of the output it will 
+                    select actions and reply EMS to apply that action*/
+
+                Message reply = new Message                                     // writing a reply i response to EMS message
+                {
+                    from = "Max",
+                    to = "EMS",
+                    subject = "Treatment Recommended",
+                    action = " apply torniquet"                         // neccesary recommended answer will be mentioned here
+                };
+
+                var Th_AItoEMS = new Thread(() => fAItoEMS(reply));               // sending message from AI to EMS
+                Th_AItoEMS.Start();
+
+            }  // end of Treatment Required if loop
+        }
+
     }
 
-    // creatinh a messenger class
+    // creating a messenger class
     class Message
     {
         public string from { get; set; }
         public string to { get; set; }
         public string subject { get; set; }
+        public string state { get; set; }
+        public string action { get; set; }
     }
 }
