@@ -2403,6 +2403,7 @@ namespace Uttam_Transfer_Of_Care
                 to = "EMS",
                 subject = "Treatment Required",
                 state = "Initial status available"
+                
             };
             messages = new List<Message>();
             var Th_PtoEMS = new Thread(() => fPatienttoEMS(message));
@@ -2509,7 +2510,7 @@ namespace Uttam_Transfer_Of_Care
 
         }   // Assign Value method end...
 
-        // Patient will receiv what EMS had treated 
+        // Patient will receive what EMS had treated 
         public void Receive_from_EMS(Message treatmentinfo)
         {
             if(treatmentinfo.subject == "Applied Treatment")
@@ -2567,7 +2568,17 @@ namespace Uttam_Transfer_Of_Care
 
                     } // end of "Initial status available" if loop 
 
-                    var Th_EMStoAI = new Thread(() => fEMStoAI(message));                       // sending info from patient to AI for recommendation
+                    Message EMSmsg = new Message()
+                    {
+                        subject = "Treatment Required",
+                        hem = patient.hemorrhage,
+                        con = patient.consciousness,
+                        air = patient.airway,
+                        bre = patient.breathing,
+                        cir = patient.circulation,
+                    };
+
+                    var Th_EMStoAI = new Thread(() => fEMStoAI(EMSmsg));                       // sending info from patient to AI for recommendation
                     Th_EMStoAI.Start();
 
                 } // end of "Treatment Required" if loop 
@@ -2587,6 +2598,7 @@ namespace Uttam_Transfer_Of_Care
                         from = "EMS",
                         to = "Patient",
                         subject = "Applied Treatment",
+                        
                         action = "applied torniquet"
 
                     };
@@ -2620,6 +2632,7 @@ namespace Uttam_Transfer_Of_Care
         public string agentname;
         public Max(string name) { agentname = name; }
         public message_fMaxtoEMS fAItoEMS;
+        int hemorrhage; int consciousness; int airway; int breathing; int circulation;
 
         public void Run()
         {
@@ -2633,7 +2646,10 @@ namespace Uttam_Transfer_Of_Care
                 /*  Get the patient variable value here and recommend EMS to perform that action*/
                 /*  Markov decision process will be coded here and based of the output it will 
                     select actions and reply EMS to apply that action*/
-
+                hemorrhage = message.hem; consciousness = message.con; airway = message.air;    // Input hemorrhage value for AI from EMS message
+                breathing = message.bre; circulation = message.cir; 
+                    
+                
                 Message reply = new Message                                     // writing a reply i response to EMS message
                 {
                     from = "Max",
@@ -2662,5 +2678,10 @@ namespace Uttam_Transfer_Of_Care
         public string subject { get; set; }
         public string state { get; set; }
         public string action { get; set; }
+        public int hem { get; set; }
+        public int con { get; set; }
+        public int air { get; set; }
+        public int bre { get; set; }
+        public int cir { get; set; }
     }
 }
