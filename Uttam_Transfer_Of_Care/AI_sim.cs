@@ -2534,7 +2534,7 @@ namespace Uttam_Transfer_Of_Care
 
         
        
-    }
+    }  // end of Patient class
 
 
 
@@ -2598,29 +2598,259 @@ namespace Uttam_Transfer_Of_Care
                         from = "EMS",
                         to = "Patient",
                         subject = "Applied Treatment",
-                        
                         action = "applied torniquet"
 
                     };
 
-                    Treatment();
+                    Treatment(reply.action);
                     var Th_EMStoP = new Thread(() => fEMStoP(treatmentinfo));
                 }
 
             }
         } // end of Receive_from_AI(Message reply)
 
-        public void Treatment()
+        public void Treatment(string action)
         {
             // copy the transition probability code from previous means
             /* Write a code for patient treatment. It is same as before. 
                Depending on the action that is passed, apply recommended actions*/
 
+            void Hemorrhagecheck()
+            {
+               if (patient.hemorrhage == 0)
+                {
+                    int x;
+                    Random r = new Random();
+                    x = r.Next(0, 100);
+                    if (x <= 85)
+                    {
+                        patient.hemorrhage = 0;
+                    }
+                    else if (x <= 95 && x > 85)
+                    {
+                        patient.hemorrhage = 1;
+                    }
+                    else
+                    {
+                        patient.hemorrhage = 2;
+                    }
+
+
+                }
+               else if (patient.hemorrhage == 1)
+                {
+                    int x;
+                    Random r = new Random();
+                    x = r.Next(0, 100);
+                    if (x <= 50)
+                    {
+                        patient.hemorrhage = 0;
+                    }
+                    else if (x <= 95 && x > 50)
+                    {
+                        patient.hemorrhage = 1;
+                    }
+                    else
+                    {
+                        patient.hemorrhage = 2;
+                    }
+
+                }
+               else
+                {
+                    int x;
+                    Random r = new Random();
+                    x = r.Next(0, 100);
+                    if (x <= 35)
+                    {
+                        patient.hemorrhage = 0;
+                    }
+                    else if (x <= 95 && x > 35)
+                    {
+                        patient.hemorrhage = 1;
+                    }
+                    else
+                    {
+                        patient.hemorrhage = 2;
+                    }
+                }
+                System.Threading.Thread.Sleep(5000);
+
+
+            }
+            void Consciousnesscheck()
+            {
+                if (patient.hemorrhage == 0 && patient.circulation == 1)
+                {
+                    patient.consciousness = 2;
+                }
+                if (patient.consciousness == 0)
+                {
+                    if (patient.hemorrhage == 2 && patient.circulation == 0)
+                    {
+                        Hemorrhagecheck();
+                        Circulationcheck();
+                    }
+                    else if (patient.hemorrhage == 0 && patient.circulation == 0)
+                    {
+                        Circulationcheck();
+                    }
+                    else if (patient.hemorrhage == 0 && patient.circulation == 1)
+                    {
+                        patient.consciousness = 2;
+                    }
+                    else
+                    {
+                        Hemorrhagecheck();
+                    }
+                }
+                else if (patient.consciousness == 1)
+                {
+                    if (patient.hemorrhage == 0 && patient.circulation == 0)
+                    {
+                        Circulationcheck();
+                    }
+                    else if (patient.hemorrhage == 1 && patient.circulation == 0)
+                    {
+                        Hemorrhagecheck();
+                        Circulationcheck();
+                    }
+                    else
+                    {
+                        Hemorrhagecheck();
+                    }
+
+
+                }
+                else
+                {
+                    patient.consciousness = 2;
+                }
+                System.Threading.Thread.Sleep(2500);
+            }
+            void Airwaycheck()
+            {
+                if (action == "apply torniquet")
+
+                {
+                    if (patient.airway == 0)
+                    {
+                        int x;
+                        Random r = new Random();
+                        x = r.Next(0, 100);
+                        if (x <= 10)
+                        {
+                            patient.airway = 0;
+                        }
+                        else
+                        {
+                            patient.airway = 1;
+                        }
+                    }
+                    else
+                    {
+                        patient.airway = 1;
+                    }
+                    System.Threading.Thread.Sleep(5000);
+                }
+
+            }
+            void Breathingcheck()
+            {
+                if (patient.breathing == 0)
+                {
+                    if (patient.airway == 0)
+                    {
+                        Airwaycheck();
+                    }
+                    else
+                    {
+                        int x;
+                        Random r = new Random();
+                        x = r.Next(0, 100);
+                        if (x <= 10)
+                        {
+                            patient.breathing = 0;
+                        }
+                        else
+                        {
+                            patient.breathing = 1;
+                        }
+                    }
+                }
+                else
+                {
+                    patient.breathing = 1;
+                }
+                System.Threading.Thread.Sleep(2500);
+
+            }
+            void Circulationcheck()
+            {
+                if (patient.circulation == 0)
+                {
+                    if (patient.hemorrhage >= 1 && patient.breathing == 0)
+                    {
+                        Hemorrhagecheck();
+                        Respirationcheck();
+                    }
+                    else if (patient.hemorrhage >= 1 && patient.breathing == 1)
+                    {
+                        Hemorrhagecheck();
+                    }
+                    else if (patient.hemorrhage == 0 && patient.breathing == 0)
+                    {
+                        Respirationcheck();
+                    }
+                    else
+                    {
+                        patient.circulation = 1;
+                    }
+                }
+                else
+                {
+                    patient.circulation = 1;
+                }
+                System.Threading.Thread.Sleep(2500);
+
+            }
+
+            #region action recommended from AI
+            // direction for checking hemorrhage from AI
+            if (action == "apply torniquet")
+            {
+                Hemorrhagecheck();
+            }
+
+
+            // direction for check airway suggestion from AI
+            if (action == "check airway")
+            {
+                Airwaycheck();              
+            }
+
+            // direction for checking consciousness from AI
+            if (action == "check consciousness")
+            {
+                Consciousnesscheck();
+            }
+
+            // direction for checking respiration from AI
+            if (action == "check breathing")
+            {
+                Breathingcheck();
+            }
+
+            // direction from checking circulation from AI
+            if (action == "check circulation")
+            {
+                Circulationcheck();                
+            }
+            #endregion
 
         } // end of Treatment method
 
-
-    }
+    } // end of EMS class
 
 
 
@@ -2646,6 +2876,13 @@ namespace Uttam_Transfer_Of_Care
                 /*  Get the patient variable value here and recommend EMS to perform that action*/
                 /*  Markov decision process will be coded here and based of the output it will 
                     select actions and reply EMS to apply that action*/
+
+                /************************************************************************************************
+                                        
+                                    Had to add MARKOV DECISION PROCESS CODE OVER HERE for suggestion ///         
+
+                **************************************************************************************************/
+
                 hemorrhage = message.hem; consciousness = message.con; airway = message.air;    // Input hemorrhage value for AI from EMS message
                 breathing = message.bre; circulation = message.cir; 
                     
