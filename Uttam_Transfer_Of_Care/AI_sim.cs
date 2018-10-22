@@ -1465,7 +1465,8 @@ namespace Uttam_Transfer_Of_Care
             }
             return 0;
         }
-        //It works
+
+        #region Treatment Procedure Functions starts here
         /***************************** The below is the function for checking hemorrhage level *******************************/
         public int Hemorrhagecheck(/*int hem, int con, int air, int res, int cir*/)
 
@@ -1769,8 +1770,10 @@ namespace Uttam_Transfer_Of_Care
             }
             return circulation;
         }
+        #endregion Treatment Procedures
 
         /************************************************ Command Processes *****************************************/
+        #region 
         public string answer;
         private string ProcessCMD(string newcmd)
         {
@@ -2299,7 +2302,9 @@ namespace Uttam_Transfer_Of_Care
 
             }
             return answer;
+            
         }
+
         private string GetResponse(string query)
         {
             /*Request request = new Request(query, user, bot);
@@ -2402,8 +2407,7 @@ namespace Uttam_Transfer_Of_Care
                 from = "Patient",
                 to = "EMS",
                 subject = "Treatment Required",
-                state = "Initial status available"
-                
+                state = "Initial status available"  
             };
             messages = new List<Message>();
             var Th_PtoEMS = new Thread(() => fPatienttoEMS(message));
@@ -2603,6 +2607,10 @@ namespace Uttam_Transfer_Of_Care
                     };
 
                     Treatment(reply.action);
+
+                    /* We can add speech recognition here to recognize speech that ems had applied the torniquet
+                     which will chnage the status of the patient. Or just can be make apply torniquet button in 
+                     form and perform thos operation*/
                     var Th_EMStoP = new Thread(() => fEMStoP(treatmentinfo));
                 }
 
@@ -2860,6 +2868,7 @@ namespace Uttam_Transfer_Of_Care
     class Max
     {
         public string agentname;
+        SpeechSynthesizer speech = new SpeechSynthesizer();
         public Max(string name) { agentname = name; }
         public message_fMaxtoEMS fAItoEMS;
         int hemorrhage; int consciousness; int airway; int breathing; int circulation;
@@ -2875,7 +2884,8 @@ namespace Uttam_Transfer_Of_Care
             {
                 /*  Get the patient variable value here and recommend EMS to perform that action*/
                 /*  Markov decision process will be coded here and based of the output it will 
-                    select actions and reply EMS to apply that action*/
+                    select actions and reply EMS to apply that action
+                    Make that suggestion to cahneg action automatically*/
 
                 /************************************************************************************************
                                         
@@ -2887,18 +2897,44 @@ namespace Uttam_Transfer_Of_Care
                 breathing = message.bre; circulation = message.cir; 
                     
                 
-                Message reply = new Message                                     // writing a reply i response to EMS message
+                Message reply = new Message                                     // writing a reply in response to EMS message
                 {
                     from = "Max",
                     to = "EMS",
                     subject = "Treatment Recommended",
-                    action = " apply torniquet"                         // neccesary recommended answer will be mentioned here
+                    action = "apply torniquet"                         // neccesary recommended answer will be mentioned here
                 };
-
+                var Th_speakAI = new Thread(() => speakAI(reply));
+                Th_speakAI.Start();
                 var Th_AItoEMS = new Thread(() => fAItoEMS(reply));               // sending message from AI to EMS
                 Th_AItoEMS.Start();
 
             }  // end of Treatment Required if loop
+
+            // Speaking function for EMS for which action to take
+            void speakAI(Message reply)
+            {
+                if(reply.action == " apply torniquet")
+                {
+                    speech.SpeakAsync(" You should probably " +reply.action );
+                }
+                if (reply.action == " check consciousness")
+                {
+                    speech.SpeakAsync(" You should probably " + reply.action);
+                }
+                if (reply.action == " check airway")
+                {
+                    speech.SpeakAsync(" You should probably " + reply.action);
+                }
+                if (reply.action == " check breathing")
+                {
+                    speech.SpeakAsync(" You should probably " + reply.action);
+                }
+                if (reply.action == " check circulation")
+                {
+                    speech.SpeakAsync(" You should probably " + reply.action);
+                }
+            }
         }
 
     }
