@@ -34,6 +34,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Uttam_Transfer_Of_Care.Controller</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AIMLbot">
       <HintPath>.\AIMLbot.dll</HintPath>

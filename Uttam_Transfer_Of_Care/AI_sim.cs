@@ -27,10 +27,12 @@ namespace Uttam_Transfer_Of_Care
     delegate void message_fMaxtoEMS(Message msg);
     delegate void message_fEMStoP(Message msg);
 
+
     public partial class AI_sim : Form
     {
         public static DateTime starttime;
 
+        
         // Uttam Model Start
         #region Uttam Sim Model
         //Adding Speech Recogniton Engine
@@ -66,7 +68,7 @@ namespace Uttam_Transfer_Of_Care
         {
             InitializeComponent();
         }
-
+        
         // Adding Speech dictionary. Speech for which it will be giving responses will be added in dictionary
 
         private Dictionary<string, string> command = new Dictionary<string, string>();
@@ -379,7 +381,7 @@ namespace Uttam_Transfer_Of_Care
 
         }
         // Calling other forms
-
+        #region hemorrhage command
         Uttam_Transfer_Of_Care.inputform Inputform = new Uttam_Transfer_Of_Care.inputform();
         Hidden_form underlying_form = new Hidden_form();
         AI_Interface aI_Interface = new AI_Interface();
@@ -1077,6 +1079,10 @@ namespace Uttam_Transfer_Of_Care
             }
         }
 
+        #endregion hemorrhage recog
+
+        #region value adding metircs
+
         /************************************************************ Recognition Event ***************************************************************/
         private void Recognize_circulation_command_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
@@ -1465,7 +1471,7 @@ namespace Uttam_Transfer_Of_Care
             }
             return 0;
         }
-
+        #endregion value adding metrics
         #region Treatment Procedure Functions starts here
         /***************************** The below is the function for checking hemorrhage level *******************************/
         public int Hemorrhagecheck(/*int hem, int con, int air, int res, int cir*/)
@@ -1773,7 +1779,7 @@ namespace Uttam_Transfer_Of_Care
         #endregion Treatment Procedures
 
         /************************************************ Command Processes *****************************************/
-        #region 
+        #region command answer
         public string answer;
         private string ProcessCMD(string newcmd)
         {
@@ -2348,8 +2354,7 @@ namespace Uttam_Transfer_Of_Care
 
         }
     }
-
-
+    
 
 
     // creating a new class for controlling the simulation
@@ -2391,15 +2396,13 @@ namespace Uttam_Transfer_Of_Care
 
         AI_sim ai_Sim = new AI_sim();
 
-
          public Patient(string name) { agentname = name; }
 
             // creating a new thread to run Patient agent independently
          public void Run()
-        {
+         {
             Thread T0 = new Thread(assignvalue);
             T0.Start();
-
 
             // creating a message that will send its primary information to the EMS
             Message message = new Message
@@ -2413,7 +2416,7 @@ namespace Uttam_Transfer_Of_Care
             var Th_PtoEMS = new Thread(() => fPatienttoEMS(message));
             Th_PtoEMS.Start();
 
-        }
+         }
 
         /*  assigning initial patient attributes randomly 
             Age [0,100]
@@ -2535,8 +2538,7 @@ namespace Uttam_Transfer_Of_Care
             ai_Sim.sim_finalconc_box.Text = Convert.ToString(consciousness);
             ai_Sim.sim_finalhem_box.Text = Convert.ToString(hemorrhage);
         }
-
-        
+  
        
     }  // end of Patient class
 
@@ -2800,7 +2802,7 @@ namespace Uttam_Transfer_Of_Care
                     if (patient.hemorrhage >= 1 && patient.breathing == 0)
                     {
                         Hemorrhagecheck();
-                        Respirationcheck();
+                        Breathingcheck();
                     }
                     else if (patient.hemorrhage >= 1 && patient.breathing == 1)
                     {
@@ -2808,7 +2810,7 @@ namespace Uttam_Transfer_Of_Care
                     }
                     else if (patient.hemorrhage == 0 && patient.breathing == 0)
                     {
-                        Respirationcheck();
+                        Breathingcheck();
                     }
                     else
                     {
@@ -2957,4 +2959,5 @@ namespace Uttam_Transfer_Of_Care
         public int bre { get; set; }
         public int cir { get; set; }
     }
+    #endregion
 }
