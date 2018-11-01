@@ -60,12 +60,23 @@
             this.label3 = new System.Windows.Forms.Label();
             this.sim_age_label = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.apply_torniquet = new System.Windows.Forms.Button();
+            this.give_drugshem = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.give_drugscon = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.give_drugsair = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.give_drugsbre = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.give_drugscir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AI_patient_transfer_button
             // 
             this.AI_patient_transfer_button.Location = new System.Drawing.Point(329, 613);
-            this.AI_patient_transfer_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AI_patient_transfer_button.Margin = new System.Windows.Forms.Padding(2);
             this.AI_patient_transfer_button.Name = "AI_patient_transfer_button";
             this.AI_patient_transfer_button.Size = new System.Drawing.Size(260, 65);
             this.AI_patient_transfer_button.TabIndex = 99;
@@ -77,7 +88,7 @@
             // 
             this.sim_finalconc_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sim_finalconc_box.Location = new System.Drawing.Point(759, 550);
-            this.sim_finalconc_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sim_finalconc_box.Margin = new System.Windows.Forms.Padding(2);
             this.sim_finalconc_box.Multiline = true;
             this.sim_finalconc_box.Name = "sim_finalconc_box";
             this.sim_finalconc_box.Size = new System.Drawing.Size(140, 30);
@@ -89,7 +100,7 @@
             // 
             this.sim_finalair_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sim_finalair_box.Location = new System.Drawing.Point(613, 550);
-            this.sim_finalair_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sim_finalair_box.Margin = new System.Windows.Forms.Padding(2);
             this.sim_finalair_box.Multiline = true;
             this.sim_finalair_box.Name = "sim_finalair_box";
             this.sim_finalair_box.Size = new System.Drawing.Size(126, 30);
@@ -101,7 +112,7 @@
             // 
             this.sim_finalbreath_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sim_finalbreath_box.Location = new System.Drawing.Point(469, 550);
-            this.sim_finalbreath_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sim_finalbreath_box.Margin = new System.Windows.Forms.Padding(2);
             this.sim_finalbreath_box.Multiline = true;
             this.sim_finalbreath_box.Name = "sim_finalbreath_box";
             this.sim_finalbreath_box.Size = new System.Drawing.Size(122, 30);
@@ -113,7 +124,7 @@
             // 
             this.sim_finalcirc_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sim_finalcirc_box.Location = new System.Drawing.Point(325, 550);
-            this.sim_finalcirc_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sim_finalcirc_box.Margin = new System.Windows.Forms.Padding(2);
             this.sim_finalcirc_box.Multiline = true;
             this.sim_finalcirc_box.Name = "sim_finalcirc_box";
             this.sim_finalcirc_box.Size = new System.Drawing.Size(122, 30);
@@ -126,7 +137,7 @@
             this.sim_finalhem_box.AcceptsReturn = true;
             this.sim_finalhem_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sim_finalhem_box.Location = new System.Drawing.Point(181, 550);
-            this.sim_finalhem_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sim_finalhem_box.Margin = new System.Windows.Forms.Padding(2);
             this.sim_finalhem_box.Multiline = true;
             this.sim_finalhem_box.Name = "sim_finalhem_box";
             this.sim_finalhem_box.Size = new System.Drawing.Size(122, 30);
@@ -204,7 +215,7 @@
             // 
             this.sim_intconc_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sim_intconc_box.Location = new System.Drawing.Point(759, 201);
-            this.sim_intconc_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sim_intconc_box.Margin = new System.Windows.Forms.Padding(2);
             this.sim_intconc_box.Multiline = true;
             this.sim_intconc_box.Name = "sim_intconc_box";
             this.sim_intconc_box.Size = new System.Drawing.Size(140, 30);
@@ -227,7 +238,7 @@
             // 
             this.sim_intair_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sim_intair_box.Location = new System.Drawing.Point(613, 201);
-            this.sim_intair_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sim_intair_box.Margin = new System.Windows.Forms.Padding(2);
             this.sim_intair_box.Multiline = true;
             this.sim_intair_box.Name = "sim_intair_box";
             this.sim_intair_box.Size = new System.Drawing.Size(126, 30);
@@ -250,7 +261,7 @@
             // 
             this.sim_intbreath_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sim_intbreath_box.Location = new System.Drawing.Point(469, 201);
-            this.sim_intbreath_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sim_intbreath_box.Margin = new System.Windows.Forms.Padding(2);
             this.sim_intbreath_box.Multiline = true;
             this.sim_intbreath_box.Name = "sim_intbreath_box";
             this.sim_intbreath_box.Size = new System.Drawing.Size(122, 30);
@@ -273,7 +284,7 @@
             // 
             this.sim_intcirc_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sim_intcirc_box.Location = new System.Drawing.Point(325, 201);
-            this.sim_intcirc_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sim_intcirc_box.Margin = new System.Windows.Forms.Padding(2);
             this.sim_intcirc_box.Multiline = true;
             this.sim_intcirc_box.Name = "sim_intcirc_box";
             this.sim_intcirc_box.Size = new System.Drawing.Size(122, 30);
@@ -297,7 +308,7 @@
             this.sim_inthem_box.AcceptsReturn = true;
             this.sim_inthem_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sim_inthem_box.Location = new System.Drawing.Point(181, 201);
-            this.sim_inthem_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sim_inthem_box.Margin = new System.Windows.Forms.Padding(2);
             this.sim_inthem_box.Multiline = true;
             this.sim_inthem_box.Name = "sim_inthem_box";
             this.sim_inthem_box.Size = new System.Drawing.Size(122, 30);
@@ -342,7 +353,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(29, 312);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(870, 185);
@@ -426,11 +437,134 @@
             this.label1.Text = "Injury:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // apply_torniquet
+            // 
+            this.apply_torniquet.Location = new System.Drawing.Point(1010, 94);
+            this.apply_torniquet.Name = "apply_torniquet";
+            this.apply_torniquet.Size = new System.Drawing.Size(125, 33);
+            this.apply_torniquet.TabIndex = 100;
+            this.apply_torniquet.Text = "Apply Torniquet";
+            this.apply_torniquet.UseVisualStyleBackColor = true;
+            this.apply_torniquet.Click += new System.EventHandler(this.apply_torniquet_Click);
+            // 
+            // give_drugshem
+            // 
+            this.give_drugshem.Location = new System.Drawing.Point(1010, 143);
+            this.give_drugshem.Name = "give_drugshem";
+            this.give_drugshem.Size = new System.Drawing.Size(125, 33);
+            this.give_drugshem.TabIndex = 101;
+            this.give_drugshem.Text = "Give Drugs";
+            this.give_drugshem.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(1009, 37);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(126, 45);
+            this.label17.TabIndex = 102;
+            this.label17.Text = "Hemmorhage Treatment";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label18
+            // 
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(1009, 191);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(137, 45);
+            this.label18.TabIndex = 105;
+            this.label18.Text = "Consciousness Treatment";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label18.Click += new System.EventHandler(this.label18_Click);
+            // 
+            // give_drugscon
+            // 
+            this.give_drugscon.Location = new System.Drawing.Point(1010, 249);
+            this.give_drugscon.Name = "give_drugscon";
+            this.give_drugscon.Size = new System.Drawing.Size(125, 33);
+            this.give_drugscon.TabIndex = 104;
+            this.give_drugscon.Text = "Give Drugs";
+            this.give_drugscon.UseVisualStyleBackColor = true;
+            this.give_drugscon.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label19
+            // 
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(1009, 300);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(137, 45);
+            this.label19.TabIndex = 107;
+            this.label19.Text = "Airway Treatment";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // give_drugsair
+            // 
+            this.give_drugsair.Location = new System.Drawing.Point(1010, 358);
+            this.give_drugsair.Name = "give_drugsair";
+            this.give_drugsair.Size = new System.Drawing.Size(125, 33);
+            this.give_drugsair.TabIndex = 106;
+            this.give_drugsair.Text = "Give Drugs";
+            this.give_drugsair.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(1186, 37);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(137, 45);
+            this.label20.TabIndex = 109;
+            this.label20.Text = "Breathing Treatment";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // give_drugsbre
+            // 
+            this.give_drugsbre.Location = new System.Drawing.Point(1187, 95);
+            this.give_drugsbre.Name = "give_drugsbre";
+            this.give_drugsbre.Size = new System.Drawing.Size(125, 33);
+            this.give_drugsbre.TabIndex = 108;
+            this.give_drugsbre.Text = "Give Drugs";
+            this.give_drugsbre.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(1195, 197);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(137, 45);
+            this.label21.TabIndex = 111;
+            this.label21.Text = "Circulation Treatment";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // give_drugscir
+            // 
+            this.give_drugscir.Location = new System.Drawing.Point(1196, 255);
+            this.give_drugscir.Name = "give_drugscir";
+            this.give_drugscir.Size = new System.Drawing.Size(125, 33);
+            this.give_drugscir.TabIndex = 110;
+            this.give_drugscir.Text = "Give Drugs";
+            this.give_drugscir.UseVisualStyleBackColor = true;
+            // 
             // AI_sim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 669);
+            this.ClientSize = new System.Drawing.Size(1380, 669);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.give_drugscir);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.give_drugsbre);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.give_drugsair);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.give_drugscon);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.give_drugshem);
+            this.Controls.Add(this.apply_torniquet);
             this.Controls.Add(this.AI_patient_transfer_button);
             this.Controls.Add(this.sim_finalconc_box);
             this.Controls.Add(this.sim_finalair_box);
@@ -463,6 +597,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.sim_age_label);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "AI_sim";
             this.Text = "AI_sim";
             this.Load += new System.EventHandler(this.AI_sim_Load);
@@ -505,5 +640,16 @@
         public System.Windows.Forms.TextBox sim_finalbreath_box;
         public System.Windows.Forms.TextBox sim_finalcirc_box;
         public System.Windows.Forms.TextBox sim_finalhem_box;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        public System.Windows.Forms.Button apply_torniquet;
+        public System.Windows.Forms.Button give_drugshem;
+        public System.Windows.Forms.Button give_drugscon;
+        public System.Windows.Forms.Button give_drugsair;
+        public System.Windows.Forms.Button give_drugsbre;
+        public System.Windows.Forms.Button give_drugscir;
     }
 }

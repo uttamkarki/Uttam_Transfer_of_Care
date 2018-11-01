@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +27,7 @@ namespace Uttam_Transfer_Of_Care
     delegate void message_fEMStoMax(Message msg);
     delegate void message_fMaxtoEMS(Message msg);
     delegate void message_fEMStoP(Message msg);
-
-
+    
     public partial class AI_sim : Form
     {
         public static DateTime starttime;
@@ -363,6 +363,7 @@ namespace Uttam_Transfer_Of_Care
         public int a3;
         public int a4;
         public int a5;
+        
 
         Stopwatch stopwatch = new Stopwatch();
         private void AI_sim_Load(object sender, EventArgs e)
@@ -2353,11 +2354,34 @@ namespace Uttam_Transfer_Of_Care
         {
 
         }
-    }
-    
 
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void apply_torniquet_Click(object sender, EventArgs e)
+        {
+        }
+        
+    }
+    #endregion
+
+
+    #region Agent Based Modeling
 
     // creating a new class for controlling the simulation
+    #region Simulation Controller
     class Controller
     {
         static void Main(string[] args)
@@ -2381,8 +2405,10 @@ namespace Uttam_Transfer_Of_Care
             T_agentAI.Start();
         }
     }
+    #endregion
 
     // Creating patient agent as a new class
+    #region Patient Agent
     class Patient
     {
 
@@ -2541,14 +2567,16 @@ namespace Uttam_Transfer_Of_Care
   
        
     }  // end of Patient class
-
+    #endregion
 
 
 
     // Creating EMS agent 
+    #region EMS Agent
     class EMS
     {
         Patient patient = new Patient("patient");
+        AI_sim ai_Sim = new AI_sim();
         public string agentname;
         public EMS(string name) { agentname = name; }
         public message_fEMStoMax fEMStoAI;
@@ -2567,7 +2595,7 @@ namespace Uttam_Transfer_Of_Care
                 {
                     if(message.state == "Initial status available")  
                     {
-
+                        
                         /*  Execute the code over here */
                         /* EMS again have to generate a message for AI*/
 
@@ -2607,7 +2635,7 @@ namespace Uttam_Transfer_Of_Care
                         action = "applied torniquet"
 
                     };
-
+                    DisplayAction(reply.action);
                     Treatment(reply.action);
 
                     /* We can add speech recognition here to recognize speech that ems had applied the torniquet
@@ -2618,6 +2646,72 @@ namespace Uttam_Transfer_Of_Care
 
             }
         } // end of Receive_from_AI(Message reply)
+
+        // This method show the operation recommmended by AI into the user form
+
+            // change the color of button after being recommended
+        public void DisplayAction(string action)
+        {
+            if (action == "apply torniquet")
+            {
+                ai_Sim.apply_torniquet.BackColor = Color.Green;
+            }
+
+            if (action == "check consciousness")
+            {
+                ai_Sim.give_drugscon.BackColor = Color.Green;
+            }
+
+            if (action == "check airway")
+            {
+                ai_Sim.give_drugsair.BackColor = Color.Green;
+            }
+
+            if (action == "check breathing")
+            {
+                ai_Sim.give_drugsbre.BackColor = Color.Green;
+            }
+
+            if (action == "check circulation")
+            {
+                ai_Sim.give_drugscir.BackColor = Color.Green;
+            }
+            ai_Sim.apply_torniquet.Click += new EventHandler(apply_torniquet);
+            ai_Sim.give_drugshem.Click += new EventHandler(give_drugshem);
+            ai_Sim.give_drugscon.Click += new EventHandler(give_drugscon);
+            ai_Sim.give_drugsair.Click += new EventHandler(give_drugsair);
+            ai_Sim.give_drugscir.Click += new EventHandler(give_drugscir);
+            ai_Sim.give_drugsbre.Click += new EventHandler(give_drugsbre);
+
+        } // end of Display Action function
+
+        // event triggered functions
+        #region button clicked event triggered
+        private void apply_torniquet(object sender, EventArgs e)
+        {
+            Treatment("apply torniquet");
+        }
+        private void give_drugshem(object sender, EventArgs e)
+        {
+            Treatment("give drugs ");
+        }
+        private void give_drugscon(object sender, EventArgs e)
+        {
+            Treatment("check consciousness");
+        }
+        private void give_drugsair(object sender, EventArgs e)
+        {
+            Treatment("check airway");
+        }
+        private void give_drugscir(object sender, EventArgs e)
+        {
+            Treatment("check circulation");
+        }
+        private void give_drugsbre(object sender, EventArgs e)
+        {
+            Treatment("check breathing");
+        }
+        #endregion
 
         public void Treatment(string action)
         {
@@ -2825,7 +2919,7 @@ namespace Uttam_Transfer_Of_Care
 
             }
 
-            #region action recommended from AI
+            #region action recommended from AI  checking hemorrhage.....
             // direction for checking hemorrhage from AI
             if (action == "apply torniquet")
             {
@@ -2861,12 +2955,13 @@ namespace Uttam_Transfer_Of_Care
         } // end of Treatment method
 
     } // end of EMS class
-
+    #endregion
 
 
 
 
     // Creating AI agent. It will give instruction what action to take by EMS for treatment
+    #region AI Agent
     class Max
     {
         public string agentname;
@@ -2940,7 +3035,7 @@ namespace Uttam_Transfer_Of_Care
         }
 
     }
-
+    #endregion
 
 
 
@@ -2959,5 +3054,6 @@ namespace Uttam_Transfer_Of_Care
         public int bre { get; set; }
         public int cir { get; set; }
     }
+    
     #endregion
 }
