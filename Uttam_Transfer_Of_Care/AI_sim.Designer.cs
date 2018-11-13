@@ -52,7 +52,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.sim_injury_location_label = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.sim_injury_type_label = new System.Windows.Forms.Label();
@@ -71,6 +70,8 @@
             this.give_drugsbre = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.give_drugscir = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AI_patient_transfer_button
@@ -144,6 +145,7 @@
             this.sim_finalhem_box.TabIndex = 94;
             this.sim_finalhem_box.Text = "1";
             this.sim_finalhem_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sim_finalhem_box.TextChanged += new System.EventHandler(this.sim_finalhem_box_TextChanged);
             // 
             // label11
             // 
@@ -220,7 +222,6 @@
             this.sim_intconc_box.Name = "sim_intconc_box";
             this.sim_intconc_box.Size = new System.Drawing.Size(140, 30);
             this.sim_intconc_box.TabIndex = 87;
-            this.sim_intconc_box.Text = "1";
             this.sim_intconc_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
@@ -243,7 +244,6 @@
             this.sim_intair_box.Name = "sim_intair_box";
             this.sim_intair_box.Size = new System.Drawing.Size(126, 30);
             this.sim_intair_box.TabIndex = 85;
-            this.sim_intair_box.Text = "1";
             this.sim_intair_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
@@ -266,8 +266,8 @@
             this.sim_intbreath_box.Name = "sim_intbreath_box";
             this.sim_intbreath_box.Size = new System.Drawing.Size(122, 30);
             this.sim_intbreath_box.TabIndex = 83;
-            this.sim_intbreath_box.Text = "1";
             this.sim_intbreath_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sim_intbreath_box.TextChanged += new System.EventHandler(this.sim_intbreath_box_TextChanged);
             // 
             // label9
             // 
@@ -289,8 +289,8 @@
             this.sim_intcirc_box.Name = "sim_intcirc_box";
             this.sim_intcirc_box.Size = new System.Drawing.Size(122, 30);
             this.sim_intcirc_box.TabIndex = 81;
-            this.sim_intcirc_box.Text = "1";
             this.sim_intcirc_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sim_intcirc_box.TextChanged += new System.EventHandler(this.sim_intcirc_box_TextChanged);
             // 
             // label7
             // 
@@ -313,7 +313,7 @@
             this.sim_inthem_box.Name = "sim_inthem_box";
             this.sim_inthem_box.Size = new System.Drawing.Size(122, 30);
             this.sim_inthem_box.TabIndex = 79;
-            this.sim_inthem_box.Text = "1";
+            this.sim_inthem_box.Text = " ";
             this.sim_inthem_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.sim_inthem_box.TextChanged += new System.EventHandler(this.sim_inthem_box_TextChanged);
             // 
@@ -350,16 +350,6 @@
             this.label2.Text = "Treatment";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(29, 312);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(870, 185);
-            this.textBox1.TabIndex = 75;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
-            // 
             // sim_injury_location_label
             // 
             this.sim_injury_location_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -370,6 +360,7 @@
             this.sim_injury_location_label.TabIndex = 74;
             this.sim_injury_location_label.Text = "XX";
             this.sim_injury_location_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.sim_injury_location_label.Click += new System.EventHandler(this.sim_injury_location_label_Click);
             // 
             // label4
             // 
@@ -396,13 +387,14 @@
             // sim_gender_label
             // 
             this.sim_gender_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sim_gender_label.Location = new System.Drawing.Point(289, 18);
+            this.sim_gender_label.Location = new System.Drawing.Point(432, 18);
             this.sim_gender_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sim_gender_label.Name = "sim_gender_label";
             this.sim_gender_label.Size = new System.Drawing.Size(144, 33);
             this.sim_gender_label.TabIndex = 71;
             this.sim_gender_label.Text = "XX";
             this.sim_gender_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.sim_gender_label.Click += new System.EventHandler(this.sim_gender_label_Click);
             // 
             // label3
             // 
@@ -455,6 +447,7 @@
             this.give_drugshem.TabIndex = 101;
             this.give_drugshem.Text = "Give Drugs";
             this.give_drugshem.UseVisualStyleBackColor = true;
+            this.give_drugshem.Click += new System.EventHandler(this.give_drugshem_Click_1);
             // 
             // label17
             // 
@@ -508,6 +501,7 @@
             this.give_drugsair.TabIndex = 106;
             this.give_drugsair.Text = "Give Drugs";
             this.give_drugsair.UseVisualStyleBackColor = true;
+            this.give_drugsair.Click += new System.EventHandler(this.give_drugsair_Click_1);
             // 
             // label20
             // 
@@ -528,6 +522,7 @@
             this.give_drugsbre.TabIndex = 108;
             this.give_drugsbre.Text = "Give Drugs";
             this.give_drugsbre.UseVisualStyleBackColor = true;
+            this.give_drugsbre.Click += new System.EventHandler(this.give_drugsbre_Click);
             // 
             // label21
             // 
@@ -548,12 +543,36 @@
             this.give_drugscir.TabIndex = 110;
             this.give_drugscir.Text = "Give Drugs";
             this.give_drugscir.UseVisualStyleBackColor = true;
+            this.give_drugscir.Click += new System.EventHandler(this.give_drugscir_Click_1);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(29, 315);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(868, 164);
+            this.listBox1.TabIndex = 112;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.GreenYellow;
+            this.button1.Location = new System.Drawing.Point(1060, 505);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(216, 55);
+            this.button1.TabIndex = 113;
+            this.button1.Text = "Start Simulation";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // AI_sim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1380, 669);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.give_drugscir);
             this.Controls.Add(this.label20);
@@ -589,7 +608,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.sim_injury_location_label);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.sim_injury_type_label);
@@ -622,7 +640,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label sim_injury_location_label;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label sim_injury_type_label;
@@ -651,5 +668,7 @@
         public System.Windows.Forms.Button give_drugsair;
         public System.Windows.Forms.Button give_drugsbre;
         public System.Windows.Forms.Button give_drugscir;
+        public System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
