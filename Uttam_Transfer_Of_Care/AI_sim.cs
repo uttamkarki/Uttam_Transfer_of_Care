@@ -167,8 +167,10 @@ namespace Uttam_Transfer_Of_Care
         }
 
         #endregion
-        
-        // Creating new patient agent         
+
+        // Creating new patient agent   
+
+        #region Create Patient
         public void patient()
         {
             if (from == "called by main function")
@@ -300,8 +302,9 @@ namespace Uttam_Transfer_Of_Care
                 this.Invoke(del);
 
             }   // Assign Value method end...
-
+                       
             // method to update user interface with most recent patient attributes
+            #region update patient attributes
             void UIController()
             {
                 if (sim_inthem_box.Text == " ")
@@ -327,10 +330,11 @@ namespace Uttam_Transfer_Of_Care
                 sim_finalconc_box.Text = Convert.ToString(consciousness);
                 sim_finalhem_box.Text = Convert.ToString(hemorrhage);
             }
+            #endregion
 
         }  // end of Patient agent 
+        #endregion
 
-        
         // EMS Agent Start
         public void Ems()
         {
@@ -370,7 +374,7 @@ namespace Uttam_Transfer_Of_Care
 
         } // End of EMS agent
 
-        
+
         // AI Agent Start
         SpeechRecognitionEngine recognizer = new SpeechRecognitionEngine();
         SpeechSynthesizer speech = new SpeechSynthesizer();
