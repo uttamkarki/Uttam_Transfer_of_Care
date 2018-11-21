@@ -669,6 +669,7 @@
             this.Output_actual_patient_age.Name = "Output_actual_patient_age";
             this.Output_actual_patient_age.Size = new System.Drawing.Size(454, 44);
             this.Output_actual_patient_age.TabIndex = 88;
+            this.Output_actual_patient_age.TextChanged += new System.EventHandler(this.Output_actual_patient_age_TextChanged);
             // 
             // label8
             // 

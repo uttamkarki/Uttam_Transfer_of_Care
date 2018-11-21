@@ -36,7 +36,7 @@
             this.rb_breathing_good = new System.Windows.Forms.RadioButton();
             this.radioButton25 = new System.Windows.Forms.RadioButton();
             this.rb_circrestart = new System.Windows.Forms.RadioButton();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.treatment_timeline_result = new System.Windows.Forms.ListBox();
             this.rb_circgood = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rb_med_fluids = new System.Windows.Forms.RadioButton();
@@ -192,15 +192,15 @@
             this.rb_circrestart.Text = "Heart restarted (defib)";
             this.rb_circrestart.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // treatment_timeline_result
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 25;
-            this.listBox1.Location = new System.Drawing.Point(16, 390);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(514, 904);
-            this.listBox1.TabIndex = 119;
+            this.treatment_timeline_result.FormattingEnabled = true;
+            this.treatment_timeline_result.ItemHeight = 25;
+            this.treatment_timeline_result.Location = new System.Drawing.Point(16, 390);
+            this.treatment_timeline_result.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.treatment_timeline_result.Name = "treatment_timeline_result";
+            this.treatment_timeline_result.Size = new System.Drawing.Size(514, 904);
+            this.treatment_timeline_result.TabIndex = 119;
             // 
             // rb_circgood
             // 
@@ -959,7 +959,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2390, 1506);
             this.Controls.Add(this.BreathingGroup);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.treatment_timeline_result);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.CirculationGroup);
@@ -1032,7 +1032,7 @@
         public System.Windows.Forms.RadioButton rb_breathing_good;
         public System.Windows.Forms.RadioButton radioButton25;
         public System.Windows.Forms.RadioButton rb_circrestart;
-        public System.Windows.Forms.ListBox listBox1;
+        public System.Windows.Forms.ListBox treatment_timeline_result;
         public System.Windows.Forms.RadioButton rb_circgood;
         private System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.RadioButton rb_med_fluids;

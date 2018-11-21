@@ -115,6 +115,12 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="treatment_app_message.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="treatment_app_message.Designer.cs">
+      <DependentUpon>treatment_app_message.cs</DependentUpon>
+    </Compile>
     <Compile Include="Simulator_agent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="treatment_timeline\ObjectCollection.cs" />
     <EmbeddedResource Include="AI_Interface.resx">
       <DependentUpon>AI_Interface.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="treatment_app_message.resx">
+      <DependentUpon>treatment_app_message.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hidden_form.resx">
       <DependentUpon>Hidden_form.cs</DependentUpon>
@@ -179,6 +189,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Simulator_agent.resx">
       <DependentUpon>Simulator_agent.cs</DependentUpon>
@@ -227,6 +238,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_ajax_processing.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -69,19 +69,32 @@ namespace Uttam_Transfer_Of_Care
         public static string var_injury_location_text = "no entry";
         public static DateTime endtime;
         public static int Size_multiplier = 1;
+        private ListBox.ObjectCollection items;
 
         #endregion
 
-        public inputform()
+        public inputform(ListBox.ObjectCollection objectCollection)
         {
             InitializeComponent();
+            this.treatment_timeline_result.Items.AddRange(objectCollection);
         }
+
 
         private void Inputform_Load(object sender, EventArgs e)
         {
             //var Screenres = System.Windows.SystemParameters.PrimaryScreenHeight;
             var screenheight = Screen.PrimaryScreen.Bounds.Height;
             var screenwidth = Screen.PrimaryScreen.Bounds.Width;
+
+            if (AI_sim.AI_assist == true)
+            {
+                // for (int i = 0; i < AI_sim.Treatment_timeline.Items.Count; i++)
+                // {
+                //     treatment_timeline_result.Items.Add(lb1.Items[i].ToString());
+                // }
+                
+            }
+            //treatment_timeline_result.Items.Add(AI_sim.treatment_info_to_transfer);
 
             #region make shaped buttons  
 

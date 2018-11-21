@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace Uttam_Transfer_Of_Care
 {
-    public partial class AI_Interface : Form
+    public partial class Message_form : Form
     {
-        public AI_Interface()
+        public Message_form()
         {
             InitializeComponent();
         }
 
-        private void AI_Interface_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
