@@ -39,6 +39,9 @@ namespace Uttam_Transfer_Of_Care
         public static int breath2_count = 0;
         public static int circ1_count = 0;
         public static int circ2_count = 0;
+        public static int total_success_count = 0;
+        public static int total_partial_success_count = 0;
+        public static int total_unsuccess_count = 0;
 
         #endregion
 
@@ -668,10 +671,10 @@ namespace Uttam_Transfer_Of_Care
                 else if (hemorrhage == 1)
                 {
                     treatment_timeline.Items.Add("light Bleeding");
-                    int hem1to0_cure_probability = 90;
-                    int hem1to1_cure_probability = 10;
+                    int hem1to0_cure_probability = 90 - (5 * hem1_count);
+                    int hem1to1_cure_probability = 10 + (5 * hem1_count);
                     int hem1_cure_cumprob = hem1to1_cure_probability + hem1to0_cure_probability;
-                    
+
                     int x;
                     Random r = new Random();
                     x = r.Next(0, 101);
@@ -679,24 +682,25 @@ namespace Uttam_Transfer_Of_Care
                     {
                         hemorrhage = 0;
                         treatment_timeline.Items.Add("Bleeding stopped");
+                        total_success_count = total_success_count + 1;
                     }
-                    else  // if (x <= hem1_cure_cumprob && x > hem1to0_cure_probability) - commented out but correct if other else included
+                    else  
                     {
                         hemorrhage = 1;
+                        total_unsuccess_count = total_unsuccess_count + 1;
                     }
-                    //else
-                    //{
-                    //    hemorrhage = 2;
-                    //}
+
+                    hem1_count = hem1_count + 1;
                 }
                 else // ...if hemorrhage = 2
                 {
                     treatment_timeline.Items.Add("heavy bleeding");
-                    int hem2to0_cure_probability = 30;
-                    int hem2to1_cure_probability = 60;
-                    int hem2to2_cure_probability = 10;
+                    int hem2to0_cure_probability = 30 - (3 * hem1_count);
+                    int hem2to1_cure_probability = 60 - (3 * hem1_count);
+                    int hem2to2_cure_probability = 10 + (6 * hem1_count);
                     int hem2to1_cumprob = hem2to1_cure_probability + hem2to0_cure_probability;
                     int hem2_cure_cumprob = hem2to1_cure_probability + hem2to0_cure_probability + hem2to2_cure_probability;
+
                     int x;
                     Random r = new Random();
                     x = r.Next(0, 101);
@@ -704,17 +708,22 @@ namespace Uttam_Transfer_Of_Care
                     {
                         hemorrhage = 0;
                         treatment_timeline.Items.Add("Bleeding stopped");
+                        total_success_count = total_success_count + 1;
                     }
                     else if (x <= hem2to1_cumprob && x > hem2to0_cure_probability)
                     {
                         treatment_timeline.Items.Add("Bleeding partially stopped");
                         hemorrhage = 1;
+                        total_partial_success_count = total_partial_success_count + 1;
                     }
                     else
                     {
                         treatment_timeline.Items.Add("Bleeding not stopped");
                         hemorrhage = 2;
+                        total_unsuccess_count = total_unsuccess_count + 1;
                     }
+
+                    hem2_count = hem2_count + 1;
                 }
 
                 #region show patient treating message
@@ -735,6 +744,14 @@ namespace Uttam_Transfer_Of_Care
             #region consciousness check
             async void Consciousnesscheck()
             {
+                int conc1to0_cure_probability;
+                int conc1to1_cure_probability = 0;
+                int conc2to0_cure_probability = 10;
+
+                int conc2to1_cure_probability = 50;
+                int conc2to2_cure_probability = 40;
+                int conc2to1_cumprob = conc2to1_cure_probability + conc2to0_cure_probability;
+
                 treatment_timeline.Items.Add("Checking Consciousness");
                 if (consciousness == 0)
                 {
@@ -744,8 +761,18 @@ namespace Uttam_Transfer_Of_Care
                 else if (consciousness == 1)
                 {
                     treatment_timeline.Items.Add("Patient Partially Conscious");
-                    int conc1to0_cure_probability = 60;
-                    int conc1to1_cure_probability = 40;
+
+                    if (breathing == 0 && hemorrhage == 0 && airway == 0 && circulation == 0)
+                    {
+                        conc1to0_cure_probability = 60 + (5 * conc1_count);
+                        conc1to1_cure_probability = 40 - (5 * conc1_count);
+                    }
+                    else
+                    {
+                        conc1to0_cure_probability = 60 - (5 * conc1_count);
+                        conc1to1_cure_probability = 40 + (5 * conc1_count);
+                    }
+
                     int conc1_cure_cumprob = conc1to1_cure_probability + conc1to0_cure_probability;
                     int x;
 
@@ -755,21 +782,35 @@ namespace Uttam_Transfer_Of_Care
                     {
                         consciousness = 0;
                         treatment_timeline.Items.Add("Full consciousness restored");
+                        total_success_count = total_success_count + 1;
                     }
                     else  
                     {
                         consciousness = 1;
                         treatment_timeline.Items.Add("Patient Still not fully conscious");
+                        total_unsuccess_count = total_unsuccess_count + 1;
                     }
+                    conc1_count = conc1_count + 1;
                 }
                 else // ...if consciousness = 2
                 {
                     treatment_timeline.Items.Add("Patient unconscious");
-                    int conc2to0_cure_probability = 10;
-                    int conc2to1_cure_probability = 50;
-                    int conc2to2_cure_probability = 40;
-                    int conc2to1_cumprob = conc2to1_cure_probability + conc2to0_cure_probability;
-                    int conc2_cure_cumprob = conc2to1_cure_probability + conc2to0_cure_probability + conc2to2_cure_probability;
+                    if (breathing == 0 && hemorrhage == 0 && airway == 0 && circulation == 0)
+                    { 
+                        conc2to0_cure_probability = 10 + (2 * conc2_count);
+                        conc2to1_cure_probability = 50 + (8 * conc2_count);
+                        conc2to2_cure_probability = 40 - (10 * conc2_count);
+                        conc2to1_cumprob = conc2to1_cure_probability + conc2to0_cure_probability;
+                    }
+                    else
+                    {
+                        conc2to0_cure_probability = 10 - (1 * conc2_count);
+                        conc2to1_cure_probability = 50 - (4 * conc2_count);
+                        conc2to2_cure_probability = 40 + (5 * conc2_count);
+                        conc2to1_cumprob = conc2to1_cure_probability + conc2to0_cure_probability;
+                    }
+
+
                     int x;
                     Random r = new Random();
                     x = r.Next(0, 101);
@@ -777,17 +818,21 @@ namespace Uttam_Transfer_Of_Care
                     {
                         treatment_timeline.Items.Add("Full consciousness restored");
                         consciousness = 0;
+                        total_success_count = total_success_count + 1;
                     }
                     else if (x <= conc2to1_cumprob && x > conc2to0_cure_probability)
                     {
                         treatment_timeline.Items.Add("Patient partially responsive");
                         consciousness = 1;
+                        total_partial_success_count = total_partial_success_count + 1;
                     }
                     else
                     {
                         treatment_timeline.Items.Add("Patient still unconscious");
                         consciousness = 2;
+                        total_unsuccess_count = total_unsuccess_count + 1;
                     }
+                    conc2_count = conc2_count + 1;
                 }
 
                 #region show treating patient message
@@ -803,7 +848,7 @@ namespace Uttam_Transfer_Of_Care
                 System.Threading.Thread.Sleep(2500);
                 sim_finalconc_box.Text = Convert.ToString(consciousness);
 
-                //this section all commented out for now - move to patient section
+                //this section all commented out for now - move to patient section? multiple checks? 
                 #region consciousness deterioration control - move to patient MDP section
                 //if (hemorrhage == 0 && circulation == 0)
                 //{
@@ -874,13 +919,16 @@ namespace Uttam_Transfer_Of_Care
                         if (x <= air1to0_cure_probability)
                         {
                             airway = 0;
-                            treatment_timeline.Items.Add("Airway cleared");    
+                            treatment_timeline.Items.Add("Airway cleared");
+                            total_success_count = total_success_count + 1;
                         }
                         else
                         {
                             airway = 1;
                             treatment_timeline.Items.Add("Airway still partially obstructed");
+                            total_unsuccess_count = total_unsuccess_count + 1;
                         }
+                    air1_count = air1_count + 1;
                     }
                 else // ...if airway = 2
                 {
@@ -897,17 +945,21 @@ namespace Uttam_Transfer_Of_Care
                     {
                         treatment_timeline.Items.Add("Airway fully cleared");
                         airway = 0;
+                        total_success_count = total_success_count + 1;
                     }
                     else if (x <= air2to1_cumprob && x > air2to0_cure_probability)
                     {
                         treatment_timeline.Items.Add("Airway partially cleared");
                         airway = 1;
+                        total_partial_success_count = total_partial_success_count + 1;
                     }
                     else
                     {
                         treatment_timeline.Items.Add("Airway still blocked");
                         airway = 2;
+                        total_unsuccess_count = total_unsuccess_count + 1;
                     }
+                    air2_count = air2_count + 1;
                 }
 
                 #region show treating patient message
@@ -927,6 +979,14 @@ namespace Uttam_Transfer_Of_Care
             #region Breathing check
             async void Breathingcheck()
             {
+                int breath1to0_cure_probability = 20;
+                int breath1_successprob_reduction = 5;
+
+                int breath2to0_cure_probability = 10;
+                int breath2to1_cure_probability = 60;
+                int breath2to1_cumprob = breath2to1_cure_probability + breath2to0_cure_probability;
+                int breath2_successprob_reduction = 5;
+
                 treatment_timeline.Items.Add("Checking breathing");
                 if (breathing == 0)
                 {
@@ -936,7 +996,7 @@ namespace Uttam_Transfer_Of_Care
                 else if (breathing == 1)
                 {
                     treatment_timeline.Items.Add("Patient breathing is not normal");
-                    int breath1to0_cure_probability = 20;
+                    breath1to0_cure_probability = breath1to0_cure_probability - (breath1_successprob_reduction * breath1_count);
                     int x;
                     Random r = new Random();
                     x = r.Next(0, 101);
@@ -944,21 +1004,23 @@ namespace Uttam_Transfer_Of_Care
                     {
                         breathing = 0;
                         treatment_timeline.Items.Add("Breathing restored");
+                        total_success_count = total_success_count + 1;
                     }
                     else
                     {
                         breathing = 1;
                         treatment_timeline.Items.Add("breathing remains erratic");
+                        total_unsuccess_count = total_unsuccess_count + 1;
                     }
+                    breath1_count = breath1_count + 1;
                 }
                 else // ...if breathing = 2
                 {
                     treatment_timeline.Items.Add("Patient not breathing");
-                    int breath2to0_cure_probability = 10;
-                    int breath2to1_cure_probability = 60;
-                    int breath2to2_cure_probability = 30;
-                    int breath2to1_cumprob = breath2to1_cure_probability + breath2to0_cure_probability;
-                    int breath2_cure_cumprob = breath2to1_cure_probability + breath2to0_cure_probability + breath2to2_cure_probability;
+                    breath2to0_cure_probability = breath2to0_cure_probability - (breath2_successprob_reduction * breath2_count);
+                    breath2to1_cure_probability = breath2to1_cure_probability - (breath2_successprob_reduction * breath2_count);
+                    breath2to1_cumprob = breath2to1_cure_probability + breath2to0_cure_probability;
+
                     int x;
                     Random r = new Random();
                     x = r.Next(0, 101);
@@ -966,16 +1028,19 @@ namespace Uttam_Transfer_Of_Care
                     {
                         treatment_timeline.Items.Add("Breathing restored to normal");
                         breathing = 0;
+                        total_success_count = total_success_count + 1;
                     }
                     else if (x <= breath2to1_cumprob && x > breath2to0_cure_probability)
                     {
                         treatment_timeline.Items.Add("breathing restored but still erratic");
                         breathing = 1;
+                        total_partial_success_count = total_partial_success_count + 1;
                     }
                     else
                     {
                         treatment_timeline.Items.Add("Patient still not breathing");
                         breathing = 2;
+                        total_unsuccess_count = total_unsuccess_count + 1;
                     }
                 }
 
@@ -993,106 +1058,138 @@ namespace Uttam_Transfer_Of_Care
 
             }// end of breathing check
             #endregion
+
+            // this is the main template for creating new treatment controls - contains good comments and full variable definition
             #region circulation check
             async void Circulationcheck()
             {
+                
+                // This is the previous code for 2 check controls to be utilized - check this! 
                 #region  I think this relates to how patient deteriorates given multiple symptoms - move to patient agent
-                treatment_timeline.Items.Add("Checking Circulation");
-                if (circulation == 0)
-                {
-                    if (hemorrhage >= 1 && breathing == 0)
-                    {
-                        Hemorrhagecheck();
-                        Breathingcheck();
-                    }
-                    else if (hemorrhage >= 1 && breathing == 1)
-                    {
-                        Hemorrhagecheck();
-                    }
-                    else if (hemorrhage == 0 && breathing == 0)
-                    {
-                        Breathingcheck();
-                    }
-                    else
-                    {
-                        circulation = 1;
-                    }
-                }
-                else
-                {
-                    circulation = 1;
-                }
+                //treatment_timeline.Items.Add("Checking Circulation");
+                //if (circulation == 0)
+                //{
+                //    if (hemorrhage >= 1 && breathing == 0)
+                //    {
+                //        Hemorrhagecheck();
+                //        Breathingcheck();
+                //    }
+                //    else if (hemorrhage >= 1 && breathing == 1)
+                //    {
+                //        Hemorrhagecheck();
+                //    }
+                //    else if (hemorrhage == 0 && breathing == 0)
+                //    {
+                //        Breathingcheck();
+                //    }
+                //    else
+                //    {
+                //        circulation = 1;
+                //    }
+                //}
+                //else
+                //{
+                //    circulation = 1;
+                //}
                 #endregion
 
+                // *******************************SET VARIABLES FOR THE TREATMENT*********************************************************
+                #region Treatment variables
+                int circ1to0_cure_probability = 70; // the probability that circulation treatment from level 1 to 0 is successful
+                int circ1_successprob_reduction = 5; // the reduction in the probability of success with each repeated treatment from level 1
+
+                int circ2to0_cure_probability = 10; // the probability that circulation treatment from level 2 to 0 is successful
+                int circ2to1_cure_probability = 10; // the probability that circulation treatment from level 2 to 1 is successful
+                int circ2to1_cumprob = circ2to1_cure_probability + circ2to0_cure_probability; // cumulative success probabiligy
+                int circ2_0_successprob_reduction = 1; // the reduction in the probability of success with each repeated treatment from level 2 to 0
+                int circ2_1_successprob_reduction = 1; // the reduction in the probability of success with each repeated treatment from level 2 to 1
+
+                int circ_timedelay = 0;
+                int circ1_timedelay = 3000;
+                int circ2_timedelay = 5000;
+                #endregion
+
+                // *********************** Treatment Logic and message to Listbox **********************************************************
+                #region Treatment Logic
                 treatment_timeline.Items.Add("Checking for pulse");
-                if (circulation == 0)
+                if (circulation == 0)  // If there is no problem
                 {
-                    treatment_timeline.Items.Add("pulse is normal");
-                    circulation = 0;
+                    treatment_timeline.Items.Add("pulse is normal");                            //patient condition message
+                    circulation = 0;                                                            //set patient condition quantifier to 0 'normal'
                 }
-                else if (circulation == 1)
+                else if (circulation == 1)  // if there is a minor problem
                 {
-                    treatment_timeline.Items.Add("Pulse is elevated/weak/erratic");
-                    int circ1to0_cure_probability = 70;
+                    treatment_timeline.Items.Add("Pulse is elevated/weak/erratic");             //Patient condition message
+                    circ1to0_cure_probability -= (circ1_successprob_reduction* circ1_count);    //partial success probability accounting for repeat procedures
                     int x;
                     Random r = new Random();
-                    x = r.Next(0, 101);
+                    x = r.Next(0, 101);                                                         //generate random number between 1 and 100 for outcome 
                     if (x <= circ1to0_cure_probability)
                     {
-                        circulation = 0;
-                        treatment_timeline.Items.Add("pulse returned to normal");
+                        treatment_timeline.Items.Add("pulse returned to normal");             //Patient condition returned to normal message
+                        circulation = 0;                                                      //patient condition quantifier set to 0 - 'normal'
+                        total_success_count += 1;                                             //global counter for successful procedures
                     }
                     else
                     {
-                        circulation = 1;
-                        treatment_timeline.Items.Add("Pulse still elevated/weak/erratic");
+                        treatment_timeline.Items.Add("Pulse still elevated/weak/erratic");      //Patient condition unchanged message
+                        circulation = 1;                                                        //Patient condition quantifier set to 1 - no change - still some problem
+                        total_unsuccess_count += 1;                                             //global counter for unsucessful procedures
                     }
+                    circ1_count += 1;                                                           //counter for level 1 circulation procedures (successful or unsuccessful)
+                    circ_timedelay = circ1_timedelay;                                           //set appropriate time delay for a level 1 procedure
                 }
-                else // ...if circulation = 2
+                else // ...if patient is critical or there is a serious problem
                 {
-                    treatment_timeline.Items.Add("Patient Heart in Cardiac Arrest");
-                    int circ2to0_cure_probability = 10;
-                    int circ2to1_cure_probability = 10;
-                    int circ2to2_cure_probability = 80;
-                    int circ2to1_cumprob = circ2to1_cure_probability + circ2to0_cure_probability;
-                    int circ2_cure_cumprob = circ2to1_cure_probability + circ2to0_cure_probability + circ2to2_cure_probability;
+                    treatment_timeline.Items.Add("Patient Heart in Cardiac Arrest");            // Patient condition message
+
+                    circ2to0_cure_probability -= (circ2_0_successprob_reduction * circ2_count); //complete success probability accounting for repeats
+                    circ2to1_cure_probability -= (circ2_1_successprob_reduction * circ2_count); //partial success probability accounting for repeats
+                    circ2to1_cumprob = circ2to1_cure_probability + circ2to0_cure_probability;   // set cumulative success and partial success probability
+
                     int x;
-                    Random r = new Random();
-                    x = r.Next(0, 101);
+                    Random r = new Random();                                                    
+                    x = r.Next(0, 101);                                                         //generate random number between 1 and 100
                     if (x <= circ2to0_cure_probability)
                     {
-                        treatment_timeline.Items.Add("Pulse returned to normal");
-                        circulation = 0;
+                        treatment_timeline.Items.Add("Pulse returned to normal");               // patient condition returned to normal message
+                        circulation = 0;                                                        // patient condition quantifier set to 0 - 'normal'
+                        total_success_count += 1;                                               // global counter for successful procedures
                     }
                     else if (x <= circ2to1_cumprob && x > circ2to0_cure_probability)
                     {
-                        treatment_timeline.Items.Add("Heart function restored but not normal");
-                        circulation = 1;
+                        treatment_timeline.Items.Add("Heart function restored but not normal"); //patient partially stabliized message
+                        circulation = 1;                                                        //patient condition quantifier set to 1 - some problems
+                        total_partial_success_count += 1;                                       // counter for partial successful procedures
                     }
                     else
                     {
-                        treatment_timeline.Items.Add("Patient Still in Cardiac Arrest");
-                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient Still in Cardiac Arrest");        //patient still critical
+                        circulation = 2;                                                        //patient condition quantifier set to 2 - critical
+                        total_unsuccess_count += 1;                                             // counter for unsuccessful procedures
                     }
+                    circ2_count += 1;                                                           //counter for total critical procedures (successful and unsuccessful)
+                    circ_timedelay = circ2_timedelay;                                           //set timedelay to variable for critical procedure
                 }
+                #endregion
 
                 #region show treating patient message
                 // display treatment message - requires 'async' in the private void statement
                 var treatment_message = new Message_form();
-                treatment_message.Show();
-                await Task.Delay(3000);
-                treatment_message.Close();
+                treatment_message.Show();                                                        // open message box
+                await Task.Delay(circ_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
+                treatment_message.Close();                                                       // close message box
                 // end display treatment message
                 #endregion
 
-                System.Threading.Thread.Sleep(2500);
-                sim_finalcirc_box.Text = Convert.ToString(circulation);
+                System.Threading.Thread.Sleep(2500);                                            //Sleep current thread for appropriate delay
+                sim_finalcirc_box.Text = Convert.ToString(circulation);                         //convert condition quantifier to string for transfer to UI and display
 
             }// end of circulation check
             #endregion
 
             from = "EMS"; to = "AI"; subject = "Recommend treatment";
-            var Th_EMStoAI = new Thread(() => AI());                       // sending update info of patient to AI for recommendation
+            var Th_EMStoAI = new Thread(() => AI());                                            // sending update info of patient to AI for recommendation
             Th_EMStoAI.Start();
         } // end of Treatment method
 
