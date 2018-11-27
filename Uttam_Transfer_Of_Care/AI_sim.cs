@@ -35,6 +35,8 @@ namespace Uttam_Transfer_Of_Care
         public static int conc2_count = 0;
         public static int air1_count = 0;
         public static int air2_count = 0;
+        public static int airway1_count = 0;
+        public static int airway2_count = 0;
         public static int breath1_count = 0;
         public static int breath2_count = 0;
         public static int circ1_count = 0;
@@ -42,6 +44,11 @@ namespace Uttam_Transfer_Of_Care
         public static int total_success_count = 0;
         public static int total_partial_success_count = 0;
         public static int total_unsuccess_count = 0;
+        public static string age_group = "unkown";
+        public static string wound_location;
+        public static int wound_loc_ID;
+        public static int wound_type_ID;
+        public static string wound_type;
 
         #endregion
 
@@ -70,6 +77,14 @@ namespace Uttam_Transfer_Of_Care
 
         private void AI_sim_Load(object sender, EventArgs e)
         {
+            if (intro_form.ai_on == true)
+            {
+                AI_assist = true;
+            }
+            else
+            {
+                AI_assist = false;
+            }
         }
 
         // ***************Calling other forms - Commented out as doesn't seem to do anything*************************
@@ -77,8 +92,6 @@ namespace Uttam_Transfer_Of_Care
         //hidden_form underlying_form = new hidden_form();
         //ai_interface ai_interface = new ai_interface();
         //***********************************************************************************************************
-
-
 
         // Creating new patient agent   
         #region Create New Patient Thread
@@ -118,7 +131,147 @@ namespace Uttam_Transfer_Of_Care
             {
                 Random random = new Random();
                 int a;
-                age = random.Next(0, 101);
+
+                #region set wound location strings
+                wound_loc_ID = random.Next(1, 23);
+                if (wound_loc_ID == 1) wound_location = "front of head";
+                else if (wound_loc_ID == 2) wound_location = "front of torso";
+                else if (wound_loc_ID == 3) wound_location = "front of mid-section";
+                else if (wound_loc_ID == 4) wound_location = "front of upper right arm";
+                else if (wound_loc_ID == 5) wound_location = "front of upper left arm";
+                else if (wound_loc_ID == 6) wound_location = "front of lower right arm";
+                else if (wound_loc_ID == 7) wound_location = "front of lower left arm";
+                else if (wound_loc_ID == 8) wound_location = "front of upper right leg";
+                else if (wound_loc_ID == 9) wound_location = "front of upper left leg";
+                else if (wound_loc_ID == 10) wound_location = "front of lower right leg";
+                else if (wound_loc_ID == 11) wound_location = "front of lower left leg";
+                else if (wound_loc_ID == 12) wound_location = "back of head";
+                else if (wound_loc_ID == 13) wound_location = "back of torso";
+                else if (wound_loc_ID == 14) wound_location = "back of mid-section";
+                else if (wound_loc_ID == 15) wound_location = "back of upper right arm";
+                else if (wound_loc_ID == 16) wound_location = "back of upper left arm";
+                else if (wound_loc_ID == 17) wound_location = "back of lower right arm";
+                else if (wound_loc_ID == 18) wound_location = "back of lower left arm";
+                else if (wound_loc_ID == 19) wound_location = "back of upper right leg";
+                else if (wound_loc_ID == 20) wound_location = "back of upper left leg";
+                else if (wound_loc_ID == 21) wound_location = "back of lower right leg";
+                else wound_location = "back of lower left leg";
+                #endregion
+
+                //currently set to 1 injury type 'gunshot' for ease of simulation
+                #region set wound type
+                wound_type_ID = random.Next(0, 1);
+                if (wound_type_ID == 0) wound_type = "gunshot";
+                else if (wound_type_ID == 1) wound_type = "blunt force trauma";
+                else if (wound_type_ID == 2) wound_type = "drowning";
+                else wound_type = "allergic  reaction";
+                #endregion 
+
+                //coarse probability distributiuons for each of the four age categories
+                #region Define age category probabilities by injury type
+                int[] Ageprob_gunshot = { 10, 20, 90, 100 };
+                int[] Ageprob_bft = { 20,40,80,100 };
+                int[] Ageprob_drowning = { 30, 80, 85, 100 }; // cumulative probabilities as age group increases
+                int[] Ageprob_allergy = { 25, 50, 75, 100 };
+                #endregion
+
+                #region assign age group and age for display depending on type of injury
+                age_p = random.Next(0, 101); //set random seed for probability of any given age
+
+                #region gunshot wounds
+                if (wound_type_ID == 0) 
+                     if (age_p <= Ageprob_gunshot[0])
+                        {
+                            age_group = "small child";
+                            age = random.Next(1,3);
+                        }
+                     else if (age_p > Ageprob_gunshot[0] && age_p <= Ageprob_gunshot[1])
+                    {
+                        age_group = "child";
+                        age = random.Next(4, 17);
+                    }
+                    else if (age_p > Ageprob_gunshot[1] && age_p <= Ageprob_gunshot[2])
+                    {
+                        age_group = "adult";
+                        age = random.Next(18, 70);
+                    }
+                    else
+                    {
+                        age_group = "over 70";
+                        age = random.Next(71, 90);
+                    }
+                #endregion
+                #region blunt force trauma wounds
+                else if (wound_type_ID == 1)
+                    if (age_p <= Ageprob_bft[0])
+                    {
+                        age_group = "small child";
+                        age = random.Next(1, 3);
+                    }
+                    else if (age_p > Ageprob_bft[0] && age_p <= Ageprob_bft[1])
+                    {
+                        age_group = "child";
+                        age = random.Next(4, 17);
+                    }
+                    else if (age_p > Ageprob_bft[1] && age_p <= Ageprob_bft[2])
+                    {
+                        age_group = "adult";
+                        age = random.Next(18, 70);
+                    }
+                    else
+                    {
+                        age_group = "over 70";
+                        age = random.Next(71, 90);
+                    }
+                #endregion
+                #region drowning
+                else if (wound_type_ID == 2)
+                    if (age_p <= Ageprob_drowning[0])
+                    {
+                        age_group = "small child";
+                        age = random.Next(1, 3);
+                    }
+                    else if (age_p > Ageprob_drowning[0] && age_p <= Ageprob_drowning[1])
+                    {
+                        age_group = "child";
+                        age = random.Next(4, 17);
+                    }
+                    else if (age_p > Ageprob_drowning[1] && age_p <= Ageprob_drowning[2])
+                    {
+                        age_group = "adult";
+                        age = random.Next(18, 70);
+                    }
+                    else
+                    {
+                        age_group = "over 70";
+                        age = random.Next(71, 90);
+                    }
+                #endregion
+                #region allergic reaction
+                else
+                    if (age_p <= Ageprob_allergy[0])
+                    {
+                        age_group = "small child";
+                        age = random.Next(1, 3);
+                    }
+                    else if (age_p > Ageprob_allergy[0] && age_p <= Ageprob_allergy[1])
+                    {
+                        age_group = "child";
+                        age = random.Next(4, 17);
+                    }
+                    else if (age_p > Ageprob_allergy[1] && age_p <= Ageprob_allergy[2])
+                    {
+                        age_group = "adult";
+                        age = random.Next(18, 70);
+                    }
+                    else
+                    {
+                        age_group = "over 70";
+                        age = random.Next(71, 90);
+                    }
+                #endregion
+                #endregion
+
                 a = random.Next(0, 2);
                 if (a == 0)
                 {
@@ -213,6 +366,8 @@ namespace Uttam_Transfer_Of_Care
                 {
                     Thread.Sleep(5);
                     sim_gender_label.Text = gender;
+                    sim_injury_type_label.Text = wound_type;
+                    sim_injury_location_label.Text = wound_location;
                     sim_age_label.Text = Convert.ToString(age);
                     sim_intair_box.Text = Convert.ToString(airway);                    // changes the final state of the patient at given time in AI_Sim from
                     sim_intbreath_box.Text = Convert.ToString(breathing);
@@ -411,6 +566,7 @@ namespace Uttam_Transfer_Of_Care
 
         // define patient health variables
         #region Variables of patient health
+        public int age_p { get; set; }
         public int age { get; set; }
         public int hemorrhage { get; set; }
         public int consciousness { get; set; }
@@ -456,7 +612,7 @@ namespace Uttam_Transfer_Of_Care
         {
             starttime = DateTime.Now;
             var transfer_form_start = new inputform(treatment_timeline.Items);
-            transfer_form_start.Show();
+            transfer_form_start.Show();   
         }
         #endregion
 
@@ -695,9 +851,9 @@ namespace Uttam_Transfer_Of_Care
                 else // ...if hemorrhage = 2
                 {
                     treatment_timeline.Items.Add("heavy bleeding");
-                    int hem2to0_cure_probability = 30 - (3 * hem1_count);
-                    int hem2to1_cure_probability = 60 - (3 * hem1_count);
-                    int hem2to2_cure_probability = 10 + (6 * hem1_count);
+                    int hem2to0_cure_probability = 30 - (3 * hem2_count);
+                    int hem2to1_cure_probability = 60 - (3 * hem2_count);
+                    int hem2to2_cure_probability = 10 + (6 * hem2_count);
                     int hem2to1_cumprob = hem2to1_cure_probability + hem2to0_cure_probability;
                     int hem2_cure_cumprob = hem2to1_cure_probability + hem2to0_cure_probability + hem2to2_cure_probability;
 
@@ -979,7 +1135,7 @@ namespace Uttam_Transfer_Of_Care
             #region Breathing check
             async void Breathingcheck()
             {
-                int breath1to0_cure_probability = 20;
+                int breath1to0_cure_probability = 60;
                 int breath1_successprob_reduction = 5;
 
                 int breath2to0_cure_probability = 10;
@@ -1188,10 +1344,119 @@ namespace Uttam_Transfer_Of_Care
             }// end of circulation check
             #endregion
 
+
+            #region airwayclear
+            async void airway_clear()
+            {
+
+                 // *******************************SET VARIABLES FOR THE TREATMENT*********************************************************
+                #region Treatment variables
+                int airway_1to0_cure_probability = 50; // the probability that airway treatment from level 1 to 0 is successful
+                int airway1_successprob_reduction = 0; // the reduction in the probability of success with each repeated treatment from level 1
+
+                int airway_2to0_cure_probability = 33; // the probability that airway treatment from level 2 to 0 is successful
+                int airway_2to1_cure_probability = 33; // the probability that airway treatment from level 2 to 1 is successful
+                int airway_2to1_cumprob = airway_2to1_cure_probability + airway_2to0_cure_probability; // cumulative success probabiligy
+                int airway_2_0_successprob_reduction = 0; // the reduction in the probability of success with each repeated treatment from level 2 to 0
+                int airway_2_1_successprob_reduction = 0; // the reduction in the probability of success with each repeated treatment from level 2 to 1
+
+                int airway_timedelay = 0;
+                int airway1_timedelay = 3000;
+                int airway2_timedelay = 3000;
+                #endregion
+
+                // *********************** Treatment Logic and message to Listbox **********************************************************
+                #region Treatment Logic
+                treatment_timeline.Items.Add("Checking for airway obstruction");
+                if (airway == 0)  // If there is no problem
+                {
+                    treatment_timeline.Items.Add("no obstruction to airway");                            //patient condition message
+                    airway = 0;                                                            //set patient condition quantifier to 0 'normal'
+                }
+                else if (airway == 1)  // if there is a minor problem
+                {
+                    treatment_timeline.Items.Add("partial blockage of airway");             //Patient condition message
+                    airway_1to0_cure_probability -= (airway1_successprob_reduction * airway1_count);    //partial success probability accounting for repeat procedures
+                    int x;
+                    Random r = new Random();
+                    x = r.Next(0, 101);                                                         //generate random number between 1 and 100 for outcome 
+                    if (x <= airway_1to0_cure_probability)
+                    {
+                        treatment_timeline.Items.Add("airway cleared");             //Patient condition returned to normal message
+                        airway = 0;                                                      //patient condition quantifier set to 0 - 'normal'
+                        total_success_count += 1;                                             //global counter for successful procedures
+                    }
+                    else
+                    {
+                        treatment_timeline.Items.Add("airway still blocked");      //Patient condition unchanged message
+                        airway = 1;                                                        //Patient condition quantifier set to 1 - no change - still some problem
+                        total_unsuccess_count += 1;                                             //global counter for unsucessful procedures
+                    }
+                    airway1_count += 1;                                                           //counter for level 1 airway procedures (successful or unsuccessful)
+                    airway_timedelay = airway1_timedelay;                                           //set appropriate time delay for a level 1 procedure
+                }
+                else // ...if patient is critical or there is a serious problem
+                {
+                    treatment_timeline.Items.Add("Patient airway is completely blocked");            // Patient condition message
+
+                    airway_2to0_cure_probability -= (airway_2_0_successprob_reduction * airway2_count); //complete success probability accounting for repeats
+                    airway_2to1_cure_probability -= (airway_2_1_successprob_reduction * airway2_count); //partial success probability accounting for repeats
+                    airway_2to1_cumprob = airway_2to1_cure_probability + airway_2to0_cure_probability;   // set cumulative success and partial success probability
+
+                    int x;
+                    Random r = new Random();
+                    x = r.Next(0, 101);                                                         //generate random number between 1 and 100
+                    if (x <= airway_2to0_cure_probability)
+                    {
+                        treatment_timeline.Items.Add("Airway cleared");                     // patient condition returned to normal message
+                        airway = 0;                                                         // patient condition quantifier set to 0 - 'normal'
+                        total_success_count += 1;                                           // global counter for successful procedures
+                    }
+                    else if (x <= airway_2to1_cumprob && x > airway_2to0_cure_probability)
+                    {
+                        treatment_timeline.Items.Add("Airway partially cleared");           //patient partially stabliized message
+                        airway = 1;                                                         //patient condition quantifier set to 1 - some problems
+                        total_partial_success_count += 1;                                   // counter for partial successful procedures
+                    }
+                    else
+                    {
+                        treatment_timeline.Items.Add("Airway still blocked");               //patient still critical
+                        airway = 2;                                                         //patient condition quantifier set to 2 - critical
+                        total_unsuccess_count += 1;                                         // counter for unsuccessful procedures
+                    }
+                    airway2_count += 1;                                                     //counter for total critical procedures (successful and unsuccessful)
+                    airway_timedelay = airway2_timedelay;                                   //set timedelay to variable for critical procedure
+                }
+                #endregion
+
+                #region show treating patient message
+                // display treatment message - requires 'async' in the private void statement
+                var treatment_message = new Message_form();
+                treatment_message.Show();                                                        // open message box
+                await Task.Delay(airway_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
+                treatment_message.Close();                                                       // close message box
+                // end display treatment message
+                #endregion
+
+                System.Threading.Thread.Sleep(2500);                                            //Sleep current thread for appropriate delay
+                sim_finalair_box.Text = Convert.ToString(airway);                         //convert condition quantifier to string for transfer to UI and display
+
+            }// end of airway check
+            #endregion
+
             from = "EMS"; to = "AI"; subject = "Recommend treatment";
             var Th_EMStoAI = new Thread(() => AI());                                            // sending update info of patient to AI for recommendation
             Th_EMStoAI.Start();
         } // end of Treatment method
+
+        #endregion
+
+        #region determine patient baseline characteristics at the end of TOC
+
+
+
+
+
 
         #endregion
 
@@ -1283,6 +1548,5 @@ namespace Uttam_Transfer_Of_Care
 
         }
         #endregion
-
     }
 }

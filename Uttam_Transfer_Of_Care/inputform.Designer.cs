@@ -30,44 +30,44 @@
         {
             this.components = new System.ComponentModel.Container();
             this.BreathingGroup = new System.Windows.Forms.GroupBox();
-            this.radioButton24 = new System.Windows.Forms.RadioButton();
-            this.rb_breathingstopped = new System.Windows.Forms.RadioButton();
-            this.rb_breathing_restart = new System.Windows.Forms.RadioButton();
-            this.rb_breathing_good = new System.Windows.Forms.RadioButton();
-            this.radioButton25 = new System.Windows.Forms.RadioButton();
-            this.rb_circrestart = new System.Windows.Forms.RadioButton();
+            this.rb_breathing_partial_1 = new System.Windows.Forms.RadioButton();
+            this.rb_breathing_stopped_2 = new System.Windows.Forms.RadioButton();
+            this.rb_breathing_2to0 = new System.Windows.Forms.RadioButton();
+            this.rb_breathing_good_0 = new System.Windows.Forms.RadioButton();
+            this.rb_circ_erratic_1 = new System.Windows.Forms.RadioButton();
+            this.rb_circ_fullyrestarted_2to0 = new System.Windows.Forms.RadioButton();
             this.treatment_timeline_result = new System.Windows.Forms.ListBox();
-            this.rb_circgood = new System.Windows.Forms.RadioButton();
+            this.rb_circ_good_0 = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rb_med_fluids = new System.Windows.Forms.RadioButton();
             this.rb_med_adr = new System.Windows.Forms.RadioButton();
             this.rb_med_morphine = new System.Windows.Forms.RadioButton();
             this.rb_nomeds = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rb_heavybleed = new System.Windows.Forms.RadioButton();
-            this.radioButton21 = new System.Windows.Forms.RadioButton();
-            this.rb_bleedingstopped = new System.Windows.Forms.RadioButton();
-            this.rb_somebleed = new System.Windows.Forms.RadioButton();
-            this.rb_nobleed = new System.Windows.Forms.RadioButton();
+            this.rb_heavy_bleed_2 = new System.Windows.Forms.RadioButton();
+            this.rb_hem_bleedstop_2to1 = new System.Windows.Forms.RadioButton();
+            this.rb_hem_bleedstop_1to0 = new System.Windows.Forms.RadioButton();
+            this.rb_some_bleed_1 = new System.Windows.Forms.RadioButton();
+            this.rb_no_bleed_0 = new System.Windows.Forms.RadioButton();
             this.CirculationGroup = new System.Windows.Forms.GroupBox();
-            this.rb_circstopped = new System.Windows.Forms.RadioButton();
-            this.rb_airwayblocked = new System.Windows.Forms.RadioButton();
-            this.radioButton23 = new System.Windows.Forms.RadioButton();
-            this.rb_airwaycleared = new System.Windows.Forms.RadioButton();
-            this.rb_airwaygood = new System.Windows.Forms.RadioButton();
+            this.rb_circ_stopped_2 = new System.Windows.Forms.RadioButton();
+            this.rb_air_blocked_2 = new System.Windows.Forms.RadioButton();
+            this.rb_air_partcleared_2to1 = new System.Windows.Forms.RadioButton();
+            this.rb_air_partblocked_1 = new System.Windows.Forms.RadioButton();
+            this.rb_air_good_0 = new System.Windows.Forms.RadioButton();
             this.AirwayGroup = new System.Windows.Forms.GroupBox();
             this.rb_age_adult = new System.Windows.Forms.RadioButton();
             this.rb_gender_female = new System.Windows.Forms.RadioButton();
             this.rb_gender_male = new System.Windows.Forms.RadioButton();
             this.rb_age_child = new System.Windows.Forms.RadioButton();
-            this.rb_age_infant = new System.Windows.Forms.RadioButton();
+            this.rb_age_small_child = new System.Windows.Forms.RadioButton();
             this.status_critical = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.rb_unconscious = new System.Windows.Forms.RadioButton();
-            this.radioButton22 = new System.Windows.Forms.RadioButton();
-            this.rb_wasunconscious = new System.Windows.Forms.RadioButton();
-            this.rb_partconscious = new System.Windows.Forms.RadioButton();
-            this.rb_conscious = new System.Windows.Forms.RadioButton();
+            this.rb_unconscious_2 = new System.Windows.Forms.RadioButton();
+            this.rb_conc_partrestored_2to1 = new System.Windows.Forms.RadioButton();
+            this.rb_conc_restored_1to0 = new System.Windows.Forms.RadioButton();
+            this.rb_partconscious_1 = new System.Windows.Forms.RadioButton();
+            this.rb_conscious_0 = new System.Windows.Forms.RadioButton();
             this.status_priority = new System.Windows.Forms.RadioButton();
             this.status_routine = new System.Windows.Forms.RadioButton();
             this.Submit_toc_button = new System.Windows.Forms.Button();
@@ -103,6 +103,14 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button_torso = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.rb_breathing_2to1 = new System.Windows.Forms.RadioButton();
+            this.rb_breathing_1to0 = new System.Windows.Forms.RadioButton();
+            this.rb_circ_partrestarted_2to1 = new System.Windows.Forms.RadioButton();
+            this.rb_circ_restart_1to0 = new System.Windows.Forms.RadioButton();
+            this.rb_air_cleared_1to0 = new System.Windows.Forms.RadioButton();
+            this.rb_air_fullycleared_2to0 = new System.Windows.Forms.RadioButton();
+            this.rb_conc_fullyrestored_2to0 = new System.Windows.Forms.RadioButton();
+            this.rb_hem_bleedstop_2to0 = new System.Windows.Forms.RadioButton();
             this.BreathingGroup.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -117,80 +125,89 @@
             // BreathingGroup
             // 
             this.BreathingGroup.BackColor = System.Drawing.Color.AliceBlue;
-            this.BreathingGroup.Controls.Add(this.radioButton24);
-            this.BreathingGroup.Controls.Add(this.rb_breathingstopped);
-            this.BreathingGroup.Controls.Add(this.rb_breathing_restart);
-            this.BreathingGroup.Controls.Add(this.rb_breathing_good);
-            this.BreathingGroup.Location = new System.Drawing.Point(1570, 30);
+            this.BreathingGroup.Controls.Add(this.rb_breathing_1to0);
+            this.BreathingGroup.Controls.Add(this.rb_breathing_2to1);
+            this.BreathingGroup.Controls.Add(this.rb_breathing_partial_1);
+            this.BreathingGroup.Controls.Add(this.rb_breathing_stopped_2);
+            this.BreathingGroup.Controls.Add(this.rb_breathing_2to0);
+            this.BreathingGroup.Controls.Add(this.rb_breathing_good_0);
+            this.BreathingGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BreathingGroup.Location = new System.Drawing.Point(1582, 10);
             this.BreathingGroup.Name = "BreathingGroup";
-            this.BreathingGroup.Size = new System.Drawing.Size(796, 147);
+            this.BreathingGroup.Size = new System.Drawing.Size(800, 150);
             this.BreathingGroup.TabIndex = 110;
             this.BreathingGroup.TabStop = false;
             this.BreathingGroup.Text = "Breathing";
             // 
-            // radioButton24
+            // rb_breathing_partial_1
             // 
-            this.radioButton24.AutoSize = true;
-            this.radioButton24.Location = new System.Drawing.Point(366, 106);
-            this.radioButton24.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.radioButton24.Name = "radioButton24";
-            this.radioButton24.Size = new System.Drawing.Size(430, 29);
-            this.radioButton24.TabIndex = 48;
-            this.radioButton24.TabStop = true;
-            this.radioButton24.Text = "Difficulty in Breathing (after assessment)";
-            this.radioButton24.UseVisualStyleBackColor = true;
+            this.rb_breathing_partial_1.AutoSize = true;
+            this.rb_breathing_partial_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_breathing_partial_1.Location = new System.Drawing.Point(20, 75);
+            this.rb_breathing_partial_1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rb_breathing_partial_1.Name = "rb_breathing_partial_1";
+            this.rb_breathing_partial_1.Size = new System.Drawing.Size(223, 29);
+            this.rb_breathing_partial_1.TabIndex = 48;
+            this.rb_breathing_partial_1.TabStop = true;
+            this.rb_breathing_partial_1.Text = "Difficulty Breathing";
+            this.rb_breathing_partial_1.UseVisualStyleBackColor = true;
             // 
-            // rb_breathingstopped
+            // rb_breathing_stopped_2
             // 
-            this.rb_breathingstopped.AutoSize = true;
-            this.rb_breathingstopped.Location = new System.Drawing.Point(27, 108);
-            this.rb_breathingstopped.Name = "rb_breathingstopped";
-            this.rb_breathingstopped.Size = new System.Drawing.Size(218, 29);
-            this.rb_breathingstopped.TabIndex = 4;
-            this.rb_breathingstopped.Text = "Breathing stopped";
-            this.rb_breathingstopped.UseVisualStyleBackColor = true;
+            this.rb_breathing_stopped_2.AutoSize = true;
+            this.rb_breathing_stopped_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_breathing_stopped_2.Location = new System.Drawing.Point(20, 115);
+            this.rb_breathing_stopped_2.Name = "rb_breathing_stopped_2";
+            this.rb_breathing_stopped_2.Size = new System.Drawing.Size(218, 29);
+            this.rb_breathing_stopped_2.TabIndex = 4;
+            this.rb_breathing_stopped_2.Text = "Breathing stopped";
+            this.rb_breathing_stopped_2.UseVisualStyleBackColor = true;
             // 
-            // rb_breathing_restart
+            // rb_breathing_2to0
             // 
-            this.rb_breathing_restart.AutoSize = true;
-            this.rb_breathing_restart.Location = new System.Drawing.Point(366, 52);
-            this.rb_breathing_restart.Name = "rb_breathing_restart";
-            this.rb_breathing_restart.Size = new System.Drawing.Size(351, 29);
-            this.rb_breathing_restart.TabIndex = 3;
-            this.rb_breathing_restart.Text = "Breathing stopped and restarted";
-            this.rb_breathing_restart.UseVisualStyleBackColor = true;
+            this.rb_breathing_2to0.AutoSize = true;
+            this.rb_breathing_2to0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_breathing_2to0.Location = new System.Drawing.Point(400, 115);
+            this.rb_breathing_2to0.Name = "rb_breathing_2to0";
+            this.rb_breathing_2to0.Size = new System.Drawing.Size(351, 29);
+            this.rb_breathing_2to0.TabIndex = 3;
+            this.rb_breathing_2to0.Text = "Breathing stopped and restarted";
+            this.rb_breathing_2to0.UseVisualStyleBackColor = true;
             // 
-            // rb_breathing_good
+            // rb_breathing_good_0
             // 
-            this.rb_breathing_good.AutoSize = true;
-            this.rb_breathing_good.Location = new System.Drawing.Point(27, 52);
-            this.rb_breathing_good.Name = "rb_breathing_good";
-            this.rb_breathing_good.Size = new System.Drawing.Size(256, 29);
-            this.rb_breathing_good.TabIndex = 1;
-            this.rb_breathing_good.Text = "No Breathing Difficulty";
-            this.rb_breathing_good.UseVisualStyleBackColor = true;
+            this.rb_breathing_good_0.AutoSize = true;
+            this.rb_breathing_good_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_breathing_good_0.Location = new System.Drawing.Point(20, 35);
+            this.rb_breathing_good_0.Name = "rb_breathing_good_0";
+            this.rb_breathing_good_0.Size = new System.Drawing.Size(256, 29);
+            this.rb_breathing_good_0.TabIndex = 1;
+            this.rb_breathing_good_0.Text = "No Breathing Difficulty";
+            this.rb_breathing_good_0.UseVisualStyleBackColor = true;
             // 
-            // radioButton25
+            // rb_circ_erratic_1
             // 
-            this.radioButton25.AutoSize = true;
-            this.radioButton25.Location = new System.Drawing.Point(368, 106);
-            this.radioButton25.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.radioButton25.Name = "radioButton25";
-            this.radioButton25.Size = new System.Drawing.Size(387, 29);
-            this.radioButton25.TabIndex = 52;
-            this.radioButton25.TabStop = true;
-            this.radioButton25.Text = "CIrculation problem (after treatment)";
-            this.radioButton25.UseVisualStyleBackColor = true;
+            this.rb_circ_erratic_1.AutoSize = true;
+            this.rb_circ_erratic_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_circ_erratic_1.Location = new System.Drawing.Point(20, 75);
+            this.rb_circ_erratic_1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rb_circ_erratic_1.Name = "rb_circ_erratic_1";
+            this.rb_circ_erratic_1.Size = new System.Drawing.Size(209, 29);
+            this.rb_circ_erratic_1.TabIndex = 52;
+            this.rb_circ_erratic_1.TabStop = true;
+            this.rb_circ_erratic_1.Text = "Heart beat erratic";
+            this.rb_circ_erratic_1.UseVisualStyleBackColor = true;
             // 
-            // rb_circrestart
+            // rb_circ_fullyrestarted_2to0
             // 
-            this.rb_circrestart.AutoSize = true;
-            this.rb_circrestart.Location = new System.Drawing.Point(366, 48);
-            this.rb_circrestart.Name = "rb_circrestart";
-            this.rb_circrestart.Size = new System.Drawing.Size(253, 29);
-            this.rb_circrestart.TabIndex = 2;
-            this.rb_circrestart.Text = "Heart restarted (defib)";
-            this.rb_circrestart.UseVisualStyleBackColor = true;
+            this.rb_circ_fullyrestarted_2to0.AutoSize = true;
+            this.rb_circ_fullyrestarted_2to0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_circ_fullyrestarted_2to0.Location = new System.Drawing.Point(400, 115);
+            this.rb_circ_fullyrestarted_2to0.Name = "rb_circ_fullyrestarted_2to0";
+            this.rb_circ_fullyrestarted_2to0.Size = new System.Drawing.Size(299, 29);
+            this.rb_circ_fullyrestarted_2to0.TabIndex = 2;
+            this.rb_circ_fullyrestarted_2to0.Text = "Heart restarted and normal";
+            this.rb_circ_fullyrestarted_2to0.UseVisualStyleBackColor = true;
             // 
             // treatment_timeline_result
             // 
@@ -202,15 +219,16 @@
             this.treatment_timeline_result.Size = new System.Drawing.Size(514, 904);
             this.treatment_timeline_result.TabIndex = 119;
             // 
-            // rb_circgood
+            // rb_circ_good_0
             // 
-            this.rb_circgood.AutoSize = true;
-            this.rb_circgood.Location = new System.Drawing.Point(27, 48);
-            this.rb_circgood.Name = "rb_circgood";
-            this.rb_circgood.Size = new System.Drawing.Size(247, 29);
-            this.rb_circgood.TabIndex = 0;
-            this.rb_circgood.Text = "No Coronary problem";
-            this.rb_circgood.UseVisualStyleBackColor = true;
+            this.rb_circ_good_0.AutoSize = true;
+            this.rb_circ_good_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_circ_good_0.Location = new System.Drawing.Point(20, 35);
+            this.rb_circ_good_0.Name = "rb_circ_good_0";
+            this.rb_circ_good_0.Size = new System.Drawing.Size(257, 29);
+            this.rb_circ_good_0.TabIndex = 0;
+            this.rb_circ_good_0.Text = "No circulation problem";
+            this.rb_circ_good_0.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -219,9 +237,10 @@
             this.groupBox3.Controls.Add(this.rb_med_adr);
             this.groupBox3.Controls.Add(this.rb_med_morphine);
             this.groupBox3.Controls.Add(this.rb_nomeds);
-            this.groupBox3.Location = new System.Drawing.Point(1570, 978);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(1582, 860);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(796, 147);
+            this.groupBox3.Size = new System.Drawing.Size(800, 150);
             this.groupBox3.TabIndex = 115;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Medication";
@@ -229,7 +248,8 @@
             // rb_med_fluids
             // 
             this.rb_med_fluids.AutoSize = true;
-            this.rb_med_fluids.Location = new System.Drawing.Point(366, 97);
+            this.rb_med_fluids.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_med_fluids.Location = new System.Drawing.Point(400, 100);
             this.rb_med_fluids.Name = "rb_med_fluids";
             this.rb_med_fluids.Size = new System.Drawing.Size(101, 29);
             this.rb_med_fluids.TabIndex = 3;
@@ -239,7 +259,8 @@
             // rb_med_adr
             // 
             this.rb_med_adr.AutoSize = true;
-            this.rb_med_adr.Location = new System.Drawing.Point(366, 48);
+            this.rb_med_adr.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_med_adr.Location = new System.Drawing.Point(400, 50);
             this.rb_med_adr.Name = "rb_med_adr";
             this.rb_med_adr.Size = new System.Drawing.Size(146, 29);
             this.rb_med_adr.TabIndex = 2;
@@ -249,7 +270,8 @@
             // rb_med_morphine
             // 
             this.rb_med_morphine.AutoSize = true;
-            this.rb_med_morphine.Location = new System.Drawing.Point(27, 97);
+            this.rb_med_morphine.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_med_morphine.Location = new System.Drawing.Point(20, 100);
             this.rb_med_morphine.Name = "rb_med_morphine";
             this.rb_med_morphine.Size = new System.Drawing.Size(133, 29);
             this.rb_med_morphine.TabIndex = 1;
@@ -259,7 +281,8 @@
             // rb_nomeds
             // 
             this.rb_nomeds.AutoSize = true;
-            this.rb_nomeds.Location = new System.Drawing.Point(27, 48);
+            this.rb_nomeds.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_nomeds.Location = new System.Drawing.Point(20, 50);
             this.rb_nomeds.Name = "rb_nomeds";
             this.rb_nomeds.Size = new System.Drawing.Size(152, 29);
             this.rb_nomeds.TabIndex = 0;
@@ -269,146 +292,165 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.AliceBlue;
-            this.groupBox2.Controls.Add(this.rb_heavybleed);
-            this.groupBox2.Controls.Add(this.radioButton21);
-            this.groupBox2.Controls.Add(this.rb_bleedingstopped);
-            this.groupBox2.Controls.Add(this.rb_somebleed);
-            this.groupBox2.Controls.Add(this.rb_nobleed);
-            this.groupBox2.Location = new System.Drawing.Point(1570, 748);
+            this.groupBox2.Controls.Add(this.rb_hem_bleedstop_2to0);
+            this.groupBox2.Controls.Add(this.rb_heavy_bleed_2);
+            this.groupBox2.Controls.Add(this.rb_hem_bleedstop_2to1);
+            this.groupBox2.Controls.Add(this.rb_hem_bleedstop_1to0);
+            this.groupBox2.Controls.Add(this.rb_some_bleed_1);
+            this.groupBox2.Controls.Add(this.rb_no_bleed_0);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(1582, 690);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(796, 206);
+            this.groupBox2.Size = new System.Drawing.Size(800, 150);
             this.groupBox2.TabIndex = 114;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hemorrhage";
             // 
-            // rb_heavybleed
+            // rb_heavy_bleed_2
             // 
-            this.rb_heavybleed.AutoSize = true;
-            this.rb_heavybleed.Location = new System.Drawing.Point(27, 137);
-            this.rb_heavybleed.Name = "rb_heavybleed";
-            this.rb_heavybleed.Size = new System.Drawing.Size(317, 29);
-            this.rb_heavybleed.TabIndex = 3;
-            this.rb_heavybleed.Text = "Heavy bleeding, not stopped";
-            this.rb_heavybleed.UseVisualStyleBackColor = true;
+            this.rb_heavy_bleed_2.AutoSize = true;
+            this.rb_heavy_bleed_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_heavy_bleed_2.Location = new System.Drawing.Point(20, 115);
+            this.rb_heavy_bleed_2.Name = "rb_heavy_bleed_2";
+            this.rb_heavy_bleed_2.Size = new System.Drawing.Size(317, 29);
+            this.rb_heavy_bleed_2.TabIndex = 3;
+            this.rb_heavy_bleed_2.Text = "Heavy bleeding, not stopped";
+            this.rb_heavy_bleed_2.UseVisualStyleBackColor = true;
             // 
-            // radioButton21
+            // rb_hem_bleedstop_2to1
             // 
-            this.radioButton21.AutoSize = true;
-            this.radioButton21.Location = new System.Drawing.Point(366, 97);
-            this.radioButton21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.radioButton21.Name = "radioButton21";
-            this.radioButton21.Size = new System.Drawing.Size(307, 29);
-            this.radioButton21.TabIndex = 51;
-            this.radioButton21.TabStop = true;
-            this.radioButton21.Text = "Bleeding (torniquet applied)";
-            this.radioButton21.UseVisualStyleBackColor = true;
+            this.rb_hem_bleedstop_2to1.AutoSize = true;
+            this.rb_hem_bleedstop_2to1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_hem_bleedstop_2to1.Location = new System.Drawing.Point(400, 75);
+            this.rb_hem_bleedstop_2to1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rb_hem_bleedstop_2to1.Name = "rb_hem_bleedstop_2to1";
+            this.rb_hem_bleedstop_2to1.Size = new System.Drawing.Size(356, 29);
+            this.rb_hem_bleedstop_2to1.TabIndex = 51;
+            this.rb_hem_bleedstop_2to1.TabStop = true;
+            this.rb_hem_bleedstop_2to1.Text = "Heavy bleeding partially stopped";
+            this.rb_hem_bleedstop_2to1.UseVisualStyleBackColor = true;
+            this.rb_hem_bleedstop_2to1.CheckedChanged += new System.EventHandler(this.rb_hem_bleedstop_2to1_CheckedChanged);
             // 
-            // rb_bleedingstopped
+            // rb_hem_bleedstop_1to0
             // 
-            this.rb_bleedingstopped.AutoSize = true;
-            this.rb_bleedingstopped.Location = new System.Drawing.Point(366, 48);
-            this.rb_bleedingstopped.Name = "rb_bleedingstopped";
-            this.rb_bleedingstopped.Size = new System.Drawing.Size(356, 29);
-            this.rb_bleedingstopped.TabIndex = 2;
-            this.rb_bleedingstopped.Text = "Bleeding stopped with tourniquet";
-            this.rb_bleedingstopped.UseVisualStyleBackColor = true;
+            this.rb_hem_bleedstop_1to0.AutoSize = true;
+            this.rb_hem_bleedstop_1to0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_hem_bleedstop_1to0.Location = new System.Drawing.Point(400, 35);
+            this.rb_hem_bleedstop_1to0.Name = "rb_hem_bleedstop_1to0";
+            this.rb_hem_bleedstop_1to0.Size = new System.Drawing.Size(315, 29);
+            this.rb_hem_bleedstop_1to0.TabIndex = 2;
+            this.rb_hem_bleedstop_1to0.Text = "Superficial bleeding stopped";
+            this.rb_hem_bleedstop_1to0.UseVisualStyleBackColor = true;
             // 
-            // rb_somebleed
+            // rb_some_bleed_1
             // 
-            this.rb_somebleed.AutoSize = true;
-            this.rb_somebleed.Location = new System.Drawing.Point(27, 97);
-            this.rb_somebleed.Name = "rb_somebleed";
-            this.rb_somebleed.Size = new System.Drawing.Size(268, 29);
-            this.rb_somebleed.TabIndex = 1;
-            this.rb_somebleed.Text = "Superficial Hemorrhage";
-            this.rb_somebleed.UseVisualStyleBackColor = true;
+            this.rb_some_bleed_1.AutoSize = true;
+            this.rb_some_bleed_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_some_bleed_1.Location = new System.Drawing.Point(20, 75);
+            this.rb_some_bleed_1.Name = "rb_some_bleed_1";
+            this.rb_some_bleed_1.Size = new System.Drawing.Size(268, 29);
+            this.rb_some_bleed_1.TabIndex = 1;
+            this.rb_some_bleed_1.Text = "Superficial Hemorrhage";
+            this.rb_some_bleed_1.UseVisualStyleBackColor = true;
             // 
-            // rb_nobleed
+            // rb_no_bleed_0
             // 
-            this.rb_nobleed.AutoSize = true;
-            this.rb_nobleed.Location = new System.Drawing.Point(27, 48);
-            this.rb_nobleed.Name = "rb_nobleed";
-            this.rb_nobleed.Size = new System.Drawing.Size(160, 29);
-            this.rb_nobleed.TabIndex = 0;
-            this.rb_nobleed.Text = "No Bleeding";
-            this.rb_nobleed.UseVisualStyleBackColor = true;
+            this.rb_no_bleed_0.AutoSize = true;
+            this.rb_no_bleed_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_no_bleed_0.Location = new System.Drawing.Point(20, 35);
+            this.rb_no_bleed_0.Name = "rb_no_bleed_0";
+            this.rb_no_bleed_0.Size = new System.Drawing.Size(160, 29);
+            this.rb_no_bleed_0.TabIndex = 0;
+            this.rb_no_bleed_0.Text = "No Bleeding";
+            this.rb_no_bleed_0.UseVisualStyleBackColor = true;
             // 
             // CirculationGroup
             // 
             this.CirculationGroup.BackColor = System.Drawing.Color.AliceBlue;
-            this.CirculationGroup.Controls.Add(this.rb_circstopped);
-            this.CirculationGroup.Controls.Add(this.radioButton25);
-            this.CirculationGroup.Controls.Add(this.rb_circrestart);
-            this.CirculationGroup.Controls.Add(this.rb_circgood);
-            this.CirculationGroup.Location = new System.Drawing.Point(1570, 202);
+            this.CirculationGroup.Controls.Add(this.rb_circ_restart_1to0);
+            this.CirculationGroup.Controls.Add(this.rb_circ_partrestarted_2to1);
+            this.CirculationGroup.Controls.Add(this.rb_circ_stopped_2);
+            this.CirculationGroup.Controls.Add(this.rb_circ_erratic_1);
+            this.CirculationGroup.Controls.Add(this.rb_circ_fullyrestarted_2to0);
+            this.CirculationGroup.Controls.Add(this.rb_circ_good_0);
+            this.CirculationGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CirculationGroup.Location = new System.Drawing.Point(1582, 180);
             this.CirculationGroup.Name = "CirculationGroup";
-            this.CirculationGroup.Size = new System.Drawing.Size(796, 167);
+            this.CirculationGroup.Size = new System.Drawing.Size(800, 150);
             this.CirculationGroup.TabIndex = 111;
             this.CirculationGroup.TabStop = false;
             this.CirculationGroup.Text = "Circulation";
             // 
-            // rb_circstopped
+            // rb_circ_stopped_2
             // 
-            this.rb_circstopped.AutoSize = true;
-            this.rb_circstopped.Location = new System.Drawing.Point(27, 114);
-            this.rb_circstopped.Name = "rb_circstopped";
-            this.rb_circstopped.Size = new System.Drawing.Size(274, 29);
-            this.rb_circstopped.TabIndex = 3;
-            this.rb_circstopped.Text = "Patient in Cardiac arrest";
-            this.rb_circstopped.UseVisualStyleBackColor = true;
+            this.rb_circ_stopped_2.AutoSize = true;
+            this.rb_circ_stopped_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_circ_stopped_2.Location = new System.Drawing.Point(20, 115);
+            this.rb_circ_stopped_2.Name = "rb_circ_stopped_2";
+            this.rb_circ_stopped_2.Size = new System.Drawing.Size(274, 29);
+            this.rb_circ_stopped_2.TabIndex = 3;
+            this.rb_circ_stopped_2.Text = "Patient in Cardiac arrest";
+            this.rb_circ_stopped_2.UseVisualStyleBackColor = true;
             // 
-            // rb_airwayblocked
+            // rb_air_blocked_2
             // 
-            this.rb_airwayblocked.AutoSize = true;
-            this.rb_airwayblocked.Location = new System.Drawing.Point(27, 106);
-            this.rb_airwayblocked.Name = "rb_airwayblocked";
-            this.rb_airwayblocked.Size = new System.Drawing.Size(188, 29);
-            this.rb_airwayblocked.TabIndex = 3;
-            this.rb_airwayblocked.Text = "Airway blocked";
-            this.rb_airwayblocked.UseVisualStyleBackColor = true;
+            this.rb_air_blocked_2.AutoSize = true;
+            this.rb_air_blocked_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_air_blocked_2.Location = new System.Drawing.Point(20, 115);
+            this.rb_air_blocked_2.Name = "rb_air_blocked_2";
+            this.rb_air_blocked_2.Size = new System.Drawing.Size(188, 29);
+            this.rb_air_blocked_2.TabIndex = 3;
+            this.rb_air_blocked_2.Text = "Airway blocked";
+            this.rb_air_blocked_2.UseVisualStyleBackColor = true;
             // 
-            // radioButton23
+            // rb_air_partcleared_2to1
             // 
-            this.radioButton23.AutoSize = true;
-            this.radioButton23.Location = new System.Drawing.Point(368, 106);
-            this.radioButton23.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(307, 29);
-            this.radioButton23.TabIndex = 50;
-            this.radioButton23.TabStop = true;
-            this.radioButton23.Text = "Obstructed (after treatment)";
-            this.radioButton23.UseVisualStyleBackColor = true;
+            this.rb_air_partcleared_2to1.AutoSize = true;
+            this.rb_air_partcleared_2to1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_air_partcleared_2to1.Location = new System.Drawing.Point(400, 75);
+            this.rb_air_partcleared_2to1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rb_air_partcleared_2to1.Name = "rb_air_partcleared_2to1";
+            this.rb_air_partcleared_2to1.Size = new System.Drawing.Size(265, 29);
+            this.rb_air_partcleared_2to1.TabIndex = 50;
+            this.rb_air_partcleared_2to1.TabStop = true;
+            this.rb_air_partcleared_2to1.Text = "Airway partially cleared";
+            this.rb_air_partcleared_2to1.UseVisualStyleBackColor = true;
             // 
-            // rb_airwaycleared
+            // rb_air_partblocked_1
             // 
-            this.rb_airwaycleared.AutoSize = true;
-            this.rb_airwaycleared.Location = new System.Drawing.Point(366, 45);
-            this.rb_airwaycleared.Name = "rb_airwaycleared";
-            this.rb_airwaycleared.Size = new System.Drawing.Size(315, 29);
-            this.rb_airwaycleared.TabIndex = 2;
-            this.rb_airwaycleared.Text = "Airway Blocked then cleared";
-            this.rb_airwaycleared.UseVisualStyleBackColor = true;
+            this.rb_air_partblocked_1.AutoSize = true;
+            this.rb_air_partblocked_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_air_partblocked_1.Location = new System.Drawing.Point(20, 75);
+            this.rb_air_partblocked_1.Name = "rb_air_partblocked_1";
+            this.rb_air_partblocked_1.Size = new System.Drawing.Size(269, 29);
+            this.rb_air_partblocked_1.TabIndex = 2;
+            this.rb_air_partblocked_1.Text = "Airway partially blocked";
+            this.rb_air_partblocked_1.UseVisualStyleBackColor = true;
             // 
-            // rb_airwaygood
+            // rb_air_good_0
             // 
-            this.rb_airwaygood.AutoSize = true;
-            this.rb_airwaygood.Location = new System.Drawing.Point(27, 48);
-            this.rb_airwaygood.Name = "rb_airwaygood";
-            this.rb_airwaygood.Size = new System.Drawing.Size(164, 29);
-            this.rb_airwaygood.TabIndex = 0;
-            this.rb_airwaygood.Text = "Airway Clear";
-            this.rb_airwaygood.UseVisualStyleBackColor = true;
+            this.rb_air_good_0.AutoSize = true;
+            this.rb_air_good_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_air_good_0.Location = new System.Drawing.Point(20, 35);
+            this.rb_air_good_0.Name = "rb_air_good_0";
+            this.rb_air_good_0.Size = new System.Drawing.Size(164, 29);
+            this.rb_air_good_0.TabIndex = 0;
+            this.rb_air_good_0.Text = "Airway Clear";
+            this.rb_air_good_0.UseVisualStyleBackColor = true;
             // 
             // AirwayGroup
             // 
             this.AirwayGroup.BackColor = System.Drawing.Color.AliceBlue;
-            this.AirwayGroup.Controls.Add(this.rb_airwayblocked);
-            this.AirwayGroup.Controls.Add(this.radioButton23);
-            this.AirwayGroup.Controls.Add(this.rb_airwaycleared);
-            this.AirwayGroup.Controls.Add(this.rb_airwaygood);
-            this.AirwayGroup.Location = new System.Drawing.Point(1570, 375);
+            this.AirwayGroup.Controls.Add(this.rb_air_fullycleared_2to0);
+            this.AirwayGroup.Controls.Add(this.rb_air_cleared_1to0);
+            this.AirwayGroup.Controls.Add(this.rb_air_blocked_2);
+            this.AirwayGroup.Controls.Add(this.rb_air_partcleared_2to1);
+            this.AirwayGroup.Controls.Add(this.rb_air_partblocked_1);
+            this.AirwayGroup.Controls.Add(this.rb_air_good_0);
+            this.AirwayGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AirwayGroup.Location = new System.Drawing.Point(1582, 350);
             this.AirwayGroup.Name = "AirwayGroup";
-            this.AirwayGroup.Size = new System.Drawing.Size(796, 147);
+            this.AirwayGroup.Size = new System.Drawing.Size(800, 150);
             this.AirwayGroup.TabIndex = 112;
             this.AirwayGroup.TabStop = false;
             this.AirwayGroup.Text = "Airway";
@@ -416,7 +458,8 @@
             // rb_age_adult
             // 
             this.rb_age_adult.AutoSize = true;
-            this.rb_age_adult.Location = new System.Drawing.Point(366, 48);
+            this.rb_age_adult.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_age_adult.Location = new System.Drawing.Point(400, 50);
             this.rb_age_adult.Name = "rb_age_adult";
             this.rb_age_adult.Size = new System.Drawing.Size(92, 29);
             this.rb_age_adult.TabIndex = 2;
@@ -426,7 +469,8 @@
             // rb_gender_female
             // 
             this.rb_gender_female.AutoSize = true;
-            this.rb_gender_female.Location = new System.Drawing.Point(366, 48);
+            this.rb_gender_female.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_gender_female.Location = new System.Drawing.Point(400, 65);
             this.rb_gender_female.Name = "rb_gender_female";
             this.rb_gender_female.Size = new System.Drawing.Size(114, 29);
             this.rb_gender_female.TabIndex = 2;
@@ -436,7 +480,8 @@
             // rb_gender_male
             // 
             this.rb_gender_male.AutoSize = true;
-            this.rb_gender_male.Location = new System.Drawing.Point(27, 48);
+            this.rb_gender_male.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_gender_male.Location = new System.Drawing.Point(20, 65);
             this.rb_gender_male.Name = "rb_gender_male";
             this.rb_gender_male.Size = new System.Drawing.Size(90, 29);
             this.rb_gender_male.TabIndex = 0;
@@ -446,22 +491,24 @@
             // rb_age_child
             // 
             this.rb_age_child.AutoSize = true;
-            this.rb_age_child.Location = new System.Drawing.Point(27, 97);
+            this.rb_age_child.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_age_child.Location = new System.Drawing.Point(20, 100);
             this.rb_age_child.Name = "rb_age_child";
             this.rb_age_child.Size = new System.Drawing.Size(92, 29);
             this.rb_age_child.TabIndex = 1;
             this.rb_age_child.Text = "Child";
             this.rb_age_child.UseVisualStyleBackColor = true;
             // 
-            // rb_age_infant
+            // rb_age_small_child
             // 
-            this.rb_age_infant.AutoSize = true;
-            this.rb_age_infant.Location = new System.Drawing.Point(27, 48);
-            this.rb_age_infant.Name = "rb_age_infant";
-            this.rb_age_infant.Size = new System.Drawing.Size(96, 29);
-            this.rb_age_infant.TabIndex = 0;
-            this.rb_age_infant.Text = "Infant";
-            this.rb_age_infant.UseVisualStyleBackColor = true;
+            this.rb_age_small_child.AutoSize = true;
+            this.rb_age_small_child.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_age_small_child.Location = new System.Drawing.Point(20, 50);
+            this.rb_age_small_child.Name = "rb_age_small_child";
+            this.rb_age_small_child.Size = new System.Drawing.Size(147, 29);
+            this.rb_age_small_child.TabIndex = 0;
+            this.rb_age_small_child.Text = "Small child";
+            this.rb_age_small_child.UseVisualStyleBackColor = true;
             // 
             // status_critical
             // 
@@ -477,69 +524,76 @@
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.AliceBlue;
-            this.groupBox6.Controls.Add(this.rb_unconscious);
-            this.groupBox6.Controls.Add(this.radioButton22);
-            this.groupBox6.Controls.Add(this.rb_wasunconscious);
-            this.groupBox6.Controls.Add(this.rb_partconscious);
-            this.groupBox6.Controls.Add(this.rb_conscious);
-            this.groupBox6.Location = new System.Drawing.Point(1570, 545);
+            this.groupBox6.Controls.Add(this.rb_conc_fullyrestored_2to0);
+            this.groupBox6.Controls.Add(this.rb_unconscious_2);
+            this.groupBox6.Controls.Add(this.rb_conc_partrestored_2to1);
+            this.groupBox6.Controls.Add(this.rb_conc_restored_1to0);
+            this.groupBox6.Controls.Add(this.rb_partconscious_1);
+            this.groupBox6.Controls.Add(this.rb_conscious_0);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(1582, 520);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(796, 197);
+            this.groupBox6.Size = new System.Drawing.Size(800, 150);
             this.groupBox6.TabIndex = 113;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Consciousness";
             // 
-            // rb_unconscious
+            // rb_unconscious_2
             // 
-            this.rb_unconscious.AutoSize = true;
-            this.rb_unconscious.Location = new System.Drawing.Point(27, 137);
-            this.rb_unconscious.Name = "rb_unconscious";
-            this.rb_unconscious.Size = new System.Drawing.Size(167, 29);
-            this.rb_unconscious.TabIndex = 3;
-            this.rb_unconscious.Text = "Unconscious";
-            this.rb_unconscious.UseVisualStyleBackColor = true;
+            this.rb_unconscious_2.AutoSize = true;
+            this.rb_unconscious_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_unconscious_2.Location = new System.Drawing.Point(20, 115);
+            this.rb_unconscious_2.Name = "rb_unconscious_2";
+            this.rb_unconscious_2.Size = new System.Drawing.Size(167, 29);
+            this.rb_unconscious_2.TabIndex = 3;
+            this.rb_unconscious_2.Text = "Unconscious";
+            this.rb_unconscious_2.UseVisualStyleBackColor = true;
             // 
-            // radioButton22
+            // rb_conc_partrestored_2to1
             // 
-            this.radioButton22.AutoSize = true;
-            this.radioButton22.Location = new System.Drawing.Point(366, 97);
-            this.radioButton22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.radioButton22.Name = "radioButton22";
-            this.radioButton22.Size = new System.Drawing.Size(326, 29);
-            this.radioButton22.TabIndex = 49;
-            this.radioButton22.TabStop = true;
-            this.radioButton22.Text = "Unconscious (after treatment)";
-            this.radioButton22.UseVisualStyleBackColor = true;
+            this.rb_conc_partrestored_2to1.AutoSize = true;
+            this.rb_conc_partrestored_2to1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_conc_partrestored_2to1.Location = new System.Drawing.Point(400, 75);
+            this.rb_conc_partrestored_2to1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rb_conc_partrestored_2to1.Name = "rb_conc_partrestored_2to1";
+            this.rb_conc_partrestored_2to1.Size = new System.Drawing.Size(375, 29);
+            this.rb_conc_partrestored_2to1.TabIndex = 49;
+            this.rb_conc_partrestored_2to1.TabStop = true;
+            this.rb_conc_partrestored_2to1.Text = "Unconscious to partially conscious";
+            this.rb_conc_partrestored_2to1.UseVisualStyleBackColor = true;
             // 
-            // rb_wasunconscious
+            // rb_conc_restored_1to0
             // 
-            this.rb_wasunconscious.AutoSize = true;
-            this.rb_wasunconscious.Location = new System.Drawing.Point(366, 48);
-            this.rb_wasunconscious.Name = "rb_wasunconscious";
-            this.rb_wasunconscious.Size = new System.Drawing.Size(288, 29);
-            this.rb_wasunconscious.TabIndex = 2;
-            this.rb_wasunconscious.Text = "Regained Consciousness";
-            this.rb_wasunconscious.UseVisualStyleBackColor = true;
+            this.rb_conc_restored_1to0.AutoSize = true;
+            this.rb_conc_restored_1to0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_conc_restored_1to0.Location = new System.Drawing.Point(400, 35);
+            this.rb_conc_restored_1to0.Name = "rb_conc_restored_1to0";
+            this.rb_conc_restored_1to0.Size = new System.Drawing.Size(276, 29);
+            this.rb_conc_restored_1to0.TabIndex = 2;
+            this.rb_conc_restored_1to0.Text = "Partial to fully conscious";
+            this.rb_conc_restored_1to0.UseVisualStyleBackColor = true;
             // 
-            // rb_partconscious
+            // rb_partconscious_1
             // 
-            this.rb_partconscious.AutoSize = true;
-            this.rb_partconscious.Location = new System.Drawing.Point(27, 97);
-            this.rb_partconscious.Name = "rb_partconscious";
-            this.rb_partconscious.Size = new System.Drawing.Size(220, 29);
-            this.rb_partconscious.TabIndex = 1;
-            this.rb_partconscious.Text = "Slightly incoherant";
-            this.rb_partconscious.UseVisualStyleBackColor = true;
+            this.rb_partconscious_1.AutoSize = true;
+            this.rb_partconscious_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_partconscious_1.Location = new System.Drawing.Point(20, 75);
+            this.rb_partconscious_1.Name = "rb_partconscious_1";
+            this.rb_partconscious_1.Size = new System.Drawing.Size(223, 29);
+            this.rb_partconscious_1.TabIndex = 1;
+            this.rb_partconscious_1.Text = "Partially conscious";
+            this.rb_partconscious_1.UseVisualStyleBackColor = true;
             // 
-            // rb_conscious
+            // rb_conscious_0
             // 
-            this.rb_conscious.AutoSize = true;
-            this.rb_conscious.Location = new System.Drawing.Point(27, 48);
-            this.rb_conscious.Name = "rb_conscious";
-            this.rb_conscious.Size = new System.Drawing.Size(196, 29);
-            this.rb_conscious.TabIndex = 0;
-            this.rb_conscious.Text = "Fully Conscious";
-            this.rb_conscious.UseVisualStyleBackColor = true;
+            this.rb_conscious_0.AutoSize = true;
+            this.rb_conscious_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_conscious_0.Location = new System.Drawing.Point(20, 35);
+            this.rb_conscious_0.Name = "rb_conscious_0";
+            this.rb_conscious_0.Size = new System.Drawing.Size(196, 29);
+            this.rb_conscious_0.TabIndex = 0;
+            this.rb_conscious_0.Text = "Fully Conscious";
+            this.rb_conscious_0.UseVisualStyleBackColor = true;
             // 
             // status_priority
             // 
@@ -566,9 +620,9 @@
             // Submit_toc_button
             // 
             this.Submit_toc_button.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.Submit_toc_button.Location = new System.Drawing.Point(1570, 1431);
+            this.Submit_toc_button.Location = new System.Drawing.Point(1582, 1434);
             this.Submit_toc_button.Name = "Submit_toc_button";
-            this.Submit_toc_button.Size = new System.Drawing.Size(704, 60);
+            this.Submit_toc_button.Size = new System.Drawing.Size(796, 60);
             this.Submit_toc_button.TabIndex = 118;
             this.Submit_toc_button.Text = "Submit ToC details";
             this.Submit_toc_button.UseVisualStyleBackColor = false;
@@ -579,9 +633,10 @@
             this.groupBox5.BackColor = System.Drawing.Color.AliceBlue;
             this.groupBox5.Controls.Add(this.rb_gender_female);
             this.groupBox5.Controls.Add(this.rb_gender_male);
-            this.groupBox5.Location = new System.Drawing.Point(1570, 1317);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(1582, 1200);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(796, 94);
+            this.groupBox5.Size = new System.Drawing.Size(800, 150);
             this.groupBox5.TabIndex = 117;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Gender";
@@ -915,7 +970,8 @@
             // rb_age_70plus
             // 
             this.rb_age_70plus.AutoSize = true;
-            this.rb_age_70plus.Location = new System.Drawing.Point(366, 97);
+            this.rb_age_70plus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_age_70plus.Location = new System.Drawing.Point(400, 100);
             this.rb_age_70plus.Name = "rb_age_70plus";
             this.rb_age_70plus.Size = new System.Drawing.Size(173, 29);
             this.rb_age_70plus.TabIndex = 3;
@@ -928,10 +984,11 @@
             this.groupBox4.Controls.Add(this.rb_age_70plus);
             this.groupBox4.Controls.Add(this.rb_age_adult);
             this.groupBox4.Controls.Add(this.rb_age_child);
-            this.groupBox4.Controls.Add(this.rb_age_infant);
-            this.groupBox4.Location = new System.Drawing.Point(1570, 1147);
+            this.groupBox4.Controls.Add(this.rb_age_small_child);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(1582, 1030);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(796, 147);
+            this.groupBox4.Size = new System.Drawing.Size(800, 150);
             this.groupBox4.TabIndex = 116;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Age";
@@ -952,6 +1009,102 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // rb_breathing_2to1
+            // 
+            this.rb_breathing_2to1.AutoSize = true;
+            this.rb_breathing_2to1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_breathing_2to1.Location = new System.Drawing.Point(400, 75);
+            this.rb_breathing_2to1.Name = "rb_breathing_2to1";
+            this.rb_breathing_2to1.Size = new System.Drawing.Size(322, 29);
+            this.rb_breathing_2to1.TabIndex = 49;
+            this.rb_breathing_2to1.Text = "Breathing improved, still poor";
+            this.rb_breathing_2to1.UseVisualStyleBackColor = true;
+            // 
+            // rb_breathing_1to0
+            // 
+            this.rb_breathing_1to0.AutoSize = true;
+            this.rb_breathing_1to0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_breathing_1to0.Location = new System.Drawing.Point(400, 35);
+            this.rb_breathing_1to0.Name = "rb_breathing_1to0";
+            this.rb_breathing_1to0.Size = new System.Drawing.Size(341, 29);
+            this.rb_breathing_1to0.TabIndex = 50;
+            this.rb_breathing_1to0.Text = "Breathing difficulties eliminated";
+            this.rb_breathing_1to0.UseVisualStyleBackColor = true;
+            // 
+            // rb_circ_partrestarted_2to1
+            // 
+            this.rb_circ_partrestarted_2to1.AutoSize = true;
+            this.rb_circ_partrestarted_2to1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_circ_partrestarted_2to1.Location = new System.Drawing.Point(400, 75);
+            this.rb_circ_partrestarted_2to1.Name = "rb_circ_partrestarted_2to1";
+            this.rb_circ_partrestarted_2to1.Size = new System.Drawing.Size(288, 29);
+            this.rb_circ_partrestarted_2to1.TabIndex = 53;
+            this.rb_circ_partrestarted_2to1.Text = "Heart restarted but erratic";
+            this.rb_circ_partrestarted_2to1.UseVisualStyleBackColor = true;
+            // 
+            // rb_circ_restart_1to0
+            // 
+            this.rb_circ_restart_1to0.AutoSize = true;
+            this.rb_circ_restart_1to0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_circ_restart_1to0.Location = new System.Drawing.Point(400, 35);
+            this.rb_circ_restart_1to0.Name = "rb_circ_restart_1to0";
+            this.rb_circ_restart_1to0.Size = new System.Drawing.Size(318, 29);
+            this.rb_circ_restart_1to0.TabIndex = 54;
+            this.rb_circ_restart_1to0.Text = "Erratic heartbeat now normal";
+            this.rb_circ_restart_1to0.UseVisualStyleBackColor = true;
+            // 
+            // rb_air_cleared_1to0
+            // 
+            this.rb_air_cleared_1to0.AutoSize = true;
+            this.rb_air_cleared_1to0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_air_cleared_1to0.Location = new System.Drawing.Point(400, 35);
+            this.rb_air_cleared_1to0.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rb_air_cleared_1to0.Name = "rb_air_cleared_1to0";
+            this.rb_air_cleared_1to0.Size = new System.Drawing.Size(394, 29);
+            this.rb_air_cleared_1to0.TabIndex = 51;
+            this.rb_air_cleared_1to0.TabStop = true;
+            this.rb_air_cleared_1to0.Text = "Airway partially blocked then cleared";
+            this.rb_air_cleared_1to0.UseVisualStyleBackColor = true;
+            // 
+            // rb_air_fullycleared_2to0
+            // 
+            this.rb_air_fullycleared_2to0.AutoSize = true;
+            this.rb_air_fullycleared_2to0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_air_fullycleared_2to0.Location = new System.Drawing.Point(400, 115);
+            this.rb_air_fullycleared_2to0.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rb_air_fullycleared_2to0.Name = "rb_air_fullycleared_2to0";
+            this.rb_air_fullycleared_2to0.Size = new System.Drawing.Size(352, 29);
+            this.rb_air_fullycleared_2to0.TabIndex = 52;
+            this.rb_air_fullycleared_2to0.TabStop = true;
+            this.rb_air_fullycleared_2to0.Text = "Airway blocked and fully cleared";
+            this.rb_air_fullycleared_2to0.UseVisualStyleBackColor = true;
+            // 
+            // rb_conc_fullyrestored_2to0
+            // 
+            this.rb_conc_fullyrestored_2to0.AutoSize = true;
+            this.rb_conc_fullyrestored_2to0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_conc_fullyrestored_2to0.Location = new System.Drawing.Point(400, 115);
+            this.rb_conc_fullyrestored_2to0.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rb_conc_fullyrestored_2to0.Name = "rb_conc_fullyrestored_2to0";
+            this.rb_conc_fullyrestored_2to0.Size = new System.Drawing.Size(339, 29);
+            this.rb_conc_fullyrestored_2to0.TabIndex = 50;
+            this.rb_conc_fullyrestored_2to0.TabStop = true;
+            this.rb_conc_fullyrestored_2to0.Text = "Unconscious to fully conscious";
+            this.rb_conc_fullyrestored_2to0.UseVisualStyleBackColor = true;
+            // 
+            // rb_hem_bleedstop_2to0
+            // 
+            this.rb_hem_bleedstop_2to0.AutoSize = true;
+            this.rb_hem_bleedstop_2to0.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_hem_bleedstop_2to0.Location = new System.Drawing.Point(400, 115);
+            this.rb_hem_bleedstop_2to0.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rb_hem_bleedstop_2to0.Name = "rb_hem_bleedstop_2to0";
+            this.rb_hem_bleedstop_2to0.Size = new System.Drawing.Size(277, 29);
+            this.rb_hem_bleedstop_2to0.TabIndex = 52;
+            this.rb_hem_bleedstop_2to0.TabStop = true;
+            this.rb_hem_bleedstop_2to0.Text = "Heavy Bleeding stopped";
+            this.rb_hem_bleedstop_2to0.UseVisualStyleBackColor = true;
             // 
             // inputform
             // 
@@ -1026,44 +1179,44 @@
         #endregion
 
         private System.Windows.Forms.GroupBox BreathingGroup;
-        public System.Windows.Forms.RadioButton radioButton24;
-        public System.Windows.Forms.RadioButton rb_breathingstopped;
-        public System.Windows.Forms.RadioButton rb_breathing_restart;
-        public System.Windows.Forms.RadioButton rb_breathing_good;
-        public System.Windows.Forms.RadioButton radioButton25;
-        public System.Windows.Forms.RadioButton rb_circrestart;
+        public System.Windows.Forms.RadioButton rb_breathing_partial_1;
+        public System.Windows.Forms.RadioButton rb_breathing_stopped_2;
+        public System.Windows.Forms.RadioButton rb_breathing_2to0;
+        public System.Windows.Forms.RadioButton rb_breathing_good_0;
+        public System.Windows.Forms.RadioButton rb_circ_erratic_1;
+        public System.Windows.Forms.RadioButton rb_circ_fullyrestarted_2to0;
         public System.Windows.Forms.ListBox treatment_timeline_result;
-        public System.Windows.Forms.RadioButton rb_circgood;
+        public System.Windows.Forms.RadioButton rb_circ_good_0;
         private System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.RadioButton rb_med_fluids;
         public System.Windows.Forms.RadioButton rb_med_adr;
         public System.Windows.Forms.RadioButton rb_med_morphine;
         public System.Windows.Forms.RadioButton rb_nomeds;
         private System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.RadioButton rb_heavybleed;
-        public System.Windows.Forms.RadioButton radioButton21;
-        public System.Windows.Forms.RadioButton rb_bleedingstopped;
-        public System.Windows.Forms.RadioButton rb_somebleed;
-        public System.Windows.Forms.RadioButton rb_nobleed;
+        public System.Windows.Forms.RadioButton rb_heavy_bleed_2;
+        public System.Windows.Forms.RadioButton rb_hem_bleedstop_2to1;
+        public System.Windows.Forms.RadioButton rb_hem_bleedstop_1to0;
+        public System.Windows.Forms.RadioButton rb_some_bleed_1;
+        public System.Windows.Forms.RadioButton rb_no_bleed_0;
         private System.Windows.Forms.GroupBox CirculationGroup;
-        public System.Windows.Forms.RadioButton rb_circstopped;
-        public System.Windows.Forms.RadioButton rb_airwayblocked;
-        public System.Windows.Forms.RadioButton radioButton23;
-        public System.Windows.Forms.RadioButton rb_airwaycleared;
-        public System.Windows.Forms.RadioButton rb_airwaygood;
+        public System.Windows.Forms.RadioButton rb_circ_stopped_2;
+        public System.Windows.Forms.RadioButton rb_air_blocked_2;
+        public System.Windows.Forms.RadioButton rb_air_partcleared_2to1;
+        public System.Windows.Forms.RadioButton rb_air_partblocked_1;
+        public System.Windows.Forms.RadioButton rb_air_good_0;
         private System.Windows.Forms.GroupBox AirwayGroup;
         public System.Windows.Forms.RadioButton rb_age_adult;
         public System.Windows.Forms.RadioButton rb_gender_female;
         public System.Windows.Forms.RadioButton rb_gender_male;
         public System.Windows.Forms.RadioButton rb_age_child;
-        public System.Windows.Forms.RadioButton rb_age_infant;
+        public System.Windows.Forms.RadioButton rb_age_small_child;
         public System.Windows.Forms.RadioButton status_critical;
         private System.Windows.Forms.GroupBox groupBox6;
-        public System.Windows.Forms.RadioButton rb_unconscious;
-        public System.Windows.Forms.RadioButton radioButton22;
-        public System.Windows.Forms.RadioButton rb_wasunconscious;
-        public System.Windows.Forms.RadioButton rb_partconscious;
-        public System.Windows.Forms.RadioButton rb_conscious;
+        public System.Windows.Forms.RadioButton rb_unconscious_2;
+        public System.Windows.Forms.RadioButton rb_conc_partrestored_2to1;
+        public System.Windows.Forms.RadioButton rb_conc_restored_1to0;
+        public System.Windows.Forms.RadioButton rb_partconscious_1;
+        public System.Windows.Forms.RadioButton rb_conscious_0;
         public System.Windows.Forms.RadioButton status_priority;
         public System.Windows.Forms.RadioButton status_routine;
         public System.Windows.Forms.Button Submit_toc_button;
@@ -1099,5 +1252,13 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button_torso;
         private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.RadioButton rb_breathing_1to0;
+        public System.Windows.Forms.RadioButton rb_breathing_2to1;
+        public System.Windows.Forms.RadioButton rb_circ_restart_1to0;
+        public System.Windows.Forms.RadioButton rb_circ_partrestarted_2to1;
+        public System.Windows.Forms.RadioButton rb_hem_bleedstop_2to0;
+        public System.Windows.Forms.RadioButton rb_air_fullycleared_2to0;
+        public System.Windows.Forms.RadioButton rb_air_cleared_1to0;
+        public System.Windows.Forms.RadioButton rb_conc_fullyrestored_2to0;
     }
 }

@@ -86,13 +86,9 @@ namespace Uttam_Transfer_Of_Care
             var screenheight = Screen.PrimaryScreen.Bounds.Height;
             var screenwidth = Screen.PrimaryScreen.Bounds.Width;
 
-            if (AI_sim.AI_assist == true)
+            if (AI_sim.AI_assist == false)
             {
-                // for (int i = 0; i < AI_sim.Treatment_timeline.Items.Count; i++)
-                // {
-                //     treatment_timeline_result.Items.Add(lb1.Items[i].ToString());
-                // }
-                
+                 treatment_timeline_result.Items.Clear();      
             }
             //treatment_timeline_result.Items.Add(AI_sim.treatment_info_to_transfer);
 
@@ -2095,24 +2091,24 @@ namespace Uttam_Transfer_Of_Care
         private void rb_breathingstopped_CheckedChanged(object sender, EventArgs e)
         {
             var_breathing = 2;
-            var_breathing_text = rb_breathingstopped.Text;
+            var_breathing_text = rb_breathing_stopped_2.Text;
         }
 
         private void rb_breathing_good_CheckedChanged(object sender, EventArgs e)
         {
             var_breathing = 0;
-            var_breathing_text = rb_breathing_good.Text;
+            var_breathing_text = rb_breathing_good_0.Text;
         }
 
         private void rb_breathing_bad_CheckedChanged(object sender, EventArgs e)
         {
             var_breathing = 1;
-            var_breathing_text = rb_breathingstopped.Text;
+            var_breathing_text = rb_breathing_stopped_2.Text;
         }
         private void rb_breathing_restart_CheckedChanged(object sender, EventArgs e)
         {
             var_breathing = 3;
-            var_breathing_text = rb_breathing_restart.Text;
+            var_breathing_text = rb_breathing_2to0.Text;
         }
         #endregion
 
@@ -2120,25 +2116,25 @@ namespace Uttam_Transfer_Of_Care
         private void rb_circgood_CheckedChanged(object sender, EventArgs e)
         {
             var_circulation = 0;
-            var_circulation_text = rb_circgood.Text;
+            var_circulation_text = rb_circ_good_0.Text;
         }
 
         private void rb_circrestart_CheckedChanged(object sender, EventArgs e)
         {
             var_circulation = 3;
-            var_circulation_text = rb_circrestart.Text;
+            var_circulation_text = rb_circ_fullyrestarted_2to0.Text;
         }
 
         private void rb_circbad_CheckedChanged(object sender, EventArgs e)
         {
             var_circulation = 1;
-            var_circulation_text = rb_circstopped.Text;
+            var_circulation_text = rb_circ_stopped_2.Text;
         }
 
         private void rb_circstopped_CheckedChanged(object sender, EventArgs e)
         {
             var_circulation = 2;
-            var_circulation_text = rb_circstopped.Text;
+            var_circulation_text = rb_circ_stopped_2.Text;
         }
         #endregion
 
@@ -2147,25 +2143,25 @@ namespace Uttam_Transfer_Of_Care
         private void rb_airwaygood_CheckedChanged(object sender, EventArgs e)
         {
             var_airways = 0;
-            var_airways_text = rb_airwaygood.Text;
+            var_airways_text = rb_air_good_0.Text;
         }
 
         private void rb_airwaycleared_CheckedChanged(object sender, EventArgs e)
         {
             var_airways = 3;
-            var_airways_text = rb_airwaycleared.Text;
+            var_airways_text = rb_air_partblocked_1.Text;
         }
 
         private void rb_airwaybad_CheckedChanged(object sender, EventArgs e)
         {
             var_airways = 1;
-            var_airways_text = rb_airwayblocked.Text;
+            var_airways_text = rb_air_blocked_2.Text;
         }
 
         private void rb_airwayblocked_CheckedChanged(object sender, EventArgs e)
         {
             var_airways = 2;
-            var_airways_text = rb_airwayblocked.Text;
+            var_airways_text = rb_air_blocked_2.Text;
         }
 
         #endregion
@@ -2175,25 +2171,25 @@ namespace Uttam_Transfer_Of_Care
         private void rb_conscious_CheckedChanged(object sender, EventArgs e)
         {
             var_consciousness = 0;
-            var_consciousness_text = rb_conscious.Text;
+            var_consciousness_text = rb_conscious_0.Text;
         }
 
         private void rb_wasunconscious_CheckedChanged(object sender, EventArgs e)
         {
             var_consciousness = 3;
-            var_consciousness_text = rb_wasunconscious.Text;
+            var_consciousness_text = rb_conc_restored_1to0.Text;
         }
 
         private void rb_partconscious_CheckedChanged(object sender, EventArgs e)
         {
             var_consciousness = 1;
-            var_consciousness_text = rb_partconscious.Text;
+            var_consciousness_text = rb_partconscious_1.Text;
         }
 
         private void rb_unconscious_CheckedChanged(object sender, EventArgs e)
         {
             var_consciousness = 2;
-            var_consciousness_text = rb_unconscious.Text;
+            var_consciousness_text = rb_unconscious_2.Text;
         }
 
         #endregion
@@ -2203,25 +2199,25 @@ namespace Uttam_Transfer_Of_Care
         private void rb_nobleed_CheckedChanged(object sender, EventArgs e)
         {
             var_hemorrage = 0;
-            var_hemorrage_text = rb_nobleed.Text;
+            var_hemorrage_text = rb_no_bleed_0.Text;
         }
 
         private void rb_bleedingstopped_CheckedChanged(object sender, EventArgs e)
         {
             var_hemorrage = 3;
-            var_hemorrage_text = rb_bleedingstopped.Text;
+            var_hemorrage_text = rb_hem_bleedstop_1to0.Text;
         }
 
         private void rb_somebleed_CheckedChanged(object sender, EventArgs e)
         {
             var_hemorrage = 1;
-            var_hemorrage_text = rb_somebleed.Text;
+            var_hemorrage_text = rb_some_bleed_1.Text;
         }
 
         private void rb_heavybleed_CheckedChanged(object sender, EventArgs e)
         {
             var_hemorrage = 2;
-            var_hemorrage_text = rb_heavybleed.Text;
+            var_hemorrage_text = rb_heavy_bleed_2.Text;
         }
 
         #endregion
@@ -2258,7 +2254,7 @@ namespace Uttam_Transfer_Of_Care
         private void rb_age_infant_CheckedChanged(object sender, EventArgs e)
         {
             var_age = 0;
-            var_age_text = rb_age_infant.Text;
+            var_age_text = rb_age_small_child.Text;
         }
 
         private void rb_age_adult_CheckedChanged(object sender, EventArgs e)
@@ -2332,6 +2328,11 @@ namespace Uttam_Transfer_Of_Care
         }
 
         private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_hem_bleedstop_2to1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

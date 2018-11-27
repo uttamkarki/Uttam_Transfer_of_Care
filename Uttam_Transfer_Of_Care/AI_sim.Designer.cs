@@ -87,7 +87,6 @@
             this.Predicted_Breath_Box = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -96,7 +95,7 @@
             // 
             // AI_patient_transfer_button
             // 
-            this.AI_patient_transfer_button.Location = new System.Drawing.Point(678, 1124);
+            this.AI_patient_transfer_button.Location = new System.Drawing.Point(402, 820);
             this.AI_patient_transfer_button.Name = "AI_patient_transfer_button";
             this.AI_patient_transfer_button.Size = new System.Drawing.Size(324, 86);
             this.AI_patient_transfer_button.TabIndex = 99;
@@ -320,7 +319,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 398);
+            this.label2.Location = new System.Drawing.Point(1576, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(585, 66);
             this.label2.TabIndex = 76;
@@ -330,9 +329,9 @@
             // sim_injury_location_label
             // 
             this.sim_injury_location_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sim_injury_location_label.Location = new System.Drawing.Point(878, 145);
+            this.sim_injury_location_label.Location = new System.Drawing.Point(798, 172);
             this.sim_injury_location_label.Name = "sim_injury_location_label";
-            this.sim_injury_location_label.Size = new System.Drawing.Size(238, 52);
+            this.sim_injury_location_label.Size = new System.Drawing.Size(312, 52);
             this.sim_injury_location_label.TabIndex = 74;
             this.sim_injury_location_label.Text = "XX";
             this.sim_injury_location_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -340,7 +339,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(806, 145);
+            this.label4.Location = new System.Drawing.Point(726, 172);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 52);
             this.label4.TabIndex = 73;
@@ -350,9 +349,9 @@
             // sim_injury_type_label
             // 
             this.sim_injury_type_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sim_injury_type_label.Location = new System.Drawing.Point(567, 145);
+            this.sim_injury_type_label.Location = new System.Drawing.Point(505, 172);
             this.sim_injury_type_label.Name = "sim_injury_type_label";
-            this.sim_injury_type_label.Size = new System.Drawing.Size(263, 52);
+            this.sim_injury_type_label.Size = new System.Drawing.Size(215, 52);
             this.sim_injury_type_label.TabIndex = 72;
             this.sim_injury_type_label.Text = "XX";
             this.sim_injury_type_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -360,9 +359,9 @@
             // sim_gender_label
             // 
             this.sim_gender_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sim_gender_label.Location = new System.Drawing.Point(223, 145);
+            this.sim_gender_label.Location = new System.Drawing.Point(211, 172);
             this.sim_gender_label.Name = "sim_gender_label";
-            this.sim_gender_label.Size = new System.Drawing.Size(227, 52);
+            this.sim_gender_label.Size = new System.Drawing.Size(177, 52);
             this.sim_gender_label.TabIndex = 71;
             this.sim_gender_label.Text = "XX";
             this.sim_gender_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -370,7 +369,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(89, 145);
+            this.label3.Location = new System.Drawing.Point(77, 172);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(126, 52);
             this.label3.TabIndex = 70;
@@ -380,7 +379,7 @@
             // sim_age_label
             // 
             this.sim_age_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sim_age_label.Location = new System.Drawing.Point(12, 145);
+            this.sim_age_label.Location = new System.Drawing.Point(0, 172);
             this.sim_age_label.Name = "sim_age_label";
             this.sim_age_label.Size = new System.Drawing.Size(71, 52);
             this.sim_age_label.TabIndex = 69;
@@ -390,7 +389,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(456, 145);
+            this.label1.Location = new System.Drawing.Point(394, 172);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 52);
             this.label1.TabIndex = 68;
@@ -506,16 +505,16 @@
             // 
             this.treatment_timeline.FormattingEnabled = true;
             this.treatment_timeline.ItemHeight = 25;
-            this.treatment_timeline.Location = new System.Drawing.Point(18, 469);
+            this.treatment_timeline.Location = new System.Drawing.Point(1577, 127);
             this.treatment_timeline.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treatment_timeline.Name = "treatment_timeline";
-            this.treatment_timeline.Size = new System.Drawing.Size(1098, 254);
+            this.treatment_timeline.Size = new System.Drawing.Size(584, 779);
             this.treatment_timeline.TabIndex = 112;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.GreenYellow;
-            this.button1.Location = new System.Drawing.Point(678, 14);
+            this.button1.Location = new System.Drawing.Point(396, 49);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(324, 86);
@@ -547,7 +546,7 @@
             this.groupBox1.Controls.Add(this.sim_finalbreath_box);
             this.groupBox1.Controls.Add(this.sim_finalair_box);
             this.groupBox1.Controls.Add(this.sim_finalconc_box);
-            this.groupBox1.Location = new System.Drawing.Point(18, 731);
+            this.groupBox1.Location = new System.Drawing.Point(12, 411);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1098, 178);
             this.groupBox1.TabIndex = 114;
@@ -566,7 +565,7 @@
             this.groupBox2.Controls.Add(this.sim_intair_box);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.sim_intconc_box);
-            this.groupBox2.Location = new System.Drawing.Point(18, 217);
+            this.groupBox2.Location = new System.Drawing.Point(12, 227);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1098, 178);
             this.groupBox2.TabIndex = 115;
@@ -589,7 +588,7 @@
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.Button_breath_Oxygen);
-            this.groupBox3.Location = new System.Drawing.Point(1122, 217);
+            this.groupBox3.Location = new System.Drawing.Point(1122, 32);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(448, 876);
             this.groupBox3.TabIndex = 116;
@@ -641,7 +640,7 @@
             this.groupBox4.Controls.Add(this.Predicted_Breath_Box);
             this.groupBox4.Controls.Add(this.textBox4);
             this.groupBox4.Controls.Add(this.textBox5);
-            this.groupBox4.Location = new System.Drawing.Point(18, 915);
+            this.groupBox4.Location = new System.Drawing.Point(12, 595);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1098, 178);
             this.groupBox4.TabIndex = 115;
@@ -754,21 +753,11 @@
             this.textBox5.Text = "1";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(1042, 1124);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(357, 86);
-            this.button2.TabIndex = 117;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // AI_sim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1633, 1222);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(2174, 929);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -787,6 +776,7 @@
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AI_sim";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AI_sim";
             this.Load += new System.EventHandler(this.AI_sim_Load);
             this.groupBox1.ResumeLayout(false);
@@ -861,6 +851,5 @@
         public System.Windows.Forms.Button Button_air_clearair;
         public System.Windows.Forms.Button Button_circ_drugs;
         public System.Windows.Forms.Button Button_breath_rescuebreath;
-        private System.Windows.Forms.Button button2;
     }
 }

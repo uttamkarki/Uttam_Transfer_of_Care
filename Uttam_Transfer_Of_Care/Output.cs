@@ -42,53 +42,13 @@ namespace Uttam_Transfer_Of_Care
 
         }
 
-        // UNUSED EVENTS
-        #region Unused click events
-        private void Actual_status_label_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        #endregion
-
         private void Output_Load(object sender, EventArgs e)
         {
             TimeSpan simtime = inputform.endtime - AI_sim.starttime;
+
+            Participant_experience_label.Text = intro_form.Participant_experience;
+            Participatn_role_label.Text = intro_form.Participant_role;
+            Participant_number_label.Text = intro_form.Participant_ID;
 
             #region calculate time taken in transfer of care 
             int simtime_seconds = simtime.Seconds;
@@ -465,6 +425,9 @@ namespace Uttam_Transfer_Of_Care
         }
         #endregion
 
+
+        // UNUSED EVENTS
+        #region Unused click events
         private void Output_transferred_patient_injury_location_TextChanged(object sender, EventArgs e)
         {
 
@@ -474,6 +437,52 @@ namespace Uttam_Transfer_Of_Care
         {
 
         }
+
+        private void Output_total_ws_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void Actual_status_label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 
 }

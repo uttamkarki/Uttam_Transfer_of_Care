@@ -37,12 +37,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Intro_label = new System.Windows.Forms.Label();
+            this.Participant_ID_box = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // aisimstartbutton
             // 
             this.aisimstartbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aisimstartbutton.Location = new System.Drawing.Point(771, 577);
+            this.aisimstartbutton.Location = new System.Drawing.Point(770, 671);
             this.aisimstartbutton.Name = "aisimstartbutton";
             this.aisimstartbutton.Size = new System.Drawing.Size(640, 112);
             this.aisimstartbutton.TabIndex = 15;
@@ -53,12 +55,13 @@
             // standardsimstartbutton
             // 
             this.standardsimstartbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.standardsimstartbutton.Location = new System.Drawing.Point(40, 577);
+            this.standardsimstartbutton.Location = new System.Drawing.Point(52, 671);
             this.standardsimstartbutton.Name = "standardsimstartbutton";
             this.standardsimstartbutton.Size = new System.Drawing.Size(640, 112);
             this.standardsimstartbutton.TabIndex = 14;
             this.standardsimstartbutton.Text = "Start Standard Sim";
             this.standardsimstartbutton.UseVisualStyleBackColor = true;
+            this.standardsimstartbutton.Click += new System.EventHandler(this.standardsimstartbutton_Click_1);
             // 
             // Experience_entry
             // 
@@ -67,6 +70,7 @@
             this.Experience_entry.Name = "Experience_entry";
             this.Experience_entry.Size = new System.Drawing.Size(600, 38);
             this.Experience_entry.TabIndex = 13;
+            this.Experience_entry.TextChanged += new System.EventHandler(this.Experience_entry_TextChanged_1);
             // 
             // label4
             // 
@@ -84,7 +88,6 @@
             this.Role_entry.Name = "Role_entry";
             this.Role_entry.Size = new System.Drawing.Size(600, 38);
             this.Role_entry.TabIndex = 11;
-            this.Role_entry.TextChanged += new System.EventHandler(this.Role_entry_TextChanged);
             // 
             // label3
             // 
@@ -115,11 +118,31 @@
             this.Intro_label.Text = resources.GetString("Intro_label.Text");
             this.Intro_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // Participant_ID_box
+            // 
+            this.Participant_ID_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Participant_ID_box.Location = new System.Drawing.Point(246, 567);
+            this.Participant_ID_box.Name = "Participant_ID_box";
+            this.Participant_ID_box.Size = new System.Drawing.Size(600, 38);
+            this.Participant_ID_box.TabIndex = 17;
+            this.Participant_ID_box.TextChanged += new System.EventHandler(this.Participant_ID_box_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(46, 566);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(195, 41);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "ID";
+            // 
             // intro_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1479, 795);
+            this.Controls.Add(this.Participant_ID_box);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.aisimstartbutton);
             this.Controls.Add(this.standardsimstartbutton);
             this.Controls.Add(this.Experience_entry);
@@ -147,5 +170,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Intro_label;
+        private System.Windows.Forms.TextBox Participant_ID_box;
+        private System.Windows.Forms.Label label1;
     }
 }

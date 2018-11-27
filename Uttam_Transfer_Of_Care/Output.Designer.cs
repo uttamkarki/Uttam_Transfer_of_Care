@@ -165,6 +165,7 @@
             this.Output_total_ws.Name = "Output_total_ws";
             this.Output_total_ws.Size = new System.Drawing.Size(224, 44);
             this.Output_total_ws.TabIndex = 149;
+            this.Output_total_ws.TextChanged += new System.EventHandler(this.Output_total_ws_TextChanged);
             // 
             // label17
             // 
