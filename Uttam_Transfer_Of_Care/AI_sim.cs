@@ -122,6 +122,11 @@ namespace Uttam_Transfer_Of_Care
                 } // end of if loop
 
             }// called by EMS ends
+            else if (from == "Stopwatch" && to == "UIcontroller")
+            {
+                DELEGATE del = new DELEGATE(UIController);
+                this.Invoke(del); 
+            }
             else
             {
             }
@@ -756,7 +761,11 @@ namespace Uttam_Transfer_Of_Care
 
 
         #endregion
-
+        int Stopwatch_hem_Function_Call;
+        int Stopwatch_conc_Function_Call;
+        int Stopwatch_air_Function_Call;
+        int Stopwatch_circ_Function_Call;
+        int Stopwatch_breath_Function_Call;
         Stopwatch stopwatch_hem = new Stopwatch();
         Stopwatch stopwatch_con = new Stopwatch();
         Stopwatch stopwatch_air = new Stopwatch();
@@ -764,55 +773,82 @@ namespace Uttam_Transfer_Of_Care
         Stopwatch stopwatch_cir = new Stopwatch();
         public void stopwatch_record()
         {
-            StackTrace stack = new StackTrace();
-           
-          
-            if (stack.GetFrame(1).GetMethod().Name == "Hemorrhagecheck")
+            if (Stopwatch_hem_Function_Call == 1)
             {
                 stopwatch_hem.Start();
-                while (stopwatch_hem.Elapsed.Seconds <= 20)
+                while (stopwatch_hem.Elapsed.Seconds <= 10)
                 {
 
                 }
-
+                if(hemorrhage > 0 && hemorrhage < 2)
+                {
+                    hemorrhage = hemorrhage + 1;
+                }
+                DELEGATE del = new DELEGATE(patient);
+                this.Invoke(del);
             }
-            if (stack.GetFrame(1).GetMethod().Name == "Consciousnesscheck")
+            else if (Stopwatch_conc_Function_Call == 2)
             {
                 stopwatch_con.Start();
-                while (stopwatch_hem.Elapsed.Seconds <= 20)
+                while (stopwatch_hem.Elapsed.Seconds <= 10)
                 {
 
                 }
-
+                if(consciousness > 0 && consciousness < 2)
+                {
+                    consciousness = consciousness + 1;
+                }
+                DELEGATE del = new DELEGATE(patient);
+                this.Invoke(del);
             }
-            if (stack.GetFrame(1).GetMethod().Name == "Airwaycheck")
+            else if (Stopwatch_air_Function_Call == 3)
             {
                 stopwatch_air.Start();
-                while (stopwatch_hem.Elapsed.Seconds <= 20)
+                while (stopwatch_hem.Elapsed.Seconds <= 10)
                 {
 
                 }
-
+                if(airway > 0 && airway < 2)
+                {
+                    airway = airway + 1;
+                }
+                DELEGATE del = new DELEGATE(patient);
+                this.Invoke(del);
             }
-            if (stack.GetFrame(1).GetMethod().Name == "Breathingcheck")
+            else if (Stopwatch_breath_Function_Call == 4)
             {
                 stopwatch_bre.Start();
-                while (stopwatch_hem.Elapsed.Seconds <= 20)
+                while (stopwatch_hem.Elapsed.Seconds <= 10)
                 {
 
                 }
-
+                if(breathing >0 && breathing < 2)
+                {
+                    breathing = breathing + 1;
+                }
+                DELEGATE del = new DELEGATE(patient);
+                this.Invoke(del);
             }
-            if (stack.GetFrame(1).GetMethod().Name == "Circulationcheck")
+            else if (Stopwatch_circ_Function_Call == 5)
             {
                 stopwatch_cir.Start();
-                while (stopwatch_hem.Elapsed.Seconds <= 20)
+                while (stopwatch_hem.Elapsed.Seconds <= 10)
                 {
 
                 }
+                if (circulation > 0 && circulation < 2)
+                {
+                    circulation = circulation + 1;
+                }
+                DELEGATE del = new DELEGATE(patient);
+                this.Invoke(del);
+            }
+            else
+            {
 
             }
-
+            from = "Stopwatch"; to = "UIcontroller";
+            patient();
         }
         
         
@@ -955,8 +991,14 @@ namespace Uttam_Transfer_Of_Care
                 // do we need the thread to sleep if displaying message?  maybe lock the app? 
                 System.Threading.Thread.Sleep(5000);
                 sim_finalhem_box.Text = Convert.ToString(hemorrhage);
-                Thread th_stopwatch_hem = new Thread(stopwatch_record);
-                th_stopwatch_hem.Start();
+                Thread.Sleep(5);
+                if(Stopwatch_hem_Function_Call != 1)
+                {
+                    Stopwatch_hem_Function_Call = 1;
+                    stopwatch_hem.Reset();
+                    Thread th_stopwatch_hem = new Thread(stopwatch_record);
+                    th_stopwatch_hem.Start();
+                }
 
             } // end of hemorrhage check
             #endregion
@@ -1066,6 +1108,14 @@ namespace Uttam_Transfer_Of_Care
                 // do we need the thread to sleep if displaying message?  maybe lock the app? 
                 System.Threading.Thread.Sleep(2500);
                 sim_finalconc_box.Text = Convert.ToString(consciousness);
+                Thread.Sleep(5);
+                if (Stopwatch_conc_Function_Call != 1)
+                {
+                    Stopwatch_conc_Function_Call = 1;
+                    stopwatch_con.Reset();
+                    Thread th_stopwatch_conc = new Thread(stopwatch_record);
+                    th_stopwatch_conc.Start();
+                }
 
                 //this section all commented out for now - move to patient section? multiple checks? 
                 #region consciousness deterioration control - move to patient MDP section
@@ -1117,8 +1167,7 @@ namespace Uttam_Transfer_Of_Care
                 //}
                 #endregion // this section all commented out
 
-                Thread th_stopwatch_con = new Thread(stopwatch_record);
-                th_stopwatch_con.Start();
+
 
             }// end of consciousness check
             #endregion
@@ -1195,8 +1244,15 @@ namespace Uttam_Transfer_Of_Care
 
                 System.Threading.Thread.Sleep(5000);
                 sim_finalair_box.Text = Convert.ToString(airway);
-                Thread th_stopwatch_air = new Thread(stopwatch_record);
-                th_stopwatch_air.Start();
+                Thread.Sleep(5);
+                if (Stopwatch_air_Function_Call != 1)
+                {
+                    Stopwatch_air_Function_Call = 1;
+                    stopwatch_air.Reset();
+                    Thread th_stopwatch_air = new Thread(stopwatch_record);
+                    th_stopwatch_air.Start();
+                }
+
 
             } // end of airway check
             #endregion
@@ -1279,8 +1335,15 @@ namespace Uttam_Transfer_Of_Care
 
                 System.Threading.Thread.Sleep(2500);
                 sim_finalbreath_box.Text = Convert.ToString(breathing);
-                Thread th_stopwatch_bre = new Thread(stopwatch_record);
-                th_stopwatch_bre.Start();
+                Thread.Sleep(5);
+                if (Stopwatch_breath_Function_Call != 1)
+                {
+                    Stopwatch_breath_Function_Call = 1;
+                    stopwatch_bre.Reset();
+                    Thread th_stopwatch_breath = new Thread(stopwatch_record);
+                    th_stopwatch_breath.Start();
+                }
+
 
             }// end of breathing check
             #endregion
@@ -1410,8 +1473,14 @@ namespace Uttam_Transfer_Of_Care
 
                 System.Threading.Thread.Sleep(2500);                                            //Sleep current thread for appropriate delay
                 sim_finalcirc_box.Text = Convert.ToString(circulation);                         //convert condition quantifier to string for transfer to UI and display
-                Thread th_stopwatch_con = new Thread(stopwatch_record);
-                th_stopwatch_con.Start();
+                Thread.Sleep(5);
+                if (Stopwatch_circ_Function_Call != 1)
+                {
+                    Stopwatch_circ_Function_Call = 1;
+                    stopwatch_cir.Reset();
+                    Thread th_stopwatch_circ = new Thread(stopwatch_record);
+                    th_stopwatch_circ.Start();
+                }
 
             }// end of circulation check
             #endregion
@@ -1533,25 +1602,37 @@ namespace Uttam_Transfer_Of_Care
         #endregion
 
         // Dump old event handlers in here until I can work out how to clear them!!!
-        #region unused button click events
+        #region used button click events
         private void sim_finalair_box_TextChanged(object sender, EventArgs e)
         {
-
+            Stopwatch_air_Function_Call = 3;
+            stopwatch_air.Reset();
+            Thread th_stopwatch_air = new Thread(stopwatch_record);
+            th_stopwatch_air.Start();
         }
 
         private void sim_finalbreath_box_TextChanged(object sender, EventArgs e)
         {
-
+            Stopwatch_breath_Function_Call = 4;
+            stopwatch_bre.Reset();
+            Thread th_stopwatch_bre = new Thread(stopwatch_record);
+            th_stopwatch_bre.Start();
         }
 
         private void sim_finalcirc_box_TextChanged(object sender, EventArgs e)
         {
-
+            Stopwatch_circ_Function_Call = 5;
+            stopwatch_cir.Reset();
+            Thread th_stopwatch_con = new Thread(stopwatch_record);
+            th_stopwatch_con.Start();
         }
 
         private void sim_finalconc_box_TextChanged(object sender, EventArgs e)
         {
-
+            Stopwatch_conc_Function_Call = 2;
+            stopwatch_con.Reset();
+            Thread th_stopwatch_con = new Thread(stopwatch_record);
+            th_stopwatch_con.Start();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -1581,7 +1662,11 @@ namespace Uttam_Transfer_Of_Care
 
         private void sim_finalhem_box_TextChanged(object sender, EventArgs e)
         {
-
+            System.Media.SystemSounds.Beep.Play();
+            Stopwatch_hem_Function_Call = 1;
+            stopwatch_hem.Reset();
+            Thread th_stopwatch_hem = new Thread(stopwatch_record);
+            th_stopwatch_hem.Start();
         }
 
         private void Button_breath_drugs_Click(object sender, EventArgs e)
@@ -1620,5 +1705,10 @@ namespace Uttam_Transfer_Of_Care
 
         }
         #endregion
+
+        private void treatment_timeline_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
