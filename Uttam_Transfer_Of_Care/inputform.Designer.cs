@@ -151,6 +151,7 @@
             this.rb_breathing_partial_1.TabStop = true;
             this.rb_breathing_partial_1.Text = "Difficulty Breathing";
             this.rb_breathing_partial_1.UseVisualStyleBackColor = true;
+            this.rb_breathing_partial_1.CheckedChanged += new System.EventHandler(this.rb_breathing_partial_1_CheckedChanged);
             // 
             // rb_breathing_stopped_2
             // 
@@ -162,6 +163,7 @@
             this.rb_breathing_stopped_2.TabIndex = 4;
             this.rb_breathing_stopped_2.Text = "Breathing stopped";
             this.rb_breathing_stopped_2.UseVisualStyleBackColor = true;
+            this.rb_breathing_stopped_2.CheckedChanged += new System.EventHandler(this.rb_breathing_bad_CheckedChanged);
             // 
             // rb_breathing_2to0
             // 
@@ -173,6 +175,7 @@
             this.rb_breathing_2to0.TabIndex = 3;
             this.rb_breathing_2to0.Text = "Breathing stopped and restarted";
             this.rb_breathing_2to0.UseVisualStyleBackColor = true;
+            this.rb_breathing_2to0.CheckedChanged += new System.EventHandler(this.rb_breathing_2to0_CheckedChanged);
             // 
             // rb_breathing_good_0
             // 
@@ -184,6 +187,7 @@
             this.rb_breathing_good_0.TabIndex = 1;
             this.rb_breathing_good_0.Text = "No Breathing Difficulty";
             this.rb_breathing_good_0.UseVisualStyleBackColor = true;
+            this.rb_breathing_good_0.CheckedChanged += new System.EventHandler(this.rb_breathing_good_CheckedChanged);
             // 
             // rb_circ_erratic_1
             // 
@@ -197,6 +201,7 @@
             this.rb_circ_erratic_1.TabStop = true;
             this.rb_circ_erratic_1.Text = "Heart beat erratic";
             this.rb_circ_erratic_1.UseVisualStyleBackColor = true;
+            this.rb_circ_erratic_1.CheckedChanged += new System.EventHandler(this.rb_circ_erratic_1_CheckedChanged);
             // 
             // rb_circ_fullyrestarted_2to0
             // 
@@ -208,6 +213,7 @@
             this.rb_circ_fullyrestarted_2to0.TabIndex = 2;
             this.rb_circ_fullyrestarted_2to0.Text = "Heart restarted and normal";
             this.rb_circ_fullyrestarted_2to0.UseVisualStyleBackColor = true;
+            this.rb_circ_fullyrestarted_2to0.CheckedChanged += new System.EventHandler(this.rb_circ_fullyrestarted_2to0_CheckedChanged);
             // 
             // treatment_timeline_result
             // 
@@ -229,6 +235,7 @@
             this.rb_circ_good_0.TabIndex = 0;
             this.rb_circ_good_0.Text = "No circulation problem";
             this.rb_circ_good_0.UseVisualStyleBackColor = true;
+            this.rb_circ_good_0.CheckedChanged += new System.EventHandler(this.rb_circ_good_0_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -316,6 +323,7 @@
             this.rb_heavy_bleed_2.TabIndex = 3;
             this.rb_heavy_bleed_2.Text = "Heavy bleeding, not stopped";
             this.rb_heavy_bleed_2.UseVisualStyleBackColor = true;
+            this.rb_heavy_bleed_2.CheckedChanged += new System.EventHandler(this.rb_heavy_bleed_2_CheckedChanged);
             // 
             // rb_hem_bleedstop_2to1
             // 
@@ -341,6 +349,7 @@
             this.rb_hem_bleedstop_1to0.TabIndex = 2;
             this.rb_hem_bleedstop_1to0.Text = "Superficial bleeding stopped";
             this.rb_hem_bleedstop_1to0.UseVisualStyleBackColor = true;
+            this.rb_hem_bleedstop_1to0.CheckedChanged += new System.EventHandler(this.rb_hem_bleedstop_1to0_CheckedChanged);
             // 
             // rb_some_bleed_1
             // 
@@ -352,6 +361,7 @@
             this.rb_some_bleed_1.TabIndex = 1;
             this.rb_some_bleed_1.Text = "Superficial Hemorrhage";
             this.rb_some_bleed_1.UseVisualStyleBackColor = true;
+            this.rb_some_bleed_1.CheckedChanged += new System.EventHandler(this.rb_some_bleed_1_CheckedChanged);
             // 
             // rb_no_bleed_0
             // 
@@ -363,6 +373,7 @@
             this.rb_no_bleed_0.TabIndex = 0;
             this.rb_no_bleed_0.Text = "No Bleeding";
             this.rb_no_bleed_0.UseVisualStyleBackColor = true;
+            this.rb_no_bleed_0.CheckedChanged += new System.EventHandler(this.rb_no_bleed_0_CheckedChanged);
             // 
             // CirculationGroup
             // 
@@ -391,6 +402,7 @@
             this.rb_circ_stopped_2.TabIndex = 3;
             this.rb_circ_stopped_2.Text = "Patient in Cardiac arrest";
             this.rb_circ_stopped_2.UseVisualStyleBackColor = true;
+            this.rb_circ_stopped_2.CheckedChanged += new System.EventHandler(this.rb_circ_stopped_2_CheckedChanged);
             // 
             // rb_air_blocked_2
             // 
@@ -402,6 +414,7 @@
             this.rb_air_blocked_2.TabIndex = 3;
             this.rb_air_blocked_2.Text = "Airway blocked";
             this.rb_air_blocked_2.UseVisualStyleBackColor = true;
+            this.rb_air_blocked_2.CheckedChanged += new System.EventHandler(this.rb_air_blocked_2_CheckedChanged);
             // 
             // rb_air_partcleared_2to1
             // 
@@ -415,6 +428,7 @@
             this.rb_air_partcleared_2to1.TabStop = true;
             this.rb_air_partcleared_2to1.Text = "Airway partially cleared";
             this.rb_air_partcleared_2to1.UseVisualStyleBackColor = true;
+            this.rb_air_partcleared_2to1.CheckedChanged += new System.EventHandler(this.rb_air_partcleared_2to1_CheckedChanged);
             // 
             // rb_air_partblocked_1
             // 
@@ -426,6 +440,7 @@
             this.rb_air_partblocked_1.TabIndex = 2;
             this.rb_air_partblocked_1.Text = "Airway partially blocked";
             this.rb_air_partblocked_1.UseVisualStyleBackColor = true;
+            this.rb_air_partblocked_1.CheckedChanged += new System.EventHandler(this.rb_air_partblocked_1_CheckedChanged);
             // 
             // rb_air_good_0
             // 
@@ -437,6 +452,7 @@
             this.rb_air_good_0.TabIndex = 0;
             this.rb_air_good_0.Text = "Airway Clear";
             this.rb_air_good_0.UseVisualStyleBackColor = true;
+            this.rb_air_good_0.CheckedChanged += new System.EventHandler(this.rb_air_good_0_CheckedChanged);
             // 
             // AirwayGroup
             // 
@@ -465,6 +481,7 @@
             this.rb_age_adult.TabIndex = 2;
             this.rb_age_adult.Text = "Adult";
             this.rb_age_adult.UseVisualStyleBackColor = true;
+            this.rb_age_adult.CheckedChanged += new System.EventHandler(this.rb_age_adult_CheckedChanged_1);
             // 
             // rb_gender_female
             // 
@@ -498,6 +515,7 @@
             this.rb_age_child.TabIndex = 1;
             this.rb_age_child.Text = "Child";
             this.rb_age_child.UseVisualStyleBackColor = true;
+            this.rb_age_child.CheckedChanged += new System.EventHandler(this.rb_age_child_CheckedChanged_1);
             // 
             // rb_age_small_child
             // 
@@ -509,6 +527,7 @@
             this.rb_age_small_child.TabIndex = 0;
             this.rb_age_small_child.Text = "Small child";
             this.rb_age_small_child.UseVisualStyleBackColor = true;
+            this.rb_age_small_child.CheckedChanged += new System.EventHandler(this.rb_age_small_child_CheckedChanged);
             // 
             // status_critical
             // 
@@ -520,6 +539,7 @@
             this.status_critical.TabStop = true;
             this.status_critical.Text = "Critical";
             this.status_critical.UseVisualStyleBackColor = true;
+            this.status_critical.CheckedChanged += new System.EventHandler(this.status_critical_CheckedChanged);
             // 
             // groupBox6
             // 
@@ -548,6 +568,7 @@
             this.rb_unconscious_2.TabIndex = 3;
             this.rb_unconscious_2.Text = "Unconscious";
             this.rb_unconscious_2.UseVisualStyleBackColor = true;
+            this.rb_unconscious_2.CheckedChanged += new System.EventHandler(this.rb_unconscious_2_CheckedChanged);
             // 
             // rb_conc_partrestored_2to1
             // 
@@ -561,6 +582,7 @@
             this.rb_conc_partrestored_2to1.TabStop = true;
             this.rb_conc_partrestored_2to1.Text = "Unconscious to partially conscious";
             this.rb_conc_partrestored_2to1.UseVisualStyleBackColor = true;
+            this.rb_conc_partrestored_2to1.CheckedChanged += new System.EventHandler(this.rb_conc_partrestored_2to1_CheckedChanged);
             // 
             // rb_conc_restored_1to0
             // 
@@ -572,6 +594,7 @@
             this.rb_conc_restored_1to0.TabIndex = 2;
             this.rb_conc_restored_1to0.Text = "Partial to fully conscious";
             this.rb_conc_restored_1to0.UseVisualStyleBackColor = true;
+            this.rb_conc_restored_1to0.CheckedChanged += new System.EventHandler(this.rb_conc_restored_1to0_CheckedChanged);
             // 
             // rb_partconscious_1
             // 
@@ -583,6 +606,7 @@
             this.rb_partconscious_1.TabIndex = 1;
             this.rb_partconscious_1.Text = "Partially conscious";
             this.rb_partconscious_1.UseVisualStyleBackColor = true;
+            this.rb_partconscious_1.CheckedChanged += new System.EventHandler(this.rb_partconscious_1_CheckedChanged);
             // 
             // rb_conscious_0
             // 
@@ -594,6 +618,7 @@
             this.rb_conscious_0.TabIndex = 0;
             this.rb_conscious_0.Text = "Fully Conscious";
             this.rb_conscious_0.UseVisualStyleBackColor = true;
+            this.rb_conscious_0.CheckedChanged += new System.EventHandler(this.rb_conscious_0_CheckedChanged);
             // 
             // status_priority
             // 
@@ -605,6 +630,7 @@
             this.status_priority.TabStop = true;
             this.status_priority.Text = "Priority";
             this.status_priority.UseVisualStyleBackColor = true;
+            this.status_priority.CheckedChanged += new System.EventHandler(this.status_priority_CheckedChanged);
             // 
             // status_routine
             // 
@@ -616,6 +642,7 @@
             this.status_routine.TabStop = true;
             this.status_routine.Text = "Routine";
             this.status_routine.UseVisualStyleBackColor = true;
+            this.status_routine.CheckedChanged += new System.EventHandler(this.status_routine_CheckedChanged);
             // 
             // Submit_toc_button
             // 
@@ -977,6 +1004,7 @@
             this.rb_age_70plus.TabIndex = 3;
             this.rb_age_70plus.Text = "Older than 70";
             this.rb_age_70plus.UseVisualStyleBackColor = true;
+            this.rb_age_70plus.CheckedChanged += new System.EventHandler(this.rb_age_70plus_CheckedChanged_1);
             // 
             // groupBox4
             // 
@@ -1020,6 +1048,7 @@
             this.rb_breathing_2to1.TabIndex = 49;
             this.rb_breathing_2to1.Text = "Breathing improved, still poor";
             this.rb_breathing_2to1.UseVisualStyleBackColor = true;
+            this.rb_breathing_2to1.CheckedChanged += new System.EventHandler(this.rb_breathing_2to1_CheckedChanged);
             // 
             // rb_breathing_1to0
             // 
@@ -1031,6 +1060,7 @@
             this.rb_breathing_1to0.TabIndex = 50;
             this.rb_breathing_1to0.Text = "Breathing difficulties eliminated";
             this.rb_breathing_1to0.UseVisualStyleBackColor = true;
+            this.rb_breathing_1to0.CheckedChanged += new System.EventHandler(this.rb_breathing_1to0_CheckedChanged);
             // 
             // rb_circ_partrestarted_2to1
             // 
@@ -1042,6 +1072,7 @@
             this.rb_circ_partrestarted_2to1.TabIndex = 53;
             this.rb_circ_partrestarted_2to1.Text = "Heart restarted but erratic";
             this.rb_circ_partrestarted_2to1.UseVisualStyleBackColor = true;
+            this.rb_circ_partrestarted_2to1.CheckedChanged += new System.EventHandler(this.rb_circ_partrestarted_2to1_CheckedChanged);
             // 
             // rb_circ_restart_1to0
             // 
@@ -1053,6 +1084,7 @@
             this.rb_circ_restart_1to0.TabIndex = 54;
             this.rb_circ_restart_1to0.Text = "Erratic heartbeat now normal";
             this.rb_circ_restart_1to0.UseVisualStyleBackColor = true;
+            this.rb_circ_restart_1to0.CheckedChanged += new System.EventHandler(this.rb_circ_restart_1to0_CheckedChanged);
             // 
             // rb_air_cleared_1to0
             // 
@@ -1066,6 +1098,7 @@
             this.rb_air_cleared_1to0.TabStop = true;
             this.rb_air_cleared_1to0.Text = "Airway partially blocked then cleared";
             this.rb_air_cleared_1to0.UseVisualStyleBackColor = true;
+            this.rb_air_cleared_1to0.CheckedChanged += new System.EventHandler(this.rb_air_cleared_1to0_CheckedChanged);
             // 
             // rb_air_fullycleared_2to0
             // 
@@ -1079,6 +1112,7 @@
             this.rb_air_fullycleared_2to0.TabStop = true;
             this.rb_air_fullycleared_2to0.Text = "Airway blocked and fully cleared";
             this.rb_air_fullycleared_2to0.UseVisualStyleBackColor = true;
+            this.rb_air_fullycleared_2to0.CheckedChanged += new System.EventHandler(this.rb_air_fullycleared_2to0_CheckedChanged);
             // 
             // rb_conc_fullyrestored_2to0
             // 
@@ -1092,6 +1126,7 @@
             this.rb_conc_fullyrestored_2to0.TabStop = true;
             this.rb_conc_fullyrestored_2to0.Text = "Unconscious to fully conscious";
             this.rb_conc_fullyrestored_2to0.UseVisualStyleBackColor = true;
+            this.rb_conc_fullyrestored_2to0.CheckedChanged += new System.EventHandler(this.rb_conc_fullyrestored_2to0_CheckedChanged);
             // 
             // rb_hem_bleedstop_2to0
             // 
@@ -1105,6 +1140,7 @@
             this.rb_hem_bleedstop_2to0.TabStop = true;
             this.rb_hem_bleedstop_2to0.Text = "Heavy Bleeding stopped";
             this.rb_hem_bleedstop_2to0.UseVisualStyleBackColor = true;
+            this.rb_hem_bleedstop_2to0.CheckedChanged += new System.EventHandler(this.rb_hem_bleedstop_2to0_CheckedChanged);
             // 
             // inputform
             // 
@@ -1151,6 +1187,7 @@
             this.Controls.Add(this.button_torso);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "inputform";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "inputform";
             this.Load += new System.EventHandler(this.Inputform_Load);
             this.BreathingGroup.ResumeLayout(false);

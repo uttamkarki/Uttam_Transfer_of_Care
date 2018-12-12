@@ -153,6 +153,7 @@
             this.Controls.Add(this.Intro_label);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "intro_form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "intro_form";
             this.Load += new System.EventHandler(this.intro_form_Load);
             this.ResumeLayout(false);

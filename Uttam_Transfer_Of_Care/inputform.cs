@@ -42,17 +42,17 @@ namespace Uttam_Transfer_Of_Care
 
         public static Color onColor = Color.Red;
         public static Color offColor = Color.LightGray;
-        #region set initial metric definintions (5 = no input)
+        #region set initial metric definintions (6 = no input)
 
-        public static int var_breathing = 5;
-        public static int var_hemorrage = 5;
-        public static int var_consciousness = 5;
-        public static int var_airways = 5;
-        public static int var_circulation = 5;
-        public static int var_medication = 5;
-        public static int var_criticality = 5;
-        public static int var_age = 5;
-        public static int var_gender = 5;
+        public static int var_breathing = 6;
+        public static int var_hemorrage = 6;
+        public static int var_consciousness = 6;
+        public static int var_airways = 6;
+        public static int var_circulation = 6;
+        public static int var_medication = 6;
+        public static int var_criticality = 6;
+        public static int var_age = 6;
+        public static int var_gender = 6;
         public static string var_injury_type = "no injury mechanism given";
         #endregion
         #region set metric strings ("no data entered")
@@ -710,7 +710,355 @@ namespace Uttam_Transfer_Of_Care
             #endregion
 
             #endregion
-        }   
+        }
+        // prepare variables to pass to output - actual patient status and transferred patient status
+
+
+        // Transferred patient status as entered by participant
+        #region Radio Button Events //all radio button events in here - arranged in sub groups
+        #region Breathing group events
+
+        private void rb_breathingstopped_CheckedChanged(object sender, EventArgs e)
+        {
+            var_breathing = 2;
+            var_breathing_text = rb_breathing_stopped_2.Text;
+        }
+
+        private void rb_breathing_good_CheckedChanged(object sender, EventArgs e)
+        {
+            var_breathing = 0;
+            var_breathing_text = rb_breathing_good_0.Text;
+        }
+        private void rb_breathing_partial_1_CheckedChanged(object sender, EventArgs e)
+        {
+            var_breathing = 1;
+            var_breathing_text = rb_breathing_partial_1.Text;
+        }
+        private void rb_breathing_bad_CheckedChanged(object sender, EventArgs e)
+        {
+            var_breathing = 2;
+            var_breathing_text = rb_breathing_stopped_2.Text;
+        }
+        private void rb_breathing_1to0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_breathing = 3;
+            var_breathing_text = rb_breathing_1to0.Text;
+        }
+        private void rb_breathing_2to1_CheckedChanged(object sender, EventArgs e)
+        {
+            var_breathing = 4;
+            var_breathing_text = rb_breathing_2to1.Text;
+        }
+        private void rb_breathing_2to0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_breathing = 5;
+            var_breathing_text = rb_breathing_2to0.Text;
+        }
+        #endregion
+
+        #region Circulation group events
+        private void rb_circ_good_0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_circulation = 0;
+            var_circulation_text = rb_circ_good_0.Text;
+        }
+
+        private void rb_circ_erratic_1_CheckedChanged(object sender, EventArgs e)
+        {
+            var_circulation = 1;
+            var_circulation_text = rb_circ_erratic_1.Text;
+        }
+
+        private void rb_circ_stopped_2_CheckedChanged(object sender, EventArgs e)
+        {
+            var_circulation = 2;
+            var_circulation_text = rb_circ_stopped_2.Text;
+        }
+
+        private void rb_circ_restart_1to0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_circulation = 3;
+            var_circulation_text = rb_circ_restart_1to0.Text;
+        }
+
+        private void rb_circ_partrestarted_2to1_CheckedChanged(object sender, EventArgs e)
+        {
+            var_circulation = 4;
+            var_circulation_text = rb_circ_partrestarted_2to1.Text;
+        }
+
+        private void rb_circ_fullyrestarted_2to0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_circulation = 5;
+            var_circulation_text = rb_circ_fullyrestarted_2to0.Text;
+        }
+
+        #endregion
+
+        #region Airway group events
+        private void rb_air_good_0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_airways = 0;
+            var_airways_text = rb_air_good_0.Text;
+        }
+
+        private void rb_air_partblocked_1_CheckedChanged(object sender, EventArgs e)
+        {
+            var_airways = 1;
+            var_airways_text = rb_air_partblocked_1.Text;
+        }
+
+        private void rb_air_blocked_2_CheckedChanged(object sender, EventArgs e)
+        {
+            var_airways = 2;
+            var_airways_text = rb_air_blocked_2.Text;
+        }
+
+        private void rb_air_cleared_1to0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_airways = 3;
+            var_airways_text = rb_air_cleared_1to0.Text;
+        }
+
+        private void rb_air_partcleared_2to1_CheckedChanged(object sender, EventArgs e)
+        {
+            var_airways = 4;
+            var_airways_text = rb_air_partcleared_2to1.Text;
+        }
+
+        private void rb_air_fullycleared_2to0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_airways = 5;
+            var_airways_text = rb_air_fullycleared_2to0.Text;
+        }
+
+        #endregion
+
+        #region Consciousness group events
+
+        private void rb_conscious_0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_consciousness = 0;
+            var_consciousness_text = rb_conscious_0.Text;
+        }
+
+        private void rb_partconscious_1_CheckedChanged(object sender, EventArgs e)
+        {
+            var_consciousness = 1;
+            var_consciousness_text = rb_partconscious_1.Text;
+        }
+
+        private void rb_unconscious_2_CheckedChanged(object sender, EventArgs e)
+        {
+            var_consciousness = 2;
+            var_consciousness_text = rb_unconscious_2.Text;
+        }
+
+        private void rb_conc_restored_1to0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_consciousness = 3;
+            var_consciousness_text = rb_conc_restored_1to0.Text;
+        }
+
+        private void rb_conc_partrestored_2to1_CheckedChanged(object sender, EventArgs e)
+        {
+            var_consciousness = 4;
+            var_consciousness_text = rb_conc_partrestored_2to1.Text;
+        }
+
+        private void rb_conc_fullyrestored_2to0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_consciousness = 5;
+            var_consciousness_text = rb_conc_fullyrestored_2to0.Text;
+        }
+
+        private void rb_conscious_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_wasunconscious_CheckedChanged(object sender, EventArgs e)
+        {
+            var_consciousness = 3;
+            var_consciousness_text = rb_conc_restored_1to0.Text;
+        }
+
+        private void rb_partconscious_CheckedChanged(object sender, EventArgs e)
+        {
+            var_consciousness = 1;
+            var_consciousness_text = rb_partconscious_1.Text;
+        }
+
+        private void rb_unconscious_CheckedChanged(object sender, EventArgs e)
+        {
+            var_consciousness = 2;
+            var_consciousness_text = rb_unconscious_2.Text;
+        }
+
+        #endregion
+
+        #region haemorrhage group events
+        private void rb_no_bleed_0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_hemorrage = 0;
+            var_hemorrage_text = rb_no_bleed_0.Text;
+        }
+
+        private void rb_some_bleed_1_CheckedChanged(object sender, EventArgs e)
+        {
+            var_hemorrage = 1;
+            var_hemorrage_text = rb_some_bleed_1.Text;
+        }
+
+        private void rb_heavy_bleed_2_CheckedChanged(object sender, EventArgs e)
+        {
+            var_hemorrage = 2;
+            var_hemorrage_text = rb_heavy_bleed_2.Text;
+        }
+
+        private void rb_hem_bleedstop_1to0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_hemorrage = 3;
+            var_hemorrage_text = rb_hem_bleedstop_1to0.Text;
+        }
+        private void rb_hem_bleedstop_2to1_CheckedChanged(object sender, EventArgs e)
+        {
+            var_hemorrage = 4;
+            var_hemorrage_text = rb_hem_bleedstop_2to1.Text;
+        }
+        private void rb_hem_bleedstop_2to0_CheckedChanged(object sender, EventArgs e)
+        {
+            var_hemorrage = 5;
+            var_hemorrage_text = rb_hem_bleedstop_2to0.Text;
+        }
+
+
+        private void rb_nobleed_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_bleedingstopped_CheckedChanged(object sender, EventArgs e)
+        {
+            var_hemorrage = 3;
+            var_hemorrage_text = rb_hem_bleedstop_1to0.Text;
+        }
+
+        private void rb_somebleed_CheckedChanged(object sender, EventArgs e)
+        {
+            var_hemorrage = 1;
+            var_hemorrage_text = rb_some_bleed_1.Text;
+        }
+
+        private void rb_heavybleed_CheckedChanged(object sender, EventArgs e)
+        {
+            var_hemorrage = 2;
+            var_hemorrage_text = rb_heavy_bleed_2.Text;
+        }
+
+        #endregion
+
+        #region medication group events
+
+        private void rb_nomeds_CheckedChanged(object sender, EventArgs e)
+        {
+            var_medication = 0;
+            var_medication_text = rb_nomeds.Text;
+        }
+
+        private void rb_med_adr_CheckedChanged(object sender, EventArgs e)
+        {
+            var_medication = 2;
+            var_medication_text = rb_med_adr.Text;
+        }
+
+        private void rb_med_morphine_CheckedChanged(object sender, EventArgs e)
+        {
+            var_medication = 3;
+            var_medication_text = rb_med_morphine.Text;
+        }
+
+        private void rb_med_fluids_CheckedChanged(object sender, EventArgs e)
+        {
+            var_medication = 1;
+            var_medication_text = rb_med_fluids.Text;
+        }
+        #endregion
+
+        #region Age group events
+        private void rb_age_small_child_CheckedChanged(object sender, EventArgs e)
+        {
+            var_age = 0;
+            var_age_text = rb_age_small_child.Text;
+        }
+        private void rb_age_adult_CheckedChanged_1(object sender, EventArgs e)
+        {
+            var_age = 2;
+            var_age_text = rb_age_adult.Text;
+        }
+
+        private void rb_age_child_CheckedChanged_1(object sender, EventArgs e)
+        {
+            var_age = 1;
+            var_age_text = rb_age_child.Text;
+        }
+
+        private void rb_age_70plus_CheckedChanged_1(object sender, EventArgs e)
+        {
+            var_age = 3;
+            var_age_text = rb_age_70plus.Text;
+        }
+
+        #endregion
+
+        #region gender group events
+
+        private void rb_gender_male_CheckedChanged(object sender, EventArgs e)
+        {
+            var_gender = 0;
+            var_gender_text = rb_gender_male.Text;
+        }
+
+        private void rb_gender_female_CheckedChanged(object sender, EventArgs e)
+        {
+            var_gender = 1;
+            var_gender_text = rb_gender_female.Text;
+        }
+        #endregion
+
+        #region criticality events
+        private void status_routine_CheckedChanged(object sender, EventArgs e)
+        {
+            var_criticality = 0;
+            var_criticality_text = "routine";
+        }
+
+        private void status_priority_CheckedChanged(object sender, EventArgs e)
+        {
+            var_criticality = 1;
+            var_criticality_text = "priority";
+        }
+
+        private void status_critical_CheckedChanged(object sender, EventArgs e)
+        {
+            var_criticality = 2;
+            var_criticality_text = "critical";
+        }
+        #endregion
+
+        #region Injury type
+
+        private void textentry_injury_TextChanged(object sender, EventArgs e)
+        {
+            var_injury_type = textentry_injury.Text;
+            var_injury_type_text = textentry_injury.Text;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Injury location setting through shape buttons
 
         #region front button events
         //head
@@ -2080,245 +2428,7 @@ namespace Uttam_Transfer_Of_Care
         }
         #endregion
 
-        #region Radio Button Events //all radio button events in here - arranged in sub groups
-        #region Breathing group events
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rb_breathingstopped_CheckedChanged(object sender, EventArgs e)
-        {
-            var_breathing = 2;
-            var_breathing_text = rb_breathing_stopped_2.Text;
-        }
-
-        private void rb_breathing_good_CheckedChanged(object sender, EventArgs e)
-        {
-            var_breathing = 0;
-            var_breathing_text = rb_breathing_good_0.Text;
-        }
-
-        private void rb_breathing_bad_CheckedChanged(object sender, EventArgs e)
-        {
-            var_breathing = 1;
-            var_breathing_text = rb_breathing_stopped_2.Text;
-        }
-        private void rb_breathing_restart_CheckedChanged(object sender, EventArgs e)
-        {
-            var_breathing = 3;
-            var_breathing_text = rb_breathing_2to0.Text;
-        }
         #endregion
-
-        #region Circulation group events
-        private void rb_circgood_CheckedChanged(object sender, EventArgs e)
-        {
-            var_circulation = 0;
-            var_circulation_text = rb_circ_good_0.Text;
-        }
-
-        private void rb_circrestart_CheckedChanged(object sender, EventArgs e)
-        {
-            var_circulation = 3;
-            var_circulation_text = rb_circ_fullyrestarted_2to0.Text;
-        }
-
-        private void rb_circbad_CheckedChanged(object sender, EventArgs e)
-        {
-            var_circulation = 1;
-            var_circulation_text = rb_circ_stopped_2.Text;
-        }
-
-        private void rb_circstopped_CheckedChanged(object sender, EventArgs e)
-        {
-            var_circulation = 2;
-            var_circulation_text = rb_circ_stopped_2.Text;
-        }
-        #endregion
-
-        #region Airway group events
-
-        private void rb_airwaygood_CheckedChanged(object sender, EventArgs e)
-        {
-            var_airways = 0;
-            var_airways_text = rb_air_good_0.Text;
-        }
-
-        private void rb_airwaycleared_CheckedChanged(object sender, EventArgs e)
-        {
-            var_airways = 3;
-            var_airways_text = rb_air_partblocked_1.Text;
-        }
-
-        private void rb_airwaybad_CheckedChanged(object sender, EventArgs e)
-        {
-            var_airways = 1;
-            var_airways_text = rb_air_blocked_2.Text;
-        }
-
-        private void rb_airwayblocked_CheckedChanged(object sender, EventArgs e)
-        {
-            var_airways = 2;
-            var_airways_text = rb_air_blocked_2.Text;
-        }
-
-        #endregion
-
-        #region Consciousness group events
-
-        private void rb_conscious_CheckedChanged(object sender, EventArgs e)
-        {
-            var_consciousness = 0;
-            var_consciousness_text = rb_conscious_0.Text;
-        }
-
-        private void rb_wasunconscious_CheckedChanged(object sender, EventArgs e)
-        {
-            var_consciousness = 3;
-            var_consciousness_text = rb_conc_restored_1to0.Text;
-        }
-
-        private void rb_partconscious_CheckedChanged(object sender, EventArgs e)
-        {
-            var_consciousness = 1;
-            var_consciousness_text = rb_partconscious_1.Text;
-        }
-
-        private void rb_unconscious_CheckedChanged(object sender, EventArgs e)
-        {
-            var_consciousness = 2;
-            var_consciousness_text = rb_unconscious_2.Text;
-        }
-
-        #endregion
-
-        #region haemorrage group events
-
-        private void rb_nobleed_CheckedChanged(object sender, EventArgs e)
-        {
-            var_hemorrage = 0;
-            var_hemorrage_text = rb_no_bleed_0.Text;
-        }
-
-        private void rb_bleedingstopped_CheckedChanged(object sender, EventArgs e)
-        {
-            var_hemorrage = 3;
-            var_hemorrage_text = rb_hem_bleedstop_1to0.Text;
-        }
-
-        private void rb_somebleed_CheckedChanged(object sender, EventArgs e)
-        {
-            var_hemorrage = 1;
-            var_hemorrage_text = rb_some_bleed_1.Text;
-        }
-
-        private void rb_heavybleed_CheckedChanged(object sender, EventArgs e)
-        {
-            var_hemorrage = 2;
-            var_hemorrage_text = rb_heavy_bleed_2.Text;
-        }
-
-        #endregion
-
-        #region medication group events
-
-        private void rb_nomeds_CheckedChanged(object sender, EventArgs e)
-        {
-            var_medication = 0;
-            var_medication_text = rb_nomeds.Text;
-        }
-
-        private void rb_med_adr_CheckedChanged(object sender, EventArgs e)
-        {
-            var_medication = 2;
-            var_medication_text = rb_med_adr.Text;
-        }
-
-        private void rb_med_morphine_CheckedChanged(object sender, EventArgs e)
-        {
-            var_medication = 3;
-            var_medication_text = rb_med_morphine.Text;
-        }
-
-        private void rb_med_fluids_CheckedChanged(object sender, EventArgs e)
-        {
-            var_medication = 1;
-            var_medication_text = rb_med_fluids.Text;
-        }
-        #endregion
-
-        #region Age group events
-
-        private void rb_age_infant_CheckedChanged(object sender, EventArgs e)
-        {
-            var_age = 0;
-            var_age_text = rb_age_small_child.Text;
-        }
-
-        private void rb_age_adult_CheckedChanged(object sender, EventArgs e)
-        {
-            var_age = 2;
-            var_age_text = rb_age_adult.Text;
-        }
-
-        private void rb_age_child_CheckedChanged(object sender, EventArgs e)
-        {
-            var_age = 1;
-            var_age_text = rb_age_child.Text;
-        }
-
-        private void rb_age_70plus_CheckedChanged(object sender, EventArgs e)
-        {
-            var_age = 3;
-            var_age_text = rb_age_70plus.Text;
-        }
-
-        #endregion
-
-        #region gender group events
-
-        private void rb_gender_male_CheckedChanged(object sender, EventArgs e)
-        {
-            var_gender = 0;
-            var_gender_text = rb_gender_male.Text;
-        }
-
-        private void rb_gender_female_CheckedChanged(object sender, EventArgs e)
-        {
-            var_gender = 1;
-            var_gender_text = rb_gender_female.Text;
-        }
-        #endregion
-
-        #region criticality events
-        private void status_routine_CheckedChanged(object sender, EventArgs e)
-        {
-            var_criticality = 0;
-            var_criticality_text = "routine";
-        }
-
-        private void status_priority_CheckedChanged(object sender, EventArgs e)
-        {
-            var_criticality = 1;
-            var_criticality_text = "priority";
-        }
-
-        private void status_critical_CheckedChanged(object sender, EventArgs e)
-        {
-            var_criticality = 2;
-            var_criticality_text = "critical";
-        }
-        #endregion
-
-        #endregion
-
-        private void textentry_injury_TextChanged(object sender, EventArgs e)
-        {
-            var_injury_type = textentry_injury.Text;
-            var_injury_type_text = textentry_injury.Text;
-        }
 
         public void Submit_toc_button_Click(object sender, EventArgs e)
         {
@@ -2327,14 +2437,82 @@ namespace Uttam_Transfer_Of_Care
             output.Show();
         }
 
+        //old button action controls
+        #region old action buttons - to be disposed
+
+        private void rb_age_adult_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_age_child_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_age_70plus_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void timer1_Tick(object sender, EventArgs e)
         {
 
         }
-
-        private void rb_hem_bleedstop_2to1_CheckedChanged(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
+
+        private void rb_breathing_restart_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void rb_circgood_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_circrestart_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_circbad_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_circstopped_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void rb_airwaygood_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_airwaycleared_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_airwaybad_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_airwayblocked_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_age_infant_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }

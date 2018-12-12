@@ -28,6 +28,7 @@ namespace Uttam_Transfer_Of_Care
         string injury_location = "injuries to ";
         string injury_type_f2 = "injury type?";
         string injury_type_and_location = "type and location?";
+        string criticality_description;
         public static int injury_count = 0;
         public static int crit_count = 0;
         public static int patient_condition_check;
@@ -59,21 +60,26 @@ namespace Uttam_Transfer_Of_Care
             Output_transfer_time.Text = simtime_text;
             #endregion
 
-            #region fill out the transferred data boxes with info from ToC input form
 
-            Output_transferred_patient_age.Text = conf_age;
-            Output_transferred_patient_gender.Text = conf_gender;
-            Output_transferred_patient_haemorrhage.Text = conf_hem;
-            Output_transferred_patient_breathing.Text = conf_breath;
-            Output_transferred_patient_consciousness.Text = conf_consc;
-            Output_transferred_patient_injury_type.Text = injury_type_f2;
-            Output_transferred_patient_airway.Text = conf_airway;
-            Output_transferred_patient_criticality.Text = conf_crit;
-            Output_transferred_patient_injury_location.Text = injury_location;
-
-            #endregion
 
             #region set patient condition strings based on the radiobuttons in form 1
+
+            #region set criticality description
+
+            if (crit_count > 0.5 && crit_count <1.5)
+            {
+                criticality_description = "priority";
+            }
+            else if (crit_count < 0.5 )
+            {
+                criticality_description = "routine";
+            }
+            else 
+            {
+                criticality_description = "critical";
+            }
+            #endregion
+
             #region set age string 
             if (inputform.var_age == 0)
             {
@@ -89,7 +95,7 @@ namespace Uttam_Transfer_Of_Care
             }
             else
             {
-                conf_age = "geriatric";
+                conf_age = Convert.ToString(inputform.var_age);
             }
             #endregion
 
@@ -120,8 +126,17 @@ namespace Uttam_Transfer_Of_Care
             }
             else if (inputform.var_airways == 3)
             {
+                conf_airway = "airway was partially blocked but now clear";
+            }
+            else if (inputform.var_airways == 4)
+            {
+                conf_airway = "airway was blocked but now partially clear";
+            }
+            else if (inputform.var_airways == 5)
+            {
                 conf_airway = "airway was blocked but now clear";
             }
+
             #endregion
 
             #region set haemorrage string 
@@ -135,13 +150,22 @@ namespace Uttam_Transfer_Of_Care
             }
             else if (inputform.var_hemorrage == 2)
             {
-                conf_hem = "iheavy bleeding";
+                conf_hem = "heavy bleeding";
                 crit_count = crit_count + 1;
             }
             else if (inputform.var_hemorrage == 3)
             {
-                conf_hem = "bleeding stopped with tourniquet";
+                conf_hem = "light bleeding stopped";
             }
+            else if (inputform.var_hemorrage == 4)
+            {
+                conf_hem = "heavy bleeding partially stopped";
+            }
+            else if (inputform.var_hemorrage == 5)
+            {
+                conf_hem = "heavy bleeding stopped";
+            }
+
             #endregion
 
             #region set circulation string 
@@ -159,6 +183,14 @@ namespace Uttam_Transfer_Of_Care
                 crit_count = crit_count + 1;
             }
             else if (inputform.var_hemorrage == 3)
+            {
+                conf_heart = "weak or irregular pulse now normal";
+            }
+            else if (inputform.var_hemorrage == 4)
+            {
+                conf_heart = "previously in cardiac arrest but now pulse is weak or irregular";
+            }
+            else if (inputform.var_hemorrage == 5)
             {
                 conf_heart = "previously in cardiac arrest but now normal";
             }
@@ -196,7 +228,15 @@ namespace Uttam_Transfer_Of_Care
             }
             else if (inputform.var_circulation == 3)
             {
-                conf_consc = "previously unconscious but revived";
+                conf_consc = "previously partially conscious but now fully conscious";
+            }
+            else if (inputform.var_circulation == 4)
+            {
+                conf_consc = "previously unconscious but coming round";
+            }
+            else if (inputform.var_circulation == 5)
+            {
+                conf_consc = "previously unconscious but now fully conscious";
             }
             #endregion
 
@@ -215,6 +255,14 @@ namespace Uttam_Transfer_Of_Care
                 crit_count = crit_count + 1;
             }
             else if (inputform.var_breathing == 3)
+            {
+                conf_breath = "previously had breathing problems but now normal";
+            }
+            else if (inputform.var_breathing == 4)
+            {
+                conf_breath = "previously not breathing, improved but not breathing normally";
+            }
+            else if (inputform.var_breathing == 5)
             {
                 conf_breath = "previously not breathing but now normal";
             }
@@ -381,6 +429,201 @@ namespace Uttam_Transfer_Of_Care
                 injury_location = injury_location + "of the patient";
             }
             #endregion
+
+            //fill the output form 
+            #region fill the actual patient status boxes with sim generated information
+
+            #region set actual patient age
+            Output_actual_patient_age.Text = Convert.ToString(AI_sim.age);
+            #endregion
+
+            Output_actual_patient_gender.Text = Convert.ToString(AI_sim.gender);
+            Output_actual_patient_criticality.Text = criticality_description;
+            Output_actual_patient_Injury_type.Text = Convert.ToString(AI_sim.wound_type);
+            Output_actual_patient_Injury_location.Text = Convert.ToString(AI_sim.wound_location);
+
+            #region set actual airway value
+            if (AI_sim.airway == 0 && AI_sim.initial_airway == 0)
+            {
+                var actual_airway = 0;
+                Output_actual_patient_airway.Text = Convert.ToString(AI_sim.airway_description);
+            }
+            else if (AI_sim.airway == 1 && AI_sim.initial_airway == 1)
+            {
+                var actual_airway = 1;
+                Output_actual_patient_airway.Text = Convert.ToString(AI_sim.airway_description);
+            }
+            else if (AI_sim.airway == 2 && AI_sim.initial_airway == 2)
+            {
+                var actual_airway = 2;
+                Output_actual_patient_airway.Text = Convert.ToString(AI_sim.airway_description);
+            }
+            else if (AI_sim.airway == 0 && AI_sim.initial_airway == 1)
+            {
+                var actual_airway = 3;
+                Output_actual_patient_airway.Text = Convert.ToString(AI_sim.airway_description);
+            }
+            else if (AI_sim.airway == 1 && AI_sim.initial_airway == 2)
+            {
+                var actual_airway = 4;
+                Output_actual_patient_airway.Text = Convert.ToString(AI_sim.airway_description);
+            }
+            else if (AI_sim.airway == 0 && AI_sim.initial_airway == 2)
+            {
+                var actual_airway = 5;
+                Output_actual_patient_airway.Text = Convert.ToString(AI_sim.airway_description);
+            }
+            #endregion
+
+            #region set actual circulation value
+            if (AI_sim.circulation == 0 && AI_sim.initial_circulation == 0)
+            {
+                var actual_circulation = 0;
+                Output_actual_patient_circulation.Text = Convert.ToString(AI_sim.circulation_description);
+            }
+            else if (AI_sim.circulation == 1 && AI_sim.initial_circulation == 1)
+            {
+                var actual_circulation = 1;
+                Output_actual_patient_circulation.Text = Convert.ToString(AI_sim.circulation_description);
+            }
+            else if (AI_sim.circulation == 2 && AI_sim.initial_circulation == 2)
+            {
+                var actual_circulation = 2;
+                Output_actual_patient_circulation.Text = Convert.ToString(AI_sim.circulation_description);
+            }
+            else if (AI_sim.circulation == 0 && AI_sim.initial_circulation == 1)
+            {
+                var actual_circulation = 3;
+                Output_actual_patient_circulation.Text = Convert.ToString(AI_sim.circulation_description);
+            }
+            else if (AI_sim.circulation == 1 && AI_sim.initial_circulation == 2)
+            {
+                var actual_circulation = 4;
+                Output_actual_patient_circulation.Text = Convert.ToString(AI_sim.circulation_description);
+            }
+            else if (AI_sim.circulation == 0 && AI_sim.initial_circulation == 2)
+            {
+                var actual_circulation = 5;
+                Output_actual_patient_circulation.Text = Convert.ToString(AI_sim.circulation_description);
+            }
+            #endregion
+
+            #region set actual breathing value
+            if (AI_sim.breathing == 0 && AI_sim.initial_breathing == 0)
+            {
+                var actual_breathing = 0;
+                Output_actual_patient_breathing.Text = Convert.ToString(AI_sim.breathing_description);
+            }
+            else if (AI_sim.breathing == 1 && AI_sim.initial_breathing == 1)
+            {
+                var actual_breathing = 1;
+                Output_actual_patient_breathing.Text = Convert.ToString(AI_sim.breathing_description);
+            }
+            else if (AI_sim.breathing == 2 && AI_sim.initial_breathing == 2)
+            {
+                var actual_breathing = 2;
+                Output_actual_patient_breathing.Text = Convert.ToString(AI_sim.breathing_description);
+            }
+            else if (AI_sim.breathing == 0 && AI_sim.initial_breathing == 1)
+            {
+                var actual_breathing = 3;
+                Output_actual_patient_breathing.Text = Convert.ToString(AI_sim.breathing_description);
+            }
+            else if (AI_sim.breathing == 1 && AI_sim.initial_breathing == 2)
+            {
+                var actual_breathing = 4;
+                Output_actual_patient_breathing.Text = Convert.ToString(AI_sim.breathing_description);
+            }
+            else if (AI_sim.breathing == 0 && AI_sim.initial_breathing == 2)
+            {
+                var actual_breathing = 5;
+                Output_actual_patient_breathing.Text = Convert.ToString(AI_sim.breathing_description);
+            }
+            #endregion
+
+            #region set actual consciousness value
+            if (AI_sim.consciousness == 0 && AI_sim.initial_consciousness == 0)
+            {
+                var actual_consciousness = 0;
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+            }
+            else if (AI_sim.consciousness == 1 && AI_sim.initial_consciousness == 1)
+            {
+                var actual_consciousness = 1;
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+            }
+            else if (AI_sim.consciousness == 2 && AI_sim.initial_consciousness == 2)
+            {
+                var actual_consciousness = 2;
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+            }
+            else if (AI_sim.consciousness == 0 && AI_sim.initial_consciousness == 1)
+            {
+                var actual_consciousness = 3;
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+            }
+            else if (AI_sim.consciousness == 1 && AI_sim.initial_consciousness == 2)
+            {
+                var actual_consciousness = 4;
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+            }
+            else if (AI_sim.consciousness == 0 && AI_sim.initial_consciousness == 2)
+            {
+                var actual_consciousness = 5;
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+            }
+            #endregion
+
+            #region set actual hemorrhage value
+            if (AI_sim.hemorrhage == 0 && AI_sim.initial_hemorrhage == 0)
+            {
+                var actual_hemorrhage = 0;
+                Output_actual_patient_haemorrhage.Text = Convert.ToString(AI_sim.hemorrhage_description);
+            }
+            else if (AI_sim.hemorrhage == 1 && AI_sim.initial_hemorrhage == 1)
+            {
+                var actual_hemorrhage = 1;
+                Output_actual_patient_haemorrhage.Text = Convert.ToString(AI_sim.hemorrhage_description);
+            }
+            else if (AI_sim.hemorrhage == 2 && AI_sim.initial_hemorrhage == 2)
+            {
+                var actual_hemorrhage = 2;
+                Output_actual_patient_haemorrhage.Text = Convert.ToString(AI_sim.hemorrhage_description);
+            }
+            else if (AI_sim.hemorrhage == 0 && AI_sim.initial_hemorrhage == 1)
+            {
+                var actual_hemorrhage = 3;
+                Output_actual_patient_haemorrhage.Text = Convert.ToString(AI_sim.hemorrhage_description);
+            }
+            else if (AI_sim.hemorrhage == 1 && AI_sim.initial_hemorrhage == 2)
+            {
+                var actual_hemorrhage = 4;
+                Output_actual_patient_haemorrhage.Text = Convert.ToString(AI_sim.hemorrhage_description);
+            }
+            else if (AI_sim.hemorrhage == 0 && AI_sim.initial_hemorrhage == 2)
+            {
+                var actual_hemorrhage = 5;
+                Output_actual_patient_haemorrhage.Text = Convert.ToString(AI_sim.hemorrhage_description);
+            }
+            #endregion
+
+            #endregion
+
+            #region fill out the transferred data boxes with info from ToC input form
+
+            Output_transferred_patient_age.Text = conf_age;
+            Output_transferred_patient_gender.Text = conf_gender;
+            Output_transferred_patient_haemorrhage.Text = conf_hem;
+            Output_transferred_patient_breathing.Text = conf_breath;
+            Output_transferred_patient_consciousness.Text = conf_consc;
+            Output_transferred_patient_circulation.Text = conf_heart;
+            Output_transferred_patient_injury_type.Text = injury_type_f2;
+            Output_transferred_patient_airway.Text = conf_airway;
+            Output_transferred_patient_criticality.Text = conf_crit;
+            Output_transferred_patient_injury_location.Text = injury_location;
+
+            #endregion
+            
 
             injury_type_and_location = injury_type_f2 + injury_location;
 

@@ -49,6 +49,11 @@ namespace Uttam_Transfer_Of_Care
         public static int wound_loc_ID;
         public static int wound_type_ID;
         public static string wound_type;
+        public static string breathing_description = "no breathing problem";
+        public static string airway_description = "airway clear";
+        public static string hemorrhage_description = "no bleeding";
+        public static string consciousness_decription = "fully conscious";
+        public static string circulation_description = "no heart or circulation problem";
 
         #endregion
 
@@ -567,18 +572,18 @@ namespace Uttam_Transfer_Of_Care
         // define patient health variables
         #region Variables of patient health
         public int age_p { get; set; }
-        public int age { get; set; }
-        public int hemorrhage { get; set; }
-        public int consciousness { get; set; }
-        public int airway { get; set; }
-        public int breathing { get; set; }
-        public int circulation { get; set; }
-        public string gender { get; set; }
-        public int initial_hemorrhage { get; set; }
-        public int initial_consciousness { get; set; }
-        public int initial_airway { get; set; }
-        public int initial_breathing { get; set; }
-        public int initial_circulation { get; set; }
+        public static int age { get; set; }
+        public static int hemorrhage { get; set; }
+        public static int consciousness { get; set; }
+        public static int airway { get; set; }
+        public static int breathing { get; set; }
+        public static int circulation { get; set; }
+        public static string gender { get; set; }
+        public static int initial_hemorrhage { get; set; }
+        public static int initial_consciousness { get; set; }
+        public static int initial_airway { get; set; }
+        public static int initial_breathing { get; set; }
+        public static int initial_circulation { get; set; }
 
         #endregion
 
@@ -811,6 +816,7 @@ namespace Uttam_Transfer_Of_Care
                     if (x <= 101) // 100% probability of successfully treating no hemorrhage
                     {
                         hemorrhage = 0;
+                        hemorrhage_description = "no bleeding";
                         treatment_timeline.Items.Add("No hemorrhage");
                     }
                     // commented out this part as this is only a check - degredation should be generated in patient thread
@@ -837,12 +843,15 @@ namespace Uttam_Transfer_Of_Care
                     if (x <= hem1to0_cure_probability)
                     {
                         hemorrhage = 0;
+                        hemorrhage_description = "light bleeding stopped";
                         treatment_timeline.Items.Add("Bleeding stopped");
                         total_success_count = total_success_count + 1;
                     }
                     else  
                     {
                         hemorrhage = 1;
+                        hemorrhage_description = "some bleeding";
+                        treatment_timeline.Items.Add("light bleeding not stopped");
                         total_unsuccess_count = total_unsuccess_count + 1;
                     }
 
@@ -863,18 +872,21 @@ namespace Uttam_Transfer_Of_Care
                     if (x <= hem2to0_cure_probability)
                     {
                         hemorrhage = 0;
+                        hemorrhage_description = "heavy bleeding stopped";
                         treatment_timeline.Items.Add("Bleeding stopped");
                         total_success_count = total_success_count + 1;
                     }
                     else if (x <= hem2to1_cumprob && x > hem2to0_cure_probability)
                     {
                         treatment_timeline.Items.Add("Bleeding partially stopped");
+                        hemorrhage_description = "heavy bleeding partially stopped";
                         hemorrhage = 1;
                         total_partial_success_count = total_partial_success_count + 1;
                     }
                     else
                     {
                         treatment_timeline.Items.Add("Bleeding not stopped");
+                        hemorrhage_description = "heavy bleeding";
                         hemorrhage = 2;
                         total_unsuccess_count = total_unsuccess_count + 1;
                     }
@@ -913,6 +925,7 @@ namespace Uttam_Transfer_Of_Care
                 {
                     treatment_timeline.Items.Add("Patient fully Conscious");
                         consciousness = 0;
+                    consciousness_decription = "fully conscious";
                 }
                 else if (consciousness == 1)
                 {
@@ -937,12 +950,14 @@ namespace Uttam_Transfer_Of_Care
                     if (x <= conc1to0_cure_probability)
                     {
                         consciousness = 0;
+                        consciousness_decription = "previously partially conscious but now fully conscious";
                         treatment_timeline.Items.Add("Full consciousness restored");
                         total_success_count = total_success_count + 1;
                     }
                     else  
                     {
                         consciousness = 1;
+                        consciousness_decription = "partially conscious";
                         treatment_timeline.Items.Add("Patient Still not fully conscious");
                         total_unsuccess_count = total_unsuccess_count + 1;
                     }
@@ -974,18 +989,21 @@ namespace Uttam_Transfer_Of_Care
                     {
                         treatment_timeline.Items.Add("Full consciousness restored");
                         consciousness = 0;
+                        consciousness_decription = "previously unconscious but now fully conscious";
                         total_success_count = total_success_count + 1;
                     }
                     else if (x <= conc2to1_cumprob && x > conc2to0_cure_probability)
                     {
                         treatment_timeline.Items.Add("Patient partially responsive");
                         consciousness = 1;
+                        consciousness_decription = "previously unconscious but coming round";
                         total_partial_success_count = total_partial_success_count + 1;
                     }
                     else
                     {
                         treatment_timeline.Items.Add("Patient still unconscious");
                         consciousness = 2;
+                        consciousness_decription = "unconscious";
                         total_unsuccess_count = total_unsuccess_count + 1;
                     }
                     conc2_count = conc2_count + 1;
@@ -1062,7 +1080,8 @@ namespace Uttam_Transfer_Of_Care
                 treatment_timeline.Items.Add("Checking airway");
                     if (airway == 0)
                     {
-                        treatment_timeline.Items.Add("No obstruction");
+                    airway_description = "airway clear";
+                    treatment_timeline.Items.Add("No obstruction");
                         airway = 0;
                     }
                     else if (airway == 1)
@@ -1074,12 +1093,14 @@ namespace Uttam_Transfer_Of_Care
                         x = r.Next(0, 101);
                         if (x <= air1to0_cure_probability)
                         {
+                            airway_description = "airway was partially blocked but now clear";
                             airway = 0;
                             treatment_timeline.Items.Add("Airway cleared");
                             total_success_count = total_success_count + 1;
                         }
                         else
                         {
+                            airway_description = "airway partially blocked";
                             airway = 1;
                             treatment_timeline.Items.Add("Airway still partially obstructed");
                             total_unsuccess_count = total_unsuccess_count + 1;
@@ -1100,18 +1121,21 @@ namespace Uttam_Transfer_Of_Care
                     if (x <= air2to0_cure_probability)
                     {
                         treatment_timeline.Items.Add("Airway fully cleared");
+                        airway_description = "airway was blocked but now clear";
                         airway = 0;
                         total_success_count = total_success_count + 1;
                     }
                     else if (x <= air2to1_cumprob && x > air2to0_cure_probability)
                     {
                         treatment_timeline.Items.Add("Airway partially cleared");
+                        airway_description = "airway was blocked but now partially clear";
                         airway = 1;
                         total_partial_success_count = total_partial_success_count + 1;
                     }
                     else
                     {
                         treatment_timeline.Items.Add("Airway still blocked");
+                        airway_description = "airway blocked";
                         airway = 2;
                         total_unsuccess_count = total_unsuccess_count + 1;
                     }
@@ -1146,6 +1170,7 @@ namespace Uttam_Transfer_Of_Care
                 treatment_timeline.Items.Add("Checking breathing");
                 if (breathing == 0)
                 {
+                    breathing_description = "no breathing problem";
                     treatment_timeline.Items.Add("Patient breathing normally");
                     breathing = 0;
                 }
@@ -1159,12 +1184,14 @@ namespace Uttam_Transfer_Of_Care
                     if (x <= breath1to0_cure_probability)
                     {
                         breathing = 0;
+                        breathing_description = "previously had breathing problems but now normal";
                         treatment_timeline.Items.Add("Breathing restored");
                         total_success_count = total_success_count + 1;
                     }
                     else
                     {
                         breathing = 1;
+                        breathing_description = "weak or irregular breathing";
                         treatment_timeline.Items.Add("breathing remains erratic");
                         total_unsuccess_count = total_unsuccess_count + 1;
                     }
@@ -1182,18 +1209,21 @@ namespace Uttam_Transfer_Of_Care
                     x = r.Next(0, 101);
                     if (x <= breath2to0_cure_probability)
                     {
+                        breathing_description = "previously not breathing but now normal";
                         treatment_timeline.Items.Add("Breathing restored to normal");
                         breathing = 0;
                         total_success_count = total_success_count + 1;
                     }
                     else if (x <= breath2to1_cumprob && x > breath2to0_cure_probability)
                     {
+                        breathing_description = "previously not breathing, improved but not breathing normally";
                         treatment_timeline.Items.Add("breathing restored but still erratic");
                         breathing = 1;
                         total_partial_success_count = total_partial_success_count + 1;
                     }
                     else
                     {
+                        breathing_description = "not breathing";
                         treatment_timeline.Items.Add("Patient still not breathing");
                         breathing = 2;
                         total_unsuccess_count = total_unsuccess_count + 1;
@@ -1270,6 +1300,7 @@ namespace Uttam_Transfer_Of_Care
                 treatment_timeline.Items.Add("Checking for pulse");
                 if (circulation == 0)  // If there is no problem
                 {
+                    circulation_description = "";
                     treatment_timeline.Items.Add("pulse is normal");                            //patient condition message
                     circulation = 0;                                                            //set patient condition quantifier to 0 'normal'
                 }
@@ -1282,12 +1313,14 @@ namespace Uttam_Transfer_Of_Care
                     x = r.Next(0, 101);                                                         //generate random number between 1 and 100 for outcome 
                     if (x <= circ1to0_cure_probability)
                     {
+                        circulation_description = "weak or irregular pulse now normal";
                         treatment_timeline.Items.Add("pulse returned to normal");             //Patient condition returned to normal message
                         circulation = 0;                                                      //patient condition quantifier set to 0 - 'normal'
                         total_success_count += 1;                                             //global counter for successful procedures
                     }
                     else
                     {
+                        circulation_description = "weak or irregular pulse or heartbeat";
                         treatment_timeline.Items.Add("Pulse still elevated/weak/erratic");      //Patient condition unchanged message
                         circulation = 1;                                                        //Patient condition quantifier set to 1 - no change - still some problem
                         total_unsuccess_count += 1;                                             //global counter for unsucessful procedures
@@ -1308,18 +1341,21 @@ namespace Uttam_Transfer_Of_Care
                     x = r.Next(0, 101);                                                         //generate random number between 1 and 100
                     if (x <= circ2to0_cure_probability)
                     {
+                        circulation_description = "previously in cardiac arrest but now normal";
                         treatment_timeline.Items.Add("Pulse returned to normal");               // patient condition returned to normal message
                         circulation = 0;                                                        // patient condition quantifier set to 0 - 'normal'
                         total_success_count += 1;                                               // global counter for successful procedures
                     }
                     else if (x <= circ2to1_cumprob && x > circ2to0_cure_probability)
                     {
+                        circulation_description = "previously in cardiac arrest but now pulse is weak or irregular";
                         treatment_timeline.Items.Add("Heart function restored but not normal"); //patient partially stabliized message
                         circulation = 1;                                                        //patient condition quantifier set to 1 - some problems
                         total_partial_success_count += 1;                                       // counter for partial successful procedures
                     }
                     else
                     {
+                        circulation_description = "in cardiac arrest";
                         treatment_timeline.Items.Add("Patient Still in Cardiac Arrest");        //patient still critical
                         circulation = 2;                                                        //patient condition quantifier set to 2 - critical
                         total_unsuccess_count += 1;                                             // counter for unsuccessful procedures
@@ -1344,7 +1380,7 @@ namespace Uttam_Transfer_Of_Care
             }// end of circulation check
             #endregion
 
-
+            //as yet unused treatment - made for multiple treatment option
             #region airwayclear
             async void airway_clear()
             {

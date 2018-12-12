@@ -493,7 +493,7 @@
             this.Participant_experience_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Participant_experience_label.Location = new System.Drawing.Point(236, 116);
             this.Participant_experience_label.Name = "Participant_experience_label";
-            this.Participant_experience_label.Size = new System.Drawing.Size(60, 47);
+            this.Participant_experience_label.Size = new System.Drawing.Size(138, 47);
             this.Participant_experience_label.TabIndex = 109;
             this.Participant_experience_label.Text = "##";
             // 
@@ -502,7 +502,7 @@
             this.Participatn_role_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Participatn_role_label.Location = new System.Drawing.Point(236, 67);
             this.Participatn_role_label.Name = "Participatn_role_label";
-            this.Participatn_role_label.Size = new System.Drawing.Size(60, 47);
+            this.Participatn_role_label.Size = new System.Drawing.Size(138, 47);
             this.Participatn_role_label.TabIndex = 108;
             this.Participatn_role_label.Text = "##";
             // 
@@ -529,7 +529,7 @@
             this.Participant_number_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Participant_number_label.Location = new System.Drawing.Point(236, 20);
             this.Participant_number_label.Name = "Participant_number_label";
-            this.Participant_number_label.Size = new System.Drawing.Size(60, 47);
+            this.Participant_number_label.Size = new System.Drawing.Size(138, 47);
             this.Participant_number_label.TabIndex = 105;
             this.Participant_number_label.Text = "##";
             // 
@@ -855,6 +855,7 @@
             this.Controls.Add(this.Actual_status_label);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Output";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Output";
             this.Load += new System.EventHandler(this.Output_Load);
             this.ResumeLayout(false);
