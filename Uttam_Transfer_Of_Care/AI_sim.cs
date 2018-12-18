@@ -6,6 +6,8 @@ using System.Speech.Synthesis;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Collections.Generic;
 
 
 namespace Uttam_Transfer_Of_Care
@@ -54,6 +56,12 @@ namespace Uttam_Transfer_Of_Care
         public static string hemorrhage_description = "no bleeding";
         public static string consciousness_decription = "fully conscious";
         public static string circulation_description = "no heart or circulation problem";
+        public string predicted_hem;
+        public string predicted_con;
+        public string predicted_air;
+        public string predicted_bre;
+        public string predicted_cir;
+        public string predicted_time;
 
         #endregion
 
@@ -106,6 +114,8 @@ namespace Uttam_Transfer_Of_Care
             if (from == "called by main function")
             {
                 assignvalue();
+                Thread.Sleep(1000);
+                predictedvalue();
 
                 // message signal sent by patient to EMS regarding intial status available
                 from = "Patient";
@@ -365,6 +375,60 @@ namespace Uttam_Transfer_Of_Care
             }   // Assign Value method end...
             #endregion
 
+            void predictedvalue()
+            {
+                using (var reader = new StreamReader("D:\\AI_brain.csv"))
+                {
+                    List<string> list_ini_hem = new List<string>();
+                    List<string> list_ini_con = new List<string>();
+                    List<string> list_ini_air = new List<string>();
+                    List<string> list_ini_bre = new List<string>();
+                    List<string> list_ini_cir = new List<string>();
+                    List<string> list_time = new List<string>();
+                    List<string> list_fin_hem = new List<string>();
+                    List<string> list_fin_con = new List<string>();
+                    List<string> list_fin_air = new List<string>();
+                    List<string> list_fin_bre = new List<string>();
+                    List<string> list_fin_cir = new List<string>();
+                    List<string> list_action = new List<string>();
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+
+                        list_ini_hem.Add(values[0]);
+                        list_ini_con.Add(values[1]);
+                        list_ini_air.Add(values[2]);
+                        list_ini_bre.Add(values[3]);
+                        list_ini_cir.Add(values[4]);
+                        list_time.Add(values[5]);
+                        list_fin_hem.Add(values[6]);
+                        list_fin_con.Add(values[7]);
+                        list_fin_air.Add(values[8]);
+                        list_fin_bre.Add(values[9]);
+                        list_fin_cir.Add(values[10]);
+                        list_action.Add(values[11]);
+
+                    }
+                    for(int i = 0; i < 243; i++)
+                    {
+                        if((Convert.ToString(initial_hemorrhage) == list_ini_hem[i])&& (Convert.ToString(initial_consciousness) == list_ini_con[i])
+                            && (Convert.ToString(initial_airway) == list_ini_air[i])&& (Convert.ToString(initial_breathing) == list_ini_bre[i])
+                            && (Convert.ToString(initial_circulation) == list_ini_cir[i]))
+                        {
+                            predicted_hem = list_fin_hem[i];
+                            predicted_con = list_fin_con[i];
+                            predicted_air = list_fin_air[i];
+                            predicted_bre = list_fin_bre[i];
+                            predicted_cir = list_fin_cir[i];
+                            predicted_time = list_time[i];
+                            DELEGATE del = new DELEGATE(UIController);
+                            this.Invoke(del);
+                        }
+                    }
+                }
+            }
+
             // method to update user interface with most recent patient attributes - 
             // called as a delegate 'del' from within Patient thread
             // UIcontroller control
@@ -384,6 +448,16 @@ namespace Uttam_Transfer_Of_Care
                     sim_intcirc_box.Text = Convert.ToString(circulation);
                     sim_intconc_box.Text = Convert.ToString(consciousness);
                     sim_inthem_box.Text = Convert.ToString(hemorrhage);
+                }
+                else if(Predicted_Hem_box.Text == " ") // Printing out the final conditions from the simulation results
+                {
+                    Thread.Sleep(5);
+                    Predicted_Hem_box.Text = predicted_hem;
+                    textBox5.Text = predicted_con;
+                    textBox4.Text = predicted_air;
+                    Predicted_Breath_Box.Text = predicted_bre;
+                    Predicted_Circ_Box.Text = predicted_cir;
+                    textBox1.Text = predicted_time;
                 }
                 else
                 {
@@ -1745,6 +1819,10 @@ namespace Uttam_Transfer_Of_Care
         private void treatment_timeline_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Predicted_Hem_box_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }
