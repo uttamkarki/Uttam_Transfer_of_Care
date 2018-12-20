@@ -73,6 +73,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Button_breath_rescuebreath = new System.Windows.Forms.Button();
             this.Button_circ_drugs = new System.Windows.Forms.Button();
             this.Button_air_clearair = new System.Windows.Forms.Button();
@@ -87,7 +88,11 @@
             this.Predicted_Breath_Box = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -608,12 +613,17 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label25);
+            this.groupBox3.Controls.Add(this.textBox8);
+            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.textBox2);
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.Button_breath_rescuebreath);
             this.groupBox3.Controls.Add(this.Button_circ_drugs);
             this.groupBox3.Controls.Add(this.Button_air_clearair);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.Button_hemm_torniquet);
+            this.groupBox3.Controls.Add(this.textBox7);
             this.groupBox3.Controls.Add(this.Button_hemm_treat);
             this.groupBox3.Controls.Add(this.Button_conc_drugs);
             this.groupBox3.Controls.Add(this.label18);
@@ -631,6 +641,19 @@
             this.groupBox3.TabIndex = 116;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Treatment applications";
+            // 
+            // textBox1
+            // 
+            this.textBox1.AcceptsReturn = true;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(104, 522);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(83, 38);
+            this.textBox1.TabIndex = 117;
+            this.textBox1.Text = " ";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Button_breath_rescuebreath
             // 
@@ -750,7 +773,6 @@
             this.Predicted_Hem_box.TabIndex = 94;
             this.Predicted_Hem_box.Text = " ";
             this.Predicted_Hem_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Predicted_Hem_box.TextChanged += new System.EventHandler(this.Predicted_Hem_box_TextChanged);
             // 
             // Predicted_Circ_Box
             // 
@@ -800,27 +822,75 @@
             this.textBox5.Text = "1";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox1
+            // textBox7
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(155, 505);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(140, 30);
-            this.textBox1.TabIndex = 117;
-            this.textBox1.Text = "1";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(8, 459);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(88, 33);
+            this.textBox7.TabIndex = 102;
+            this.textBox7.Text = "1";
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(8, 361);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(88, 33);
+            this.textBox2.TabIndex = 118;
+            this.textBox2.Text = "1";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(8, 267);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(88, 33);
+            this.textBox3.TabIndex = 119;
+            this.textBox3.Text = "1";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Location = new System.Drawing.Point(8, 172);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(88, 33);
+            this.textBox6.TabIndex = 120;
+            this.textBox6.Text = "1";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(8, 76);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(88, 33);
+            this.textBox8.TabIndex = 121;
+            this.textBox8.Text = "1";
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label25
             // 
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(4, 490);
+            this.label25.Location = new System.Drawing.Point(4, 517);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(147, 57);
-            this.label25.TabIndex = 118;
-            this.label25.Text = "Expected Treatment Time";
+            this.label25.Size = new System.Drawing.Size(96, 43);
+            this.label25.TabIndex = 122;
+            this.label25.Text = "Time of Treatment";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // AI_sim
@@ -921,7 +991,12 @@
         public System.Windows.Forms.Button Button_air_clearair;
         public System.Windows.Forms.Button Button_circ_drugs;
         public System.Windows.Forms.Button Button_breath_rescuebreath;
-        private System.Windows.Forms.Label label25;
         public System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label25;
+        public System.Windows.Forms.TextBox textBox8;
+        public System.Windows.Forms.TextBox textBox6;
+        public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox textBox7;
     }
 }
