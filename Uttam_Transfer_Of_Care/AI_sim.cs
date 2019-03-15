@@ -6,6 +6,8 @@ using System.Speech.Synthesis;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Collections.Generic;
 
 
 namespace Uttam_Transfer_Of_Care
@@ -54,6 +56,17 @@ namespace Uttam_Transfer_Of_Care
         public static string hemorrhage_description = "no bleeding";
         public static string consciousness_decription = "fully conscious";
         public static string circulation_description = "no heart or circulation problem";
+        public string predicted_hem;
+        public string predicted_con;
+        public string predicted_air;
+        public string predicted_bre;
+        public string predicted_cir;
+        public string predicted_time;
+        public string hemorrhage_count;
+        public string consciousness_count;
+        public string airway_count;
+        public string breathing_count;
+        public string circulation_count;
 
         #endregion
 
@@ -106,6 +119,8 @@ namespace Uttam_Transfer_Of_Care
             if (from == "called by main function")
             {
                 assignvalue();
+                Thread.Sleep(500);
+                predictedvalue();
 
                 // message signal sent by patient to EMS regarding intial status available
                 from = "Patient";
@@ -364,7 +379,74 @@ namespace Uttam_Transfer_Of_Care
                 
             }   // Assign Value method end...
             #endregion
+            void predictedvalue()
+            {
+                using (var reader = new StreamReader("D:\\AI_brain1.csv"))
+                {
+                    List<string> list_ini_hem = new List<string>();
+                    List<string> list_ini_con = new List<string>();
+                    List<string> list_ini_air = new List<string>();
+                    List<string> list_ini_bre = new List<string>();
+                    List<string> list_ini_cir = new List<string>();
+                    List<string> list_time = new List<string>();
+                    List<string> list_fin_hem = new List<string>();
+                    List<string> list_fin_con = new List<string>();
+                    List<string> list_fin_air = new List<string>();
+                    List<string> list_fin_bre = new List<string>();
+                    List<string> list_fin_cir = new List<string>();
+                    List<string> list_tourniquet_count = new List<string>();
+                    List<string> list_consciousness_count = new List<string>();
+                    List<string> list_airway_count = new List<string>();
+                    List<string> list_breathing_count = new List<string>();
+                    List<string> list_circulation_count = new List<string>();
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
 
+                        list_ini_hem.Add(values[0]);
+                        list_ini_con.Add(values[1]);
+                        list_ini_air.Add(values[2]);
+                        list_ini_bre.Add(values[3]);
+                        list_ini_cir.Add(values[4]);
+                        list_time.Add(values[5]);
+                        list_fin_hem.Add(values[6]);
+                        list_fin_con.Add(values[7]);
+                        list_fin_air.Add(values[8]);
+                        list_fin_bre.Add(values[9]);
+                        list_fin_cir.Add(values[10]);
+                        //list_action.Add(values[11]);
+                        list_tourniquet_count.Add(values[11]);
+                        list_consciousness_count.Add(values[12]);
+                        list_airway_count.Add(values[13]);
+                        list_breathing_count.Add(values[14]);
+                        list_circulation_count.Add(values[15]);
+
+                    }
+                    for (int i = 0; i < 243; i++)
+                    {
+                        if ((list_ini_hem[i] == Convert.ToString(initial_hemorrhage)) && (list_ini_con[i] == Convert.ToString(initial_consciousness)) &&
+                                (list_ini_air[i] == Convert.ToString(initial_airway)) && (list_ini_bre[i] == Convert.ToString(initial_breathing)) &&
+                                (list_ini_cir[i] == Convert.ToString(initial_circulation)))
+                        {
+                            predicted_hem = list_fin_hem[i];
+                            predicted_con = list_fin_con[i];
+                            predicted_air = list_fin_air[i];
+                            predicted_bre = list_fin_bre[i];
+                            predicted_cir = list_fin_cir[i];
+                            predicted_time = list_time[i];
+                            hemorrhage_count = list_tourniquet_count[i];
+                            consciousness_count = list_consciousness_count[i];
+                            airway_count = list_airway_count[i];
+                            breathing_count = list_breathing_count[i];
+                            circulation_count = list_circulation_count[i];
+                            DELEGATE del = new DELEGATE(UIController);
+                            this.Invoke(del);
+                        }
+                        
+                    }
+                }
+            }
             // method to update user interface with most recent patient attributes - 
             // called as a delegate 'del' from within Patient thread
             // UIcontroller control
@@ -384,6 +466,22 @@ namespace Uttam_Transfer_Of_Care
                     sim_intcirc_box.Text = Convert.ToString(circulation);
                     sim_intconc_box.Text = Convert.ToString(consciousness);
                     sim_inthem_box.Text = Convert.ToString(hemorrhage);
+                }
+                else if (Predicted_Hem_box.Text == " ") // Printing out the final conditions from the simulation results
+                {
+                    
+                    Thread.Sleep(5);
+                    Predicted_Hem_box.Text = predicted_hem;
+                    textBox5.Text = predicted_con;
+                    textBox4.Text = predicted_air;
+                    Predicted_Breath_Box.Text = predicted_bre;
+                    Predicted_Circ_Box.Text = predicted_cir;
+                    textBox1.Text = predicted_time;
+                    textBox8.Text = hemorrhage_count;
+                    textBox6.Text = consciousness_count;
+                    textBox3.Text = airway_count;
+                    textBox7.Text = breathing_count;
+                    textBox2.Text = circulation_count;
                 }
                 else
                 {
