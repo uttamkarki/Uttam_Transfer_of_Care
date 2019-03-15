@@ -60,8 +60,6 @@ namespace Uttam_Transfer_Of_Care
             Output_transfer_time.Text = simtime_text;
             #endregion
 
-
-
             #region set patient condition strings based on the radiobuttons in form 1
 
             #region set criticality description

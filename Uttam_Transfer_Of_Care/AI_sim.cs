@@ -766,6 +766,7 @@ namespace Uttam_Transfer_Of_Care
 
 
         #endregion
+
         int Stopwatch_hem_Function_Call;
         int Stopwatch_conc_Function_Call;
         int Stopwatch_air_Function_Call;
@@ -1638,6 +1639,7 @@ namespace Uttam_Transfer_Of_Care
         #endregion
 
         // Dump old event handlers in here until I can work out how to clear them!!!
+        #region unused_code
         #region used button click events
         private void sim_finalair_box_TextChanged(object sender, EventArgs e)
         {
@@ -1746,5 +1748,6 @@ namespace Uttam_Transfer_Of_Care
         {
 
         }
+#endregion
     }
 }
