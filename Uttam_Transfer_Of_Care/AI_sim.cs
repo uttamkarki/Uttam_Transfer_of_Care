@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
 
-
 namespace Uttam_Transfer_Of_Care
 {
     delegate void message_fPtoEMS(Message msg);
@@ -19,7 +18,6 @@ namespace Uttam_Transfer_Of_Care
     
     public partial class AI_sim : Form
     {
-
         #region define public variables here
 
         public static DateTime starttime;
@@ -67,12 +65,6 @@ namespace Uttam_Transfer_Of_Care
         public string airway_count;
         public string breathing_count;
         public string circulation_count;
-
-        #endregion
-
-        // if not needed delete these values cause I have already created a new set of variables
-        #region Start values for model variables
-
         public static string var_age = "25";
         public static string var_gender = "male";
         public static string var_hem = "2";
@@ -83,7 +75,11 @@ namespace Uttam_Transfer_Of_Care
         public static string var_injury = "Gunshot wound";
         public static string var_injury_location = "lower left leg";
 
+        #endregion
 
+        #region timing variables - define the thread pause variables here
+        int Patient_Assign_to_Run_Pause_time = 5;
+        
         #endregion
 
         public AI_sim()
@@ -93,6 +89,8 @@ namespace Uttam_Transfer_Of_Care
 
         Stopwatch stopwatch = new Stopwatch();
 
+        //determine whether or not to run the AI assited form (set by variable on click from previous form
+        #region Set AI assist value
         private void AI_sim_Load(object sender, EventArgs e)
         {
             if (intro_form.ai_on == true)
@@ -104,44 +102,55 @@ namespace Uttam_Transfer_Of_Care
                 AI_assist = false;
             }
         }
+        #endregion
 
-        // ***************Calling other forms - Commented out as doesn't seem to do anything*************************
-        //inputform Inputform1 = new inputform(ListBox.ObjectCollection objectcollection);
-        //hidden_form underlying_form = new hidden_form();
-        //ai_interface ai_interface = new ai_interface();
-        //***********************************************************************************************************
+        // Click start Simulation button - Initiates the agents - starts a Patient Agent thread and EMS agent thread
+        #region start simulation button click
+            //initiate the agents 
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.Empty;
+            from = "called by main function";
+            Thread Patient = new Thread(() => patient()); //Run Patient agent in thread called Patient RENAME THREAD! 
+            Patient.Start();
+            Thread EMS = new Thread(() => Ems()); // Run EMS agent in thread called EMS RENAME THREAD!
+             EMS.Start();
+        }
+        #endregion
 
-        // Creating new patient agent   
         #region Create New Patient Thread
-
         public void patient()
         {
+            #region If the message is from the main start function, initialize patient variables (according to NEMSIS distributions)
             if (from == "called by main function")
             {
-                assignvalue();
-                Thread.Sleep(500);
-                predictedvalue();
+                
+                assignvalue(); //initialize patient values
 
-                // message signal sent by patient to EMS regarding intial status available
+                Thread.Sleep(Patient_Assign_to_Run_Pause_time); // not sure why there is a thread pause here DELETE? 
+
+                // send message to EMS agnet regarding intial status available
                 from = "Patient";
                 to = "EMS";
                 subject = "Treatment Required";
                 state = "Initial status available";
-
                 var Th_PtoEMS = new Thread(() => Ems());
                 Th_PtoEMS.Start();
             } // called by main function ends
-            
+            #endregion
+
+            #region update UI when treatment applied - if message is from EMS to patient and subject is "applied treatment"
             else if (from == "EMS" && to == "patient")
             {
                 if (subject == "Applied Treatment")
                 {
                     // UI controller will do all of update in form about recent changes made in patient health
                     UIController();
- 
                 } // end of if loop
-
             }// called by EMS ends
+            #endregion
+
+            // This activates the UI controller when message from Stopwatch
             else if (from == "Stopwatch" && to == "UIcontroller")
             {
                 DELEGATE del = new DELEGATE(UIController);
@@ -151,12 +160,12 @@ namespace Uttam_Transfer_Of_Care
             {
             }
 
-            #region assigning initial patient attributes randomly
+            // initialize patient injury
+            #region assigning initial patient attributes in line with NEMSIS data where available or random from normal distribution.
             void assignvalue()
             {
                 Random random = new Random();
                 int a;
-
                 #region set wound location strings
                 wound_loc_ID = random.Next(1, 23);
                 if (wound_loc_ID == 1) wound_location = "front of head";
@@ -182,7 +191,6 @@ namespace Uttam_Transfer_Of_Care
                 else if (wound_loc_ID == 21) wound_location = "back of lower right leg";
                 else wound_location = "back of lower left leg";
                 #endregion
-
                 //currently set to 1 injury type 'gunshot' for ease of simulation
                 #region set wound type
                 wound_type_ID = random.Next(0, 1);
@@ -191,7 +199,6 @@ namespace Uttam_Transfer_Of_Care
                 else if (wound_type_ID == 2) wound_type = "drowning";
                 else wound_type = "allergic  reaction";
                 #endregion 
-
                 //coarse probability distributiuons for each of the four age categories
                 #region Define age category probabilities by injury type
                 int[] Ageprob_gunshot = { 10, 20, 90, 100 };
@@ -297,6 +304,7 @@ namespace Uttam_Transfer_Of_Care
                 #endregion
                 #endregion
 
+                #region Assign patient gender
                 a = random.Next(0, 2);
                 if (a == 0)
                 {
@@ -306,7 +314,9 @@ namespace Uttam_Transfer_Of_Care
                 {
                     gender = "Female";
                 }
-                
+                #endregion
+
+                #region initialize variables for individual characteristics
                 a = random.Next(0, 3);
                 if (a == 0)
                 {
@@ -373,80 +383,34 @@ namespace Uttam_Transfer_Of_Care
                     initial_circulation = circulation; ;
                 }
 
+                #endregion
+
+                // this does not seem to be useful? 
+                #region Some thread sleep region
                 Thread.Sleep(1000);
                 DELEGATE del = new DELEGATE(UIController);
                 this.Invoke(del);
-                
+                #endregion
+
             }   // Assign Value method end...
             #endregion
-            void predictedvalue()
+
+            #region predicted patient state
+
+            // old code removed and place at bottom of code until new  tested 
+
+            
+            #endregion
+
+            //degrade state at given intervals
+            #region Patient status degradation
+            void PatientDegragdatioUpdate()
             {
-                using (var reader = new StreamReader("D:\\AI_brain1.csv"))
-                {
-                    List<string> list_ini_hem = new List<string>();
-                    List<string> list_ini_con = new List<string>();
-                    List<string> list_ini_air = new List<string>();
-                    List<string> list_ini_bre = new List<string>();
-                    List<string> list_ini_cir = new List<string>();
-                    List<string> list_time = new List<string>();
-                    List<string> list_fin_hem = new List<string>();
-                    List<string> list_fin_con = new List<string>();
-                    List<string> list_fin_air = new List<string>();
-                    List<string> list_fin_bre = new List<string>();
-                    List<string> list_fin_cir = new List<string>();
-                    List<string> list_tourniquet_count = new List<string>();
-                    List<string> list_consciousness_count = new List<string>();
-                    List<string> list_airway_count = new List<string>();
-                    List<string> list_breathing_count = new List<string>();
-                    List<string> list_circulation_count = new List<string>();
-                    while (!reader.EndOfStream)
-                    {
-                        var line = reader.ReadLine();
-                        var values = line.Split(',');
 
-                        list_ini_hem.Add(values[0]);
-                        list_ini_con.Add(values[1]);
-                        list_ini_air.Add(values[2]);
-                        list_ini_bre.Add(values[3]);
-                        list_ini_cir.Add(values[4]);
-                        list_time.Add(values[5]);
-                        list_fin_hem.Add(values[6]);
-                        list_fin_con.Add(values[7]);
-                        list_fin_air.Add(values[8]);
-                        list_fin_bre.Add(values[9]);
-                        list_fin_cir.Add(values[10]);
-                        //list_action.Add(values[11]);
-                        list_tourniquet_count.Add(values[11]);
-                        list_consciousness_count.Add(values[12]);
-                        list_airway_count.Add(values[13]);
-                        list_breathing_count.Add(values[14]);
-                        list_circulation_count.Add(values[15]);
-
-                    }
-                    for (int i = 0; i < 243; i++)
-                    {
-                        if ((list_ini_hem[i] == Convert.ToString(initial_hemorrhage)) && (list_ini_con[i] == Convert.ToString(initial_consciousness)) &&
-                                (list_ini_air[i] == Convert.ToString(initial_airway)) && (list_ini_bre[i] == Convert.ToString(initial_breathing)) &&
-                                (list_ini_cir[i] == Convert.ToString(initial_circulation)))
-                        {
-                            predicted_hem = list_fin_hem[i];
-                            predicted_con = list_fin_con[i];
-                            predicted_air = list_fin_air[i];
-                            predicted_bre = list_fin_bre[i];
-                            predicted_cir = list_fin_cir[i];
-                            predicted_time = list_time[i];
-                            hemorrhage_count = list_tourniquet_count[i];
-                            consciousness_count = list_consciousness_count[i];
-                            airway_count = list_airway_count[i];
-                            breathing_count = list_breathing_count[i];
-                            circulation_count = list_circulation_count[i];
-                            DELEGATE del = new DELEGATE(UIController);
-                            this.Invoke(del);
-                        }
-                        
-                    }
-                }
             }
+            #endregion
+
+
             // method to update user interface with most recent patient attributes - 
             // called as a delegate 'del' from within Patient thread
             // UIcontroller control
@@ -456,7 +420,7 @@ namespace Uttam_Transfer_Of_Care
             {
                 if (sim_inthem_box.Text == " ")
                 {
-                    Thread.Sleep(5);
+                    //Thread.Sleep(5);
                     sim_gender_label.Text = gender;
                     sim_injury_type_label.Text = wound_type;
                     sim_injury_location_label.Text = wound_location;
@@ -469,8 +433,7 @@ namespace Uttam_Transfer_Of_Care
                 }
                 else if (Predicted_Hem_box.Text == " ") // Printing out the final conditions from the simulation results
                 {
-                    
-                    Thread.Sleep(5);
+                    //Thread.Sleep(5);
                     Predicted_Hem_box.Text = predicted_hem;
                     textBox5.Text = predicted_con;
                     textBox4.Text = predicted_air;
@@ -488,8 +451,9 @@ namespace Uttam_Transfer_Of_Care
 
                 }
 
+                // changes the final state of the patient at given time in AI_Sim form
                 Thread.Sleep(5);
-                sim_finalair_box.Text = Convert.ToString(airway);                    // changes the final state of the patient at given time in AI_Sim from
+                sim_finalair_box.Text = Convert.ToString(airway);                    
                 sim_finalbreath_box.Text = Convert.ToString(breathing);
                 sim_finalcirc_box.Text = Convert.ToString(circulation);
                 sim_finalconc_box.Text = Convert.ToString(consciousness);
@@ -498,7 +462,7 @@ namespace Uttam_Transfer_Of_Care
             #endregion
 
         }  // end of Patient agent 
-        #endregion
+        #endregion 
 
         // EMS Agent Start
         #region create New EMS Agent thread
@@ -510,11 +474,8 @@ namespace Uttam_Transfer_Of_Care
                 {
                     if (state == "Initial status available")
                     {
-
                         /*  Execute the code over here */
                         /* EMS again have to generate a message for AI*/
-
-
                     } // end of "Initial status available" if loop 
 
                     from = "EMS"; to = "AI"; subject = "Recommend treatment";
@@ -693,19 +654,6 @@ namespace Uttam_Transfer_Of_Care
         //button click events for UI
         #region button events        
 
-        // Click start Simulation button - starts a Patient Agent thread and EMS agent thread
-        #region start simulation button click
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.Empty;
-            from = "called by main function";
-            Thread Patient = new Thread(() => patient());
-            Patient.Start();
-            Thread EMS = new Thread(() => Ems());
-            EMS.Start();
-        }
-        #endregion
-
         // click transfer button
         #region AI patient transfer button click event
         private void AI_patient_transfer_button_Click(object sender, EventArgs e)
@@ -862,19 +810,23 @@ namespace Uttam_Transfer_Of_Care
 
         #endregion
 
-
         #endregion
 
+        // I'm not sure I like this implementation as it makes the UI very juddery. I think we should take out any thread pausing as it is very frustrating
+        #region timing functions etc. stopwatch for each treatment 
         int Stopwatch_hem_Function_Call;
         int Stopwatch_conc_Function_Call;
         int Stopwatch_air_Function_Call;
         int Stopwatch_circ_Function_Call;
         int Stopwatch_breath_Function_Call;
+
+        //Initiate stopwatches for each patient Characteristic? don't know why these are here and what they do?
         Stopwatch stopwatch_hem = new Stopwatch();
         Stopwatch stopwatch_con = new Stopwatch();
         Stopwatch stopwatch_air = new Stopwatch();
         Stopwatch stopwatch_bre = new Stopwatch();
         Stopwatch stopwatch_cir = new Stopwatch();
+
         public void stopwatch_record()
         {
             if (Stopwatch_hem_Function_Call == 1)
@@ -954,9 +906,9 @@ namespace Uttam_Transfer_Of_Care
             from = "Stopwatch"; to = "UIcontroller";
             patient();
         }
-        
-        
-        
+
+        #endregion
+
         //treatment controls to be actioned by EMS agent by message or UI interface
         #region treatment
         public void Treatment(string action)
@@ -1015,16 +967,7 @@ namespace Uttam_Transfer_Of_Care
                         hemorrhage_description = "no bleeding";
                         treatment_timeline.Items.Add("No hemorrhage");
                     }
-                    // commented out this part as this is only a check - degredation should be generated in patient thread
 
-                    //else if (x <= 95 && x > 85)
-                    //{
-                    //    hemorrhage = 1;
-                    //}
-                    //else
-                    //{
-                    //    hemorrhage = 2;
-                    //}
                 }
                 else if (hemorrhage == 1)
                 {
@@ -1476,12 +1419,10 @@ namespace Uttam_Transfer_Of_Care
 
             }// end of breathing check
             #endregion
-
             // this is the main template for creating new treatment controls - contains good comments and full variable definition
             #region circulation check
             async void Circulationcheck()
             {
-                
                 // This is the previous code for 2 check controls to be utilized - check this! 
                 #region  I think this relates to how patient deteriorates given multiple symptoms - move to patient agent
                 //treatment_timeline.Items.Add("Checking Circulation");
@@ -1619,7 +1560,6 @@ namespace Uttam_Transfer_Of_Care
 
             }// end of circulation check
             #endregion
-
             //as yet unused treatment - made for multiple treatment option
             #region airwayclear
             async void airway_clear()
@@ -1729,16 +1669,13 @@ namespace Uttam_Transfer_Of_Care
 
         #region determine patient baseline characteristics at the end of TOC
 
-
-
-
-
-
         #endregion
 
         // Dump old event handlers in here until I can work out how to clear them!!!
         #region unused_code
         #region used button click events
+
+
         private void sim_finalair_box_TextChanged(object sender, EventArgs e)
         {
             Stopwatch_air_Function_Call = 3;
@@ -1842,10 +1779,90 @@ namespace Uttam_Transfer_Of_Care
         }
         #endregion
 
+        #region old code - stored here for neatness and to avoid breaking code
+        // old Predict patient state code
+
+        #region patient state prediction
+
+        //void predictedvalue()
+        //{
+        //    using (var reader = new StreamReader("C:\\temp\\AI_brain1.csv"))
+        //    {
+        //        List<string> list_ini_hem = new List<string>();
+        //        List<string> list_ini_con = new List<string>();
+        //        List<string> list_ini_air = new List<string>();
+        //        List<string> list_ini_bre = new List<string>();
+        //        List<string> list_ini_cir = new List<string>();
+        //        List<string> list_time = new List<string>();
+        //        List<string> list_fin_hem = new List<string>();
+        //        List<string> list_fin_con = new List<string>();
+        //        List<string> list_fin_air = new List<string>();
+        //        List<string> list_fin_bre = new List<string>();
+        //        List<string> list_fin_cir = new List<string>();
+        //        List<string> list_tourniquet_count = new List<string>();
+        //        List<string> list_consciousness_count = new List<string>();
+        //        List<string> list_airway_count = new List<string>();
+        //        List<string> list_breathing_count = new List<string>();
+        //        List<string> list_circulation_count = new List<string>();
+        //        while (!reader.EndOfStream)
+        //        {
+        //            var line = reader.ReadLine();
+        //            var values = line.Split(',');
+
+        //            list_ini_hem.Add(values[0]);
+        //            list_ini_con.Add(values[1]);
+        //            list_ini_air.Add(values[2]);
+        //            list_ini_bre.Add(values[3]);
+        //            list_ini_cir.Add(values[4]);
+        //            list_time.Add(values[5]);
+        //            list_fin_hem.Add(values[6]);
+        //            list_fin_con.Add(values[7]);
+        //            list_fin_air.Add(values[8]);
+        //            list_fin_bre.Add(values[9]);
+        //            list_fin_cir.Add(values[10]);
+        //            //list_action.Add(values[11]);
+        //            list_tourniquet_count.Add(values[11]);
+        //            list_consciousness_count.Add(values[12]);
+        //            list_airway_count.Add(values[13]);
+        //            list_breathing_count.Add(values[14]);
+        //            list_circulation_count.Add(values[15]);
+
+        //        }
+        //        for (int i = 0; i < 243; i++)
+        //        {
+        //            if ((list_ini_hem[i] == Convert.ToString(initial_hemorrhage)) && (list_ini_con[i] == Convert.ToString(initial_consciousness)) &&
+        //                    (list_ini_air[i] == Convert.ToString(initial_airway)) && (list_ini_bre[i] == Convert.ToString(initial_breathing)) &&
+        //                    (list_ini_cir[i] == Convert.ToString(initial_circulation)))
+        //            {
+        //                predicted_hem = list_fin_hem[i];
+        //                predicted_con = list_fin_con[i];
+        //                predicted_air = list_fin_air[i];
+        //                predicted_bre = list_fin_bre[i];
+        //                predicted_cir = list_fin_cir[i];
+        //                predicted_time = list_time[i];
+
+        //                hemorrhage_count = list_tourniquet_count[i];
+        //                consciousness_count = list_consciousness_count[i];
+        //                airway_count = list_airway_count[i];
+        //                breathing_count = list_breathing_count[i];
+        //                circulation_count = list_circulation_count[i];
+
+        //                DELEGATE del = new DELEGATE(UIController);
+        //                this.Invoke(del);
+        //            }
+
+        //        }
+        //    }
+        //}
+
+
+        #endregion
+        //old crappy event
         private void treatment_timeline_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-#endregion
+        #endregion
+        #endregion
     }
 }

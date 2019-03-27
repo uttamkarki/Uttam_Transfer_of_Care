@@ -14,6 +14,7 @@ namespace Uttam_Transfer_Of_Care
 {
     public partial class inputform : Form
     {
+        #region set body image scale location on/off indication and colours
         public static bool torso_on = false;
         public static bool head_on = false;
         public static bool ms_on = false;
@@ -39,10 +40,11 @@ namespace Uttam_Transfer_Of_Care
         public static float GP_scaler = 1.25F;
 
         //set colors for the torso button areas 
-
         public static Color onColor = Color.Red;
         public static Color offColor = Color.LightGray;
-        #region set initial metric definintions (6 = no input)
+        #endregion
+
+        #region reset initial metric definintions to default(6 = no input)
 
         public static int var_breathing = 6;
         public static int var_hemorrage = 6;
@@ -55,6 +57,7 @@ namespace Uttam_Transfer_Of_Care
         public static int var_gender = 6;
         public static string var_injury_type = "no injury mechanism given";
         #endregion
+
         #region set metric strings ("no data entered")
         public static string var_breathing_text = "no entry";
         public static string var_hemorrage_text = "no entry";
@@ -73,12 +76,13 @@ namespace Uttam_Transfer_Of_Care
 
         #endregion
 
+        #region update the timeline box with all data entries
         public inputform(ListBox.ObjectCollection objectCollection)
         {
             InitializeComponent();
             this.treatment_timeline_result.Items.AddRange(objectCollection);
         }
-
+        #endregion
 
         private void Inputform_Load(object sender, EventArgs e)
         {
@@ -86,12 +90,11 @@ namespace Uttam_Transfer_Of_Care
             var screenheight = Screen.PrimaryScreen.Bounds.Height;
             var screenwidth = Screen.PrimaryScreen.Bounds.Width;
 
+            // delete the timeline data if AI is off
             if (AI_sim.AI_assist == false)
             {
                  treatment_timeline_result.Items.Clear();      
             }
-            //treatment_timeline_result.Items.Add(AI_sim.treatment_info_to_transfer);
-
             #region make shaped buttons  
 
             #region shape the buttons
@@ -711,11 +714,11 @@ namespace Uttam_Transfer_Of_Care
 
             #endregion
         }
+        
         // prepare variables to pass to output - actual patient status and transferred patient status
-
-
         // Transferred patient status as entered by participant
         #region Radio Button Events //all radio button events in here - arranged in sub groups
+
         #region Breathing group events
 
         private void rb_breathingstopped_CheckedChanged(object sender, EventArgs e)

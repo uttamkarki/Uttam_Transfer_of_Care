@@ -11,9 +11,6 @@ using System.Threading;
 
 namespace Uttam_Transfer_Of_Care
 {
-
- 
-
     public partial class intro_form : Form
     {
         public static bool ai_on = true;
@@ -30,13 +27,6 @@ namespace Uttam_Transfer_Of_Care
         {
             Experience_entry.Text = Participant_experience;
             Role_entry.Text = Participant_role;
-        }
-
-        private void aisimstartbutton_Click(object sender, EventArgs e)
-        {
-            var standardSimclick = new AI_sim();
-            ai_on = true;
-            standardSimclick.Show();
         }
 
         private void aisimstartbutton_Click_1(object sender, EventArgs e)
@@ -74,5 +64,14 @@ namespace Uttam_Transfer_Of_Care
         {
             Participant_ID = Participant_ID_box.Text;
         }
+
+        #region old events
+        private void aisimstartbutton_Click(object sender, EventArgs e)
+        {
+            var standardSimclick = new AI_sim();
+            ai_on = true;
+            standardSimclick.Show();
+        }
+        #endregion
     }
 }
