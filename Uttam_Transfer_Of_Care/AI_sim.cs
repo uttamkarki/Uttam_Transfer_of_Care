@@ -51,7 +51,7 @@ namespace Uttam_Transfer_Of_Care
         public static int breath2_count = 0;
         public static int circ1_count = 0;
         public static int circ2_count = 0;
-        public static int cir_count = 0;
+        public static int cpr2_count = 0;
         public static int total_success_count = 0;
         public static int total_partial_success_count = 0;
         public static int total_unsuccess_count = 0;
@@ -193,6 +193,59 @@ namespace Uttam_Transfer_Of_Care
                 patient();
             }
             #endregion
+
+        }
+
+        public void UIController()
+
+        {
+            if (sim_inthem_box.Text == " ")
+            {
+                //Thread.Sleep(5);
+                sim_gender_label.Text = gender;
+                sim_injury_type_label.Text = wound_type;
+                sim_injury_location_label.Text = wound_location;
+                sim_age_label.Text = Convert.ToString(age);
+                sim_intair_box.Text = Convert.ToString(airway);                    // changes the final state of the patient at given time in AI_Sim from
+                sim_intbreath_box.Text = Convert.ToString(breathing);
+                sim_intcirc_box.Text = Convert.ToString(circulation);
+                sim_intconc_box.Text = Convert.ToString(consciousness);
+                sim_inthem_box.Text = Convert.ToString(hemorrhage);
+            }
+            else if (Predicted_Hem_box.Text == " ") // Printing out the final conditions from the simulation results
+            {
+                //Thread.Sleep(5);
+                Predicted_Hem_box.Text = predicted_hem;
+                textBox5.Text = predicted_con;
+                textBox4.Text = predicted_air;
+                Predicted_Breath_Box.Text = predicted_bre;
+                Predicted_Circ_Box.Text = predicted_cir;
+                textBox1.Text = predicted_time;
+                textBox8.Text = hemorrhage_count;
+                textBox6.Text = consciousness_count;
+                textBox3.Text = airway_count;
+                textBox7.Text = breathing_count;
+                textBox2.Text = circulation_count;
+            }
+            else
+            {
+
+            }
+
+            // changes the current (final once sim has stopped) state of the patient at given time in AI_Sim form
+            //Thread.Sleep(5);
+            sim_Current_air_box.Text = Convert.ToString(airway);
+            sim_Current_breath_box.Text = Convert.ToString(breathing);
+            sim_current_circ_box.Text = Convert.ToString(circulation);
+            sim_current_conc_box.Text = Convert.ToString(consciousness);
+            sim_current_hem_box.Text = Convert.ToString(hemorrhage);
+
+            // add the indicator drawing part here
+            hem_ind_panel.BackgroundImage = DrawIndicator(hemorrhage);
+            air_ind_panel.BackgroundImage = DrawIndicator(airway);
+            breath_ind_panel.BackgroundImage = DrawIndicator(breathing);
+            conc_ind_panel.BackgroundImage = DrawIndicator(consciousness);
+            circ_ind_panel.BackgroundImage = DrawIndicator(circulation);
         }
 
         #region Create Patient Agent 
@@ -1183,23 +1236,23 @@ namespace Uttam_Transfer_Of_Care
 
                 #endregion
 
-                //maybe delete this! no longer needed! 
+                //maybe delete this! no longer needed! COMMENTED OUT -CHECK
                 #region start characteristics timers
-                Stopwatch hem_time = new Stopwatch();
-                hem_time.Start();
-                hem_seconds = hem_time.Elapsed.TotalSeconds;
-                Stopwatch conc_time = new Stopwatch();
-                conc_time.Start();
-                conc_seconds = conc_time.Elapsed.TotalSeconds;
-                Stopwatch air_time = new Stopwatch();
-                air_time.Start();
-                air_seconds = air_time.Elapsed.TotalSeconds;
-                Stopwatch breath_time = new Stopwatch();
-                breath_time.Start();
-                breath_seconds = breath_time.Elapsed.TotalSeconds;
-                Stopwatch circ_time = new Stopwatch();
-                circ_time.Start();
-                circ_seconds = circ_time.Elapsed.TotalSeconds;
+                //Stopwatch hem_time = new Stopwatch();
+                //hem_time.Start();
+                //hem_seconds = hem_time.Elapsed.TotalSeconds;
+                //Stopwatch conc_time = new Stopwatch();
+                //conc_time.Start();
+                //conc_seconds = conc_time.Elapsed.TotalSeconds;
+                //Stopwatch air_time = new Stopwatch();
+                //air_time.Start();
+                //air_seconds = air_time.Elapsed.TotalSeconds;
+                //Stopwatch breath_time = new Stopwatch();
+                //breath_time.Start();
+                //breath_seconds = breath_time.Elapsed.TotalSeconds;
+                //Stopwatch circ_time = new Stopwatch();
+                //circ_time.Start();
+                //circ_seconds = circ_time.Elapsed.TotalSeconds;
                 #endregion
 
                 #endregion
@@ -1208,8 +1261,10 @@ namespace Uttam_Transfer_Of_Care
 
                 #region Update UI
 
-                DELEGATE del = new DELEGATE(UIController);
-                this.Invoke(del);
+                subject = "update UI";
+                UIController();
+                //DELEGATE del = new DELEGATE(UIController);
+                //this.Invoke(del);
                 #endregion
 
                 #region tell EMS agent that patient status is available and treatment required
@@ -1427,11 +1482,14 @@ namespace Uttam_Transfer_Of_Care
                         }
                     }
 
-                    #endregion
+                #endregion
                 #endregion
 
-                DELEGATE del = new DELEGATE(UIController);
-                this.Invoke(del);
+                    subject = "update UI";
+                    UIController();
+
+                //DELEGATE del = new DELEGATE(UIController);
+                //this.Invoke(del);
             }
 
             else if (from == "EMS" && to == "patient")
@@ -1440,8 +1498,10 @@ namespace Uttam_Transfer_Of_Care
                 if (subject == "Applied Treatment")
                 {
                     // UI controller will do all of update in form about recent changes made in patient health
-                    DELEGATE del = new DELEGATE(UIController);
-                    this.Invoke(del);
+                    subject = "update UI";
+                    UIController();
+                    //DELEGATE del = new DELEGATE(UIController);
+                    //this.Invoke(del);
                 } // end of if loop
             }  // called by EMS ends
             #endregion
@@ -1449,71 +1509,22 @@ namespace Uttam_Transfer_Of_Care
             // This activates the UI controller when message from Stopwatch
             else if (from == "Stopwatch" && to == "UIcontroller")
             {
-                DELEGATE del = new DELEGATE(UIController);
-                this.Invoke(del);
+                subject = "update UI";
+                UIController();
+                //DELEGATE del = new DELEGATE(UIController);
+                //this.Invoke(del);
             }
             else if (subject == "update treatment in UI")
             {
-                DELEGATE del = new DELEGATE(UIController);
-                this.Invoke(del);
+                subject = "update UI";
+                UIController();
+                //DELEGATE del = new DELEGATE(UIController);
+                //this.Invoke(del);
             }
             // method to update user interface with most recent patient attributes - 
             // called as a delegate 'del' from within Patient thread
 
-            // UIcontroller control
-            #region update patient attributes
 
-            void UIController()
-            {
-                if (sim_inthem_box.Text == " ")
-                {
-                    //Thread.Sleep(5);
-                    sim_gender_label.Text = gender;
-                    sim_injury_type_label.Text = wound_type;
-                    sim_injury_location_label.Text = wound_location;
-                    sim_age_label.Text = Convert.ToString(age);
-                    sim_intair_box.Text = Convert.ToString(airway);                    // changes the final state of the patient at given time in AI_Sim from
-                    sim_intbreath_box.Text = Convert.ToString(breathing);
-                    sim_intcirc_box.Text = Convert.ToString(circulation);
-                    sim_intconc_box.Text = Convert.ToString(consciousness);
-                    sim_inthem_box.Text = Convert.ToString(hemorrhage);
-                }
-                else if (Predicted_Hem_box.Text == " ") // Printing out the final conditions from the simulation results
-                {
-                    //Thread.Sleep(5);
-                    Predicted_Hem_box.Text = predicted_hem;
-                    textBox5.Text = predicted_con;
-                    textBox4.Text = predicted_air;
-                    Predicted_Breath_Box.Text = predicted_bre;
-                    Predicted_Circ_Box.Text = predicted_cir;
-                    textBox1.Text = predicted_time;
-                    textBox8.Text = hemorrhage_count;
-                    textBox6.Text = consciousness_count;
-                    textBox3.Text = airway_count;
-                    textBox7.Text = breathing_count;
-                    textBox2.Text = circulation_count;
-                }
-                else
-                {
-
-                }
-
-                // changes the current (final once sim has stopped) state of the patient at given time in AI_Sim form
-                Thread.Sleep(5);
-                sim_Current_air_box.Text = Convert.ToString(airway);                    
-                sim_Current_breath_box.Text = Convert.ToString(breathing);
-                sim_current_circ_box.Text = Convert.ToString(circulation);
-                sim_current_conc_box.Text = Convert.ToString(consciousness);
-                sim_current_hem_box.Text = Convert.ToString(hemorrhage);
-
-                // add the indicator drawing part here
-                hem_ind_panel.BackgroundImage = DrawIndicator(hemorrhage);
-                air_ind_panel.BackgroundImage = DrawIndicator(airway);
-                breath_ind_panel.BackgroundImage = DrawIndicator(breathing);
-                conc_ind_panel.BackgroundImage = DrawIndicator(consciousness);
-                circ_ind_panel.BackgroundImage = DrawIndicator(circulation);
-            }
-            #endregion
             
         }  // end of Patient agent 
         #endregion 
@@ -1581,7 +1592,7 @@ namespace Uttam_Transfer_Of_Care
                     cir = circulation;
                     //  hierachy of action
                     if (hem == 2 && cir == 2 && bre == 2)
-                        if ((cir_count -1)<= hem2_count)
+                        if ((circ2_count -1)<= hem2_count)
                             {
                                 act = "cpr";
                             }
@@ -1614,7 +1625,7 @@ namespace Uttam_Transfer_Of_Care
                         act = "check consciousness";
                     }
                     else if (hem == 1 && cir == 1 && bre == 1)
-                        if ((cir_count - 1) <= hem1_count)
+                        if ((circ1_count - 1) <= hem1_count)
                         {
                             act = "check circulation";
                         }
@@ -1627,7 +1638,7 @@ namespace Uttam_Transfer_Of_Care
                         act = "check circulation";
                     }
                     else if (hem == 1 && cir == 1 && bre < 1)
-                        if ((cir_count -1) <= hem1_count)
+                        if ((circ1_count -1) <= hem1_count)
                         {
                             act = "check circulation";
                         }
@@ -1636,7 +1647,7 @@ namespace Uttam_Transfer_Of_Care
                             act = "check hemorrhage";
                         }
                     else if (bre == 1 && hem == 1 && cir < 1)
-                        if ((cir_count - 1) <= hem1_count)
+                        if ((hem1_count) <= breath1_count)
                         {
                             act = "check circulation";
                         }
@@ -1693,6 +1704,8 @@ namespace Uttam_Transfer_Of_Care
                     **************************************************************************************************/
 
                     action = act;
+
+
                     DELEGATE del = new DELEGATE(DisplayAction);
                     this.Invoke(del);
                 }
@@ -1851,7 +1864,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void Button_hemm_treat_Click(object sender, EventArgs e)
         {
-            Button_hemm_torniquet.BackColor = Color.Empty;
+            Button_hemm_treat.BackColor = Color.Empty;
             Treatment("check hemorrhage");
         }
 
@@ -2115,109 +2128,10 @@ namespace Uttam_Transfer_Of_Care
 
         #endregion
 
-        // I'm not sure I like this implementation as it makes the UI very juddery. I think we should take out any thread pausing as it is very frustrating
-        #region timing functions etc. stopwatch for each treatment 
-        int Stopwatch_hem_Function_Call;
-        int Stopwatch_conc_Function_Call;
-        int Stopwatch_air_Function_Call;
-        int Stopwatch_circ_Function_Call;
-        int Stopwatch_breath_Function_Call;
-       // private object stopwatch_hem;
-        //private object stopWatch_hem;
-
-
-        //Initiate stopwatches for each patient Characteristic? don't know why these are here and what they do?
-
-
-        //public void stopwatch_record()
-        //{
-        //    if (Stopwatch_hem_Function_Call == 1)
-        //    {
-        //        stopwatch_hem.Start();
-        //        while (stopwatch_hem.Elapsed.Seconds <= 10)
-        //        {
-
-        //        }
-        //        if(hemorrhage > 0 && hemorrhage < 2)
-        //        {
-        //            hemorrhage = hemorrhage + 1;
-        //        }
-        //        DELEGATE del = new DELEGATE(patient);
-        //        this.Invoke(del);
-        //    }
-        //    else if (Stopwatch_conc_Function_Call == 2)
-        //    {
-        //        stopwatch_con.Start();
-        //        while (stopwatch_hem.Elapsed.Seconds <= 10)
-        //        {
-
-        //        }
-        //        if(consciousness > 0 && consciousness < 2)
-        //        {
-        //            consciousness = consciousness + 1;
-        //        }
-        //        DELEGATE del = new DELEGATE(patient);
-        //        this.Invoke(del);
-        //    }
-        //    else if (Stopwatch_air_Function_Call == 3)
-        //    {
-        //        stopwatch_air.Start();
-        //        while (stopwatch_hem.Elapsed.Seconds <= 10)
-        //        {
-
-        //        }
-        //        if(airway > 0 && airway < 2)
-        //        {
-        //            airway = airway + 1;
-        //        }
-        //        DELEGATE del = new DELEGATE(patient);
-        //        this.Invoke(del);
-        //    }
-        //    else if (Stopwatch_breath_Function_Call == 4)
-        //    {
-        //        stopwatch_bre.Start();
-        //        while (stopwatch_hem.Elapsed.Seconds <= 10)
-        //        {
-
-        //        }
-        //        if(breathing >0 && breathing < 2)
-        //        {
-        //            breathing = breathing + 1;
-        //        }
-        //        DELEGATE del = new DELEGATE(patient);
-        //        this.Invoke(del);
-        //    }
-        //    else if (Stopwatch_circ_Function_Call == 5)
-        //    {
-        //        stopwatch_cir.Start();
-        //        while (stopwatch_hem.Elapsed.Seconds <= 10)
-        //        {
-
-        //        }
-        //        if (circulation > 0 && circulation < 2)
-        //        {
-        //            circulation = circulation + 1;
-        //        }
-        //        DELEGATE del = new DELEGATE(patient);
-        //        this.Invoke(del);
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //    from = "Stopwatch"; to = "UIcontroller";
-        //    patient();
-        //}
-
-        #endregion
-
         //treatment controls to be actioned by EMS agent by message or UI interface
         #region treatment
         public void Treatment(string action)
         {
-            // copy the transition probability code from previous means
-            /* Write a code for patient treatment. It is same as before. 
-               Depending on the action that is passed, apply recommended actions*/
 
             #region action recommended from AI.....
             // direction for checking hemorrhage from AI
@@ -2878,8 +2792,8 @@ namespace Uttam_Transfer_Of_Care
             {
                 // *******************************SET VARIABLES FOR THE TREATMENT*********************************************************
                 #region Treatment variables
-                int cpr2to0_cure_probability = 10; // the probability that circulation treatment from level 2 to 0 is successful
-                int cpr2to1_cure_probability = 20; // the probability that circulation treatment from level 2 to 1 is successful
+                int cpr2to0_cure_probability = 5; // the probability that circulation treatment from level 2 to 0 is successful
+                int cpr2to1_cure_probability = 10; // the probability that circulation treatment from level 2 to 1 is successful
                 int cpr2to1_cumprob = cpr2to1_cure_probability + cpr2to0_cure_probability; // cumulative success probabiligy
                 int cpr2_0_successprob_reduction = 1; // the reduction in the probability of success with each repeated treatment from level 2 to 0
                 int cpr2_1_successprob_reduction = 2; // the reduction in the probability of success with each repeated treatment from level 2 to 1
@@ -2894,7 +2808,8 @@ namespace Uttam_Transfer_Of_Care
                 if (circulation == 2 && breathing == 2 )  // If CPR needed
                  {
                     // add defibrillation after 2 repetitions
-                    if (cir_count < 2)
+                    if (circ2_count < 3)
+                    #region Vary message depending on count
                     {
                         treatment_timeline.Items.Add("Patient in cardiac arrest and not breathing");            // Patient condition message
                         treatment_timeline.Items.Add("attempting CPR resusitation");
@@ -2904,14 +2819,15 @@ namespace Uttam_Transfer_Of_Care
                         treatment_timeline.Items.Add("Patient in cardiac arrest and not breathing");            // Patient condition message
                         treatment_timeline.Items.Add("attempting CPR with defibrillation");
                     }
-                    cpr2to0_cure_probability -= (cpr2_0_successprob_reduction * circ2_count); //complete success probability accounting for repeats
-                    cpr2to1_cure_probability -= (cpr2_1_successprob_reduction * circ2_count); //partial success probability accounting for repeats
+                    #endregion
+
+                    cpr2to0_cure_probability -= (cpr2_0_successprob_reduction * cpr2_count); //complete success probability accounting for repeats
+                    cpr2to1_cure_probability -= (cpr2_1_successprob_reduction * cpr2_count); //partial success probability accounting for repeats
                     cpr2to1_cumprob = cpr2to1_cure_probability + cpr2to0_cure_probability;   // set cumulative success and partial success probability
 
-                    int x;
-                    Random r = new Random();
-                    x = r.Next(0, 101);                                                         //generate random number between 1 and 100
-                    if (x <= cpr2to0_cure_probability)
+                    Random rCPR = new Random();
+                    int CPRtest = rCPR.Next(0, 101);                                                         //generate random number between 1 and 100
+                    if (CPRtest <= cpr2to0_cure_probability)
                     {   
                         breathing_description = "previously not breathing but now normal";
                         circulation_description = "previously in cardiac arrest but now normal";
@@ -2922,7 +2838,7 @@ namespace Uttam_Transfer_Of_Care
                         stopwatch_bre.Reset();
                         total_success_count += 1;                                               // global counter for successful procedures
                     }
-                    else if (x <= cpr2to1_cumprob && x > cpr2to0_cure_probability)
+                    else if (CPRtest <= cpr2to1_cumprob && CPRtest > cpr2to0_cure_probability)
                     {
                         breathing_description = "previously not breathing, improved but not breathing normally";
                         circulation_description = "previously in cardiac arrest but now pulse is weak or irregular";
@@ -2938,11 +2854,12 @@ namespace Uttam_Transfer_Of_Care
                         breathing_description = "not breathing";
                         circulation_description = "in cardiac arrest";
                         treatment_timeline.Items.Add("Patient Still in Cardiac Arrest");
-                        treatment_timeline.Items.Add("Patient Still not breathing");        //patient still critical
-                        circulation = 2;                                                        //patient condition quantifier set to 2 - critical
+                        treatment_timeline.Items.Add("Patient Still not breathing");            //patient still critical
+                        circulation = 2;
+                        breathing = 2;                                                          //patient condition quantifier set to 2 - critical
                         total_unsuccess_count += 1;                                             // counter for unsuccessful procedures
                     }
-                    cir_count += 1;                                                           //counter for total critical procedures (successful and unsuccessful)
+                    cpr2_count += 1;                                                           //counter for total critical procedures (successful and unsuccessful)
                     cpr_timedelay = cpr2_timedelay;                                           //set timedelay to variable for critical procedure
                 }
                 #endregion
@@ -2961,6 +2878,7 @@ namespace Uttam_Transfer_Of_Care
 
             from = "treatment"; to = "patient"; subject = "update treatment in UI";
             patient();
+            //UIController();
 
             from = "EMS"; to = "AI"; subject = "Recommend treatment";
             AI();
