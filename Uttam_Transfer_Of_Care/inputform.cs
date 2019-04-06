@@ -2517,5 +2517,10 @@ namespace Uttam_Transfer_Of_Care
         }
 
         #endregion
+
+        private void titlebox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

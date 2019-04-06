@@ -17,9 +17,9 @@ namespace Uttam_Transfer_Of_Care
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Message_form_Load(object sender, EventArgs e)
         {
-
+            Treatment_label_box.Text = AI_sim.MessageLabel;
         }
     }
 }
