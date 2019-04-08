@@ -40,11 +40,6 @@
             this.rb_circ_fullyrestarted_2to0 = new System.Windows.Forms.RadioButton();
             this.treatment_timeline_result = new System.Windows.Forms.ListBox();
             this.rb_circ_good_0 = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rb_med_fluids = new System.Windows.Forms.RadioButton();
-            this.rb_med_adr = new System.Windows.Forms.RadioButton();
-            this.rb_med_morphine = new System.Windows.Forms.RadioButton();
-            this.rb_nomeds = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rb_hem_bleedstop_2to0 = new System.Windows.Forms.RadioButton();
             this.rb_heavy_bleed_2 = new System.Windows.Forms.RadioButton();
@@ -104,16 +99,17 @@
             this.button_ms = new System.Windows.Forms.Button();
             this.button_head = new System.Windows.Forms.Button();
             this.timeline = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textentry_injury = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rb_age_70plus = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button_torso = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Top_bar_panel = new System.Windows.Forms.Panel();
             this.titlebox = new System.Windows.Forms.TextBox();
+            this.dropbox_injury = new System.Windows.Forms.ComboBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.int_button = new System.Windows.Forms.RadioButton();
             this.BreathingGroup.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.CirculationGroup.SuspendLayout();
             this.AirwayGroup.SuspendLayout();
@@ -121,6 +117,8 @@
             this.groupBox5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.Top_bar_panel.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // BreathingGroup
@@ -133,7 +131,7 @@
             this.BreathingGroup.Controls.Add(this.rb_breathing_2to0);
             this.BreathingGroup.Controls.Add(this.rb_breathing_good_0);
             this.BreathingGroup.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BreathingGroup.Location = new System.Drawing.Point(1850, 290);
+            this.BreathingGroup.Location = new System.Drawing.Point(1850, 470);
             this.BreathingGroup.Name = "BreathingGroup";
             this.BreathingGroup.Size = new System.Drawing.Size(1100, 210);
             this.BreathingGroup.TabIndex = 110;
@@ -242,12 +240,13 @@
             // 
             // treatment_timeline_result
             // 
+            this.treatment_timeline_result.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treatment_timeline_result.FormattingEnabled = true;
-            this.treatment_timeline_result.ItemHeight = 25;
-            this.treatment_timeline_result.Location = new System.Drawing.Point(32, 616);
+            this.treatment_timeline_result.ItemHeight = 39;
+            this.treatment_timeline_result.Location = new System.Drawing.Point(20, 230);
             this.treatment_timeline_result.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treatment_timeline_result.Name = "treatment_timeline_result";
-            this.treatment_timeline_result.Size = new System.Drawing.Size(688, 904);
+            this.treatment_timeline_result.Size = new System.Drawing.Size(700, 1681);
             this.treatment_timeline_result.TabIndex = 119;
             // 
             // rb_circ_good_0
@@ -262,65 +261,6 @@
             this.rb_circ_good_0.UseVisualStyleBackColor = true;
             this.rb_circ_good_0.CheckedChanged += new System.EventHandler(this.rb_circ_good_0_CheckedChanged);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.AliceBlue;
-            this.groupBox3.Controls.Add(this.rb_med_fluids);
-            this.groupBox3.Controls.Add(this.rb_med_adr);
-            this.groupBox3.Controls.Add(this.rb_med_morphine);
-            this.groupBox3.Controls.Add(this.rb_nomeds);
-            this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(1850, 1440);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1100, 160);
-            this.groupBox3.TabIndex = 115;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Medication";
-            // 
-            // rb_med_fluids
-            // 
-            this.rb_med_fluids.AutoSize = true;
-            this.rb_med_fluids.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_med_fluids.Location = new System.Drawing.Point(456, 100);
-            this.rb_med_fluids.Name = "rb_med_fluids";
-            this.rb_med_fluids.Size = new System.Drawing.Size(147, 48);
-            this.rb_med_fluids.TabIndex = 3;
-            this.rb_med_fluids.Text = "Fluids";
-            this.rb_med_fluids.UseVisualStyleBackColor = true;
-            // 
-            // rb_med_adr
-            // 
-            this.rb_med_adr.AutoSize = true;
-            this.rb_med_adr.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_med_adr.Location = new System.Drawing.Point(456, 46);
-            this.rb_med_adr.Name = "rb_med_adr";
-            this.rb_med_adr.Size = new System.Drawing.Size(247, 48);
-            this.rb_med_adr.TabIndex = 2;
-            this.rb_med_adr.Text = "Adrenaline";
-            this.rb_med_adr.UseVisualStyleBackColor = true;
-            // 
-            // rb_med_morphine
-            // 
-            this.rb_med_morphine.AutoSize = true;
-            this.rb_med_morphine.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_med_morphine.Location = new System.Drawing.Point(20, 100);
-            this.rb_med_morphine.Name = "rb_med_morphine";
-            this.rb_med_morphine.Size = new System.Drawing.Size(222, 48);
-            this.rb_med_morphine.TabIndex = 1;
-            this.rb_med_morphine.Text = "Morphine";
-            this.rb_med_morphine.UseVisualStyleBackColor = true;
-            // 
-            // rb_nomeds
-            // 
-            this.rb_nomeds.AutoSize = true;
-            this.rb_nomeds.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_nomeds.Location = new System.Drawing.Point(20, 50);
-            this.rb_nomeds.Name = "rb_nomeds";
-            this.rb_nomeds.Size = new System.Drawing.Size(260, 48);
-            this.rb_nomeds.TabIndex = 0;
-            this.rb_nomeds.Text = "None given";
-            this.rb_nomeds.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.AliceBlue;
@@ -331,7 +271,7 @@
             this.groupBox2.Controls.Add(this.rb_some_bleed_1);
             this.groupBox2.Controls.Add(this.rb_no_bleed_0);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(1850, 1210);
+            this.groupBox2.Location = new System.Drawing.Point(1850, 1390);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1100, 210);
             this.groupBox2.TabIndex = 114;
@@ -424,7 +364,7 @@
             this.CirculationGroup.Controls.Add(this.rb_circ_fullyrestarted_2to0);
             this.CirculationGroup.Controls.Add(this.rb_circ_good_0);
             this.CirculationGroup.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CirculationGroup.Location = new System.Drawing.Point(1850, 520);
+            this.CirculationGroup.Location = new System.Drawing.Point(1850, 700);
             this.CirculationGroup.Name = "CirculationGroup";
             this.CirculationGroup.Size = new System.Drawing.Size(1100, 210);
             this.CirculationGroup.TabIndex = 111;
@@ -527,7 +467,7 @@
             this.AirwayGroup.Controls.Add(this.rb_air_partblocked_1);
             this.AirwayGroup.Controls.Add(this.rb_air_good_0);
             this.AirwayGroup.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AirwayGroup.Location = new System.Drawing.Point(1850, 750);
+            this.AirwayGroup.Location = new System.Drawing.Point(1850, 930);
             this.AirwayGroup.Name = "AirwayGroup";
             this.AirwayGroup.Size = new System.Drawing.Size(1100, 210);
             this.AirwayGroup.TabIndex = 112;
@@ -584,6 +524,7 @@
             this.rb_gender_female.TabIndex = 2;
             this.rb_gender_female.Text = "Female";
             this.rb_gender_female.UseVisualStyleBackColor = true;
+            this.rb_gender_female.CheckedChanged += new System.EventHandler(this.rb_gender_female_CheckedChanged_1);
             // 
             // rb_gender_male
             // 
@@ -595,6 +536,7 @@
             this.rb_gender_male.TabIndex = 0;
             this.rb_gender_male.Text = "Male";
             this.rb_gender_male.UseVisualStyleBackColor = true;
+            this.rb_gender_male.CheckedChanged += new System.EventHandler(this.rb_gender_male_CheckedChanged_1);
             // 
             // rb_age_child
             // 
@@ -623,9 +565,10 @@
             // status_critical
             // 
             this.status_critical.AutoSize = true;
-            this.status_critical.Location = new System.Drawing.Point(368, 30);
+            this.status_critical.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.status_critical.Location = new System.Drawing.Point(766, 52);
             this.status_critical.Name = "status_critical";
-            this.status_critical.Size = new System.Drawing.Size(109, 29);
+            this.status_critical.Size = new System.Drawing.Size(176, 48);
             this.status_critical.TabIndex = 2;
             this.status_critical.TabStop = true;
             this.status_critical.Text = "Critical";
@@ -642,7 +585,7 @@
             this.groupBox6.Controls.Add(this.rb_partconscious_1);
             this.groupBox6.Controls.Add(this.rb_conscious_0);
             this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(1850, 980);
+            this.groupBox6.Location = new System.Drawing.Point(1850, 1160);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(1100, 210);
             this.groupBox6.TabIndex = 113;
@@ -728,9 +671,10 @@
             // status_priority
             // 
             this.status_priority.AutoSize = true;
-            this.status_priority.Location = new System.Drawing.Point(207, 30);
+            this.status_priority.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.status_priority.Location = new System.Drawing.Point(366, 52);
             this.status_priority.Name = "status_priority";
-            this.status_priority.Size = new System.Drawing.Size(110, 29);
+            this.status_priority.Size = new System.Drawing.Size(165, 48);
             this.status_priority.TabIndex = 1;
             this.status_priority.TabStop = true;
             this.status_priority.Text = "Priority";
@@ -740,9 +684,10 @@
             // status_routine
             // 
             this.status_routine.AutoSize = true;
-            this.status_routine.Location = new System.Drawing.Point(46, 31);
+            this.status_routine.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.status_routine.Location = new System.Drawing.Point(20, 52);
             this.status_routine.Name = "status_routine";
-            this.status_routine.Size = new System.Drawing.Size(117, 29);
+            this.status_routine.Size = new System.Drawing.Size(186, 48);
             this.status_routine.TabIndex = 0;
             this.status_routine.TabStop = true;
             this.status_routine.Text = "Routine";
@@ -1065,30 +1010,11 @@
             // 
             this.timeline.AutoSize = true;
             this.timeline.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeline.Location = new System.Drawing.Point(32, 567);
+            this.timeline.Location = new System.Drawing.Point(24, 170);
             this.timeline.Name = "timeline";
             this.timeline.Size = new System.Drawing.Size(168, 44);
             this.timeline.TabIndex = 109;
             this.timeline.Text = "Timeline";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 304);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(336, 44);
-            this.label3.TabIndex = 108;
-            this.label3.Text = "Injury Mechanism";
-            // 
-            // textentry_injury
-            // 
-            this.textentry_injury.Location = new System.Drawing.Point(32, 355);
-            this.textentry_injury.Multiline = true;
-            this.textentry_injury.Name = "textentry_injury";
-            this.textentry_injury.Size = new System.Drawing.Size(688, 176);
-            this.textentry_injury.TabIndex = 107;
-            this.textentry_injury.TextChanged += new System.EventHandler(this.textentry_injury_TextChanged);
             // 
             // groupBox1
             // 
@@ -1096,9 +1022,10 @@
             this.groupBox1.Controls.Add(this.status_critical);
             this.groupBox1.Controls.Add(this.status_priority);
             this.groupBox1.Controls.Add(this.status_routine);
-            this.groupBox1.Location = new System.Drawing.Point(26, 131);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(1850, 170);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(520, 73);
+            this.groupBox1.Size = new System.Drawing.Size(1100, 110);
             this.groupBox1.TabIndex = 106;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient status";
@@ -1147,21 +1074,75 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // Top_bar_panel
+            // 
+            this.Top_bar_panel.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.Top_bar_panel.Controls.Add(this.titlebox);
+            this.Top_bar_panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Top_bar_panel.Location = new System.Drawing.Point(0, 0);
+            this.Top_bar_panel.Name = "Top_bar_panel";
+            this.Top_bar_panel.Size = new System.Drawing.Size(2974, 100);
+            this.Top_bar_panel.TabIndex = 122;
+            this.Top_bar_panel.Tag = "EMS";
+            // 
             // titlebox
             // 
-            this.titlebox.BackColor = System.Drawing.Color.AliceBlue;
+            this.titlebox.BackColor = System.Drawing.Color.PaleTurquoise;
             this.titlebox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.titlebox.Dock = System.Windows.Forms.DockStyle.Top;
             this.titlebox.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titlebox.Location = new System.Drawing.Point(0, 0);
-            this.titlebox.Margin = new System.Windows.Forms.Padding(0, 50, 0, 0);
+            this.titlebox.Location = new System.Drawing.Point(1, 15);
+            this.titlebox.Margin = new System.Windows.Forms.Padding(0);
             this.titlebox.Multiline = true;
             this.titlebox.Name = "titlebox";
-            this.titlebox.Size = new System.Drawing.Size(2974, 100);
-            this.titlebox.TabIndex = 120;
-            this.titlebox.Text = "Patient Transfer Form";
+            this.titlebox.Size = new System.Drawing.Size(2998, 75);
+            this.titlebox.TabIndex = 0;
+            this.titlebox.Text = "Transfer of Care Form";
             this.titlebox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.titlebox.TextChanged += new System.EventHandler(this.titlebox_TextChanged);
+            // 
+            // dropbox_injury
+            // 
+            this.dropbox_injury.DropDownWidth = 800;
+            this.dropbox_injury.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropbox_injury.FormattingEnabled = true;
+            this.dropbox_injury.ItemHeight = 44;
+            this.dropbox_injury.Items.AddRange(new object[] {
+            "Gunshot",
+            "Blunt Force Trauma",
+            "Drowning",
+            "Heart Attack",
+            "Allergic Reaction"});
+            this.dropbox_injury.Location = new System.Drawing.Point(25, 60);
+            this.dropbox_injury.Name = "dropbox_injury";
+            this.dropbox_injury.Size = new System.Drawing.Size(1050, 52);
+            this.dropbox_injury.TabIndex = 123;
+            this.dropbox_injury.Text = "Injury type";
+            this.dropbox_injury.SelectedIndexChanged += new System.EventHandler(this.dropbox_injury_SelectedIndexChanged);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.Color.AliceBlue;
+            this.groupBox7.Controls.Add(this.dropbox_injury);
+            this.groupBox7.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(1850, 310);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(1100, 140);
+            this.groupBox7.TabIndex = 124;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Injury type";
+            // 
+            // int_button
+            // 
+            this.int_button.AutoSize = true;
+            this.int_button.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.int_button.Location = new System.Drawing.Point(1069, 222);
+            this.int_button.Name = "int_button";
+            this.int_button.Size = new System.Drawing.Size(457, 48);
+            this.int_button.TabIndex = 125;
+            this.int_button.TabStop = true;
+            this.int_button.Text = "Internal or global injury";
+            this.int_button.UseVisualStyleBackColor = true;
+            this.int_button.CheckedChanged += new System.EventHandler(this.int_button_CheckedChanged);
+            this.int_button.Click += new System.EventHandler(this.int_button_Click);
             // 
             // inputform
             // 
@@ -1169,10 +1150,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2974, 1929);
-            this.Controls.Add(this.titlebox);
+            this.Controls.Add(this.int_button);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.Top_bar_panel);
             this.Controls.Add(this.BreathingGroup);
             this.Controls.Add(this.treatment_timeline_result);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.CirculationGroup);
             this.Controls.Add(this.AirwayGroup);
@@ -1203,8 +1185,6 @@
             this.Controls.Add(this.button_ms);
             this.Controls.Add(this.button_head);
             this.Controls.Add(this.timeline);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textentry_injury);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button_torso);
@@ -1215,8 +1195,6 @@
             this.Load += new System.EventHandler(this.Inputform_Load);
             this.BreathingGroup.ResumeLayout(false);
             this.BreathingGroup.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.CirculationGroup.ResumeLayout(false);
@@ -1231,6 +1209,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.Top_bar_panel.ResumeLayout(false);
+            this.Top_bar_panel.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1247,11 +1228,6 @@
         public System.Windows.Forms.RadioButton rb_circ_fullyrestarted_2to0;
         public System.Windows.Forms.ListBox treatment_timeline_result;
         public System.Windows.Forms.RadioButton rb_circ_good_0;
-        private System.Windows.Forms.GroupBox groupBox3;
-        public System.Windows.Forms.RadioButton rb_med_fluids;
-        public System.Windows.Forms.RadioButton rb_med_adr;
-        public System.Windows.Forms.RadioButton rb_med_morphine;
-        public System.Windows.Forms.RadioButton rb_nomeds;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.RadioButton rb_heavy_bleed_2;
         public System.Windows.Forms.RadioButton rb_hem_bleedstop_2to1;
@@ -1305,8 +1281,6 @@
         private System.Windows.Forms.Button button_ms;
         private System.Windows.Forms.Button button_head;
         private System.Windows.Forms.Label timeline;
-        private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox textentry_injury;
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.RadioButton rb_age_70plus;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -1320,6 +1294,10 @@
         public System.Windows.Forms.RadioButton rb_air_fullycleared_2to0;
         public System.Windows.Forms.RadioButton rb_air_cleared_1to0;
         public System.Windows.Forms.RadioButton rb_conc_fullyrestored_2to0;
+        private System.Windows.Forms.Panel Top_bar_panel;
         private System.Windows.Forms.TextBox titlebox;
+        private System.Windows.Forms.ComboBox dropbox_injury;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.RadioButton int_button;
     }
 }

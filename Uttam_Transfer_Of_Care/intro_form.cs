@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Drawing.Drawing2D;
+using Plasmoid.Extensions;
 
 namespace Uttam_Transfer_Of_Care
 {
@@ -27,13 +29,49 @@ namespace Uttam_Transfer_Of_Care
         {
             Experience_entry.Text = Participant_experience;
             Role_entry.Text = Participant_role;
+
+            draw_msgbox_inst();
+        }
+
+
+        async void draw_msgbox_inst()
+        {
+
+
+            System.Drawing.Graphics g = this.CreateGraphics();
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            await Task.Delay(50);
+
+            g.FillRoundedRectangle(new SolidBrush(Color.FromName("AliceBlue")), 300,1500, 500, 300, 100);
+            g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"), 30f), 300,1500, 500, 300, 100);
+            await Task.Delay(50);
+
+            g.FillRoundedRectangle(new SolidBrush(Color.FromName("AliceBlue")), 300, 1500, 500, 300, 100);
+            g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"), 30f), 300, 1500, 500, 300, 100);
+
         }
 
         private void aisimstartbutton_Click_1(object sender, EventArgs e)
         {
-            var standardSimclick = new AI_sim();
-            ai_on = true;
-            standardSimclick.Show();
+            if (Role_entry.Text == "enter role" || Role_entry.Text == "")
+            {
+                MessageBox.Show("please enter a role");
+            }
+            else if (Experience_entry.Text == "enter experience (in years)" || Role_entry.Text == "")
+            {
+                MessageBox.Show("please enter experience");
+            }
+            else if (Participant_ID_box.Text == "")
+            {
+                MessageBox.Show("please enter ID");
+            }
+            else
+            {
+                var standardSimclick = new AI_sim();
+                ai_on = true;
+                standardSimclick.Show();
+            }
+
         }
 
         private void standardsimstartbutton_Click_1(object sender, EventArgs e)
@@ -73,5 +111,15 @@ namespace Uttam_Transfer_Of_Care
             standardSimclick.Show();
         }
         #endregion
+
+        private void Intro_label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

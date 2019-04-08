@@ -966,25 +966,25 @@ namespace Uttam_Transfer_Of_Care
         private void rb_nomeds_CheckedChanged(object sender, EventArgs e)
         {
             var_medication = 0;
-            var_medication_text = rb_nomeds.Text;
+           // var_medication_text = rb_nomeds.Text;
         }
 
         private void rb_med_adr_CheckedChanged(object sender, EventArgs e)
         {
             var_medication = 2;
-            var_medication_text = rb_med_adr.Text;
+           // var_medication_text = rb_med_adr.Text;
         }
 
         private void rb_med_morphine_CheckedChanged(object sender, EventArgs e)
         {
             var_medication = 3;
-            var_medication_text = rb_med_morphine.Text;
+            //var_medication_text = rb_med_morphine.Text;
         }
 
         private void rb_med_fluids_CheckedChanged(object sender, EventArgs e)
         {
             var_medication = 1;
-            var_medication_text = rb_med_fluids.Text;
+            //var_medication_text = rb_med_fluids.Text;
         }
         #endregion
 
@@ -1016,17 +1016,18 @@ namespace Uttam_Transfer_Of_Care
 
         #region gender group events
 
-        private void rb_gender_male_CheckedChanged(object sender, EventArgs e)
+        private void rb_gender_male_CheckedChanged_1(object sender, EventArgs e)
         {
             var_gender = 0;
             var_gender_text = rb_gender_male.Text;
         }
 
-        private void rb_gender_female_CheckedChanged(object sender, EventArgs e)
+        private void rb_gender_female_CheckedChanged_1(object sender, EventArgs e)
         {
             var_gender = 1;
             var_gender_text = rb_gender_female.Text;
         }
+
         #endregion
 
         #region criticality events
@@ -1053,22 +1054,91 @@ namespace Uttam_Transfer_Of_Care
 
         private void textentry_injury_TextChanged(object sender, EventArgs e)
         {
-            var_injury_type = textentry_injury.Text;
-            var_injury_type_text = textentry_injury.Text;
-        }
 
+        }
+        private void dropbox_injury_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var_injury_type = dropbox_injury.Text;
+            var_injury_type_text = dropbox_injury.Text;
+        }
         #endregion
 
         #endregion
 
         #region Injury location setting through shape buttons
 
+        #region int/global button
+        private void int_button_Click(object sender, EventArgs e)
+        {
+            if (int_button.Checked == true)
+            {
+                //int_button.Checked = false;
+                var_injury_location_text = "internal/global";
+            }
+            else
+            {
+                var_injury_location_text = "null";
+
+            }
+
+            #region turn off all other regions
+            head_on = false;
+            button_head.BackColor = offColor;
+            torso_on = false;
+            button_torso.BackColor = offColor;
+            ms_on = false;
+            button_ms.BackColor = offColor;
+            rightleg_on = false;
+            button_rightleg.BackColor = offColor;
+            rightlowleg_on = false;
+            button_rightlowleg.BackColor = offColor;
+            leftleg_on = false;
+            button_leftleg.BackColor = offColor;
+            leftlowleg_on = false;
+            button_leftlowleg.BackColor = offColor;
+            rightarm_on = false;
+            button_rightarm.BackColor = offColor;
+            rightlowarm_on = false;
+            button_rightlowarm.BackColor = offColor;
+            leftarm_on = false;
+            button_leftarm.BackColor = offColor;
+            leftlowarm_on = false;
+            button_leftlowarm.BackColor = offColor;
+            #endregion
+
+            #region turn off all back regions
+            backhead_on = false;
+            button_backhead.BackColor = offColor;
+            backtorso_on = false;
+            button_backtorso.BackColor = offColor;
+            backms_on = false;
+            button_backms.BackColor = offColor;
+            backrightleg_on = false;
+            button_backrightleg.BackColor = offColor;
+            backrightlowleg_on = false;
+            button_backrightlowleg.BackColor = offColor;
+            backleftleg_on = false;
+            button_backleftleg.BackColor = offColor;
+            backleftlowleg_on = false;
+            button_backleftlowleg.BackColor = offColor;
+            backrightarm_on = false;
+            button_backrightarm.BackColor = offColor;
+            backrightlowarm_on = false;
+            button_backrightlowarm.BackColor = offColor;
+            backleftarm_on = false;
+            button_backleftarm.BackColor = offColor;
+            backleftlowarm_on = false;
+            button_backleftlowarm.BackColor = offColor;
+            #endregion
+        }
+        #endregion
+
         #region front button events
         //head
         private void button_head_Click_1(object sender, EventArgs e)
         {
             #region turn off all other regions
-
+            int_button.Checked = false;
             torso_on = false;
             button_torso.BackColor = offColor;
             ms_on = false;
@@ -1131,6 +1201,7 @@ namespace Uttam_Transfer_Of_Care
         private void button_torso_Click(object sender, EventArgs e)
         {
             #region turn off all other regions
+            int_button.Checked = false;
             head_on = false;
             button_head.BackColor = offColor;
             ms_on = false;
@@ -1192,6 +1263,7 @@ namespace Uttam_Transfer_Of_Care
 
         private void button_ms_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1254,6 +1326,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void button_rightleg_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1315,7 +1388,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void button_rightlowleg_Click(object sender, EventArgs e)
         {
-
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1377,6 +1450,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void button_leftleg_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1438,6 +1512,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void button_leftlowleg_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1499,6 +1574,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void button_rightlowarm_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1560,6 +1636,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void button_rightarm_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1622,6 +1699,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void button_leftarm_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1684,6 +1762,7 @@ namespace Uttam_Transfer_Of_Care
 
         private void button_leftlowarm_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1748,6 +1827,7 @@ namespace Uttam_Transfer_Of_Care
         #region back button events
         private void button_backhead_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1813,6 +1893,7 @@ namespace Uttam_Transfer_Of_Care
 
         private void button_backtorso_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1876,6 +1957,7 @@ namespace Uttam_Transfer_Of_Care
 
         private void button_backms_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -1939,6 +2021,7 @@ namespace Uttam_Transfer_Of_Care
 
         private void button_backrightleg_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -2001,6 +2084,7 @@ namespace Uttam_Transfer_Of_Care
 
         private void button_backrightlowleg_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -2063,6 +2147,7 @@ namespace Uttam_Transfer_Of_Care
 
         private void button_backleftleg_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -2125,6 +2210,7 @@ namespace Uttam_Transfer_Of_Care
 
         private void button_backleftlowleg_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -2186,6 +2272,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void button_backleftarm_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -2248,6 +2335,7 @@ namespace Uttam_Transfer_Of_Care
 
         private void button_backleftlowarm_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -2309,6 +2397,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void button_backrightarm_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -2370,6 +2459,7 @@ namespace Uttam_Transfer_Of_Care
         }
         private void button_backrightlowarm_Click(object sender, EventArgs e)
         {
+            int_button.Checked = false;
             #region turn off all other regions
             head_on = false;
             button_head.BackColor = offColor;
@@ -2442,6 +2532,24 @@ namespace Uttam_Transfer_Of_Care
 
         //old button action controls
         #region old action buttons - to be disposed
+
+        private void rb_gender_male_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void rb_gender_female_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void titlebox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void int_button_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void rb_age_adult_CheckedChanged(object sender, EventArgs e)
         {
@@ -2516,11 +2624,10 @@ namespace Uttam_Transfer_Of_Care
 
         }
 
+
+
         #endregion
 
-        private void titlebox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

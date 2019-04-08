@@ -93,7 +93,7 @@ namespace Uttam_Transfer_Of_Care
             }
             else
             {
-                conf_age = Convert.ToString(inputform.var_age);
+                conf_age = "over 70";
             }
             #endregion
 
@@ -101,10 +101,12 @@ namespace Uttam_Transfer_Of_Care
             if (inputform.var_gender == 0)
             {
                 conf_gender = "Male";
+                MessageBox.Show("male");
             }
             else if (inputform.var_gender == 1)
             {
                 conf_gender = "Female";
+                MessageBox.Show("female");
             }
 
             #endregion
@@ -171,24 +173,24 @@ namespace Uttam_Transfer_Of_Care
             {
                 conf_heart = "no heart or circulation problem";
             }
-            else if (inputform.var_hemorrage == 1)
+            else if (inputform.var_circulation == 1)
             {
                 conf_heart = "weak or irregular pulse or heartbeat";
             }
-            else if (inputform.var_hemorrage == 2)
+            else if (inputform.var_circulation == 2)
             {
                 conf_heart = "in cardiac arrest";
                 crit_count = crit_count + 1;
             }
-            else if (inputform.var_hemorrage == 3)
+            else if (inputform.var_circulation == 3)
             {
                 conf_heart = "weak or irregular pulse now normal";
             }
-            else if (inputform.var_hemorrage == 4)
+            else if (inputform.var_circulation == 4)
             {
                 conf_heart = "previously in cardiac arrest but now pulse is weak or irregular";
             }
-            else if (inputform.var_hemorrage == 5)
+            else if (inputform.var_circulation == 5)
             {
                 conf_heart = "previously in cardiac arrest but now normal";
             }
@@ -211,28 +213,28 @@ namespace Uttam_Transfer_Of_Care
             #endregion
 
             #region set consciousness string 
-            if (inputform.var_circulation == 0)
+            if (inputform.var_consciousness == 0)
             {
                 conf_consc = "fully conscious";
             }
-            else if (inputform.var_circulation == 1)
+            else if (inputform.var_consciousness == 1)
             {
                 conf_consc = "partially conscious";
             }
-            else if (inputform.var_circulation == 2)
+            else if (inputform.var_consciousness == 2)
             {
                 conf_consc = "unconscious";
                 crit_count = crit_count + 1;
             }
-            else if (inputform.var_circulation == 3)
+            else if (inputform.var_consciousness == 3)
             {
                 conf_consc = "previously partially conscious but now fully conscious";
             }
-            else if (inputform.var_circulation == 4)
+            else if (inputform.var_consciousness == 4)
             {
                 conf_consc = "previously unconscious but coming round";
             }
-            else if (inputform.var_circulation == 5)
+            else if (inputform.var_consciousness == 5)
             {
                 conf_consc = "previously unconscious but now fully conscious";
             }
@@ -411,7 +413,7 @@ namespace Uttam_Transfer_Of_Care
             #region check to see if injury type or location given
             if (inputform.var_injury_type == "")
             {
-                injury_type_f2 = "no injury type given, please add, the injury was sustained to the ";
+                injury_type_f2 = "no injury type given"; //please add, the injury was sustained to the
             }
             else
             {

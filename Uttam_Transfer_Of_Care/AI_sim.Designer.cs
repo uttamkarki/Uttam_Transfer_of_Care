@@ -46,7 +46,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.Button_circ_chest = new System.Windows.Forms.Button();
             this.treatment_timeline = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.start_button = new System.Windows.Forms.Button();
             this.Button_hemm_treat = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.conc_ind_panel = new System.Windows.Forms.Panel();
@@ -83,19 +83,26 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.Injury_level_description = new System.Windows.Forms.TextBox();
+            this.Top_bar_panel = new System.Windows.Forms.Panel();
+            this.Timerlbl = new System.Windows.Forms.Label();
+            this.Patient_description_title = new System.Windows.Forms.TextBox();
+            this.time_tb = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.Top_bar_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // AI_patient_transfer_button
             // 
-            this.AI_patient_transfer_button.Location = new System.Drawing.Point(2530, 182);
+            this.AI_patient_transfer_button.BackColor = System.Drawing.Color.Turquoise;
+            this.AI_patient_transfer_button.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AI_patient_transfer_button.Location = new System.Drawing.Point(750, 300);
             this.AI_patient_transfer_button.Name = "AI_patient_transfer_button";
-            this.AI_patient_transfer_button.Size = new System.Drawing.Size(324, 86);
+            this.AI_patient_transfer_button.Size = new System.Drawing.Size(500, 300);
             this.AI_patient_transfer_button.TabIndex = 99;
-            this.AI_patient_transfer_button.Text = "Start Patient Transfer";
-            this.AI_patient_transfer_button.UseVisualStyleBackColor = true;
+            this.AI_patient_transfer_button.Text = "Click to Start Patient Transfer";
+            this.AI_patient_transfer_button.UseVisualStyleBackColor = false;
             this.AI_patient_transfer_button.Click += new System.EventHandler(this.AI_patient_transfer_button_Click_1);
             // 
             // label11
@@ -104,7 +111,7 @@
             this.label11.Location = new System.Drawing.Point(897, 259);
             this.label11.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(236, 52);
+            this.label11.Size = new System.Drawing.Size(225, 52);
             this.label11.TabIndex = 93;
             this.label11.Text = "Consciousness";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -156,9 +163,9 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(2003, 390);
+            this.label2.Location = new System.Drawing.Point(2000, 507);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(585, 116);
+            this.label2.Size = new System.Drawing.Size(585, 103);
             this.label2.TabIndex = 76;
             this.label2.Text = "Patient Condition and Treatment timeline";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -279,26 +286,27 @@
             this.treatment_timeline.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treatment_timeline.FormattingEnabled = true;
             this.treatment_timeline.ItemHeight = 39;
-            this.treatment_timeline.Location = new System.Drawing.Point(2009, 535);
+            this.treatment_timeline.Location = new System.Drawing.Point(2013, 630);
             this.treatment_timeline.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treatment_timeline.Name = "treatment_timeline";
-            this.treatment_timeline.Size = new System.Drawing.Size(952, 1096);
+            this.treatment_timeline.Size = new System.Drawing.Size(952, 1291);
             this.treatment_timeline.TabIndex = 112;
             this.treatment_timeline.SelectedIndexChanged += new System.EventHandler(this.treatment_timeline_SelectedIndexChanged);
             // 
-            // button1
+            // start_button
             // 
-            this.button1.BackColor = System.Drawing.Color.GreenYellow;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(97, 182);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(324, 86);
-            this.button1.TabIndex = 113;
-            this.button1.Text = "Start Simulation";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            this.start_button.BackColor = System.Drawing.Color.Turquoise;
+            this.start_button.FlatAppearance.BorderSize = 0;
+            this.start_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.start_button.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.start_button.Location = new System.Drawing.Point(1618, 320);
+            this.start_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.start_button.Name = "start_button";
+            this.start_button.Size = new System.Drawing.Size(500, 300);
+            this.start_button.TabIndex = 113;
+            this.start_button.Text = "Click to Start Simulation";
+            this.start_button.UseVisualStyleBackColor = false;
+            this.start_button.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // Button_hemm_treat
             // 
@@ -325,9 +333,9 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(8, 511);
+            this.groupBox1.Location = new System.Drawing.Point(12, 606);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1127, 329);
+            this.groupBox1.Size = new System.Drawing.Size(1125, 329);
             this.groupBox1.TabIndex = 114;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -394,9 +402,9 @@
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.Button_breath_Oxygen);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(1156, 511);
+            this.groupBox3.Location = new System.Drawing.Point(1160, 606);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(834, 1120);
+            this.groupBox3.Size = new System.Drawing.Size(830, 1120);
             this.groupBox3.TabIndex = 116;
             this.groupBox3.TabStop = false;
             // 
@@ -437,7 +445,7 @@
             // label25
             // 
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(6, 1026);
+            this.label25.Location = new System.Drawing.Point(6, 1019);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(144, 67);
             this.label25.TabIndex = 122;
@@ -497,7 +505,7 @@
             // 
             this.textBox1.AcceptsReturn = true;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(156, 1034);
+            this.textBox1.Location = new System.Drawing.Point(156, 1027);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(122, 57);
@@ -565,7 +573,7 @@
             this.groupBox4.Controls.Add(this.Predicted_Breath_Box);
             this.groupBox4.Controls.Add(this.textBox4);
             this.groupBox4.Controls.Add(this.textBox5);
-            this.groupBox4.Location = new System.Drawing.Point(12, 1110);
+            this.groupBox4.Location = new System.Drawing.Point(16, 1205);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1123, 178);
             this.groupBox4.TabIndex = 115;
@@ -680,15 +688,14 @@
             // 
             // titlebox
             // 
-            this.titlebox.BackColor = System.Drawing.Color.AliceBlue;
+            this.titlebox.BackColor = System.Drawing.Color.PaleTurquoise;
             this.titlebox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.titlebox.Dock = System.Windows.Forms.DockStyle.Top;
             this.titlebox.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titlebox.Location = new System.Drawing.Point(0, 0);
-            this.titlebox.Margin = new System.Windows.Forms.Padding(0, 50, 0, 0);
+            this.titlebox.Location = new System.Drawing.Point(1, 15);
+            this.titlebox.Margin = new System.Windows.Forms.Padding(0);
             this.titlebox.Multiline = true;
             this.titlebox.Name = "titlebox";
-            this.titlebox.Size = new System.Drawing.Size(2974, 100);
+            this.titlebox.Size = new System.Drawing.Size(2998, 75);
             this.titlebox.TabIndex = 0;
             this.titlebox.Text = "EMS Scenario Generator";
             this.titlebox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -696,9 +703,9 @@
             // label27
             // 
             this.label27.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(1150, 390);
+            this.label27.Location = new System.Drawing.Point(1160, 500);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(840, 116);
+            this.label27.Size = new System.Drawing.Size(830, 120);
             this.label27.TabIndex = 118;
             this.label27.Text = "Treatment Controls";
             this.label27.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -707,9 +714,9 @@
             // label28
             // 
             this.label28.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(8, 390);
+            this.label28.Location = new System.Drawing.Point(10, 500);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(1127, 116);
+            this.label28.Size = new System.Drawing.Size(1125, 120);
             this.label28.TabIndex = 119;
             this.label28.Text = "Current Patient Condition";
             this.label28.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -717,15 +724,62 @@
             // 
             // Injury_level_description
             // 
-            this.Injury_level_description.BackColor = System.Drawing.Color.LightCyan;
+            this.Injury_level_description.BackColor = System.Drawing.Color.AliceBlue;
             this.Injury_level_description.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Injury_level_description.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Injury_level_description.Location = new System.Drawing.Point(720, 138);
+            this.Injury_level_description.Location = new System.Drawing.Point(750, 250);
             this.Injury_level_description.Margin = new System.Windows.Forms.Padding(20);
             this.Injury_level_description.Multiline = true;
             this.Injury_level_description.Name = "Injury_level_description";
-            this.Injury_level_description.Size = new System.Drawing.Size(1500, 169);
+            this.Injury_level_description.Size = new System.Drawing.Size(1500, 150);
             this.Injury_level_description.TabIndex = 120;
+            this.Injury_level_description.Visible = false;
+            // 
+            // Top_bar_panel
+            // 
+            this.Top_bar_panel.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.Top_bar_panel.Controls.Add(this.Timerlbl);
+            this.Top_bar_panel.Controls.Add(this.titlebox);
+            this.Top_bar_panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Top_bar_panel.Location = new System.Drawing.Point(0, 0);
+            this.Top_bar_panel.Name = "Top_bar_panel";
+            this.Top_bar_panel.Size = new System.Drawing.Size(2974, 100);
+            this.Top_bar_panel.TabIndex = 121;
+            this.Top_bar_panel.Tag = "EMS";
+            this.Top_bar_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // Timerlbl
+            // 
+            this.Timerlbl.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.Timerlbl.Font = new System.Drawing.Font("DS-Digital", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Timerlbl.Location = new System.Drawing.Point(2300, 1);
+            this.Timerlbl.Name = "Timerlbl";
+            this.Timerlbl.Size = new System.Drawing.Size(699, 98);
+            this.Timerlbl.TabIndex = 123;
+            this.Timerlbl.Text = "2:00";
+            this.Timerlbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Patient_description_title
+            // 
+            this.Patient_description_title.BackColor = System.Drawing.Color.AliceBlue;
+            this.Patient_description_title.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Patient_description_title.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Patient_description_title.Location = new System.Drawing.Point(750, 200);
+            this.Patient_description_title.Margin = new System.Windows.Forms.Padding(20);
+            this.Patient_description_title.Multiline = true;
+            this.Patient_description_title.Name = "Patient_description_title";
+            this.Patient_description_title.Size = new System.Drawing.Size(1500, 50);
+            this.Patient_description_title.TabIndex = 122;
+            this.Patient_description_title.Text = "Patient Description...";
+            this.Patient_description_title.Visible = false;
+            // 
+            // time_tb
+            // 
+            this.time_tb.Location = new System.Drawing.Point(117, 234);
+            this.time_tb.Name = "time_tb";
+            this.time_tb.Size = new System.Drawing.Size(100, 31);
+            this.time_tb.TabIndex = 123;
+            this.time_tb.Text = "time";
             // 
             // AI_sim
             // 
@@ -733,16 +787,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(2974, 1929);
+            this.Controls.Add(this.time_tb);
+            this.Controls.Add(this.AI_patient_transfer_button);
+            this.Controls.Add(this.start_button);
+            this.Controls.Add(this.Patient_description_title);
+            this.Controls.Add(this.Top_bar_panel);
             this.Controls.Add(this.Injury_level_description);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label27);
-            this.Controls.Add(this.titlebox);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.treatment_timeline);
-            this.Controls.Add(this.AI_patient_transfer_button);
             this.Controls.Add(this.label2);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -755,6 +811,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.Top_bar_panel.ResumeLayout(false);
+            this.Top_bar_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -780,7 +838,7 @@
         public System.Windows.Forms.Button Button_breath_Oxygen;
         public System.Windows.Forms.Button Button_circ_chest;
         public System.Windows.Forms.ListBox treatment_timeline;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button start_button;
         public System.Windows.Forms.Button Button_hemm_treat;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -817,5 +875,9 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox Injury_level_description;
+        private System.Windows.Forms.Panel Top_bar_panel;
+        private System.Windows.Forms.TextBox Patient_description_title;
+        private System.Windows.Forms.Label Timerlbl;
+        private System.Windows.Forms.TextBox time_tb;
     }
 }

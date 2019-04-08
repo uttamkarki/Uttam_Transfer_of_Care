@@ -16,7 +16,7 @@ namespace Uttam_Transfer_Of_Care
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new intro_form());
         }
     }
 }

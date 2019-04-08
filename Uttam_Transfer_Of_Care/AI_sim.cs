@@ -7,12 +7,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
+using Plasmoid.Extensions;
 
 namespace Uttam_Transfer_Of_Care
 {
@@ -152,15 +154,25 @@ namespace Uttam_Transfer_Of_Care
         public static double conc_seconds = 0;
         public static double circ_seconds = 0;
         public static int Patient_deg_interval;
+        //initiate timer here 
+        System.Windows.Forms.Timer timer1;
+        public static int counter = 120;
+        public static int main_minutes = 2;
+        public static int main_seconds = 00;
+        string string_seconds;
+        string string_minutes = "2";
+        string string_seconds1 = "0";
+        string string_seconds2 = "0";
+
 
         #endregion
-        
+
         public AI_sim()
         {
             InitializeComponent();
         }
 
-        #region Set AI assist value
+        #region On load - Set AI assist value, clear the patient transfer button and make disabled!
         private void AI_sim_Load(object sender, EventArgs e)
         {
             if (intro_form.ai_on == true)
@@ -171,6 +183,8 @@ namespace Uttam_Transfer_Of_Care
             {
                 AI_assist = false;
             }
+            AI_patient_transfer_button.Enabled = false;
+            AI_patient_transfer_button.Visible = false;
         }
         #endregion
 
@@ -178,7 +192,9 @@ namespace Uttam_Transfer_Of_Care
         #region start simulation button click
         private void button1_Click_2(object sender, EventArgs e)
         {
-            button1.BackColor = Color.Empty;
+            start_button.Enabled = false;
+            start_button.Visible = false;
+
             #region initiate characteristics stopwatches and start sim stopwatch
             stopwatch_sim.Start();
             stopwatch_hem.Start();
@@ -189,7 +205,7 @@ namespace Uttam_Transfer_Of_Care
             #endregion
             subject = "start environment";
             Environment_control_function();
-            
+
         }
         #endregion
 
@@ -198,18 +214,19 @@ namespace Uttam_Transfer_Of_Care
         {
             if (subject == "start environment")
             {
+
+
                 #region Start patient and EMS agents
                 from = "called by main function";
                 patient();
                 subject = "start degradation check reminder";
                 AI();
-
-
+                timer();
                 #endregion
             }
             else if (subject == "highlight buttons")
             {
-                ButtonHighlighter();
+                ButtonHighlighter(); 
             }
             if (subject == "update UI")
             {
@@ -218,6 +235,100 @@ namespace Uttam_Transfer_Of_Care
             if (subject == "update patient initialization info")
             {
                 UIController();
+            }
+
+            void timer()
+            {
+                Starttimer();
+
+                void Starttimer()
+                {
+
+                    timer1 = new System.Windows.Forms.Timer();
+                    timer1.Tick += new EventHandler(timer1_Tick);
+                    timer1.Interval = 1000; // 1 second
+                    timer1.Start();
+                    string compound_time_start = String.Format("{0}:{1}{2}", main_minutes, string_seconds1, string_seconds2);
+                    Timerlbl.Text = compound_time_start.ToString();
+                }
+
+                void timer1_Tick(object sender, EventArgs e)
+                {
+                    counter--;
+                    if (counter == 0)
+                    {
+                        timer1.Stop();
+
+                        // add form load here 
+                    }
+                    if (counter == 120)
+                    {
+                        main_seconds = 0;
+                        main_minutes = 2;
+                        string_seconds = Convert.ToString(main_seconds);
+                        string_minutes = Convert.ToString(main_minutes);
+                        string_seconds1 = string_seconds.Substring(0, 1);
+                        string_seconds2 = string_seconds.Substring(1, 1);
+                    }
+                    else if (counter >70 && counter <120)
+                    {
+                        main_seconds = counter - 60;
+                        main_minutes = 1;
+                        string_seconds = Convert.ToString(main_seconds);
+                        string_minutes = Convert.ToString(main_minutes);
+                        string_seconds1 = string_seconds.Substring(0, 1);
+                        string_seconds2 = string_seconds.Substring(1, 1);
+                    }
+                    else if (counter > 60 && counter < 70)
+                    {
+                        main_seconds = counter - 60;
+                        main_minutes = 1;
+                        string_seconds = Convert.ToString(main_seconds);
+                        string_minutes = Convert.ToString(main_minutes);
+                        string_seconds1 = "0";
+                        string_seconds2 = string_seconds.Substring(0, 1);
+                    }
+                    else if (counter == 60 )
+                    {
+                        main_seconds = 0;
+                        main_minutes = 1;
+                        string_seconds = Convert.ToString(main_seconds);
+                        string_minutes = Convert.ToString(main_minutes);
+                        string_seconds1 = "0";
+                        string_seconds2 = "0";
+                    }
+                    else if (counter >= 10 && counter < 60)
+                    {
+                        main_seconds = counter;
+                        main_minutes = 0;
+                        string_seconds = Convert.ToString(main_seconds);
+                        string_minutes = Convert.ToString(main_minutes);
+                        string_seconds1 = string_seconds.Substring(0, 1);
+                        string_seconds2 = string_seconds.Substring(1, 1);
+                    }
+                    else if (counter > 0 && counter < 10)
+                    {
+                        main_seconds = counter;
+                        main_minutes = 0;
+                        string_seconds = Convert.ToString(main_seconds);
+                        string_minutes = Convert.ToString(main_minutes);
+                        string_seconds1 = "0";
+                        string_seconds2 = string_seconds.Substring(0, 1);
+                    }
+                    else if (counter == 0)
+                    {
+                        string_minutes = "0";
+                        string_seconds1 = "0";
+                        string_seconds2 = "0";
+                        AI_patient_transfer_button.Enabled = true;
+                        AI_patient_transfer_button.Visible = true;
+                        
+                    }
+
+                    string compound_time = String.Format("{0}:{1}{2}", main_minutes , string_seconds1, string_seconds2);
+
+                    Timerlbl.Text = compound_time;
+                }
             }
 
             void UIController()
@@ -234,7 +345,7 @@ namespace Uttam_Transfer_Of_Care
                     //sim_age_label.Text = Convert.ToString(age);
 
                     if (wound_type == "gunshot" && hemorrhage ==2) { Woundtxt = String.Format("and has a serious gunshot wound to the {0}.", wound_location);}
-                    if (wound_type == "gunshot" && hemorrhage == 1) { Woundtxt = String.Format("and has a gunshot wound to the {0}.", wound_location); }
+                    if (wound_type == "gunshot" && hemorrhage ==1) { Woundtxt = String.Format("and has a gunshot wound to the {0}.", wound_location); }
                     else if (wound_type == "blunt force trauma" && hemorrhage == 2) { Woundtxt = String.Format("and has serious impact trauma to the {0}.", wound_location); }
                     else if (wound_type == "blunt force trauma" && hemorrhage < 2) { Woundtxt = String.Format("and has impact trauma to the {0}.", wound_location); }
                     else if (wound_type == "heart attack" && circulation == 2) { Woundtxt = String.Format("and has suffered a cardiac arrest."); }
@@ -334,8 +445,27 @@ namespace Uttam_Transfer_Of_Care
                     string wound_level_description = String.Format("The patient is a {0} year old {1} {2} {3} {4} {5} {6} {7} {8} {9}. ", //  /n is new line if needed
                         age, gender, Woundtxt, HemLevel, linktxt1, CirLevel, BreLevel, linktxt2, AirLevel, ConLevel);
 
-                    Injury_level_description.Text = wound_level_description;
-                    MessageBox.Show(wound_level_description);
+                    if (Woundtxt == "null")
+                    {
+                        MessageBox.Show(wound_location);
+                        MessageBox.Show(wound_type);
+                    }
+
+                    System.Drawing.Graphics g = this.CreateGraphics();
+                    g.SmoothingMode = SmoothingMode.AntiAlias;
+                    
+                    g.FillRoundedRectangle(new SolidBrush(Color.FromName("AliceBlue")), 700, 150, 1600, 300, 50);
+                    g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"),10f), 700, 150, 1590, 290, 50);
+                    Show_incoming_message();
+
+                    async void Show_incoming_message()
+                    {
+                        Patient_description_title.Visible = true;
+                        Injury_level_description.Visible = true;
+                        await Task.Delay(2000);
+                        Injury_level_description.Text = wound_level_description;
+                        //MessageBox.Show(wound_level_description);
+                    }
                     #endregion
 
                     hem_ind_panel.BackgroundImage = DrawIndicator(hemorrhage);
@@ -345,34 +475,6 @@ namespace Uttam_Transfer_Of_Care
                     circ_ind_panel.BackgroundImage = DrawIndicator(circulation);
                 }
 
-                //if (sim_inthem_box.Text == " ")
-                //{
-
-                ////    sim_intair_box.Text = Convert.ToString(airway);                    // changes the final state of the patient at given time in AI_Sim from
-                ////    sim_intbreath_box.Text = Convert.ToString(breathing);
-                ////    sim_intcirc_box.Text = Convert.ToString(circulation);
-                ////    sim_intconc_box.Text = Convert.ToString(consciousness);
-                ////    sim_inthem_box.Text = Convert.ToString(hemorrhage);
-                ////}
-                //else if (Predicted_Hem_box.Text == " ") // Printing out the final conditions from the simulation results
-                //{
-                //    //Thread.Sleep(5);
-                //    Predicted_Hem_box.Text = predicted_hem;
-                //    textBox5.Text = predicted_con;
-                //    textBox4.Text = predicted_air;
-                //    Predicted_Breath_Box.Text = predicted_bre;
-                //    Predicted_Circ_Box.Text = predicted_cir;
-                //    textBox1.Text = predicted_time;
-                //    textBox8.Text = hemorrhage_count;
-                //    textBox6.Text = consciousness_count;
-                //    textBox3.Text = airway_count;
-                //    textBox7.Text = breathing_count;
-                //    textBox2.Text = circulation_count;
-                //}
-                //else
-                //{
-
-                //}
 
                 // add the indicator drawing part here
                 hem_ind_panel.BackgroundImage = DrawIndicator(hemorrhage);
@@ -598,59 +700,57 @@ namespace Uttam_Transfer_Of_Care
                 {
                     if (hem == 2)
                     {
-                        Button_hemm_torniquet.BackColor = Color.GreenYellow;
+                        Button_hemm_torniquet.BackColor = Color.Turquoise;
                     }
                     else
                     {
-                        Button_hemm_treat.BackColor = Color.GreenYellow;
+                        Button_hemm_treat.BackColor = Color.Turquoise;
                     }
                 }
                 if (action == "check consciousness")
                 {
-                    Button_conc_drugs.BackColor = Color.GreenYellow;
+                    Button_conc_drugs.BackColor = Color.Turquoise;
                 }
 
                 if (action == "check airway")
                 {
                     if (air == 2)
                     {
-                        Button_air_Intubate.BackColor = Color.GreenYellow;
+                        Button_air_Intubate.BackColor = Color.Turquoise;
                     }
                     else
                     {
-                        Button_air_clearair.BackColor = Color.GreenYellow;
+                        Button_air_clearair.BackColor = Color.Turquoise;
                     }
                 }
                 if (action == "check circulation")
                 {
                     if (cir == 2)
                     {
-                        Button_circ_chest.BackColor = Color.GreenYellow;
+                        Button_circ_chest.BackColor = Color.Turquoise;
                     }
                     else
                     {
-                        Button_circ_drugs.BackColor = Color.GreenYellow;
+                        Button_circ_drugs.BackColor = Color.Turquoise;
                     }
                 }
                 if (action == "check breathing")
                 {
                     if (bre == 2)
                     {
-                        Button_breath_Oxygen.BackColor = Color.GreenYellow;
+                        Button_breath_Oxygen.BackColor = Color.Turquoise;
                     }
                     else
                     {
-                        Button_breath_aspirate.BackColor = Color.GreenYellow;
+                        Button_breath_aspirate.BackColor = Color.Turquoise;
                     }
                 }
                 if (action == "check CPR")
                 {
-                    Button_CPR.BackColor = Color.GreenYellow;
+                    Button_CPR.BackColor = Color.Turquoise;
                 }
-
             } 
             #endregion
-
         }
 
         #region Create Patient Agent 
@@ -665,7 +765,7 @@ namespace Uttam_Transfer_Of_Care
 
                 #region set wound type
                 //currently set to 1 injury type 'gunshot' for ease of simulation
-                wound_type_ID = random.Next(0, 4);
+                wound_type_ID = random.Next(0, 5);
                 if (wound_type_ID == 0) wound_type = "gunshot";
                 else if (wound_type_ID == 1) wound_type = "blunt force trauma";
                 else if (wound_type_ID == 2) wound_type = "drowning";
@@ -1016,7 +1116,7 @@ namespace Uttam_Transfer_Of_Care
                     if (wound_loc_ID == 1 || wound_loc_ID == 2 || wound_loc_ID == 3 || wound_loc_ID == 12 || wound_loc_ID == 13 || wound_loc_ID == 14)
                     {
                         a = random.Next(0, 100);
-                        if (a <= 95)
+                        if (a <= 95) // probability of serious bleed from gunshot wound if in head chest/midriff etc
                         {
                             hemorrhage = 2;
                             initial_hemorrhage = hemorrhage;
@@ -1128,7 +1228,7 @@ namespace Uttam_Transfer_Of_Care
                 #region initialize cardiac/circulation variables 
 
                 #region Cardiac Event
-                else if (wound_type_ID == 3)
+                if (wound_type_ID == 3)
                 {
                     a = random.Next(0, 100);
                     if (a < major_heart_attack_probability) // age dependent probability that the heart attack is serious
@@ -1444,17 +1544,12 @@ namespace Uttam_Transfer_Of_Care
                 else // allergy
                 {
                     a = random.Next(0, 100);
-                    if (a < 10) // 10% chanve of no airway problem
-                    {
-                        airway = 0;
-                        initial_airway = airway;
-                    }
-                    else if (a >= 10 && a < 60) // 50% chance of minor problem
+                    if (a < 40) // 10% chanve of no airway problem
                     {
                         airway = 1;
                         initial_airway = airway;
                     }
-                    else // 40% chance of major problem
+                    else if (a >= 40) // 50% chance of minor problem
                     {
                         airway = 2;
                         initial_airway = airway;
@@ -2962,13 +3057,18 @@ namespace Uttam_Transfer_Of_Care
             
             async void degrade_caller()
             {
+                
                 do
                 {
                     //ask EMS to check patient degradation every 10s 
                     await Task.Delay(10000);
                     subject = "check_patient_degradation";
                     Ems();
-                } while (stopwatch_sim.Elapsed.Seconds < 110);
+
+                    string current_time = Convert.ToString(stopwatch_sim.Elapsed);
+                    time_tb.Text = current_time;
+
+                } while (stopwatch_sim.Elapsed.TotalSeconds < 110);
 
             }
             #endregion
@@ -3235,6 +3335,11 @@ namespace Uttam_Transfer_Of_Care
         }
 
         private void Injury_level_description_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
