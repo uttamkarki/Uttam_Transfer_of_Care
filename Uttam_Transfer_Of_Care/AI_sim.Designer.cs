@@ -55,41 +55,60 @@
             this.circ_ind_panel = new System.Windows.Forms.Panel();
             this.hem_ind_panel = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.cpr_treat_count_box = new System.Windows.Forms.TextBox();
             this.Button_CPR = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.hem_treat_count_box = new System.Windows.Forms.TextBox();
+            this.con_treat_count_box = new System.Windows.Forms.TextBox();
+            this.air_treat_count_box = new System.Windows.Forms.TextBox();
+            this.cir_treat_count_box = new System.Windows.Forms.TextBox();
             this.Button_breath_aspirate = new System.Windows.Forms.Button();
             this.Button_circ_drugs = new System.Windows.Forms.Button();
             this.Button_air_clearair = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.Predicted_Hem_box = new System.Windows.Forms.TextBox();
-            this.Predicted_Circ_Box = new System.Windows.Forms.TextBox();
-            this.Predicted_Breath_Box = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.bre_treat_count_box = new System.Windows.Forms.TextBox();
             this.titlebox = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.Injury_level_description = new System.Windows.Forms.TextBox();
             this.Top_bar_panel = new System.Windows.Forms.Panel();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.Timerlbl = new System.Windows.Forms.Label();
             this.Patient_description_title = new System.Windows.Forms.TextBox();
-            this.time_tb = new System.Windows.Forms.TextBox();
+            this.treatment_succ_text = new System.Windows.Forms.TextBox();
+            this.treatment_uns_text = new System.Windows.Forms.TextBox();
+            this.treatment_NR_text = new System.Windows.Forms.TextBox();
+            this.treatment_succ_lbl = new System.Windows.Forms.Label();
+            this.treatment_uns_lbl = new System.Windows.Forms.Label();
+            this.treatment_NR_lbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.hem_pred_panel = new System.Windows.Forms.Panel();
+            this.circ_pred_panel = new System.Windows.Forms.Panel();
+            this.bre_pred_panel = new System.Windows.Forms.Panel();
+            this.air_pred_panel = new System.Windows.Forms.Panel();
+            this.conc_pred_panel = new System.Windows.Forms.Panel();
+            this.t1 = new System.Windows.Forms.TextBox();
+            this.t3 = new System.Windows.Forms.TextBox();
+            this.t2 = new System.Windows.Forms.TextBox();
+            this.t5 = new System.Windows.Forms.TextBox();
+            this.t6 = new System.Windows.Forms.TextBox();
+            this.t4 = new System.Windows.Forms.TextBox();
+            this.t9 = new System.Windows.Forms.TextBox();
+            this.t10 = new System.Windows.Forms.TextBox();
+            this.t8 = new System.Windows.Forms.TextBox();
+            this.t7 = new System.Windows.Forms.TextBox();
+            this.t11 = new System.Windows.Forms.TextBox();
+            this.t12 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.success_prob = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.Top_bar_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,7 +116,7 @@
             // 
             this.AI_patient_transfer_button.BackColor = System.Drawing.Color.Turquoise;
             this.AI_patient_transfer_button.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AI_patient_transfer_button.Location = new System.Drawing.Point(750, 300);
+            this.AI_patient_transfer_button.Location = new System.Drawing.Point(88, 174);
             this.AI_patient_transfer_button.Name = "AI_patient_transfer_button";
             this.AI_patient_transfer_button.Size = new System.Drawing.Size(500, 300);
             this.AI_patient_transfer_button.TabIndex = 99;
@@ -165,7 +184,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(2000, 507);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(585, 103);
+            this.label2.Size = new System.Drawing.Size(962, 103);
             this.label2.TabIndex = 76;
             this.label2.Text = "Patient Condition and Treatment timeline";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -173,6 +192,7 @@
             // 
             // Button_hemm_torniquet
             // 
+            this.Button_hemm_torniquet.BackColor = System.Drawing.SystemColors.Menu;
             this.Button_hemm_torniquet.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_hemm_torniquet.Location = new System.Drawing.Point(352, 82);
             this.Button_hemm_torniquet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -180,7 +200,7 @@
             this.Button_hemm_torniquet.Size = new System.Drawing.Size(230, 100);
             this.Button_hemm_torniquet.TabIndex = 100;
             this.Button_hemm_torniquet.Text = "Apply Torniquet";
-            this.Button_hemm_torniquet.UseVisualStyleBackColor = true;
+            this.Button_hemm_torniquet.UseVisualStyleBackColor = false;
             this.Button_hemm_torniquet.Click += new System.EventHandler(this.Button_hemm_torniquet_Click);
             // 
             // label17
@@ -205,6 +225,7 @@
             // 
             // Button_conc_drugs
             // 
+            this.Button_conc_drugs.BackColor = System.Drawing.SystemColors.Menu;
             this.Button_conc_drugs.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_conc_drugs.Location = new System.Drawing.Point(352, 632);
             this.Button_conc_drugs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -212,7 +233,7 @@
             this.Button_conc_drugs.Size = new System.Drawing.Size(473, 100);
             this.Button_conc_drugs.TabIndex = 104;
             this.Button_conc_drugs.Text = "Give Drugs";
-            this.Button_conc_drugs.UseVisualStyleBackColor = true;
+            this.Button_conc_drugs.UseVisualStyleBackColor = false;
             this.Button_conc_drugs.Click += new System.EventHandler(this.Button_conc_drugs_Click);
             // 
             // label19
@@ -227,6 +248,7 @@
             // 
             // Button_air_Intubate
             // 
+            this.Button_air_Intubate.BackColor = System.Drawing.SystemColors.Menu;
             this.Button_air_Intubate.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_air_Intubate.Location = new System.Drawing.Point(352, 522);
             this.Button_air_Intubate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -234,7 +256,7 @@
             this.Button_air_Intubate.Size = new System.Drawing.Size(230, 100);
             this.Button_air_Intubate.TabIndex = 106;
             this.Button_air_Intubate.Text = "Intubate";
-            this.Button_air_Intubate.UseVisualStyleBackColor = true;
+            this.Button_air_Intubate.UseVisualStyleBackColor = false;
             this.Button_air_Intubate.Click += new System.EventHandler(this.Button_air_Intubate_Click);
             // 
             // label20
@@ -249,6 +271,7 @@
             // 
             // Button_breath_Oxygen
             // 
+            this.Button_breath_Oxygen.BackColor = System.Drawing.SystemColors.Menu;
             this.Button_breath_Oxygen.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_breath_Oxygen.Location = new System.Drawing.Point(352, 412);
             this.Button_breath_Oxygen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -256,7 +279,7 @@
             this.Button_breath_Oxygen.Size = new System.Drawing.Size(230, 100);
             this.Button_breath_Oxygen.TabIndex = 108;
             this.Button_breath_Oxygen.Text = "Oxygen";
-            this.Button_breath_Oxygen.UseVisualStyleBackColor = true;
+            this.Button_breath_Oxygen.UseVisualStyleBackColor = false;
             this.Button_breath_Oxygen.Click += new System.EventHandler(this.Button_breath_Oxygen_Click);
             // 
             // label21
@@ -271,6 +294,7 @@
             // 
             // Button_circ_chest
             // 
+            this.Button_circ_chest.BackColor = System.Drawing.SystemColors.Menu;
             this.Button_circ_chest.Font = new System.Drawing.Font("Century Gothic", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_circ_chest.Location = new System.Drawing.Point(352, 302);
             this.Button_circ_chest.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -278,7 +302,7 @@
             this.Button_circ_chest.Size = new System.Drawing.Size(230, 100);
             this.Button_circ_chest.TabIndex = 110;
             this.Button_circ_chest.Text = "Chest compression";
-            this.Button_circ_chest.UseVisualStyleBackColor = true;
+            this.Button_circ_chest.UseVisualStyleBackColor = false;
             this.Button_circ_chest.Click += new System.EventHandler(this.Button_circ_CPR_Click);
             // 
             // treatment_timeline
@@ -299,7 +323,7 @@
             this.start_button.FlatAppearance.BorderSize = 0;
             this.start_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.start_button.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.start_button.Location = new System.Drawing.Point(1618, 320);
+            this.start_button.Location = new System.Drawing.Point(2431, 156);
             this.start_button.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.start_button.Name = "start_button";
             this.start_button.Size = new System.Drawing.Size(500, 300);
@@ -310,6 +334,7 @@
             // 
             // Button_hemm_treat
             // 
+            this.Button_hemm_treat.BackColor = System.Drawing.SystemColors.Menu;
             this.Button_hemm_treat.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_hemm_treat.Location = new System.Drawing.Point(595, 82);
             this.Button_hemm_treat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -317,7 +342,7 @@
             this.Button_hemm_treat.Size = new System.Drawing.Size(230, 100);
             this.Button_hemm_treat.TabIndex = 101;
             this.Button_hemm_treat.Text = "Treat Wound";
-            this.Button_hemm_treat.UseVisualStyleBackColor = true;
+            this.Button_hemm_treat.UseVisualStyleBackColor = false;
             this.Button_hemm_treat.Click += new System.EventHandler(this.Button_hemm_treat_Click);
             // 
             // groupBox1
@@ -377,21 +402,19 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox9);
+            this.groupBox3.Controls.Add(this.cpr_treat_count_box);
             this.groupBox3.Controls.Add(this.Button_CPR);
             this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Controls.Add(this.label25);
-            this.groupBox3.Controls.Add(this.textBox8);
-            this.groupBox3.Controls.Add(this.textBox6);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.hem_treat_count_box);
+            this.groupBox3.Controls.Add(this.con_treat_count_box);
+            this.groupBox3.Controls.Add(this.air_treat_count_box);
+            this.groupBox3.Controls.Add(this.cir_treat_count_box);
             this.groupBox3.Controls.Add(this.Button_breath_aspirate);
             this.groupBox3.Controls.Add(this.Button_circ_drugs);
             this.groupBox3.Controls.Add(this.Button_air_clearair);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.Button_hemm_torniquet);
-            this.groupBox3.Controls.Add(this.textBox7);
+            this.groupBox3.Controls.Add(this.bre_treat_count_box);
             this.groupBox3.Controls.Add(this.Button_hemm_treat);
             this.groupBox3.Controls.Add(this.Button_conc_drugs);
             this.groupBox3.Controls.Add(this.label18);
@@ -404,24 +427,25 @@
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(1160, 606);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(830, 1120);
+            this.groupBox3.Size = new System.Drawing.Size(830, 777);
             this.groupBox3.TabIndex = 116;
             this.groupBox3.TabStop = false;
             // 
-            // textBox9
+            // cpr_treat_count_box
             // 
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(12, 211);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(54, 81);
-            this.textBox9.TabIndex = 125;
-            this.textBox9.Text = "0";
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.cpr_treat_count_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cpr_treat_count_box.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpr_treat_count_box.Location = new System.Drawing.Point(12, 211);
+            this.cpr_treat_count_box.Multiline = true;
+            this.cpr_treat_count_box.Name = "cpr_treat_count_box";
+            this.cpr_treat_count_box.Size = new System.Drawing.Size(54, 81);
+            this.cpr_treat_count_box.TabIndex = 125;
+            this.cpr_treat_count_box.Text = "0";
+            this.cpr_treat_count_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Button_CPR
             // 
+            this.Button_CPR.BackColor = System.Drawing.SystemColors.Menu;
             this.Button_CPR.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_CPR.Location = new System.Drawing.Point(352, 192);
             this.Button_CPR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -429,7 +453,7 @@
             this.Button_CPR.Size = new System.Drawing.Size(473, 100);
             this.Button_CPR.TabIndex = 123;
             this.Button_CPR.Text = "Give CPR";
-            this.Button_CPR.UseVisualStyleBackColor = true;
+            this.Button_CPR.UseVisualStyleBackColor = false;
             this.Button_CPR.Click += new System.EventHandler(this.Button_CPR_Click);
             // 
             // label26
@@ -442,79 +466,58 @@
             this.label26.Text = "Combined Heart and Breath";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label25
+            // hem_treat_count_box
             // 
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(6, 1019);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(144, 67);
-            this.label25.TabIndex = 122;
-            this.label25.Text = "Time of Treatment";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.hem_treat_count_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.hem_treat_count_box.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hem_treat_count_box.Location = new System.Drawing.Point(12, 98);
+            this.hem_treat_count_box.Margin = new System.Windows.Forms.Padding(0);
+            this.hem_treat_count_box.Multiline = true;
+            this.hem_treat_count_box.Name = "hem_treat_count_box";
+            this.hem_treat_count_box.Size = new System.Drawing.Size(54, 84);
+            this.hem_treat_count_box.TabIndex = 121;
+            this.hem_treat_count_box.Text = "0";
+            this.hem_treat_count_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox8
+            // con_treat_count_box
             // 
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(12, 98);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(54, 84);
-            this.textBox8.TabIndex = 121;
-            this.textBox8.Text = "0";
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.con_treat_count_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.con_treat_count_box.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.con_treat_count_box.Location = new System.Drawing.Point(12, 655);
+            this.con_treat_count_box.Multiline = true;
+            this.con_treat_count_box.Name = "con_treat_count_box";
+            this.con_treat_count_box.Size = new System.Drawing.Size(54, 77);
+            this.con_treat_count_box.TabIndex = 120;
+            this.con_treat_count_box.Text = "0";
+            this.con_treat_count_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox6
+            // air_treat_count_box
             // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(12, 655);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(54, 77);
-            this.textBox6.TabIndex = 120;
-            this.textBox6.Text = "0";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.air_treat_count_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.air_treat_count_box.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.air_treat_count_box.Location = new System.Drawing.Point(12, 538);
+            this.air_treat_count_box.Multiline = true;
+            this.air_treat_count_box.Name = "air_treat_count_box";
+            this.air_treat_count_box.Size = new System.Drawing.Size(54, 84);
+            this.air_treat_count_box.TabIndex = 119;
+            this.air_treat_count_box.Text = "0";
+            this.air_treat_count_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox3
+            // cir_treat_count_box
             // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(12, 538);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(54, 84);
-            this.textBox3.TabIndex = 119;
-            this.textBox3.Text = "0";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(12, 320);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(54, 82);
-            this.textBox2.TabIndex = 118;
-            this.textBox2.Text = "0";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox1
-            // 
-            this.textBox1.AcceptsReturn = true;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(156, 1027);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(122, 57);
-            this.textBox1.TabIndex = 117;
-            this.textBox1.Text = " ";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.cir_treat_count_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cir_treat_count_box.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cir_treat_count_box.Location = new System.Drawing.Point(12, 320);
+            this.cir_treat_count_box.Multiline = true;
+            this.cir_treat_count_box.Name = "cir_treat_count_box";
+            this.cir_treat_count_box.Size = new System.Drawing.Size(54, 82);
+            this.cir_treat_count_box.TabIndex = 118;
+            this.cir_treat_count_box.Text = "0";
+            this.cir_treat_count_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Button_breath_aspirate
             // 
+            this.Button_breath_aspirate.BackColor = System.Drawing.SystemColors.Menu;
             this.Button_breath_aspirate.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_breath_aspirate.Location = new System.Drawing.Point(595, 412);
             this.Button_breath_aspirate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -522,11 +525,12 @@
             this.Button_breath_aspirate.Size = new System.Drawing.Size(230, 100);
             this.Button_breath_aspirate.TabIndex = 114;
             this.Button_breath_aspirate.Text = "Aspirate";
-            this.Button_breath_aspirate.UseVisualStyleBackColor = true;
+            this.Button_breath_aspirate.UseVisualStyleBackColor = false;
             this.Button_breath_aspirate.Click += new System.EventHandler(this.Button_breath_rescuebreath_Click);
             // 
             // Button_circ_drugs
             // 
+            this.Button_circ_drugs.BackColor = System.Drawing.SystemColors.Menu;
             this.Button_circ_drugs.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_circ_drugs.Location = new System.Drawing.Point(595, 302);
             this.Button_circ_drugs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -534,11 +538,12 @@
             this.Button_circ_drugs.Size = new System.Drawing.Size(230, 100);
             this.Button_circ_drugs.TabIndex = 113;
             this.Button_circ_drugs.Text = "Give Drugs";
-            this.Button_circ_drugs.UseVisualStyleBackColor = true;
+            this.Button_circ_drugs.UseVisualStyleBackColor = false;
             this.Button_circ_drugs.Click += new System.EventHandler(this.Button_circ_drugs_Click);
             // 
             // Button_air_clearair
             // 
+            this.Button_air_clearair.BackColor = System.Drawing.SystemColors.Menu;
             this.Button_air_clearair.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_air_clearair.Location = new System.Drawing.Point(595, 522);
             this.Button_air_clearair.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -546,145 +551,20 @@
             this.Button_air_clearair.Size = new System.Drawing.Size(230, 100);
             this.Button_air_clearair.TabIndex = 112;
             this.Button_air_clearair.Text = "Clear Airway";
-            this.Button_air_clearair.UseVisualStyleBackColor = true;
+            this.Button_air_clearair.UseVisualStyleBackColor = false;
             this.Button_air_clearair.Click += new System.EventHandler(this.Button_air_clearair_Click);
             // 
-            // textBox7
+            // bre_treat_count_box
             // 
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(12, 429);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(54, 83);
-            this.textBox7.TabIndex = 102;
-            this.textBox7.Text = "0";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.label16);
-            this.groupBox4.Controls.Add(this.label22);
-            this.groupBox4.Controls.Add(this.label23);
-            this.groupBox4.Controls.Add(this.label24);
-            this.groupBox4.Controls.Add(this.Predicted_Hem_box);
-            this.groupBox4.Controls.Add(this.Predicted_Circ_Box);
-            this.groupBox4.Controls.Add(this.Predicted_Breath_Box);
-            this.groupBox4.Controls.Add(this.textBox4);
-            this.groupBox4.Controls.Add(this.textBox5);
-            this.groupBox4.Location = new System.Drawing.Point(16, 1205);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1123, 178);
-            this.groupBox4.TabIndex = 115;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "AI Predicted Patient Condition";
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 39);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 52);
-            this.label5.TabIndex = 89;
-            this.label5.Text = "Hemmorhage";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label16
-            // 
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(222, 39);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(189, 52);
-            this.label16.TabIndex = 90;
-            this.label16.Text = "Circulation";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label22
-            // 
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(438, 39);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(189, 52);
-            this.label22.TabIndex = 91;
-            this.label22.Text = "Breathing";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label23
-            // 
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(654, 39);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(189, 52);
-            this.label23.TabIndex = 92;
-            this.label23.Text = "Airway";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label24
-            // 
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(872, 39);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(213, 52);
-            this.label24.TabIndex = 93;
-            this.label24.Text = "Consciousness";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Predicted_Hem_box
-            // 
-            this.Predicted_Hem_box.AcceptsReturn = true;
-            this.Predicted_Hem_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Predicted_Hem_box.Location = new System.Drawing.Point(12, 109);
-            this.Predicted_Hem_box.Multiline = true;
-            this.Predicted_Hem_box.Name = "Predicted_Hem_box";
-            this.Predicted_Hem_box.Size = new System.Drawing.Size(181, 45);
-            this.Predicted_Hem_box.TabIndex = 94;
-            this.Predicted_Hem_box.Text = " ";
-            this.Predicted_Hem_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Predicted_Circ_Box
-            // 
-            this.Predicted_Circ_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Predicted_Circ_Box.Location = new System.Drawing.Point(228, 109);
-            this.Predicted_Circ_Box.Multiline = true;
-            this.Predicted_Circ_Box.Name = "Predicted_Circ_Box";
-            this.Predicted_Circ_Box.Size = new System.Drawing.Size(181, 45);
-            this.Predicted_Circ_Box.TabIndex = 95;
-            this.Predicted_Circ_Box.Text = "1";
-            this.Predicted_Circ_Box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Predicted_Breath_Box
-            // 
-            this.Predicted_Breath_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Predicted_Breath_Box.Location = new System.Drawing.Point(444, 109);
-            this.Predicted_Breath_Box.Multiline = true;
-            this.Predicted_Breath_Box.Name = "Predicted_Breath_Box";
-            this.Predicted_Breath_Box.Size = new System.Drawing.Size(181, 45);
-            this.Predicted_Breath_Box.TabIndex = 96;
-            this.Predicted_Breath_Box.Text = "1";
-            this.Predicted_Breath_Box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(660, 109);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(187, 45);
-            this.textBox4.TabIndex = 97;
-            this.textBox4.Text = "1";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(878, 109);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(208, 45);
-            this.textBox5.TabIndex = 98;
-            this.textBox5.Text = "1";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.bre_treat_count_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bre_treat_count_box.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bre_treat_count_box.Location = new System.Drawing.Point(12, 429);
+            this.bre_treat_count_box.Multiline = true;
+            this.bre_treat_count_box.Name = "bre_treat_count_box";
+            this.bre_treat_count_box.Size = new System.Drawing.Size(54, 83);
+            this.bre_treat_count_box.TabIndex = 102;
+            this.bre_treat_count_box.Text = "0";
+            this.bre_treat_count_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // titlebox
             // 
@@ -738,6 +618,7 @@
             // Top_bar_panel
             // 
             this.Top_bar_panel.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.Top_bar_panel.Controls.Add(this.textBox10);
             this.Top_bar_panel.Controls.Add(this.Timerlbl);
             this.Top_bar_panel.Controls.Add(this.titlebox);
             this.Top_bar_panel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -748,13 +629,25 @@
             this.Top_bar_panel.Tag = "EMS";
             this.Top_bar_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // textBox10
+            // 
+            this.textBox10.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox10.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(2256, 24);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(352, 53);
+            this.textBox10.TabIndex = 124;
+            this.textBox10.Text = "Time to Hostpital:";
+            // 
             // Timerlbl
             // 
             this.Timerlbl.BackColor = System.Drawing.Color.PaleTurquoise;
             this.Timerlbl.Font = new System.Drawing.Font("DS-Digital", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Timerlbl.Location = new System.Drawing.Point(2300, 1);
+            this.Timerlbl.Location = new System.Drawing.Point(2598, 1);
             this.Timerlbl.Name = "Timerlbl";
-            this.Timerlbl.Size = new System.Drawing.Size(699, 98);
+            this.Timerlbl.Size = new System.Drawing.Size(350, 98);
             this.Timerlbl.TabIndex = 123;
             this.Timerlbl.Text = "2:00";
             this.Timerlbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -773,13 +666,292 @@
             this.Patient_description_title.Text = "Patient Description...";
             this.Patient_description_title.Visible = false;
             // 
-            // time_tb
+            // treatment_succ_text
             // 
-            this.time_tb.Location = new System.Drawing.Point(117, 234);
-            this.time_tb.Name = "time_tb";
-            this.time_tb.Size = new System.Drawing.Size(100, 31);
-            this.time_tb.TabIndex = 123;
-            this.time_tb.Text = "time";
+            this.treatment_succ_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treatment_succ_text.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treatment_succ_text.Location = new System.Drawing.Point(1783, 1571);
+            this.treatment_succ_text.Multiline = true;
+            this.treatment_succ_text.Name = "treatment_succ_text";
+            this.treatment_succ_text.Size = new System.Drawing.Size(54, 77);
+            this.treatment_succ_text.TabIndex = 126;
+            this.treatment_succ_text.Text = "0";
+            this.treatment_succ_text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // treatment_uns_text
+            // 
+            this.treatment_uns_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treatment_uns_text.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treatment_uns_text.Location = new System.Drawing.Point(1783, 1654);
+            this.treatment_uns_text.Multiline = true;
+            this.treatment_uns_text.Name = "treatment_uns_text";
+            this.treatment_uns_text.Size = new System.Drawing.Size(54, 77);
+            this.treatment_uns_text.TabIndex = 127;
+            this.treatment_uns_text.Text = "0";
+            this.treatment_uns_text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // treatment_NR_text
+            // 
+            this.treatment_NR_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treatment_NR_text.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treatment_NR_text.Location = new System.Drawing.Point(1783, 1725);
+            this.treatment_NR_text.Multiline = true;
+            this.treatment_NR_text.Name = "treatment_NR_text";
+            this.treatment_NR_text.Size = new System.Drawing.Size(54, 77);
+            this.treatment_NR_text.TabIndex = 128;
+            this.treatment_NR_text.Text = "0";
+            this.treatment_NR_text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // treatment_succ_lbl
+            // 
+            this.treatment_succ_lbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treatment_succ_lbl.Location = new System.Drawing.Point(1358, 1571);
+            this.treatment_succ_lbl.Name = "treatment_succ_lbl";
+            this.treatment_succ_lbl.Size = new System.Drawing.Size(404, 50);
+            this.treatment_succ_lbl.TabIndex = 130;
+            this.treatment_succ_lbl.Text = "Successful Treatments";
+            this.treatment_succ_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.treatment_succ_lbl.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // treatment_uns_lbl
+            // 
+            this.treatment_uns_lbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treatment_uns_lbl.Location = new System.Drawing.Point(1358, 1654);
+            this.treatment_uns_lbl.Name = "treatment_uns_lbl";
+            this.treatment_uns_lbl.Size = new System.Drawing.Size(404, 50);
+            this.treatment_uns_lbl.TabIndex = 131;
+            this.treatment_uns_lbl.Text = "Unsuccessful Treatments";
+            this.treatment_uns_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // treatment_NR_lbl
+            // 
+            this.treatment_NR_lbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treatment_NR_lbl.Location = new System.Drawing.Point(1358, 1725);
+            this.treatment_NR_lbl.Name = "treatment_NR_lbl";
+            this.treatment_NR_lbl.Size = new System.Drawing.Size(404, 50);
+            this.treatment_NR_lbl.TabIndex = 132;
+            this.treatment_NR_lbl.Text = "Treatment not required";
+            this.treatment_NR_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.treatment_NR_lbl.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1160, 1390);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(830, 120);
+            this.label1.TabIndex = 133;
+            this.label1.Text = "Cumulative Counters";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 951);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(1125, 120);
+            this.label3.TabIndex = 134;
+            this.label3.Text = "Predicted Patient Condition";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // hem_pred_panel
+            // 
+            this.hem_pred_panel.Location = new System.Drawing.Point(106, 1110);
+            this.hem_pred_panel.Name = "hem_pred_panel";
+            this.hem_pred_panel.Size = new System.Drawing.Size(80, 400);
+            this.hem_pred_panel.TabIndex = 135;
+            // 
+            // circ_pred_panel
+            // 
+            this.circ_pred_panel.Location = new System.Drawing.Point(326, 1110);
+            this.circ_pred_panel.Name = "circ_pred_panel";
+            this.circ_pred_panel.Size = new System.Drawing.Size(80, 400);
+            this.circ_pred_panel.TabIndex = 136;
+            // 
+            // bre_pred_panel
+            // 
+            this.bre_pred_panel.Location = new System.Drawing.Point(546, 1110);
+            this.bre_pred_panel.Name = "bre_pred_panel";
+            this.bre_pred_panel.Size = new System.Drawing.Size(80, 400);
+            this.bre_pred_panel.TabIndex = 136;
+            // 
+            // air_pred_panel
+            // 
+            this.air_pred_panel.Location = new System.Drawing.Point(766, 1110);
+            this.air_pred_panel.Name = "air_pred_panel";
+            this.air_pred_panel.Size = new System.Drawing.Size(80, 400);
+            this.air_pred_panel.TabIndex = 136;
+            // 
+            // conc_pred_panel
+            // 
+            this.conc_pred_panel.Location = new System.Drawing.Point(986, 1110);
+            this.conc_pred_panel.Name = "conc_pred_panel";
+            this.conc_pred_panel.Size = new System.Drawing.Size(80, 400);
+            this.conc_pred_panel.TabIndex = 136;
+            // 
+            // t1
+            // 
+            this.t1.Location = new System.Drawing.Point(326, 1543);
+            this.t1.Name = "t1";
+            this.t1.Size = new System.Drawing.Size(100, 31);
+            this.t1.TabIndex = 137;
+            // 
+            // t3
+            // 
+            this.t3.Location = new System.Drawing.Point(326, 1652);
+            this.t3.Name = "t3";
+            this.t3.Size = new System.Drawing.Size(100, 31);
+            this.t3.TabIndex = 138;
+            // 
+            // t2
+            // 
+            this.t2.Location = new System.Drawing.Point(326, 1599);
+            this.t2.Name = "t2";
+            this.t2.Size = new System.Drawing.Size(100, 31);
+            this.t2.TabIndex = 139;
+            // 
+            // t5
+            // 
+            this.t5.Location = new System.Drawing.Point(546, 1599);
+            this.t5.Name = "t5";
+            this.t5.Size = new System.Drawing.Size(100, 31);
+            this.t5.TabIndex = 142;
+            // 
+            // t6
+            // 
+            this.t6.Location = new System.Drawing.Point(546, 1652);
+            this.t6.Name = "t6";
+            this.t6.Size = new System.Drawing.Size(100, 31);
+            this.t6.TabIndex = 141;
+            // 
+            // t4
+            // 
+            this.t4.Location = new System.Drawing.Point(546, 1543);
+            this.t4.Name = "t4";
+            this.t4.Size = new System.Drawing.Size(100, 31);
+            this.t4.TabIndex = 140;
+            // 
+            // t9
+            // 
+            this.t9.Location = new System.Drawing.Point(766, 1655);
+            this.t9.Name = "t9";
+            this.t9.Size = new System.Drawing.Size(100, 31);
+            this.t9.TabIndex = 145;
+            // 
+            // t10
+            // 
+            this.t10.Location = new System.Drawing.Point(986, 1543);
+            this.t10.Name = "t10";
+            this.t10.Size = new System.Drawing.Size(100, 31);
+            this.t10.TabIndex = 144;
+            // 
+            // t8
+            // 
+            this.t8.Location = new System.Drawing.Point(766, 1599);
+            this.t8.Name = "t8";
+            this.t8.Size = new System.Drawing.Size(100, 31);
+            this.t8.TabIndex = 143;
+            // 
+            // t7
+            // 
+            this.t7.Location = new System.Drawing.Point(766, 1543);
+            this.t7.Name = "t7";
+            this.t7.Size = new System.Drawing.Size(100, 31);
+            this.t7.TabIndex = 146;
+            // 
+            // t11
+            // 
+            this.t11.Location = new System.Drawing.Point(986, 1599);
+            this.t11.Name = "t11";
+            this.t11.Size = new System.Drawing.Size(100, 31);
+            this.t11.TabIndex = 147;
+            // 
+            // t12
+            // 
+            this.t12.Location = new System.Drawing.Point(986, 1655);
+            this.t12.Name = "t12";
+            this.t12.Size = new System.Drawing.Size(100, 31);
+            this.t12.TabIndex = 148;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(0, 1388);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 44);
+            this.label4.TabIndex = 149;
+            this.label4.Text = "25%";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(0, 1288);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 44);
+            this.label6.TabIndex = 150;
+            this.label6.Text = "50%";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(0, 1188);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 44);
+            this.label7.TabIndex = 151;
+            this.label7.Text = "75%";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(0, 1088);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 44);
+            this.label8.TabIndex = 152;
+            this.label8.Text = "100%";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(0, 1488);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 44);
+            this.label9.TabIndex = 153;
+            this.label9.Text = "0%";
+            // 
+            // success_prob
+            // 
+            this.success_prob.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.success_prob.Location = new System.Drawing.Point(986, 1741);
+            this.success_prob.Name = "success_prob";
+            this.success_prob.Size = new System.Drawing.Size(100, 81);
+            this.success_prob.TabIndex = 154;
+            this.success_prob.Text = "100";
+            this.success_prob.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1092, 1741);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 81);
+            this.label5.TabIndex = 155;
+            this.label5.Text = "%";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(537, 1741);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(429, 81);
+            this.label10.TabIndex = 156;
+            this.label10.Text = "Success Probability";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // AI_sim
             // 
@@ -787,19 +959,50 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(2974, 1929);
-            this.Controls.Add(this.time_tb);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.success_prob);
+            this.Controls.Add(this.t12);
+            this.Controls.Add(this.t11);
+            this.Controls.Add(this.t7);
+            this.Controls.Add(this.t9);
+            this.Controls.Add(this.t10);
+            this.Controls.Add(this.t8);
+            this.Controls.Add(this.t5);
+            this.Controls.Add(this.t6);
+            this.Controls.Add(this.t4);
+            this.Controls.Add(this.t2);
+            this.Controls.Add(this.t3);
+            this.Controls.Add(this.t1);
+            this.Controls.Add(this.conc_pred_panel);
+            this.Controls.Add(this.air_pred_panel);
+            this.Controls.Add(this.bre_pred_panel);
+            this.Controls.Add(this.circ_pred_panel);
+            this.Controls.Add(this.hem_pred_panel);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.treatment_NR_lbl);
             this.Controls.Add(this.AI_patient_transfer_button);
+            this.Controls.Add(this.treatment_uns_lbl);
             this.Controls.Add(this.start_button);
+            this.Controls.Add(this.treatment_succ_lbl);
+            this.Controls.Add(this.treatment_NR_text);
             this.Controls.Add(this.Patient_description_title);
+            this.Controls.Add(this.treatment_uns_text);
             this.Controls.Add(this.Top_bar_panel);
+            this.Controls.Add(this.treatment_succ_text);
             this.Controls.Add(this.Injury_level_description);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label27);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.treatment_timeline);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label4);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AI_sim";
@@ -809,8 +1012,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.Top_bar_panel.ResumeLayout(false);
             this.Top_bar_panel.PerformLayout();
             this.ResumeLayout(false);
@@ -842,33 +1043,20 @@
         public System.Windows.Forms.Button Button_hemm_treat;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        public System.Windows.Forms.TextBox Predicted_Hem_box;
-        public System.Windows.Forms.TextBox Predicted_Circ_Box;
-        public System.Windows.Forms.TextBox Predicted_Breath_Box;
-        public System.Windows.Forms.TextBox textBox4;
-        public System.Windows.Forms.TextBox textBox5;
         public System.Windows.Forms.Button Button_air_clearair;
         public System.Windows.Forms.Button Button_circ_drugs;
         public System.Windows.Forms.Button Button_breath_aspirate;
-        public System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label25;
-        public System.Windows.Forms.TextBox textBox8;
-        public System.Windows.Forms.TextBox textBox6;
-        public System.Windows.Forms.TextBox textBox3;
-        public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.TextBox textBox7;
+        public System.Windows.Forms.TextBox hem_treat_count_box;
+        public System.Windows.Forms.TextBox con_treat_count_box;
+        public System.Windows.Forms.TextBox air_treat_count_box;
+        public System.Windows.Forms.TextBox cir_treat_count_box;
+        public System.Windows.Forms.TextBox bre_treat_count_box;
         private System.Windows.Forms.Panel circ_ind_panel;
         private System.Windows.Forms.Panel hem_ind_panel;
         private System.Windows.Forms.Panel conc_ind_panel;
         private System.Windows.Forms.Panel air_ind_panel;
         private System.Windows.Forms.Panel breath_ind_panel;
-        public System.Windows.Forms.TextBox textBox9;
+        public System.Windows.Forms.TextBox cpr_treat_count_box;
         public System.Windows.Forms.Button Button_CPR;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox titlebox;
@@ -878,6 +1066,39 @@
         private System.Windows.Forms.Panel Top_bar_panel;
         private System.Windows.Forms.TextBox Patient_description_title;
         private System.Windows.Forms.Label Timerlbl;
-        private System.Windows.Forms.TextBox time_tb;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label treatment_succ_lbl;
+        public System.Windows.Forms.TextBox treatment_NR_text;
+        public System.Windows.Forms.TextBox treatment_uns_text;
+        public System.Windows.Forms.TextBox treatment_succ_text;
+        private System.Windows.Forms.Label treatment_NR_lbl;
+        private System.Windows.Forms.Label treatment_uns_lbl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel hem_pred_panel;
+        private System.Windows.Forms.Panel circ_pred_panel;
+        private System.Windows.Forms.Panel bre_pred_panel;
+        private System.Windows.Forms.Panel air_pred_panel;
+        private System.Windows.Forms.Panel conc_pred_panel;
+        private System.Windows.Forms.TextBox t1;
+        private System.Windows.Forms.TextBox t3;
+        private System.Windows.Forms.TextBox t2;
+        private System.Windows.Forms.TextBox t5;
+        private System.Windows.Forms.TextBox t6;
+        private System.Windows.Forms.TextBox t4;
+        private System.Windows.Forms.TextBox t9;
+        private System.Windows.Forms.TextBox t10;
+        private System.Windows.Forms.TextBox t8;
+        private System.Windows.Forms.TextBox t7;
+        private System.Windows.Forms.TextBox t11;
+        private System.Windows.Forms.TextBox t12;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label success_prob;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label10;
     }
 }

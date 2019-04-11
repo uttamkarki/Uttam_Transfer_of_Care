@@ -29,7 +29,7 @@ namespace Uttam_Transfer_Of_Care
         {
             Experience_entry.Text = Participant_experience;
             Role_entry.Text = Participant_role;
-
+            Action_dummy.Enabled = false;
             draw_msgbox_inst();
         }
 
@@ -42,12 +42,20 @@ namespace Uttam_Transfer_Of_Care
             g.SmoothingMode = SmoothingMode.AntiAlias;
             await Task.Delay(50);
 
-            g.FillRoundedRectangle(new SolidBrush(Color.FromName("AliceBlue")), 300,1500, 500, 300, 100);
-            g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"), 30f), 300,1500, 500, 300, 100);
+            g.FillRoundedRectangle(new SolidBrush(Color.FromName("AliceBlue")), 200,1500, 400, 200, 100);
+            g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"), 15f), 200, 1500, 400, 200, 100);
+
             await Task.Delay(50);
 
-            g.FillRoundedRectangle(new SolidBrush(Color.FromName("AliceBlue")), 300, 1500, 500, 300, 100);
-            g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"), 30f), 300, 1500, 500, 300, 100);
+            message_label.BringToFront();
+
+            g.FillRoundedRectangle(new SolidBrush(Color.FromName("AliceBlue")), 200, 1500, 400, 200, 100);
+            g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"), 15f), 200, 1500, 400, 200, 100);
+
+            await Task.Delay(50);
+
+            message_label.BringToFront();
+
 
         }
 
@@ -118,6 +126,11 @@ namespace Uttam_Transfer_Of_Care
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

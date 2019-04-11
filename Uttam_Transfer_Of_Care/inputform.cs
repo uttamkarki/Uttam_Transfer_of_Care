@@ -12,8 +12,20 @@ using System.Drawing.Drawing2D;
 
 namespace Uttam_Transfer_Of_Care
 {
+       
     public partial class inputform : Form
     {
+        System.Windows.Forms.Timer input_timer1;
+        public static int input_endtime = 0;
+        public static int input_counter = 300;
+        public static int input_main_minutes = 2;
+        public static int input_main_seconds = 00;
+        public static string input_string_seconds;
+        public static string input_string_minutes = "2";
+        public static string input_string_seconds1 = "0";
+        public static string input_string_seconds2 = "0";
+        public static string compound_time = "0";
+
         #region set body image scale location on/off indication and colours
         public static bool torso_on = false;
         public static bool head_on = false;
@@ -89,6 +101,9 @@ namespace Uttam_Transfer_Of_Care
             //var Screenres = System.Windows.SystemParameters.PrimaryScreenHeight;
             var screenheight = Screen.PrimaryScreen.Bounds.Height;
             var screenwidth = Screen.PrimaryScreen.Bounds.Width;
+
+            Warning_label.Visible = false;
+            Warning_label.ForeColor = Color.FromName("Red");
 
             // delete the timeline data if AI is off
             if (AI_sim.AI_assist == false)
@@ -713,8 +728,199 @@ namespace Uttam_Transfer_Of_Care
             #endregion
 
             #endregion
+
+            input_timer();
         }
-        
+
+        void input_timer()
+        {
+            input_starttimer();
+
+            void input_starttimer()
+            {
+                input_timer1 = new System.Windows.Forms.Timer();
+                input_timer1.Tick += new EventHandler(timer1_Tick);
+                input_timer1.Interval = 1000; // 1 second
+                input_timer1.Start();
+                string compound_time_start = String.Format("{0}:{1}{2}", input_main_minutes, input_string_seconds1, input_string_seconds2);
+                InputTimerlbl.Text = compound_time_start.ToString();
+            }
+
+            void timer1_Tick(object sender, EventArgs e)
+            {
+                input_counter--;
+                if (input_counter == 0)
+                {
+                    input_timer1.Stop();
+
+                    // add form load here 
+                }
+                if (input_counter == 300)
+                {
+                    input_main_seconds = 300 - input_counter;
+                    input_main_minutes = 0;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = "0"; // input_string_seconds.Substring(0, 1);
+                }
+                else if (input_counter > 290 && input_counter < 300)
+                {
+                    input_main_seconds = 300 - input_counter;
+                    input_main_minutes = 0;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = input_string_seconds.Substring(0, 1);
+                }
+                else if (input_counter > 240 && input_counter <= 290)
+                {
+                    input_main_seconds = 300 - input_counter;
+                    input_main_minutes = 0;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = input_string_seconds.Substring(0, 1);
+                    input_string_seconds2 = input_string_seconds.Substring(1, 1);
+                }
+                else if (input_counter == 240)
+                {
+                    input_main_seconds = 240 - input_counter;
+                    input_main_minutes = 1;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = "0"; // input_string_seconds.Substring(0, 1);
+                    //InputTimerlbl.ForeColor = Color.FromName("Gold");
+                }
+                else if (input_counter > 230 && input_counter < 240)
+                {
+                    input_main_seconds = 240 - input_counter;
+                    input_main_minutes = 1;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = input_string_seconds.Substring(0, 1);
+                }
+                else if (input_counter > 210 && input_counter <= 230)
+                {
+                    input_main_seconds = 240 - input_counter;
+                    input_main_minutes = 1;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = input_string_seconds.Substring(0, 1);
+                    input_string_seconds2 = input_string_seconds.Substring(1, 1);
+                }
+                else if (input_counter > 180 && input_counter <= 210)
+                {
+                    input_main_seconds = 240 - input_counter;
+                    input_main_minutes = 1;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = input_string_seconds.Substring(0, 1);
+                    input_string_seconds2 = input_string_seconds.Substring(1, 1);
+                    InputTimerlbl.ForeColor = Color.FromName("Orange");
+                }
+                else if (input_counter == 180)
+                {
+                    input_main_seconds = 180 - input_counter;
+                    input_main_minutes = 2;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = "0"; // input_string_seconds.Substring(0, 1);
+                    InputTimerlbl.ForeColor = Color.FromName("Red");
+                    if (AI_sim.AI_assist == true)
+                    {
+                        Warning_label.Visible = true; 
+                    }
+                }
+                else if (input_counter > 170 && input_counter < 180)
+                {
+                    input_main_seconds = 180 - input_counter;
+                    input_main_minutes = 2;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = input_string_seconds.Substring(0, 1);
+                }
+                else if (input_counter > 120 && input_counter <= 170)
+                {
+                    input_main_seconds = 180 - input_counter;
+                    input_main_minutes = 2;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = input_string_seconds.Substring(0, 1);
+                    input_string_seconds2 = input_string_seconds.Substring(1, 1);
+                }
+                else if (input_counter == 120)
+                {
+                    input_main_seconds = 120 - input_counter;
+                    input_main_minutes = 3;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = "0"; // input_string_seconds.Substring(0, 1);
+                }
+                else if (input_counter > 110 && input_counter < 120)
+                {
+                    input_main_seconds = 120 - input_counter;
+                    input_main_minutes = 3;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = input_string_seconds.Substring(0, 1);
+                }
+                else if (input_counter > 60 && input_counter <= 110)
+                {
+                    input_main_seconds = 120 - input_counter;
+                    input_main_minutes = 3;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = input_string_seconds.Substring(0, 1);
+                    input_string_seconds2 = input_string_seconds.Substring(1, 1);
+                }
+                else if (input_counter == 60)
+                {
+                    input_main_seconds = 60 - input_counter;
+                    input_main_minutes = 4;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = "0"; // input_string_seconds.Substring(0, 1);
+                }
+                else if (input_counter > 50 && input_counter < 60)
+                {
+                    input_main_seconds = 60 - input_counter;
+                    input_main_minutes = 4;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = input_string_seconds.Substring(0, 1);
+                }
+                else if (input_counter > 0 && input_counter <= 50)
+                {
+                    input_main_seconds = 60 - input_counter;
+                    input_main_minutes = 4;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = input_string_seconds.Substring(0, 1);
+                    input_string_seconds2 = input_string_seconds.Substring(1, 1);
+                }
+                else if (input_counter == 0)
+                {
+                    input_main_seconds = 0;
+                    input_main_minutes = 4;
+                    input_string_seconds = Convert.ToString(input_main_seconds);
+                    input_string_minutes = Convert.ToString(input_main_minutes);
+                    input_string_seconds1 = "0";
+                    input_string_seconds2 = "0"; // input_string_seconds.Substring(0, 1);
+                }
+                compound_time = String.Format("{0}:{1}{2}", input_main_minutes, input_string_seconds1, input_string_seconds2);
+
+                InputTimerlbl.Text = compound_time;
+            }
+        }
+
         // prepare variables to pass to output - actual patient status and transferred patient status
         // Transferred patient status as entered by participant
         #region Radio Button Events //all radio button events in here - arranged in sub groups
@@ -2525,9 +2731,13 @@ namespace Uttam_Transfer_Of_Care
 
         public void Submit_toc_button_Click(object sender, EventArgs e)
         {
-            endtime = DateTime.Now;
+
+            input_timer1.Stop();
+
+            input_endtime = input_counter;
             var output = new Output();
             output.Show();
+            //this.Hide();
         }
 
         //old button action controls
@@ -2628,6 +2838,5 @@ namespace Uttam_Transfer_Of_Care
 
         #endregion
 
-        
     }
 }

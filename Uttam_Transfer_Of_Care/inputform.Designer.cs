@@ -109,6 +109,9 @@
             this.dropbox_injury = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.int_button = new System.Windows.Forms.RadioButton();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.InputTimerlbl = new System.Windows.Forms.Label();
+            this.Warning_label = new System.Windows.Forms.Label();
             this.BreathingGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.CirculationGroup.SuspendLayout();
@@ -696,8 +699,10 @@
             // 
             // Submit_toc_button
             // 
-            this.Submit_toc_button.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.Submit_toc_button.BackColor = System.Drawing.Color.Turquoise;
+            this.Submit_toc_button.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Submit_toc_button.Location = new System.Drawing.Point(808, 1706);
+            this.Submit_toc_button.Margin = new System.Windows.Forms.Padding(0);
             this.Submit_toc_button.Name = "Submit_toc_button";
             this.Submit_toc_button.Size = new System.Drawing.Size(1003, 204);
             this.Submit_toc_button.TabIndex = 118;
@@ -1077,6 +1082,8 @@
             // Top_bar_panel
             // 
             this.Top_bar_panel.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.Top_bar_panel.Controls.Add(this.textBox10);
+            this.Top_bar_panel.Controls.Add(this.InputTimerlbl);
             this.Top_bar_panel.Controls.Add(this.titlebox);
             this.Top_bar_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.Top_bar_panel.Location = new System.Drawing.Point(0, 0);
@@ -1089,7 +1096,7 @@
             // 
             this.titlebox.BackColor = System.Drawing.Color.PaleTurquoise;
             this.titlebox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.titlebox.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titlebox.Font = new System.Drawing.Font("Century Gothic", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titlebox.Location = new System.Drawing.Point(1, 15);
             this.titlebox.Margin = new System.Windows.Forms.Padding(0);
             this.titlebox.Multiline = true;
@@ -1144,12 +1151,46 @@
             this.int_button.CheckedChanged += new System.EventHandler(this.int_button_CheckedChanged);
             this.int_button.Click += new System.EventHandler(this.int_button_Click);
             // 
+            // textBox10
+            // 
+            this.textBox10.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox10.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(2320, 25);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(286, 53);
+            this.textBox10.TabIndex = 126;
+            this.textBox10.Text = "Transfer Time:";
+            // 
+            // InputTimerlbl
+            // 
+            this.InputTimerlbl.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.InputTimerlbl.Font = new System.Drawing.Font("DS-Digital", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputTimerlbl.Location = new System.Drawing.Point(2600, 1);
+            this.InputTimerlbl.Name = "InputTimerlbl";
+            this.InputTimerlbl.Size = new System.Drawing.Size(350, 98);
+            this.InputTimerlbl.TabIndex = 125;
+            this.InputTimerlbl.Text = "0:00";
+            this.InputTimerlbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Warning_label
+            // 
+            this.Warning_label.AutoSize = true;
+            this.Warning_label.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Warning_label.Location = new System.Drawing.Point(900, 135);
+            this.Warning_label.Name = "Warning_label";
+            this.Warning_label.Size = new System.Drawing.Size(774, 56);
+            this.Warning_label.TabIndex = 126;
+            this.Warning_label.Text = "Exceeded Optimal Transfer Time";
+            // 
             // inputform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2974, 1929);
+            this.Controls.Add(this.Warning_label);
             this.Controls.Add(this.int_button);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.Top_bar_panel);
@@ -1299,5 +1340,8 @@
         private System.Windows.Forms.ComboBox dropbox_injury;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.RadioButton int_button;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label InputTimerlbl;
+        private System.Windows.Forms.Label Warning_label;
     }
 }

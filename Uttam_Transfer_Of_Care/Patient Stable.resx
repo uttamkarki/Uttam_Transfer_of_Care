@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Intro_label.Text" xml:space="preserve">
-    <value>Welcome to the Future Transfer of Care simulator. Please complete the informed consent form before proceeding with the simulation. Once you have filled out the informed consent, please complete the fields below. The simulations will create an emergency care simulation and provide an overview of the care given during transit. The aim of the simulation is to transfer information about the patient and their potential injury using a form presented at the end of the simulation. There will be two separate simulations, one in which an AI assistant will assist with completion of the form and hint as to potential ommissions and unlikely inputs as well as provide feedback before submission. in the non-AI sim, there will just be a form and the previous patient condition output for reference.</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>During the simulation, you will be presented with information and required to action events. Action buttons are square, turquoise buttons (shown to the right)  and information panels are pale blue with a turquoise border and rounded corners (shown to the left). </value>
-  </data>
 </root>

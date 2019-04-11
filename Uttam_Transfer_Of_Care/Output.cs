@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Synthesis;
+using System.Drawing.Drawing2D;
+using Plasmoid.Extensions;
 
 namespace Uttam_Transfer_Of_Care
 {
@@ -15,6 +17,8 @@ namespace Uttam_Transfer_Of_Care
     {
         #region Variables defined in this form
         public static TimeSpan simtime;
+
+        //public WindowSettings OwningWindowSettings { get; set; }
 
         string conf_age = "age?";
         string conf_hem = "bleed?";
@@ -32,6 +36,7 @@ namespace Uttam_Transfer_Of_Care
         public static int injury_count = 0;
         public static int crit_count = 0;
         public static int patient_condition_check;
+        public static int total_transfer_seconds = 0;
 
         #endregion
         public Output()
@@ -57,7 +62,11 @@ namespace Uttam_Transfer_Of_Care
             int simtime_minsecs = simtime_minutes * 60;
             int total_seconds = simtime_minsecs + simtime_seconds;
             string simtime_text = total_seconds.ToString();
-            Output_transfer_time.Text = simtime_text;
+            Output_transfer_time.Text = inputform.compound_time;
+            total_transfer_seconds = inputform.input_counter;
+        
+
+
             #endregion
 
             #region set patient condition strings based on the radiobuttons in form 1
@@ -101,12 +110,12 @@ namespace Uttam_Transfer_Of_Care
             if (inputform.var_gender == 0)
             {
                 conf_gender = "Male";
-                MessageBox.Show("male");
+                //MessageBox.Show("male");
             }
             else if (inputform.var_gender == 1)
             {
                 conf_gender = "Female";
-                MessageBox.Show("female");
+                //MessageBox.Show("female");
             }
 
             #endregion
@@ -668,6 +677,31 @@ namespace Uttam_Transfer_Of_Care
         }
         #endregion
 
+        async void draw_edge()
+        {
+            System.Drawing.Graphics g = this.CreateGraphics();
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            await Task.Delay(50);
+
+            g.FillRoundedRectangle(new SolidBrush(Color.FromName("turquoise")), 500, 200, 2000, 200, 50);
+            g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"), 30f), 500, 200, 2000, 200, 50);
+            await Task.Delay(50);
+
+            g.FillRoundedRectangle(new SolidBrush(Color.FromName("turquoise")), 500, 200, 2000, 200, 50);
+            g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"), 30f), 500, 200, 2000, 200, 50);
+            await Task.Delay(50);
+
+            participantID_label.BringToFront();
+            Experience_label.BringToFront();
+            Participant_experience_label.BringToFront();
+            Role_label.BringToFront();
+            Participant_number_label.BringToFront();
+            Participatn_role_label.BringToFront();
+
+        }
+
+
+
 
         // UNUSED EVENTS
         #region Unused click events
@@ -726,6 +760,17 @@ namespace Uttam_Transfer_Of_Care
         }
 
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms["AI_sim"].Close();
+            Application.OpenForms["inputform"].Close();
+
+            var standardSimclick = new AI_sim();
+            standardSimclick.Show();
+
+            this.Close();
+        }
     }
 
 }

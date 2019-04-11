@@ -40,6 +40,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Top_bar_panel = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Action_dummy = new System.Windows.Forms.Button();
+            this.message_label = new System.Windows.Forms.Label();
             this.Top_bar_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +50,7 @@
             // 
             this.aisimstartbutton.BackColor = System.Drawing.Color.Turquoise;
             this.aisimstartbutton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aisimstartbutton.Location = new System.Drawing.Point(1550, 1300);
+            this.aisimstartbutton.Location = new System.Drawing.Point(1550, 1150);
             this.aisimstartbutton.Name = "aisimstartbutton";
             this.aisimstartbutton.Size = new System.Drawing.Size(700, 150);
             this.aisimstartbutton.TabIndex = 15;
@@ -59,7 +62,7 @@
             // 
             this.standardsimstartbutton.BackColor = System.Drawing.Color.Turquoise;
             this.standardsimstartbutton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.standardsimstartbutton.Location = new System.Drawing.Point(750, 1300);
+            this.standardsimstartbutton.Location = new System.Drawing.Point(750, 1150);
             this.standardsimstartbutton.Name = "standardsimstartbutton";
             this.standardsimstartbutton.Size = new System.Drawing.Size(700, 150);
             this.standardsimstartbutton.TabIndex = 14;
@@ -70,7 +73,7 @@
             // Experience_entry
             // 
             this.Experience_entry.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Experience_entry.Location = new System.Drawing.Point(1100, 1050);
+            this.Experience_entry.Location = new System.Drawing.Point(1100, 900);
             this.Experience_entry.Name = "Experience_entry";
             this.Experience_entry.Size = new System.Drawing.Size(1150, 60);
             this.Experience_entry.TabIndex = 13;
@@ -79,7 +82,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(750, 1050);
+            this.label4.Location = new System.Drawing.Point(750, 900);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(350, 60);
             this.label4.TabIndex = 12;
@@ -88,7 +91,7 @@
             // Role_entry
             // 
             this.Role_entry.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Role_entry.Location = new System.Drawing.Point(1100, 950);
+            this.Role_entry.Location = new System.Drawing.Point(1100, 800);
             this.Role_entry.Name = "Role_entry";
             this.Role_entry.Size = new System.Drawing.Size(1150, 60);
             this.Role_entry.TabIndex = 11;
@@ -96,7 +99,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(750, 950);
+            this.label3.Location = new System.Drawing.Point(750, 800);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(350, 60);
             this.label3.TabIndex = 10;
@@ -105,7 +108,7 @@
             // Intro_label
             // 
             this.Intro_label.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Intro_label.Location = new System.Drawing.Point(750, 400);
+            this.Intro_label.Location = new System.Drawing.Point(750, 250);
             this.Intro_label.Name = "Intro_label";
             this.Intro_label.Size = new System.Drawing.Size(1500, 500);
             this.Intro_label.TabIndex = 8;
@@ -116,7 +119,7 @@
             // Participant_ID_box
             // 
             this.Participant_ID_box.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Participant_ID_box.Location = new System.Drawing.Point(1100, 1150);
+            this.Participant_ID_box.Location = new System.Drawing.Point(1100, 1000);
             this.Participant_ID_box.Name = "Participant_ID_box";
             this.Participant_ID_box.Size = new System.Drawing.Size(1150, 60);
             this.Participant_ID_box.TabIndex = 17;
@@ -125,7 +128,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(750, 1150);
+            this.label1.Location = new System.Drawing.Point(750, 1000);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(350, 60);
             this.label1.TabIndex = 16;
@@ -158,12 +161,48 @@
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(750, 1350);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(1500, 500);
+            this.label2.TabIndex = 124;
+            this.label2.Text = resources.GetString("label2.Text");
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // Action_dummy
+            // 
+            this.Action_dummy.BackColor = System.Drawing.Color.Turquoise;
+            this.Action_dummy.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Action_dummy.Location = new System.Drawing.Point(2400, 1500);
+            this.Action_dummy.Name = "Action_dummy";
+            this.Action_dummy.Size = new System.Drawing.Size(400, 200);
+            this.Action_dummy.TabIndex = 125;
+            this.Action_dummy.Text = "Actions";
+            this.Action_dummy.UseVisualStyleBackColor = false;
+            // 
+            // message_label
+            // 
+            this.message_label.BackColor = System.Drawing.Color.AliceBlue;
+            this.message_label.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.message_label.Location = new System.Drawing.Point(270, 1550);
+            this.message_label.Name = "message_label";
+            this.message_label.Size = new System.Drawing.Size(260, 100);
+            this.message_label.TabIndex = 126;
+            this.message_label.Text = "Information";
+            this.message_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // intro_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2974, 1929);
+            this.Controls.Add(this.message_label);
+            this.Controls.Add(this.Action_dummy);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Top_bar_panel);
             this.Controls.Add(this.Participant_ID_box);
             this.Controls.Add(this.label1);
@@ -199,5 +238,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Top_bar_panel;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Action_dummy;
+        private System.Windows.Forms.Label message_label;
     }
 }

@@ -22,7 +22,7 @@ namespace Uttam_Transfer_Of_Care
     delegate void message_fEMStoMax(Message msg);
     delegate void message_fMaxtoEMS(Message msg);
     delegate void message_fEMStoP(Message msg);
-    
+
     public partial class AI_sim : Form
     {
         #region define public variables here
@@ -88,21 +88,48 @@ namespace Uttam_Transfer_Of_Care
         public static string var_circ = "0";
         public static string var_injury = "Gunshot wound";
         public static string var_injury_location = "lower left leg";
+
+        // treatment improvement probabilities
+        public static int breath1to0_cure_probability = 50;
+        public static int breath1_successprob_reduction = 5;
+        public static int breath2to0_cure_probability = 20;
+        public static int breath2to1_cure_probability = 50;
+        public static int hem1to0_cure_probability = 90;
+        public static int hem2to0_cure_probability = 10;
+        public static int hem2to1_cure_probability = 60;
+        public static int conc1to0_cure_probability = 50;
+        public static int conc1to1_cure_probability = 50;
+        public static int conc2to0_cure_probability = 20;
+        public static int conc2to1_cure_probability = 30;
+        public static int conc2to2_cure_probability = 50;
+        public static int circ1to0_cure_probability = 50; // the probability that circulation treatment from level 1 to 0 is successful
+        public static int circ2to0_cure_probability = 10; // the probability that circulation treatment from level 2 to 0 is successful
+        public static int circ2to1_cure_probability = 20; // the probability that circulation treatment from level 2 to 1 is successful
+        public static int cpr2to0_cure_probability = 5; // the probability that circulation treatment from level 2 to 0 is successful
+        public static int cpr2to1_cure_probability = 10; // the probability that circulation treatment from level 2 to 1 is successful
+        public static int airway_1to0_cure_probability = 50; // the probability that airway treatment from level 1 to 0 is successful
+        public static int airway_2to0_cure_probability = 33; // the probability that airway treatment from level 2 to 0 is successful
+        public static int airway_2to1_cure_probability = 33; // the probability that airway treatment from level 2 to 1 is successful
+
+
         //probabilty that the state will not change
         public static int hem_deg_prob_longtime = 80;
         public static int hem_deg_prob_shorttime = 95;
-        public static int circ0to1if1_deg_prob_longtime = 40;
-        public static int circ0to1if1_deg_prob_shorttime = 60;
-        public static int circ0to2if1_deg_prob_longtime = 70;
-        public static int circ0to2if1_deg_prob_shorttime = 85;
-        public static int circ1to2if1_deg_prob_longtime = 60;
-        public static int circ1to2if1_deg_prob_shorttime = 75;
-        public static int circ0to1if2_deg_prob_longtime = 25;
-        public static int circ0to1if2_deg_prob_shorttime = 40;
-        public static int circ0to2if2_deg_prob_longtime = 50;
-        public static int circ0to2if2_deg_prob_shorttime = 75;
-        public static int circ1to2if2_deg_prob_longtime = 40;
-        public static int circ1to2if2_deg_prob_shorttime = 60;
+        //probability that the state will change
+
+        public static int circ0to1if1_deg_prob_longtime = 50;
+        public static int circ0to1if1_deg_prob_shorttime = 40;
+        public static int circ0to2if1_deg_prob_longtime = 25;
+        public static int circ0to2if1_deg_prob_shorttime = 15;
+        public static int circ1to2if1_deg_prob_longtime = 40;
+        public static int circ1to2if1_deg_prob_shorttime = 25;
+        public static int circ0to1if2_deg_prob_longtime = 60;
+        public static int circ0to1if2_deg_prob_shorttime = 50;
+        public static int circ0to2if2_deg_prob_longtime = 35;
+        public static int circ0to2if2_deg_prob_shorttime = 25;
+        public static int circ1to2if2_deg_prob_longtime = 60;
+        public static int circ1to2if2_deg_prob_shorttime = 40;
+
         public static int air_deg_prob_longtime = 80;
         public static int air_deg_prob_shorttime = 95;
         public static int conc_deg_prob_longtime = 50;
@@ -119,13 +146,36 @@ namespace Uttam_Transfer_Of_Care
         public static int hemcon0to1_deg_prob_shorttime = 25;
         public static int hemcon0to1_deg_prob_longtime = 40;
         public static int hemcon0to2_deg_prob_longtime = 40;
-        public static int hemcirc1to2_deg_prob_shorttime = 35;
+        public static int hemcirc1to2_deg_prob_shorttime = 25;
         public static int hemcirc1to2_deg_prob_longtime = 95;
-        public static int hemcirc0to2_deg_prob_shorttime = 30;
-        public static int hemcirc0to1_deg_prob_shorttime = 20;
-        public static int hemcirc0to1_deg_prob_longtime = 45;
-        public static int hemcirc0to2_deg_prob_longtime = 45;
+        public static int hemcirc0to2_deg_prob_shorttime = 25;
+        public static int hemcirc0to1_deg_prob_shorttime = 25;
+        public static int hemcirc0to1_deg_prob_longtime = 40;
+        public static int hemcirc0to2_deg_prob_longtime = 40;
+        public static int brecon1to2_deg_prob_shorttime = 25;
+        public static int brecon1to2_deg_prob_longtime = 95;
+        public static int brecon0to2_deg_prob_shorttime = 25;
+        public static int brecon0to1_deg_prob_shorttime = 25;
+        public static int brecon0to1_deg_prob_longtime = 40;
+        public static int brecon0to2_deg_prob_longtime = 40;
+
+        public static int airway_close_prob1to2 = 10;
+        public static int airway_close_prob0to1 = 10;
+        public static int patient_air_instability_score = 0;
+        public static int breair_prob0to2 = 45;
+        public static int breair_prob1to2 = 90;
+        public static int breair_prob0to1 = 45;
+
+        public static int patient_bre_instability_score = 0;
+
         public static int major_heart_attack_probability;
+
+        //Degradation instability variables
+        public static int patient_hem_instability_score;
+        public static int patient_con_instability_score;
+        public static int patient_circ_instability_score;
+
+        public static int mistake_count = 0;
         // define variables for filling the patient condition text
         public static int UICounter = 0;
         public static string HemLevel = "null";
@@ -136,7 +186,13 @@ namespace Uttam_Transfer_Of_Care
         public static string linktxt1 = "null";
         public static string linktxt2 = "null";
         public static string Woundtxt = "null";
+
+        //success probability
+        public static float overall_success_prob = 100;
+
+
         #endregion
+
 
         #region timing variables - define the thread pause variables here
         int Patient_Assign_to_Run_Pause_time = 5;
@@ -164,12 +220,13 @@ namespace Uttam_Transfer_Of_Care
         string string_seconds1 = "0";
         string string_seconds2 = "0";
 
-
         #endregion
 
         public AI_sim()
         {
             InitializeComponent();
+            start_button.Location = new Point(1250, 400);
+            start_button.Visible = true;
         }
 
         #region On load - Set AI assist value, clear the patient transfer button and make disabled!
@@ -185,6 +242,7 @@ namespace Uttam_Transfer_Of_Care
             }
             AI_patient_transfer_button.Enabled = false;
             AI_patient_transfer_button.Visible = false;
+            AI_patient_transfer_button.Location = new Point(1250, 400);
         }
         #endregion
 
@@ -209,13 +267,16 @@ namespace Uttam_Transfer_Of_Care
         }
         #endregion
 
+        public void Closeform()
+        {
+            this.Close();
+        }
+
         //timers and agent start/stop controllers
         public void Environment_control_function()
         {
             if (subject == "start environment")
             {
-
-
                 #region Start patient and EMS agents
                 from = "called by main function";
                 patient();
@@ -226,16 +287,19 @@ namespace Uttam_Transfer_Of_Care
             }
             else if (subject == "highlight buttons")
             {
-                ButtonHighlighter(); 
+                ButtonHighlighter();
             }
             if (subject == "update UI")
             {
                 UIController();
+                set_prediction_metrics();
             }
             if (subject == "update patient initialization info")
             {
-                UIController();
+                UIController_initialize();
+                set_prediction_metrics();
             }
+
 
             void timer()
             {
@@ -243,7 +307,6 @@ namespace Uttam_Transfer_Of_Care
 
                 void Starttimer()
                 {
-
                     timer1 = new System.Windows.Forms.Timer();
                     timer1.Tick += new EventHandler(timer1_Tick);
                     timer1.Interval = 1000; // 1 second
@@ -270,7 +333,7 @@ namespace Uttam_Transfer_Of_Care
                         string_seconds1 = string_seconds.Substring(0, 1);
                         string_seconds2 = string_seconds.Substring(1, 1);
                     }
-                    else if (counter >70 && counter <120)
+                    else if (counter >= 70 && counter < 120)
                     {
                         main_seconds = counter - 60;
                         main_minutes = 1;
@@ -288,7 +351,7 @@ namespace Uttam_Transfer_Of_Care
                         string_seconds1 = "0";
                         string_seconds2 = string_seconds.Substring(0, 1);
                     }
-                    else if (counter == 60 )
+                    else if (counter == 60)
                     {
                         main_seconds = 0;
                         main_minutes = 1;
@@ -297,7 +360,7 @@ namespace Uttam_Transfer_Of_Care
                         string_seconds1 = "0";
                         string_seconds2 = "0";
                     }
-                    else if (counter >= 10 && counter < 60)
+                    else if (counter > 30 && counter < 60)
                     {
                         main_seconds = counter;
                         main_minutes = 0;
@@ -305,7 +368,19 @@ namespace Uttam_Transfer_Of_Care
                         string_minutes = Convert.ToString(main_minutes);
                         string_seconds1 = string_seconds.Substring(0, 1);
                         string_seconds2 = string_seconds.Substring(1, 1);
+                        //Timerlbl.ForeColor = Color.FromName("Blue");
                     }
+                    else if (counter >= 10 && counter <= 30)
+                    {
+                        main_seconds = counter;
+                        main_minutes = 0;
+                        string_seconds = Convert.ToString(main_seconds);
+                        string_minutes = Convert.ToString(main_minutes);
+                        string_seconds1 = string_seconds.Substring(0, 1);
+                        string_seconds2 = string_seconds.Substring(1, 1);
+                        Timerlbl.ForeColor = Color.FromName("Blue");
+                    }
+
                     else if (counter > 0 && counter < 10)
                     {
                         main_seconds = counter;
@@ -314,6 +389,7 @@ namespace Uttam_Transfer_Of_Care
                         string_minutes = Convert.ToString(main_minutes);
                         string_seconds1 = "0";
                         string_seconds2 = string_seconds.Substring(0, 1);
+                        Timerlbl.ForeColor = Color.FromName("Green");
                     }
                     else if (counter == 0)
                     {
@@ -322,37 +398,51 @@ namespace Uttam_Transfer_Of_Care
                         string_seconds2 = "0";
                         AI_patient_transfer_button.Enabled = true;
                         AI_patient_transfer_button.Visible = true;
-                        
+                        Button_air_Intubate.Enabled = false;
+                        Button_air_clearair.Enabled = false;
+                        Button_breath_aspirate.Enabled = false;
+                        Button_breath_Oxygen.Enabled = false;
+                        //Button_breath_rescuebreath_Click.Enabled = false;
+                        Button_circ_chest.Enabled = false;
+                        Button_circ_drugs.Enabled = false;
+                        Button_conc_drugs.Enabled = false;
+                        Button_hemm_torniquet.Enabled = false;
+                        Button_hemm_treat.Enabled = false;
+                        Button_CPR.Enabled = false;
                     }
 
-                    string compound_time = String.Format("{0}:{1}{2}", main_minutes , string_seconds1, string_seconds2);
+                    string compound_time = String.Format("{0}:{1}{2}", main_minutes, string_seconds1, string_seconds2);
 
                     Timerlbl.Text = compound_time;
                 }
             }
 
-            void UIController()
-            { 
+            void UIController_initialize()
+            {
                 if (UICounter == 0)
                 {
                     UICounter += 1;
 
                     #region generate the natural language patient status text
+                    //MessageBox.Show("ui initialize");
 
-                    //sim_gender_label.Text = gender;
-                    //sim_injury_type_label.Text = wound_type;
-                    //sim_injury_location_label.Text = wound_location;
-                    //sim_age_label.Text = Convert.ToString(age);
-
-                    if (wound_type == "gunshot" && hemorrhage ==2) { Woundtxt = String.Format("and has a serious gunshot wound to the {0}.", wound_location);}
-                    if (wound_type == "gunshot" && hemorrhage ==1) { Woundtxt = String.Format("and has a gunshot wound to the {0}.", wound_location); }
-                    else if (wound_type == "blunt force trauma" && hemorrhage == 2) { Woundtxt = String.Format("and has serious impact trauma to the {0}.", wound_location); }
+                    if (wound_type == "gunshot" && hemorrhage == 2) { Woundtxt = String.Format("and has a serious gunshot wound to the {0}.", wound_location); }
+                    else if (wound_type == "gunshot" && hemorrhage == 1) { Woundtxt = String.Format("and has a gunshot wound to the {0}.", wound_location); }
+                    if (wound_type == "blunt force trauma" && hemorrhage == 2) { Woundtxt = String.Format("and has serious impact trauma to the {0}.", wound_location); }
                     else if (wound_type == "blunt force trauma" && hemorrhage < 2) { Woundtxt = String.Format("and has impact trauma to the {0}.", wound_location); }
-                    else if (wound_type == "heart attack" && circulation == 2) { Woundtxt = String.Format("and has suffered a cardiac arrest."); }
-                    else if (wound_type == "heart attack" && circulation ==1) { Woundtxt = String.Format("and has suffered a cardiac event."); }
-                    else if (wound_type == "drowning") { Woundtxt = String.Format("and has suffered respiratory impairment due to submersion."); }
-                    else if (wound_type == "allergic reaction" && breathing == 2) { Woundtxt = String.Format("and has suffered a severe allergic reaction."); }
-                    else if (wound_type == "allergic reaction" && breathing < 2) { Woundtxt = String.Format("and has suffered an allergic reaction."); }
+                    if (wound_type == "heart attack" && circulation == 2) { Woundtxt = String.Format("and has suffered a cardiac arrest."); }
+                    else if (wound_type == "heart attack" && circulation == 1) { Woundtxt = String.Format("and has suffered a cardiac event."); }
+                    if (wound_type == "drowning") { Woundtxt = String.Format("and has suffered respiratory impairment due to submersion."); }
+                    if (wound_type == "allergic reaction" && breathing == 2)
+                    {
+                        //MessageBox.Show("all react - bre prob");
+                        Woundtxt = String.Format("and has suffered a severe allergic reaction.");
+                    }
+                    else if (wound_type == "allergic reaction" && breathing < 2)
+                    {
+                        //MessageBox.Show("all react - no bre prob");
+                        Woundtxt = String.Format("and has suffered an allergic reaction.");
+                    }
 
                     if (hemorrhage == 2)
                     {
@@ -441,21 +531,24 @@ namespace Uttam_Transfer_Of_Care
                     if (consciousness == 2) { ConLevel = "The patient is unconscious."; }
                     else if (consciousness == 1) { ConLevel = "The patient is disoreinted."; }
                     else if (consciousness == 0) { ConLevel = "The patient is fully conscious."; }
-                    String Preamble = "";
                     string wound_level_description = String.Format("The patient is a {0} year old {1} {2} {3} {4} {5} {6} {7} {8} {9}. ", //  /n is new line if needed
                         age, gender, Woundtxt, HemLevel, linktxt1, CirLevel, BreLevel, linktxt2, AirLevel, ConLevel);
 
                     if (Woundtxt == "null")
                     {
+                        string bre_str = Convert.ToString(breathing);
+
                         MessageBox.Show(wound_location);
                         MessageBox.Show(wound_type);
+                        MessageBox.Show(bre_str);
+
                     }
 
                     System.Drawing.Graphics g = this.CreateGraphics();
                     g.SmoothingMode = SmoothingMode.AntiAlias;
-                    
+
                     g.FillRoundedRectangle(new SolidBrush(Color.FromName("AliceBlue")), 700, 150, 1600, 300, 50);
-                    g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"),10f), 700, 150, 1590, 290, 50);
+                    g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"), 10f), 700, 150, 1590, 290, 50);
                     Show_incoming_message();
 
                     async void Show_incoming_message()
@@ -538,6 +631,440 @@ namespace Uttam_Transfer_Of_Care
                     return bm;
                     #endregion
                 }
+                #endregion
+
+                #region update the treatment counts
+
+                int total_circ_count = circ1_count + circ2_count;
+                int total_conc_count = conc1_count + conc2_count;
+                int total_airway_count = airway1_count + airway2_count;
+                int total_breathing_count = breath1_count + breath2_count;
+                int total_hemorrhage_count = hem1_count + hem2_count;
+                int total_cpr_count = cpr2_count;
+
+                string str_total_circ = Convert.ToString(total_circ_count);
+                string str_total_conc = Convert.ToString(total_conc_count);
+                string str_total_air = Convert.ToString(total_airway_count);
+                string str_total_bre = Convert.ToString(total_breathing_count);
+                string str_total_hem = Convert.ToString(total_hemorrhage_count);
+                string str_total_cpr = Convert.ToString(total_cpr_count);
+                string str_mistake = Convert.ToString(mistake_count);
+                string str_success = Convert.ToString(total_success_count + total_partial_success_count);
+                string str_unsuccess = Convert.ToString(total_unsuccess_count);
+
+                hem_treat_count_box.Text = str_total_circ;
+                cpr_treat_count_box.Text = str_total_cpr;
+                air_treat_count_box.Text = str_total_air;
+                con_treat_count_box.Text = str_total_conc;
+                bre_treat_count_box.Text = str_total_bre;
+                cir_treat_count_box.Text = str_total_circ;
+                treatment_NR_text.Text = str_mistake;
+                treatment_succ_text.Text = str_success;
+                treatment_uns_text.Text = str_unsuccess;
+
+
+
+                #endregion
+
+                #region code to actually construct rectangles for indicators
+                // Draw a vertically oriented battery with
+                // the indicated percentage filled in.
+                void DrawVerticalIndicator(Graphics gr, float indicator_level, int wid, int hgt, Color bg_color, Color outline_color, Color charged_color, Color uncharged_color, bool striped)
+                {
+                    gr.Clear(bg_color);
+                    gr.SmoothingMode = SmoothingMode.AntiAlias;
+
+                    // Make a rectangle for the main body.
+                    float thickness = hgt / 20f;
+                    RectangleF body_rect = new RectangleF(
+                        thickness * 0.5f, thickness * 1.5f,
+                        wid - thickness, hgt - thickness * 2f);
+
+                    using (Pen pen = new Pen(outline_color, thickness))
+                    {
+                        // Fill the body
+                        using (Brush brush = new SolidBrush(uncharged_color))
+                        {
+                            gr.FillRectangle(brush, body_rect);
+                        }
+
+                        // Fill the required area with color.
+                        float indicator_hgt = body_rect.Height * indicator_level;
+                        RectangleF charged_rect = new RectangleF(
+                            body_rect.Left, body_rect.Bottom - indicator_hgt,
+                            body_rect.Width, indicator_hgt);
+                        using (Brush brush = new SolidBrush(charged_color))
+                        {
+                            gr.FillRectangle(brush, charged_rect);
+                        }
+
+                        // Optionally stripe multiples of 25%
+                        if (striped)
+                            for (int i = 1; i <= 3; i++)
+                            {
+                                float y = body_rect.Bottom -
+                                    i * 0.33f * body_rect.Height;
+                                gr.DrawLine(pen, body_rect.Left, y,
+                                    body_rect.Right, y);
+                            }
+
+                        // Draw the main body.
+                        gr.DrawPath(pen, MakeRoundedRect(
+                            body_rect, thickness, thickness,
+                            true, true, true, true));
+
+                        // Draw the positive terminal. //
+                        //RectangleF terminal_rect = new RectangleF(
+                        //    wid / 2f - thickness, 0,
+                        //    2 * thickness, thickness);
+                        //gr.DrawPath(pen, MakeRoundedRect(
+                        //    terminal_rect, thickness / 2f, thickness / 2f,
+                        //    true, true, false, false));
+                    }
+                }
+
+                // Draw a rectangle in the indicated Rectangle
+                // rounding the indicated corners.
+                #region code to make rounded rectangle
+                GraphicsPath MakeRoundedRect(
+                    RectangleF rect, float xradius, float yradius,
+                    bool round_ul, bool round_ur, bool round_lr, bool round_ll)
+                {
+                    // Make a GraphicsPath to draw the rectangle.
+                    PointF point1, point2;
+                    GraphicsPath path = new GraphicsPath();
+
+                    // Upper left corner.
+                    if (round_ul)
+                    {
+                        RectangleF corner = new RectangleF(
+                            rect.X, rect.Y,
+                            2 * xradius, 2 * yradius);
+                        path.AddArc(corner, 180, 90);
+                        point1 = new PointF(rect.X + xradius, rect.Y);
+                    }
+                    else point1 = new PointF(rect.X, rect.Y);
+
+                    // Top side.
+                    if (round_ur)
+                        point2 = new PointF(rect.Right - xradius, rect.Y);
+                    else
+                        point2 = new PointF(rect.Right, rect.Y);
+                    path.AddLine(point1, point2);
+
+                    // Upper right corner.
+                    if (round_ur)
+                    {
+                        RectangleF corner = new RectangleF(
+                            rect.Right - 2 * xradius, rect.Y,
+                            2 * xradius, 2 * yradius);
+                        path.AddArc(corner, 270, 90);
+                        point1 = new PointF(rect.Right, rect.Y + yradius);
+                    }
+                    else point1 = new PointF(rect.Right, rect.Y);
+
+                    // Right side.
+                    if (round_lr)
+                        point2 = new PointF(rect.Right, rect.Bottom - yradius);
+                    else
+                        point2 = new PointF(rect.Right, rect.Bottom);
+                    path.AddLine(point1, point2);
+
+                    // Lower right corner.
+                    if (round_lr)
+                    {
+                        RectangleF corner = new RectangleF(
+                            rect.Right - 2 * xradius,
+                            rect.Bottom - 2 * yradius,
+                            2 * xradius, 2 * yradius);
+                        path.AddArc(corner, 0, 90);
+                        point1 = new PointF(rect.Right - xradius, rect.Bottom);
+                    }
+                    else point1 = new PointF(rect.Right, rect.Bottom);
+
+                    // Bottom side.
+                    if (round_ll)
+                        point2 = new PointF(rect.X + xradius, rect.Bottom);
+                    else
+                        point2 = new PointF(rect.X, rect.Bottom);
+                    path.AddLine(point1, point2);
+
+                    // Lower left corner.
+                    if (round_ll)
+                    {
+                        RectangleF corner = new RectangleF(
+                            rect.X, rect.Bottom - 2 * yradius,
+                            2 * xradius, 2 * yradius);
+                        path.AddArc(corner, 90, 90);
+                        point1 = new PointF(rect.X, rect.Bottom - yradius);
+                    }
+                    else point1 = new PointF(rect.X, rect.Bottom);
+
+                    // Left side.
+                    if (round_ul)
+                        point2 = new PointF(rect.X, rect.Y + yradius);
+                    else
+                        point2 = new PointF(rect.X, rect.Y);
+                    path.AddLine(point1, point2);
+
+                    // Join with the start point.
+                    path.CloseFigure();
+
+                    return path;
+                }
+                #endregion
+
+                #endregion
+            }
+
+            void UIController()
+            {
+                #region old initializer - commented out
+                //if (UICounter == 0)
+                //{
+                //    UICounter += 1;
+
+                //    #region generate the natural language patient status text
+
+
+                //    if (wound_type == "gunshot" && hemorrhage == 2) { Woundtxt = String.Format("and has a serious gunshot wound to the {0}.", wound_location); }
+                //    else if (wound_type == "gunshot" && hemorrhage == 1) { Woundtxt = String.Format("and has a gunshot wound to the {0}.", wound_location); }
+                //    if (wound_type == "blunt force trauma" && hemorrhage == 2) { Woundtxt = String.Format("and has serious impact trauma to the {0}.", wound_location); }
+                //    else if (wound_type == "blunt force trauma" && hemorrhage < 2) { Woundtxt = String.Format("and has impact trauma to the {0}.", wound_location); }
+                //    if (wound_type == "heart attack" && circulation == 2) { Woundtxt = String.Format("and has suffered a cardiac arrest."); }
+                //    else if (wound_type == "heart attack" && circulation == 1) { Woundtxt = String.Format("and has suffered a cardiac event."); }
+                //    if (wound_type == "drowning") { Woundtxt = String.Format("and has suffered respiratory impairment due to submersion."); }
+                //    if (wound_type == "allergic reaction" && breathing == 2)
+                //    {
+                //        //MessageBox.Show("all react - bre prob");
+                //        Woundtxt = String.Format("and has suffered a severe allergic reaction.");
+                //    }
+                //    else if (wound_type == "allergic reaction" && breathing < 2)
+                //    {
+                //        //MessageBox.Show("all react - no bre prob");
+                //        Woundtxt = String.Format("and has suffered an allergic reaction.");
+                //    }
+
+                //    if (hemorrhage == 2)
+                //    {
+                //        HemLevel = "The patient is bleeding heavyily";
+                //    }
+                //    else if (hemorrhage == 1)
+                //    {
+                //        HemLevel = "The patient is bleeding lightly";
+                //    }
+                //    else if (hemorrhage == 0)
+                //    {
+                //        HemLevel = "The patient is not bleeding";
+                //    }
+
+                //    #region generate the first link text
+                //    if (hemorrhage == 2 || hemorrhage == 1)
+                //    {
+                //        if (circulation == 2 || circulation == 1)
+                //        {
+                //            linktxt1 = "and";
+                //        }
+                //        else linktxt1 = "but";
+                //    }
+                //    else
+                //    {
+                //        if (circulation == 2 || circulation == 1)
+                //        {
+                //            linktxt1 = "but";
+                //        }
+                //        else linktxt1 = "and";
+                //    }
+                //    #endregion
+
+                //    if (circulation == 2) { CirLevel = "has suffered a heart attack."; }
+                //    else if (circulation == 1) { CirLevel = "is experiencing heart arrythmia."; }
+                //    else if (circulation == 0) { CirLevel = "heart rate is normal."; }
+
+                //    if (breathing == 2) { BreLevel = "The patient is not breathing"; }
+                //    else if (breathing == 1) { BreLevel = "The patient is haveing trouble breathnig"; }
+                //    else if (breathing == 0) { BreLevel = "The patient is breathing normally"; }
+
+                //    #region generate the second link text
+                //    if (breathing == 2 && airway == 2)
+                //    {
+                //        linktxt2 = "and has";
+                //    }
+                //    else if (breathing == 2 && airway == 1)
+                //    {
+                //        linktxt2 = "and has";
+                //    }
+                //    else if (breathing == 2 && airway == 0)
+                //    {
+                //        linktxt2 = "despite";
+                //    }
+                //    else if (breathing == 1 && airway == 2)
+                //    {
+                //        linktxt2 = "and has";
+                //    }
+                //    else if (breathing == 1 && airway == 1)
+                //    {
+                //        linktxt2 = "and has";
+                //    }
+                //    else if (breathing == 1 && airway == 0)
+                //    {
+                //        linktxt2 = "despite";
+                //    }
+                //    else if (breathing == 0 && airway == 2)
+                //    {
+                //        linktxt2 = "despite";
+                //    }
+                //    else if (breathing == 0 && airway == 1)
+                //    {
+                //        linktxt2 = "despite";
+                //    }
+                //    else if (breathing == 0 && airway == 0)
+                //    {
+                //        linktxt2 = "and has";
+                //    }
+
+                //    #endregion
+
+                //    if (airway == 2) { AirLevel = "a blocked airway."; }
+                //    else if (airway == 1) { AirLevel = "a partially blocked airway."; }
+                //    else if (airway == 0) { AirLevel = "a clear airway."; }
+
+                //    if (consciousness == 2) { ConLevel = "The patient is unconscious."; }
+                //    else if (consciousness == 1) { ConLevel = "The patient is disoreinted."; }
+                //    else if (consciousness == 0) { ConLevel = "The patient is fully conscious."; }
+                //    string wound_level_description = String.Format("The patient is a {0} year old {1} {2} {3} {4} {5} {6} {7} {8} {9}. ", //  /n is new line if needed
+                //        age, gender, Woundtxt, HemLevel, linktxt1, CirLevel, BreLevel, linktxt2, AirLevel, ConLevel);
+
+                //    if (Woundtxt == "null")
+                //    {
+                //        string bre_str = Convert.ToString(breathing);
+
+                //        MessageBox.Show(wound_location);
+                //        MessageBox.Show(wound_type);
+                //        MessageBox.Show(bre_str);
+
+                //    }
+
+                //    System.Drawing.Graphics g = this.CreateGraphics();
+                //    g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                //    g.FillRoundedRectangle(new SolidBrush(Color.FromName("AliceBlue")), 700, 150, 1600, 300, 50);
+                //    g.DrawRoundedRectangle(new Pen(Color.FromName("turquoise"), 10f), 700, 150, 1590, 290, 50);
+                //    Show_incoming_message();
+
+                //    async void Show_incoming_message()
+                //    {
+                //        Patient_description_title.Visible = true;
+                //        Injury_level_description.Visible = true;
+                //        await Task.Delay(2000);
+                //        Injury_level_description.Text = wound_level_description;
+                //        //MessageBox.Show(wound_level_description);
+                //    }
+                //    #endregion
+
+                //    hem_ind_panel.BackgroundImage = DrawIndicator(hemorrhage);
+                //    air_ind_panel.BackgroundImage = DrawIndicator(airway);
+                //    breath_ind_panel.BackgroundImage = DrawIndicator(breathing);
+                //    conc_ind_panel.BackgroundImage = DrawIndicator(consciousness);
+                //    circ_ind_panel.BackgroundImage = DrawIndicator(circulation);
+                //}
+                #endregion
+
+                // add the indicator drawing part here
+                hem_ind_panel.BackgroundImage = DrawIndicator(hemorrhage);
+                air_ind_panel.BackgroundImage = DrawIndicator(airway);
+                breath_ind_panel.BackgroundImage = DrawIndicator(breathing);
+                conc_ind_panel.BackgroundImage = DrawIndicator(consciousness);
+                circ_ind_panel.BackgroundImage = DrawIndicator(circulation);
+
+                #region draw the indicator
+                Bitmap DrawIndicator(int pat_char_stat)
+                {
+                    #region assign variables
+                    int wid = 80; //indicator sise sizing
+                    int hgt = 160;
+                    Color bg_color = Color.FromName("White");
+                    Color outline_color = Color.FromName("Black");
+                    Color uncharged_color = Color.FromName("White");
+                    Color charged_color = Color.FromName("Green");
+                    PowerStatus batstatus = SystemInformation.PowerStatus;
+
+                    if (pat_char_stat == 0)
+                    {
+                        charged_color = Color.FromName("Green");
+                    }
+                    else if (pat_char_stat == 1)
+                    {
+                        charged_color = Color.FromName("Orange");
+                    }
+                    else
+                    {
+                        charged_color = Color.FromName("Red");
+                    }
+
+                    float indicator_level = 1f - (0.333f * pat_char_stat); //determine the indicator level depending on the specific patient statistic;
+                    bool striped = true; // add the stripes across the UI
+                    #endregion
+
+                    #region draw the indicator and return to calling class/object
+                    Bitmap bm = new Bitmap(wid, hgt);
+                    using (Graphics gr = Graphics.FromImage(bm))
+                    {
+                        // OLD CODE FROM EXAMPLE - to rotate indicator if needed - kept in for future reference - DELETE LATER
+                        #region old code
+                        // If the indicator has a horizontal orientation,
+                        // rotate so we can draw it vertically.
+                        //if (wid > hgt)
+                        //{
+                        //    gr.RotateTransform(90, MatrixOrder.Append);
+                        //    gr.TranslateTransform(wid, 0, MatrixOrder.Append);
+                        //    int temp = wid;
+                        //    wid = hgt;
+                        //    hgt = temp;
+                        //}
+                        #endregion
+
+                        // Draw the battery.
+                        DrawVerticalIndicator(gr, indicator_level, wid, hgt, bg_color,
+                            outline_color, charged_color, uncharged_color,
+                            striped);
+                    }
+                    return bm;
+                    #endregion
+                }
+                #endregion
+
+                #region update the treatment counts
+
+                int total_circ_count = circ1_count + circ2_count;
+                int total_conc_count = conc1_count + conc2_count;
+                int total_airway_count = airway1_count + airway2_count;
+                int total_breathing_count = breath1_count + breath2_count;
+                int total_hemorrhage_count = hem1_count + hem2_count;
+                int total_cpr_count = cpr2_count;
+
+                string str_total_circ = Convert.ToString(total_circ_count);
+                string str_total_conc = Convert.ToString(total_conc_count);
+                string str_total_air = Convert.ToString(total_airway_count);
+                string str_total_bre = Convert.ToString(total_breathing_count);
+                string str_total_hem = Convert.ToString(total_hemorrhage_count);
+                string str_total_cpr = Convert.ToString(total_cpr_count);
+                string str_mistake = Convert.ToString(mistake_count);
+                string str_success = Convert.ToString(total_success_count + total_partial_success_count);
+                string str_unsuccess = Convert.ToString(total_unsuccess_count);
+
+                hem_treat_count_box.Text = str_total_circ;
+                cpr_treat_count_box.Text = str_total_cpr;
+                air_treat_count_box.Text = str_total_air;
+                con_treat_count_box.Text = str_total_conc;
+                bre_treat_count_box.Text = str_total_bre;
+                cir_treat_count_box.Text = str_total_circ;
+                treatment_NR_text.Text = str_mistake;
+                treatment_succ_text.Text = str_success;
+                treatment_uns_text.Text = str_unsuccess;
+
+
+
                 #endregion
 
                 #region code to actually construct rectangles for indicators
@@ -694,6 +1221,18 @@ namespace Uttam_Transfer_Of_Care
             #region highlight appropriate buttons
             void ButtonHighlighter()
             {
+
+                Button_hemm_torniquet.BackColor = Color.FromName("Menu");
+                Button_hemm_treat.BackColor = Color.FromName("Menu");
+                Button_conc_drugs.BackColor = Color.FromName("Menu");
+                Button_air_Intubate.BackColor = Color.FromName("Menu");
+                Button_air_clearair.BackColor = Color.FromName("Menu");
+                Button_circ_drugs.BackColor = Color.FromName("Menu");
+                Button_circ_chest.BackColor = Color.FromName("Menu");
+                Button_breath_Oxygen.BackColor = Color.FromName("Menu");
+                Button_breath_aspirate.BackColor = Color.FromName("Menu");
+                Button_CPR.BackColor = Color.FromName("Menu");
+
                 //CHECK -REMOVE IF  NO USE
                 //treatment_timeline.Items.Add($"Display Action (EMS): Thread Running {action}.....");
                 if (action == "check hemorrhage")
@@ -711,7 +1250,6 @@ namespace Uttam_Transfer_Of_Care
                 {
                     Button_conc_drugs.BackColor = Color.Turquoise;
                 }
-
                 if (action == "check airway")
                 {
                     if (air == 2)
@@ -749,7 +1287,7 @@ namespace Uttam_Transfer_Of_Care
                 {
                     Button_CPR.BackColor = Color.Turquoise;
                 }
-            } 
+            }
             #endregion
         }
 
@@ -770,11 +1308,11 @@ namespace Uttam_Transfer_Of_Care
                 else if (wound_type_ID == 1) wound_type = "blunt force trauma";
                 else if (wound_type_ID == 2) wound_type = "drowning";
                 else if (wound_type_ID == 3) wound_type = "heart attack";
-                else wound_type = "allergic  reaction";
+                else wound_type = "allergic reaction";
                 #endregion
 
                 #region set wound location strings
-                
+
                 if (wound_type_ID > 1)
                 {
                     wound_location = "internal/global";
@@ -983,7 +1521,7 @@ namespace Uttam_Transfer_Of_Care
                     hem_deg_prob_longtime = 90;
                     hem_deg_prob_shorttime = 95;
                 }
-                else if (age >= 18 && age < 70)
+                else if (age >= 70)
                 {
                     hem_deg_prob_longtime = 60;
                     hem_deg_prob_shorttime = 85;
@@ -1144,26 +1682,49 @@ namespace Uttam_Transfer_Of_Care
                         }
                     }
                 }
-                else if (wound_type == "blunt force trauma")
+                else if (wound_type == "blunt force trauma") // blow to the head probability of bleeding 
                 {
-                    a = random.Next(0, 100);
-                    if (a <= 50)
+
+                    if (wound_loc_ID == 1 || wound_loc_ID == 12)
                     {
-                        hemorrhage = 0;
-                        initial_hemorrhage = hemorrhage;
-                    }
-                    else if (a > 50 && a < 80)
-                    {
-                        hemorrhage = 1;
-                        initial_hemorrhage = hemorrhage;
+                        a = random.Next(0, 100);
+                        if (a <= 40)
+                        {
+                            hemorrhage = 0;
+                            initial_hemorrhage = hemorrhage;
+                        }
+                        else if (a > 40 && a < 70)
+                        {
+                            hemorrhage = 1;
+                            initial_hemorrhage = hemorrhage;
+                        }
+                        else
+                        {
+                            hemorrhage = 2;
+                            initial_hemorrhage = hemorrhage; ;
+                        }
                     }
                     else
                     {
-                        hemorrhage = 2;
-                        initial_hemorrhage = hemorrhage; ;
+                        a = random.Next(0, 100);
+                        if (a <= 50)
+                        {
+                            hemorrhage = 0;
+                            initial_hemorrhage = hemorrhage;
+                        }
+                        else if (a > 50 && a < 80)
+                        {
+                            hemorrhage = 1;
+                            initial_hemorrhage = hemorrhage;
+                        }
+                        else
+                        {
+                            hemorrhage = 2;
+                            initial_hemorrhage = hemorrhage; ;
+                        }
                     }
                 }
-                else
+                else // chance of bleeding fof other injuries
                 {
                     a = random.Next(0, 100);
                     if (a <= 80)                        //80% chance of no hemorrhage
@@ -1185,7 +1746,7 @@ namespace Uttam_Transfer_Of_Care
                 #endregion
 
                 #region set consciousness level depedent on hemorrhage level
-                if (hemorrhage == 2)
+                if (hemorrhage == 2) //if heavy bleeding probability of various consciouness levels.
                 {
                     a = random.Next(0, 100);
                     if (a < 25)
@@ -1247,9 +1808,9 @@ namespace Uttam_Transfer_Of_Care
                 #region cardiac variables dependent on other injury types
 
                 #region gunshot
-                if (wound_type_ID == 0)
+                if (wound_type_ID == 0) // if gunshot wound and if...
                 {
-                    if (hemorrhage == 2)
+                    if (hemorrhage == 2) //...heavy bleeding, then this probability of heart problem
                     {
                         a = random.Next(0, 100);
                         if (a < 10) // 10% probability of no heart problem 
@@ -1268,10 +1829,10 @@ namespace Uttam_Transfer_Of_Care
                             initial_circulation = circulation;
                         }
                     }
-                    else if (hemorrhage == 1)
+                    else if (hemorrhage == 1) // light bleeding then these probabilities of heart problem
                     {
                         a = random.Next(0, 100);
-                        if (a < 50) // 500% probability of no heart problem 
+                        if (a < 50) // 50% probability of no heart problem 
                         {
                             circulation = 0;
                             initial_circulation = circulation;
@@ -1293,7 +1854,7 @@ namespace Uttam_Transfer_Of_Care
                 #region blunt force trauma
                 else if (wound_type_ID == 1)
                 {
-                    if (hemorrhage == 2)
+                    if (hemorrhage == 2) //if BFT and heavy bleed then the following probability of heart problems
                     {
                         if (wound_loc_ID == 1 || wound_loc_ID == 2 || wound_loc_ID == 3 || wound_loc_ID == 12 || wound_loc_ID == 13 || wound_loc_ID == 14)
                         {
@@ -1334,7 +1895,7 @@ namespace Uttam_Transfer_Of_Care
                             }
                         }
                     }
-                    else if (hemorrhage < 2)
+                    else if (hemorrhage < 2) // if light or no bleeding then the following probability of heart problems (also dependent on injury location)
                     {
                         if (wound_loc_ID == 1 || wound_loc_ID == 2 || wound_loc_ID == 3 || wound_loc_ID == 12 || wound_loc_ID == 13 || wound_loc_ID == 14)
                         {
@@ -1399,7 +1960,7 @@ namespace Uttam_Transfer_Of_Care
 
                 #region Allergy 
 
-                if (wound_type_ID==4)
+                if (wound_type_ID == 4)
                 {
                     a = random.Next(0, 100); // 40% chance of no heart problem
                     if (a < 40)
@@ -1568,15 +2129,21 @@ namespace Uttam_Transfer_Of_Care
                     a = random.Next(0, 100);
                     if (a < 2) // 2% chance of no difficulties
                     {
-                        breathing = 0;
-                        initial_breathing = breathing;
+                        if (breathing < 1)
+                        {
+                            breathing = 0;
+                            initial_breathing = breathing;
+                        }
                     }
                     else if (a >= 2 && a < 90) //88% chance of minor brething difficulties
                     {
-                        breathing = 1;
-                        initial_breathing = breathing;
+                        if (breathing < 2)
+                        {
+                            breathing = 1;
+                            initial_breathing = breathing;
+                        }
                     }
-                    else //10% chance of sever breathing problem
+                    else //10% chance of severe breathing problem
                     {
                         breathing = 2;
                         initial_breathing = breathing;
@@ -1764,13 +2331,13 @@ namespace Uttam_Transfer_Of_Care
                         }
                     }
                 }
-                else //chance of airway problem dependent on allergy
+                else if (wound_type_ID == 4) //chance of consciousness problem dependent on allergy
                 {
                     a = random.Next(0, 100);
                     if (a < 25) // 25% chanve of no conc problem
                     {
                         consciousness = 0;
-                        initial_airway = airway;
+                        initial_consciousness = consciousness;
                     }
                     else if (a >= 25 && a < 75) // 50% chance of minor problem
                     {
@@ -1782,6 +2349,69 @@ namespace Uttam_Transfer_Of_Care
                         airway = 2;
                     }
                 }
+
+                if (wound_type_ID == 4) //chance of airway problem dependent on allergy
+                {
+                    a = random.Next(0, 100);
+                    if (a < 66) // 50% chance of minor problem
+                    {
+                        airway = 1;
+                        initial_airway = airway;
+                        breathing = 1;
+                        initial_breathing = breathing;
+                    }
+                    else //25% chance of being unconscious
+                    {
+                        airway = 2;
+                        breathing = 2;
+                        initial_breathing = breathing;
+                    }
+                }
+
+                if (wound_type_ID == 4) //chance of consciousness problem dependent on allergy
+                {
+                    if (breathing == 2)
+                    {
+                        a = random.Next(0, 100);
+                        if (a < 50) // 50% chanve of minor conc problem
+                        {
+                            if (consciousness < 2)
+                            {
+                                consciousness = 1;
+                            }
+                        }
+                        else //50% chance of being unconscious
+                        {
+                            consciousness = 2;
+                            initial_consciousness = consciousness;
+                        }
+                    }
+                    else if (breathing == 1)
+                    {
+                        a = random.Next(0, 100);
+                        if (a < 10) // 10% chanve of no conc problem
+                        {
+                            {
+                                consciousness = 0;
+                                initial_consciousness = consciousness;
+                            }
+                        }
+                        else if (a >= 10 && a < 70) // 60% chance of minor problem
+                        {
+                            if (consciousness < 2)
+                            {
+                                consciousness = 1;
+                            }
+                            initial_consciousness = consciousness;
+                        }
+                        else //25% chance of being unconscious
+                        {
+                            consciousness = 2;
+                            initial_consciousness = consciousness;
+                        }
+                    }
+                }
+
                 #endregion
 
                 #endregion
@@ -1791,7 +2421,7 @@ namespace Uttam_Transfer_Of_Care
                 #endregion
 
                 #region Update UI
-                subject = "update UI"; //check if this is ok! 
+                subject = "update patient initialization info"; //check if this is ok! 
                 Environment_control_function();
                 #endregion
 
@@ -1815,16 +2445,24 @@ namespace Uttam_Transfer_Of_Care
                 #region increase hemorrhage degradation if initial hemorrhage score was 2
                 if (initial_hemorrhage == 2)
                 {
-                    hem_deg_prob_longtime -= (30 * patient_instability_score); // change 30 to a more random variable later
-                    hem_deg_prob_shorttime -= (25 * patient_instability_score); // same change later
+                    hem_deg_prob_longtime -= (20 * patient_hem_instability_score); // change 30 to a more random variable later
+                    hem_deg_prob_shorttime -= (10 * patient_hem_instability_score); // same change later
 
-                    if (hem_deg_prob_longtime < 25)
+                    if (hem_deg_prob_longtime < 20) //lowest hem deg prob can go (remember this is the likelyhood the patient will not change
                     {
-                        hem_deg_prob_longtime = 25;
+                        hem_deg_prob_longtime = 20;
                     }
                     if (hem_deg_prob_shorttime < 25)
                     {
                         hem_deg_prob_shorttime = 25;
+                    }
+                    if (hem_deg_prob_longtime > 90) //lowest hem deg prob can go (remember this is the likelyhood the patient will not change
+                    {
+                        hem_deg_prob_longtime = 90;
+                    }
+                    if (hem_deg_prob_shorttime > 99)
+                    {
+                        hem_deg_prob_shorttime = 99;
                     }
                 }
                 #endregion
@@ -1832,7 +2470,8 @@ namespace Uttam_Transfer_Of_Care
                 //#region apply patient degradation based on rules
                 #region hemorrhage degradation - long term and short term probabilities
                 Random chr_rnd = new Random();
-                    if (hemorrhage == 1 && stopwatch_hem.Elapsed.Seconds >= 30)
+                if (initial_hemorrhage == 2)
+                    if (hemorrhage == 1 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
                     {
                         int hem_rand = chr_rnd.Next(1, 101);
                         if (hem_rand > hem_deg_prob_longtime)
@@ -1840,53 +2479,416 @@ namespace Uttam_Transfer_Of_Care
                             hemorrhage = 2;
                             treatment_timeline.Items.Add("Patient bleeding worsened - now heavy bleeding");
 
-                            patient_instability_score += 1;
+                            patient_hem_instability_score += 1;
                         }
                         else
                         {
                             hemorrhage = hemorrhage;
-                            treatment_timeline.Items.Add("hem No worse");
+                            treatment_timeline.Items.Add("still light bleeding");
+                            patient_hem_instability_score -= 1;
                         }
                     }
-                    else if (hemorrhage == 1 && stopwatch_hem.Elapsed.Seconds < 30)
+                    else if (hemorrhage == 1 && stopwatch_hem.Elapsed.TotalSeconds < 60)
                     {
                         int hem_rand = chr_rnd.Next(1, 101);
                         if (hem_rand > hem_deg_prob_shorttime)
                         {
-                            hemorrhage = 2; 
+                            hemorrhage = 2;
                             treatment_timeline.Items.Add("Patient bleeding worsened - now heavy bleeding");
-                            patient_instability_score += 1;
+                            patient_hem_instability_score += 1;
                         }
                         else
                         {
                             hemorrhage = hemorrhage;
-                            treatment_timeline.Items.Add("hem No worse");
+                            treatment_timeline.Items.Add("still light bleeding");
+                            patient_hem_instability_score -= 1;
                         }
                     }
-                    else if (hemorrhage == 2)
+               else if (initial_hemorrhage == 1)
+                    if (hemorrhage == 0 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
                     {
-                        hemorrhage = hemorrhage;
+                        int hem_rand = chr_rnd.Next(1, 101);
+                        if (hem_rand > hem_deg_prob_longtime)
+                        {
+                            hemorrhage = 1;
+                            treatment_timeline.Items.Add("Patient bleeding worsened - now light bleeding");
+                            patient_hem_instability_score += 1;
+                        }
+                        else
+                        {
+                            hemorrhage = hemorrhage;
+                            treatment_timeline.Items.Add("bleeding No worse");
+                            patient_hem_instability_score -= 1;
+                        }
                     }
-                    else if (hemorrhage == 0)
+                    else if (hemorrhage == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
                     {
-                        hemorrhage = hemorrhage;
+                        int hem_rand = chr_rnd.Next(1, 101);
+                        if (hem_rand > hem_deg_prob_shorttime)
+                        {
+                            hemorrhage = 1;
+                            treatment_timeline.Items.Add("Patient bleeding worsened - now light bleeding");
+                            patient_hem_instability_score += 1;
+                        }
+                        else
+                        {
+                            hemorrhage = hemorrhage;
+                            treatment_timeline.Items.Add("bleeding No worse");
+                            patient_hem_instability_score -= 1;
+                        }
                     }
-                    #endregion
+                else { hemorrhage = 0; }
 
-                    #region consciousness degradation  due to hemmorhage- long term and short term probabilities
-                    Random chr_rnd_conc = new Random();
-                if (hemorrhage == 2 && consciousness == 0 && stopwatch_hem.Elapsed.Seconds >= 30)
+                #endregion
+
+                #region circulation degradation  due to hemmorhage- long term and short term probabilities
+
+                hemcirc0to1_deg_prob_longtime += (5 * patient_circ_instability_score);
+                hemcirc0to2_deg_prob_longtime += (5 * patient_circ_instability_score);
+                hemcirc0to1_deg_prob_shorttime += (5 * patient_circ_instability_score);
+                hemcirc0to2_deg_prob_shorttime += (5 * patient_circ_instability_score);
+
+                if (hemcirc0to1_deg_prob_shorttime < 20) { hemcirc0to1_deg_prob_shorttime = 20; } // set minimum and maximum thresholds
+                if (hemcirc0to2_deg_prob_shorttime < 18) { hemcirc0to2_deg_prob_shorttime = 18; }
+                if (hemcirc0to1_deg_prob_longtime < 20) { hemcirc0to1_deg_prob_longtime = 20; }
+                if (hemcirc0to2_deg_prob_longtime < 20) { hemcirc0to2_deg_prob_longtime = 20; }
+                if (hemcirc0to2_deg_prob_longtime > 50) { hemcon0to1_deg_prob_longtime = 100 - hemcon0to2_deg_prob_longtime; } //probability of severe goes up
+                if (hemcirc0to2_deg_prob_longtime > 75) { hemcirc0to2_deg_prob_longtime = 75; }
+                if (hemcirc0to2_deg_prob_longtime == 75) { hemcirc0to1_deg_prob_longtime = 25; }
+
+                Random chr_rnd_circ = new Random();
+                if (hemorrhage == 2 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
                 {
-                    int hem_rand = chr_rnd_conc.Next(1, 101);
-                    if (hem_rand < hemcon0to1_deg_prob_longtime)
+                    int hem_rand = chr_rnd_circ.Next(1, 101);
+                    if (hem_rand < hemcirc0to1_deg_prob_longtime)
+                    {
+                        circulation = 1;
+                        treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
+                        patient_circ_instability_score += 1;
+                    }
+                    else if (hem_rand > hemcirc0to1_deg_prob_longtime && hem_rand <= (hemcirc0to2_deg_prob_longtime + hemcirc0to1_deg_prob_longtime))
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 2;
+                    }
+                    else
+                    {
+                        patient_circ_instability_score -= 1;
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                    }
+                }
+                else if (hemorrhage == 2 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+                {
+                    int hem_rand = chr_rnd_circ.Next(1, 101);
+                    if (hem_rand < hemcirc0to1_deg_prob_shorttime)
+                    {
+                        circulation = 1;
+                        treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
+                        patient_circ_instability_score += 1;
+                    }
+                    else if (hem_rand > hemcirc0to1_deg_prob_shorttime && hem_rand <= (hemcirc0to2_deg_prob_shorttime + hemcirc0to1_deg_prob_shorttime))
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 2;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+                else if (hemorrhage == 2 && circulation == 1 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+                {
+                    int hem_rand = chr_rnd_circ.Next(1, 101);
+                    if (hem_rand > hemcirc1to2_deg_prob_longtime)
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 1;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+                else if (hemorrhage == 2 && circulation == 1 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+                {
+                    int hem_rand = chr_rnd_circ.Next(1, 101);
+                    if (hem_rand > hemcirc1to2_deg_prob_shorttime)
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 1;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+
+                #endregion
+
+                #region circulation degradation  long term and short term probabilities
+
+                circ0to1if1_deg_prob_longtime += (5 * patient_circ_instability_score);
+                circ0to2if1_deg_prob_longtime += (5 * patient_circ_instability_score);
+                circ1to2if1_deg_prob_longtime += (5 * patient_circ_instability_score);
+                circ0to1if2_deg_prob_longtime += (5 * patient_circ_instability_score);
+                circ0to2if2_deg_prob_longtime += (5 * patient_circ_instability_score);
+                circ1to2if2_deg_prob_longtime += (5 * patient_circ_instability_score);
+                circ0to1if1_deg_prob_shorttime += (5 * patient_circ_instability_score);
+                circ0to2if1_deg_prob_shorttime += (5 * patient_circ_instability_score);
+                circ1to2if1_deg_prob_shorttime += (5 * patient_circ_instability_score);
+                circ0to1if2_deg_prob_shorttime += (5 * patient_circ_instability_score);
+                circ0to2if2_deg_prob_shorttime += (5 * patient_circ_instability_score);
+                circ1to2if2_deg_prob_shorttime += (5 * patient_circ_instability_score);
+
+
+
+                if (circ0to1if1_deg_prob_longtime < 40) { circ0to1if1_deg_prob_longtime = 40; }
+                if (circ0to1if1_deg_prob_longtime > 60) { circ0to1if1_deg_prob_longtime = 60; }
+                if (circ0to2if1_deg_prob_longtime < 20) { circ0to2if1_deg_prob_longtime = 20; }
+                if (circ0to2if1_deg_prob_longtime > 40) { circ0to2if1_deg_prob_longtime = 40; }
+                if (circ1to2if1_deg_prob_longtime < 30) { circ1to2if1_deg_prob_longtime = 30; }
+                if (circ1to2if1_deg_prob_longtime > 50) { circ1to2if1_deg_prob_longtime = 50; }
+                if (circ0to1if2_deg_prob_longtime < 50) { circ0to1if2_deg_prob_longtime = 50; }
+                if (circ0to1if2_deg_prob_longtime > 70) { circ0to1if2_deg_prob_longtime = 70; }
+                if (circ0to2if2_deg_prob_longtime < 25) { circ0to2if2_deg_prob_longtime = 25; }
+                if (circ0to2if2_deg_prob_longtime > 45) { circ0to2if2_deg_prob_longtime = 45; }
+                if (circ1to2if2_deg_prob_longtime < 50) { circ1to2if2_deg_prob_longtime = 50; }
+                if (circ1to2if2_deg_prob_longtime > 70) { circ1to2if2_deg_prob_longtime = 70; }
+
+                if ((circ0to1if2_deg_prob_longtime +  circ0to2if2_deg_prob_longtime) >100){ circ0to1if2_deg_prob_longtime = 100-circ0to2if2_deg_prob_longtime;}
+
+                if (circ0to1if1_deg_prob_shorttime < 30) { circ0to1if1_deg_prob_shorttime = 30; }
+                if (circ0to1if1_deg_prob_shorttime > 50) { circ0to1if1_deg_prob_shorttime = 50; }
+                if (circ0to2if1_deg_prob_shorttime < 5) { circ0to2if1_deg_prob_shorttime = 5; }
+                if (circ0to2if1_deg_prob_shorttime > 25) { circ0to2if1_deg_prob_shorttime = 25; }
+                if (circ1to2if1_deg_prob_shorttime < 15) { circ1to2if1_deg_prob_shorttime = 15; }
+                if (circ1to2if1_deg_prob_shorttime > 35) { circ1to2if1_deg_prob_shorttime = 35; }
+                if (circ0to1if2_deg_prob_shorttime < 40) { circ0to1if2_deg_prob_shorttime = 40; }
+                if (circ0to1if2_deg_prob_shorttime > 60) { circ0to1if2_deg_prob_shorttime = 60; }
+                if (circ0to2if2_deg_prob_shorttime < 15) { circ0to2if2_deg_prob_shorttime = 15; }
+                if (circ0to2if2_deg_prob_shorttime > 35) { circ0to2if2_deg_prob_shorttime = 35; }
+                if (circ1to2if2_deg_prob_shorttime < 30) { circ1to2if2_deg_prob_shorttime = 30; }
+                if (circ1to2if2_deg_prob_shorttime > 50) { circ1to2if2_deg_prob_shorttime = 50; }
+
+                Random chr_rnd_heart = new Random();
+                if (initial_circulation == 1 && circulation == 0 && stopwatch_cir.Elapsed.TotalSeconds >= 60)
+                {
+                    int hem_rand = chr_rnd_heart.Next(1, 101);
+                    if (hem_rand < circ0to1if1_deg_prob_longtime)
+                    {
+                        circulation = 1;
+                        treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
+                        patient_circ_instability_score += 1;
+                    }
+                    else if (hem_rand > circ0to1if1_deg_prob_longtime && hem_rand <= circ0to2if1_deg_prob_longtime)
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 2;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+                else if (initial_circulation == 1 && circulation == 0 && stopwatch_cir.Elapsed.TotalSeconds < 60)
+                {
+                    int hem_rand = chr_rnd_heart.Next(1, 101);
+                    if (hem_rand < circ0to1if1_deg_prob_shorttime)
+                    {
+                        circulation = 1;
+                        treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
+                        patient_circ_instability_score += 1;
+                    }
+                    else if (hem_rand > circ0to1if1_deg_prob_shorttime && hem_rand <= circ0to2if1_deg_prob_shorttime)
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 2;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+                else if (initial_circulation == 2 && circulation == 0 && stopwatch_cir.Elapsed.TotalSeconds >= 60)
+                {
+                    int hem_rand = chr_rnd_heart.Next(1, 101);
+                    if (hem_rand < circ0to1if2_deg_prob_longtime)
+                    {
+                        circulation = 1;
+                        treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
+                        patient_circ_instability_score += 1;
+                    }
+                    else if (hem_rand > circ0to1if2_deg_prob_longtime && hem_rand <= circ0to2if2_deg_prob_longtime)
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 2;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+                else if (initial_circulation == 2 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+                {
+                    int hem_rand = chr_rnd_heart.Next(1, 101);
+                    if (hem_rand < circ0to1if2_deg_prob_shorttime)
+                    {
+                        circulation = 1;
+                        treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
+                        patient_circ_instability_score += 1;
+                    }
+                    else if (hem_rand > circ0to1if2_deg_prob_shorttime && hem_rand <= circ0to2if2_deg_prob_shorttime)
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 2;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+                else if (initial_circulation == 1 && circulation == 1 && stopwatch_cir.Elapsed.TotalSeconds >= 60)
+                {
+                    int hem_rand = chr_rnd_heart.Next(1, 101);
+                    if (hem_rand < circ1to2if1_deg_prob_longtime)
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 1;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+                else if (initial_circulation == 1 && circulation == 1 && stopwatch_cir.Elapsed.TotalSeconds < 60)
+                {
+                    int hem_rand = chr_rnd_heart.Next(1, 101);
+                    if (hem_rand < circ1to2if1_deg_prob_shorttime)
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 1;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+                else if (initial_circulation == 2 && circulation == 1 && stopwatch_cir.Elapsed.TotalSeconds >= 60)
+                {
+                    int hem_rand = chr_rnd_heart.Next(1, 101);
+                    if (hem_rand < circ1to2if2_deg_prob_longtime)
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 1;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+                else if (initial_circulation == 2 && circulation == 1 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+                {
+                    int hem_rand = chr_rnd_heart.Next(1, 101);
+                    if (hem_rand < circ1to2if2_deg_prob_shorttime)
+                    {
+                        circulation = 2;
+                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
+                        patient_circ_instability_score += 1;
+                    }
+                    else
+                    {
+                        circulation = circulation;
+                        treatment_timeline.Items.Add("heart no worse");
+                        patient_circ_instability_score -= 1;
+                    }
+                }
+
+                #endregion
+
+                #region consciousness degradation  due to breathing- long term and short term probabilities
+
+                brecon0to1_deg_prob_longtime += (5 * patient_con_instability_score);
+                brecon0to2_deg_prob_longtime += (5 * patient_con_instability_score);
+                brecon0to1_deg_prob_shorttime += (5 * patient_con_instability_score);
+                brecon0to2_deg_prob_shorttime += (5 * patient_con_instability_score);
+                brecon1to2_deg_prob_shorttime += (5 * patient_con_instability_score);
+                brecon1to2_deg_prob_longtime += (patient_con_instability_score);
+
+                if (brecon0to1_deg_prob_shorttime < 20) { brecon0to1_deg_prob_shorttime = 20; } // set minimum and maximum thresholds
+                if (brecon0to2_deg_prob_shorttime < 18) { brecon0to2_deg_prob_shorttime = 18; }
+                if (brecon0to1_deg_prob_longtime < 20) { brecon0to1_deg_prob_longtime = 20; }
+                if (brecon0to2_deg_prob_longtime < 20) { brecon0to2_deg_prob_longtime = 20; }
+                if (brecon0to2_deg_prob_longtime > 50) { brecon0to1_deg_prob_longtime = 100 - brecon0to2_deg_prob_longtime; } //probability of severe goes up
+                if (brecon0to2_deg_prob_longtime > 75) { brecon0to2_deg_prob_longtime = 75; }
+                if (brecon0to2_deg_prob_longtime == 75) { brecon0to1_deg_prob_longtime = 25; }
+
+                Random chr_rnd_conc_bre = new Random();
+                if (breathing == 2 && consciousness == 0 && stopwatch_bre.Elapsed.TotalSeconds >= 60)
+                {
+                    int brecon_rand = chr_rnd_conc_bre.Next(1, 101);
+                    if (brecon_rand < brecon0to1_deg_prob_longtime)
                     {
                         consciousness = 1; //change to 1 after testing check
                         treatment_timeline.Items.Add("Patient consciousness worsened - now semi-conscious");
-                        patient_instability_score += 1;
+                        patient_con_instability_score += 1;
                     }
-                    else if (hem_rand > hemcon0to1_deg_prob_longtime && hem_rand <= (hemcon0to2_deg_prob_longtime + hemcon0to1_deg_prob_longtime))
+                    else if (brecon_rand > brecon0to1_deg_prob_longtime && brecon_rand <= (brecon0to2_deg_prob_longtime + brecon0to1_deg_prob_longtime))
                     {
                         consciousness = 2; //change to 1 after testing check
+                        treatment_timeline.Items.Add("Patient consciousness worsened - now unconscious");
+                        patient_con_instability_score += 2;
+                    }
+                    else
+                    {
+                        consciousness = consciousness;
+                        treatment_timeline.Items.Add("conc No worse");
+                        patient_con_instability_score -= 1;
+                    }
+                }
+                else if (breathing == 2 && consciousness == 0 && stopwatch_bre.Elapsed.TotalSeconds < 60)
+                {
+                    int brecon_rand = chr_rnd_conc_bre.Next(1, 101);
+                    if (brecon_rand < brecon0to1_deg_prob_shorttime)
+                    {
+                        consciousness = 1;
+                        treatment_timeline.Items.Add("Patient consciousness worsened - now semi-conscious");
+                        patient_con_instability_score += 1;
+                    }
+                    else if (brecon_rand > brecon0to1_deg_prob_shorttime && brecon_rand <= (brecon0to2_deg_prob_shorttime + brecon0to1_deg_prob_shorttime))
+                    {
+                        consciousness = 2;
                         treatment_timeline.Items.Add("Patient consciousness worsened - now unconscious");
                         patient_instability_score += 2;
                     }
@@ -1894,16 +2896,130 @@ namespace Uttam_Transfer_Of_Care
                     {
                         consciousness = consciousness;
                         treatment_timeline.Items.Add("conc No worse");
+                        patient_instability_score -= 1;
                     }
                 }
-                else if (hemorrhage == 2 && consciousness == 0 && stopwatch_hem.Elapsed.Seconds < 30)
+                else if (breathing == 2 && consciousness == 1 && stopwatch_bre.Elapsed.TotalSeconds >= 60)
+                {
+                    int brecon_rand = chr_rnd_conc_bre.Next(1, 101);
+                    if (brecon_rand > brecon1to2_deg_prob_longtime)
+                    {
+                        consciousness = 2; //change to 1 after testing check
+                        treatment_timeline.Items.Add("Patient consciousness worsened - now unconscious");
+                        patient_instability_score += 1;
+                    }
+                    else
+                    {
+                        consciousness = consciousness;
+                        treatment_timeline.Items.Add("conc No worse");
+                        patient_con_instability_score -= 1;
+                    }
+                }
+                else if (breathing == 2 && consciousness == 1 && stopwatch_bre.Elapsed.TotalSeconds < 60)
+                {
+                    int brecon_rand = chr_rnd_conc_bre.Next(1, 101);
+                    if (brecon_rand > brecon1to2_deg_prob_shorttime)
+                    {
+                        consciousness = 2; //change to 1 after testing check
+                        treatment_timeline.Items.Add("Patient consciousness worsened - now unconscious");
+                        patient_con_instability_score += 1;
+                    }
+                    else
+                    {
+                        consciousness = consciousness;
+                        treatment_timeline.Items.Add("conc No worse");
+                        patient_con_instability_score -= 1;
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                subject = "update UI";
+                Environment_control_function();
+
+                #endregion
+
+                #region consciousness degradation  due to hemmorhage- long term and short term probabilities
+
+                hemcon0to1_deg_prob_longtime += (5 * patient_con_instability_score);
+                hemcon0to2_deg_prob_longtime += (5 * patient_con_instability_score);
+                hemcon0to1_deg_prob_shorttime += (5 * patient_con_instability_score);
+                hemcon0to2_deg_prob_shorttime += (5 * patient_con_instability_score);
+                hemcon1to2_deg_prob_shorttime += (5 * patient_con_instability_score);
+                hemcon1to2_deg_prob_longtime += (5 * patient_con_instability_score);
+
+                if (hemcon0to1_deg_prob_shorttime < 20) { hemcon0to1_deg_prob_shorttime = 20; } // set minimum and maximum thresholds
+                if (hemcon0to2_deg_prob_shorttime < 18) { hemcon0to2_deg_prob_shorttime = 18; }
+                if (hemcon0to1_deg_prob_longtime < 20) { hemcon0to1_deg_prob_longtime = 20; }
+                if (hemcon0to2_deg_prob_longtime < 20) { hemcon0to2_deg_prob_longtime = 20; }
+
+                if (hemcon0to1_deg_prob_longtime > 50) { hemcon0to1_deg_prob_longtime = 50; }
+                if (hemcon0to2_deg_prob_longtime > 50) { hemcon0to1_deg_prob_longtime = 100 - hemcon0to2_deg_prob_longtime; } //probability of severe goes up
+                if (hemcon0to2_deg_prob_longtime > 75) { hemcon0to2_deg_prob_longtime = 75; }
+                if (hemcon0to2_deg_prob_longtime == 75) { hemcon0to1_deg_prob_longtime = 25; }
+                if (hemcon1to2_deg_prob_shorttime > 40) { hemcon1to2_deg_prob_shorttime = 40; }
+                if (hemcon1to2_deg_prob_longtime > 95) { hemcon1to2_deg_prob_longtime = 95; }
+
+                Random chr_rnd_conc = new Random();
+                if (hemorrhage == 2 && consciousness == 0 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+                {
+                    int hem_rand = chr_rnd_conc.Next(1, 101);
+                    if (hem_rand < hemcon0to1_deg_prob_longtime)
+                    {
+                        consciousness = 1; //change to 1 after testing check
+                        treatment_timeline.Items.Add("Patient consciousness worsened - now semi-conscious");
+                        patient_con_instability_score += 1;
+                    }
+                    else if (hem_rand > hemcon0to1_deg_prob_longtime && hem_rand <= (hemcon0to2_deg_prob_longtime + hemcon0to1_deg_prob_longtime))
+                    {
+                        consciousness = 2; //change to 1 after testing check
+                        treatment_timeline.Items.Add("Patient consciousness worsened - now unconscious");
+                        patient_con_instability_score += 2;
+                    }
+                    else
+                    {
+                        consciousness = consciousness;
+                        treatment_timeline.Items.Add("conc No worse");
+                        patient_con_instability_score -= 1;
+                    }
+                }
+                else if (hemorrhage == 2 && consciousness == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
                 {
                     int hem_rand = chr_rnd_conc.Next(1, 101);
                     if (hem_rand < hemcon0to1_deg_prob_shorttime)
                     {
                         consciousness = 1;
                         treatment_timeline.Items.Add("Patient consciousness worsened - now semi-conscious");
-                        patient_instability_score += 1;
+                        patient_con_instability_score += 1;
                     }
                     else if (hem_rand > hemcon0to1_deg_prob_shorttime && hem_rand <= (hemcon0to2_deg_prob_shorttime + hemcon0to1_deg_prob_shorttime))
                     {
@@ -1915,11 +3031,12 @@ namespace Uttam_Transfer_Of_Care
                     {
                         consciousness = consciousness;
                         treatment_timeline.Items.Add("conc No worse");
+                        patient_instability_score -= 1;
                     }
                 }
-                else if (hemorrhage == 2 && consciousness == 1 && stopwatch_hem.Elapsed.Seconds >= 30)
+                else if (hemorrhage == 2 && consciousness == 1 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
                 {
-                    int hem_rand = chr_rnd.Next(1, 101);
+                    int hem_rand = chr_rnd_conc.Next(1, 101);
                     if (hem_rand > hemcon1to2_deg_prob_longtime)
                     {
                         consciousness = 2; //change to 1 after testing check
@@ -1930,267 +3047,195 @@ namespace Uttam_Transfer_Of_Care
                     {
                         consciousness = consciousness;
                         treatment_timeline.Items.Add("conc No worse");
+                        patient_con_instability_score -= 1;
                     }
                 }
-                else if (hemorrhage == 2 && consciousness == 1 && stopwatch_hem.Elapsed.Seconds < 30)
+                else if (hemorrhage == 2 && consciousness == 1 && stopwatch_hem.Elapsed.TotalSeconds < 60)
                 {
-                    int hem_rand = chr_rnd.Next(1, 101);
+                    int hem_rand = chr_rnd_conc.Next(1, 101);
                     if (hem_rand > hemcon1to2_deg_prob_shorttime)
                     {
                         consciousness = 2; //change to 1 after testing check
                         treatment_timeline.Items.Add("Patient consciousness worsened - now unconscious");
-                        patient_instability_score += 1;
+                        patient_con_instability_score += 1;
                     }
                     else
                     {
                         consciousness = consciousness;
-                        treatment_timeline.Items.Add("conc No worse");
+                        treatment_timeline.Items.Add("conc no worse");
+                        patient_con_instability_score -= 1;
                     }
                 }
-                else if (consciousness == 2)
-                {
-                    consciousness = consciousness;
-                    treatment_timeline.Items.Add("conc No worse");
-                }
-                else if (consciousness == 0)
-                {
-                    consciousness = consciousness;
-                    treatment_timeline.Items.Add("conc No worse");
-                }
-                    #endregion
-
-                    #region circulation degradation  due to hemmorhage- long term and short term probabilities
-                    Random chr_rnd_circ = new Random();
-                    if (hemorrhage == 2 && circulation == 0 && stopwatch_hem.Elapsed.Seconds >= 30)
-                    {
-                        int hem_rand = chr_rnd_circ.Next(1, 101);
-                        if (hem_rand < hemcirc0to1_deg_prob_longtime)
-                        {
-                            circulation = 1; 
-                            treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
-                            patient_instability_score += 1;
-                        }
-                        else if (hem_rand > hemcirc0to1_deg_prob_longtime && hem_rand <= (hemcirc0to2_deg_prob_longtime + hemcirc0to1_deg_prob_longtime))
-                        {
-                            circulation = 2; 
-                            treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                            patient_instability_score += 2;
-                        }
-                        else
-                        {
-                            circulation = circulation;
-                            treatment_timeline.Items.Add("heart no worse");
-                        }
-                }
-                    else if (hemorrhage == 2 && circulation == 0 && stopwatch_hem.Elapsed.Seconds < 30)
-                    {
-                        int hem_rand = chr_rnd_circ.Next(1, 101);
-                        if (hem_rand < hemcirc0to1_deg_prob_shorttime)
-                        {
-                            circulation = 1;
-                            treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
-                            patient_instability_score += 1;
-                        }
-                        else if (hem_rand > hemcirc0to1_deg_prob_shorttime && hem_rand <= (hemcirc0to2_deg_prob_shorttime + hemcirc0to1_deg_prob_shorttime))
-                        {
-                            circulation = 2;
-                            treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                            patient_instability_score += 2;
-                        }
-                        else
-                        {
-                            circulation = circulation;
-                            treatment_timeline.Items.Add("heart no worse");
-                        }
-                    }
-                    else if (hemorrhage == 2 && circulation == 1 && stopwatch_hem.Elapsed.Seconds >= 30)
-                    {
-                        int hem_rand = chr_rnd_circ.Next(1, 101);
-                        if (hem_rand > hemcirc1to2_deg_prob_longtime)
-                        {
-                            circulation = 2; 
-                            treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                            patient_instability_score += 1;
-                        }
-                        else
-                        {
-                            circulation = circulation;
-                            treatment_timeline.Items.Add("heart no worse");
-                        }
-                    }
-                    else if (hemorrhage == 2 && circulation == 1 && stopwatch_hem.Elapsed.Seconds < 30)
-                    {
-                        int hem_rand = chr_rnd_circ.Next(1, 101);
-                        if (hem_rand > hemcirc1to2_deg_prob_shorttime)
-                        {
-                            circulation = 2; 
-                            treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                            patient_instability_score += 1;
-                        }
-                        else
-                        {
-                            circulation = circulation;
-                            treatment_timeline.Items.Add("heart no worse");
-                    }
-                    }
 
                 #endregion
 
-                #region circulation degradation  long term and short term probabilities
-                Random chr_rnd_heart = new Random();
-                if (initial_circulation == 1 && circulation == 0 && stopwatch_cir.Elapsed.Seconds >= 30)
+                #region airway degradation if allergic reaction
+
+                airway_close_prob0to1 += (10 * patient_air_instability_score);
+                airway_close_prob1to2 += (10 * patient_air_instability_score);
+
+                if (airway_close_prob0to1 < 0) { airway_close_prob0to1 = 0; }
+                if (airway_close_prob1to2 < 0) { airway_close_prob1to2 = 0; }
+
+                if (wound_type == "allergic reaction")
                 {
-                    int hem_rand = chr_rnd_heart.Next(1, 101);
-                    if (hem_rand < circ0to1if1_deg_prob_longtime)
+                    Random chr_rnd_air = new Random();
+                    if (airway == 1 && stopwatch_air.Elapsed.TotalSeconds < 30)
                     {
-                        circulation = 1;
-                        treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
-                        patient_instability_score += 1;
+                        int air_rand = chr_rnd_air.Next(1, 101);
+                        if (air_rand < airway_close_prob1to2)
+                        {
+                            airway = 2;
+                            treatment_timeline.Items.Add("Airway closed - treatment required");
+                            patient_air_instability_score += 1;
+                        }
+                        else
+                        {
+                            airway = airway;
+                            treatment_timeline.Items.Add("Airway no worse");
+                        }
                     }
-                    else if (hem_rand > circ0to1if1_deg_prob_longtime && hem_rand <= circ0to2if1_deg_prob_longtime)
+                    else if (airway == 1 && stopwatch_air.Elapsed.TotalSeconds > 30)
                     {
-                        circulation = 2;
-                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                        patient_instability_score += 2;
+                        int air_rand = chr_rnd_air.Next(1, 101);
+                        if (air_rand < airway_close_prob1to2)
+                        {
+                            airway = 2;
+                            treatment_timeline.Items.Add("Airway closed - treatment required");
+                            patient_air_instability_score += 1;
+                        }
+                        else
+                        {
+                            airway = airway;
+                            treatment_timeline.Items.Add("Airway no worse");
+                            patient_air_instability_score += 1;
+
+                        }
                     }
-                    else
+                    else if (airway == 0 && stopwatch_air.Elapsed.TotalSeconds < 30)
                     {
-                        circulation = circulation;
-                        treatment_timeline.Items.Add("heart no worse");
+                        int air_rand = chr_rnd_air.Next(1, 101);
+                        if (air_rand < airway_close_prob0to1)
+                        {
+                            airway = 1;
+                            treatment_timeline.Items.Add("Airway closing due to inflamation");
+                            patient_air_instability_score += 1;
+                        }
+                        else
+                        {
+                            airway = airway;
+                            treatment_timeline.Items.Add("Airway no worse");
+                        }
+                    }
+                    else if (airway == 0 && stopwatch_air.Elapsed.TotalSeconds > 30)
+                    {
+                        int air_rand = chr_rnd_air.Next(1, 101);
+                        if (air_rand < airway_close_prob0to1)
+                        {
+                            airway = 1;
+                            treatment_timeline.Items.Add("Airway closing due to inflamation");
+                            patient_air_instability_score += 1;
+                        }
+                        else
+                        {
+                            airway = airway;
+                            treatment_timeline.Items.Add("Airway no worse");
+                            patient_air_instability_score += 1;
+
+                        }
                     }
                 }
-                else if (initial_circulation == 1 && circulation == 0 && stopwatch_cir.Elapsed.Seconds < 30)
-                {
-                    int hem_rand = chr_rnd_heart.Next(1, 101);
-                    if (hem_rand < circ0to1if1_deg_prob_shorttime)
-                    {
-                        circulation = 1;
-                        treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
-                        patient_instability_score += 1;
-                    }
-                    else if (hem_rand > circ0to1if1_deg_prob_shorttime && hem_rand <= circ0to2if1_deg_prob_shorttime)
-                    {
-                        circulation = 2;
-                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                        patient_instability_score += 2;
-                    }
-                    else
-                    {
-                        circulation = circulation;
-                        treatment_timeline.Items.Add("heart no worse");
-                    }
-                }
-                else if (initial_circulation == 2 && circulation == 0 && stopwatch_cir.Elapsed.Seconds >= 30)
-                {
-                    int hem_rand = chr_rnd_heart.Next(1, 101);
-                    if (hem_rand < circ0to1if2_deg_prob_longtime)
-                    {
-                        circulation = 1;
-                        treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
-                        patient_instability_score += 1;
-                    }
-                    else if (hem_rand > circ0to1if2_deg_prob_longtime && hem_rand <= circ0to2if2_deg_prob_longtime)
-                    {
-                        circulation = 2;
-                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                        patient_instability_score += 2;
-                    }
-                    else
-                    {
-                        circulation = circulation;
-                        treatment_timeline.Items.Add("heart no worse");
-                    }
-                }
-                else if (initial_circulation == 2 && circulation == 0 && stopwatch_hem.Elapsed.Seconds < 30)
-                {
-                    int hem_rand = chr_rnd_heart.Next(1, 101);
-                    if (hem_rand < circ0to1if2_deg_prob_shorttime)
-                    {
-                        circulation = 1;
-                        treatment_timeline.Items.Add("Patient heart worsened - now experiencing tachycardia/bradycardia");
-                        patient_instability_score += 1;
-                    }
-                    else if (hem_rand > circ0to1if2_deg_prob_shorttime && hem_rand <= circ0to2if2_deg_prob_shorttime)
-                    {
-                        circulation = 2;
-                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                        patient_instability_score += 2;
-                    }
-                    else
-                    {
-                        circulation = circulation;
-                        treatment_timeline.Items.Add("heart no worse");
-                    }
-                }
-                else if (initial_circulation == 1 && circulation == 1 && stopwatch_cir.Elapsed.Seconds >= 30)
-                {
-                    int hem_rand = chr_rnd_heart.Next(1, 101);
-                    if (hem_rand < circ1to2if1_deg_prob_longtime)
-                    {
-                        circulation = 2;
-                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                        patient_instability_score += 1;
-                    }
-                    else
-                    {
-                        circulation = circulation;
-                        treatment_timeline.Items.Add("heart no worse");
-                    }
-                }
-                else if (initial_circulation == 1 && circulation == 1 && stopwatch_cir.Elapsed.Seconds < 30)
-                {
-                    int hem_rand = chr_rnd_heart.Next(1, 101);
-                    if (hem_rand < circ1to2if1_deg_prob_shorttime)
-                    {
-                        circulation = 2;
-                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                        patient_instability_score += 1;
-                    }
-                    else
-                    {
-                        circulation = circulation;
-                        treatment_timeline.Items.Add("heart no worse");
-                    }
-                }
-                else if (initial_circulation == 2 && circulation == 1 && stopwatch_cir.Elapsed.Seconds >= 30)
-                {
-                    int hem_rand = chr_rnd_heart.Next(1, 101);
-                    if (hem_rand < circ1to2if2_deg_prob_longtime)
-                    {
-                        circulation = 2;
-                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                        patient_instability_score += 1;
-                    }
-                    else
-                    {
-                        circulation = circulation;
-                        treatment_timeline.Items.Add("heart no worse");
-                    }
-                }
-                else if (initial_circulation == 2 && circulation == 1 && stopwatch_hem.Elapsed.Seconds < 30)
-                {
-                    int hem_rand = chr_rnd_heart.Next(1, 101);
-                    if (hem_rand < circ1to2if2_deg_prob_shorttime)
-                    {
-                        circulation = 2;
-                        treatment_timeline.Items.Add("Patient heart worsened - now in cardiac arrest");
-                        patient_instability_score += 1;
-                    }
-                    else
-                    {
-                        circulation = circulation;
-                        treatment_timeline.Items.Add("heart no worse");
-                    }
-                }
-            
+
 
 
                 #endregion
 
-                subject = "update UI";
-                    Environment_control_function();
+                #region breathing degradation due to airway (very likely)
+
+                breair_prob0to1 += (5 * patient_bre_instability_score);
+                breair_prob1to2 += (5 * patient_bre_instability_score);
+                breair_prob0to2 += (5 * patient_bre_instability_score); // if airway is at 2, probability breathing will go to 2 - the 'else' is breathing will go to 1  -cannot be zero if airway is 2
+
+
+                if (breair_prob0to2 > 100) { breair_prob0to2 = 100; }
+                if (breair_prob1to2 > 100) { breair_prob1to2 = 100; }
+                if (breair_prob0to1 > 100) { breair_prob0to1 = 100; }
+
+                Random chr_rnd_breair = new Random();
+                if (airway == 1 && breathing == 0 && stopwatch_air.Elapsed.TotalSeconds > 10)
+                {
+                    int breair_rand = chr_rnd_breair.Next(1, 101);
+                    if (breair_rand < breair_prob0to1)
+                    {
+                        breathing = 1;
+                        treatment_timeline.Items.Add("breathing weakening");
+                        patient_bre_instability_score += 1;
+                    }
+                    else
+                    {
+                        treatment_timeline.Items.Add("breathing ok despite some airway inflammation");
+                    }
+                }
+                else if (airway == 2 && breathing == 1 && stopwatch_air.Elapsed.TotalSeconds > 10)
+                {
+                    int breair_rand = chr_rnd_breair.Next(1, 101);
+                    if (breair_rand < breair_prob1to2)
+                    {
+                        breathing = 2;
+                        stopwatch_bre.Reset();
+                        treatment_timeline.Items.Add("breathing stopped");
+                        patient_bre_instability_score += 1;
+                    }
+                    else
+                    {
+                        treatment_timeline.Items.Add("breathing still weak");
+                        patient_bre_instability_score += 1;
+                    }
+                }
+                else if (airway == 2 && breathing == 0 && stopwatch_air.Elapsed.TotalSeconds > 10)
+                {
+                    int breair_rand = chr_rnd_breair.Next(1, 101);
+                    if (breair_rand < breair_prob0to2)
+                    {
+                        breathing = 2;
+                        stopwatch_bre.Reset();
+                        treatment_timeline.Items.Add("breathing stopped");
+                        patient_bre_instability_score += 1;
+                    }
+                    else
+                    {
+                        treatment_timeline.Items.Add("Airway closing due to inflamation");
+                        patient_bre_instability_score += 1;
+                        breathing = 1;
+                    }
+                }
+
+
 
                 #endregion
+
+                #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             }
 
             #region treatment
@@ -2227,20 +3272,38 @@ namespace Uttam_Transfer_Of_Care
                 #region hemorrhage check
                 async void Hemorrhagecheck() // add async if moving the 'wait functions in here
                 {
-                    int hem1to0_cure_probability = 90 - (5 * hem);
-                    int hem1to1_cure_probability = 10 + (5 * hem);
+                    hem1to0_cure_probability -= (4 * hem1_count);
+                    hem2to0_cure_probability -= (3 * hem2_count);
+                    hem2to1_cure_probability -= (8 * hem2_count);
+
+                    int hem1to1_cure_probability = 100 - hem1to0_cure_probability;
                     int hem1_cure_cumprob = hem1to1_cure_probability + hem1to0_cure_probability;
-                    int hem2to0_cure_probability = 30 - (3 * hem2_count);
-                    int hem2to1_cure_probability = 60 - (3 * hem2_count);
-                    int hem2to2_cure_probability = 10 + (6 * hem2_count);
+
+                    int hem2to2_cure_probability = 100 - (hem2to0_cure_probability + hem2to1_cure_probability);
                     int hem2to1_cumprob = hem2to1_cure_probability + hem2to0_cure_probability;
-                    int hem2_cure_cumprob = hem2to1_cure_probability + hem2to0_cure_probability + hem2to2_cure_probability;
+                    int hem2_cure_cumprob = hem2to1_cure_probability + hem2to0_cure_probability; //+ hem2to2_cure_probability;
+
+                    if (hem2to0_cure_probability < 3) { hem2to0_cure_probability = 3; }
+                    if (hem2to1_cure_probability < 15) { hem2to1_cure_probability = 15; }
 
                     int hemorrhage_timedelay = 0;
                     int hemorrhage1_timedelay = 3000;
                     int hemorrhage2_timedelay = 5000;
 
+                    if (hemorrhage == 2) { hemorrhage_timedelay = hemorrhage2_timedelay; MessageLabel = "attempting to stop heavy bleeding"; }
+                    else if (hemorrhage == 1) { hemorrhage_timedelay = hemorrhage1_timedelay; MessageLabel = "attempting to stop light bleeding"; }
+                    else if (hemorrhage == 0) { hemorrhage_timedelay = 2000; MessageLabel = "Patient not bleeding, check other injuries"; }
+
                     treatment_timeline.Items.Add("Checking hemorrhage");
+
+                    #region show patient treating message
+                    var treatment_message = new Message_form();
+                    treatment_message.Show();
+                    await Task.Delay(hemorrhage_timedelay);
+                    treatment_message.Close();
+                    // end display treatment message
+                    #endregion
+
                     if (hemorrhage == 0)
                     {
                         int x;
@@ -2252,13 +3315,14 @@ namespace Uttam_Transfer_Of_Care
                             hemorrhage = 0;
                             hemorrhage_description = "no bleeding";
                             treatment_timeline.Items.Add("No bleeding");
+
+                            mistake_count += 1;
                         }
 
                     }
                     else if (hemorrhage == 1)
                     {
                         treatment_timeline.Items.Add("Applying treatment for light Bleeding");
-                        MessageLabel = "attempting to stop heavy bleeding";
                         int x;
                         Random r = new Random();
                         x = r.Next(0, 101);
@@ -2269,6 +3333,7 @@ namespace Uttam_Transfer_Of_Care
                             treatment_timeline.Items.Add("Bleeding stopped");
                             stopwatch_hem.Reset();
                             total_success_count = total_success_count + 1;
+                            patient_hem_instability_score -= 2;
                         }
                         else
                         {
@@ -2285,18 +3350,18 @@ namespace Uttam_Transfer_Of_Care
                     {
                         treatment_timeline.Items.Add("heavy bleeding");
                         treatment_timeline.Items.Add("Applying Treatment - Tourniquet");
-                        MessageLabel = "attempting to stop heavy bleeding";
 
                         int x;
                         Random r = new Random();
                         x = r.Next(0, 101);
-                        if (x <= hem2to0_cure_probability) 
+                        if (x <= hem2to0_cure_probability)
                         {
                             hemorrhage = 0;
                             hemorrhage_description = "heavy bleeding stopped";
                             treatment_timeline.Items.Add("Bleeding stopped");
                             stopwatch_hem.Reset();
                             total_success_count = total_success_count + 1;
+                            patient_hem_instability_score -= 1;
                         }
                         else if (x <= hem2to1_cumprob && x > hem2to0_cure_probability)
                         {
@@ -2304,6 +3369,7 @@ namespace Uttam_Transfer_Of_Care
                             hemorrhage_description = "heavy bleeding partially stopped";
                             hemorrhage = 1;
                             total_partial_success_count = total_partial_success_count + 1;
+                            patient_hem_instability_score -= 1;
                         }
                         else
                         {
@@ -2311,22 +3377,18 @@ namespace Uttam_Transfer_Of_Care
                             hemorrhage_description = "heavy bleeding";
                             hemorrhage = 2;
                             total_unsuccess_count = total_unsuccess_count + 1;
+                            patient_hem_instability_score += 2;
                         }
 
                         hem2_count += +1;
                         hemorrhage_timedelay = hemorrhage2_timedelay;
                     }
 
-                    #region show patient treating message
-                    // display treatment message - requires 'async' in the private void statement
-                    
-                    var treatment_message = new Message_form(); 
-               
-                    treatment_message.Show();
-                    await Task.Delay(hemorrhage_timedelay);
-                    treatment_message.Close();
-                    // end display treatment message
-                    #endregion
+                    from = "treatment"; to = "UIController"; subject = "update UI";
+                    Environment_control_function();
+
+                    from = "treatment"; to = "EMS"; subject = "Recommend next treatment";
+                    Ems();
 
                 } // end of hemorrhage check
                 #endregion
@@ -2334,42 +3396,57 @@ namespace Uttam_Transfer_Of_Care
                 async void Consciousnesscheck()
                 {
                     #region set consciousness treatment variables
-                    int conc1to0_cure_probability = 50;
-                    int conc1to1_cure_probability = 50;
-                    int conc2to0_cure_probability = 20;
 
-                    int conc2to1_cure_probability = 30;
-                    int conc2to2_cure_probability = 50;
                     int conc2to1_cumprob = conc2to1_cure_probability + conc2to0_cure_probability;
 
                     int consciousness_timedelay = 0;
                     int consciousness1_timedelay = 3000;
                     int consciousness2_timedelay = 5000;
+
+                    if (consciousness == 2) { consciousness_timedelay = consciousness2_timedelay; MessageLabel = "attempting to revive unconscious patient"; }
+                    else if (consciousness == 1) { consciousness_timedelay = consciousness1_timedelay; MessageLabel = "attempting to revive partially conscious patient"; }
+                    else { consciousness_timedelay = 2000; MessageLabel = "patient conscious, check other injuries"; }
                     #endregion
 
                     treatment_timeline.Items.Add("Checking Consciousness");
+
+                    #region show treating patient message
+                    // display treatment message - requires 'async' in the private void statement
+                    var treatment_message = new Message_form();
+                    treatment_message.Show();
+                    await Task.Delay(consciousness_timedelay);
+                    treatment_message.Close();
+                    // end display treatment message
+                    #endregion
+
                     if (consciousness == 0)
                     {
                         treatment_timeline.Items.Add("Patient fully Conscious");
                         consciousness = 0;
                         consciousness_decription = "fully conscious";
+
+                        mistake_count += 1;
                     }
                     else if (consciousness == 1)
                     {
                         treatment_timeline.Items.Add("Patient Partially Conscious");
                         treatment_timeline.Items.Add("Providing Oxygen");
-                        MessageLabel = "attempting to revive partially conscious patient"; // Message pop up content
 
                         if (breathing == 0 && hemorrhage == 0 && airway == 0 && circulation == 0) //cure probability increases
                         {
                             conc1to0_cure_probability += (5 * conc1_count);
-                            conc1to1_cure_probability -= (5 * conc1_count);
+                            conc1to1_cure_probability = 100 - conc1to0_cure_probability;
                         }
                         else //cure probability reduces if other injuries present
                         {
-                            conc1to0_cure_probability -= (5 * conc1_count);
-                            conc1to1_cure_probability += (5 * conc1_count);
+                            conc1to0_cure_probability -= (8 * conc1_count);
+                            conc1to1_cure_probability = 100 - conc1to0_cure_probability;
                         }
+
+                        if (conc1to0_cure_probability < 15) { conc1to0_cure_probability = 15; }
+                        if (conc1to1_cure_probability > 85) { conc1to0_cure_probability = 85; }
+                        if (conc1to0_cure_probability > 85) { conc1to0_cure_probability = 85; }
+                        if (conc1to1_cure_probability < 15) { conc1to0_cure_probability = 15; }
 
                         int conc1_cure_cumprob = conc1to1_cure_probability + conc1to0_cure_probability;
                         int x;
@@ -2383,6 +3460,7 @@ namespace Uttam_Transfer_Of_Care
                             treatment_timeline.Items.Add("Full consciousness restored");
                             stopwatch_con.Reset();
                             total_success_count = total_success_count + 1;
+                            patient_con_instability_score -= 2;
                         }
                         else
                         {
@@ -2390,6 +3468,7 @@ namespace Uttam_Transfer_Of_Care
                             consciousness_decription = "partially conscious";
                             treatment_timeline.Items.Add("Patient Still not fully conscious");
                             total_unsuccess_count = total_unsuccess_count + 1;
+
                         }
                         conc1_count += 1;
                         consciousness_timedelay = consciousness1_timedelay;
@@ -2398,20 +3477,29 @@ namespace Uttam_Transfer_Of_Care
                     {
                         treatment_timeline.Items.Add("Patient unconscious");
                         treatment_timeline.Items.Add("Attempting Treatment"); //Add specific consciousness treatment ADD
-                        MessageLabel = "attempting to revive unconscious patient"; // Message pop up content
                         if (breathing == 0 && hemorrhage == 0 && airway == 0 && circulation == 0) // cure probability increases
                         {
-                            conc2to0_cure_probability = 10 + (2 * conc2_count);
-                            conc2to1_cure_probability = 50 + (8 * conc2_count);
-                            conc2to2_cure_probability = 40 - (10 * conc2_count);
+                            conc2to0_cure_probability += (2 * conc2_count);
+                            conc2to1_cure_probability += (8 * conc2_count);
+                            conc2to2_cure_probability -= (10 * conc2_count);
+                            if (conc2to0_cure_probability > 30) { conc2to0_cure_probability = 30; }
+                            if (conc2to1_cure_probability > 50) { conc2to1_cure_probability = 50; }
+                            conc2to2_cure_probability = 100 - (conc2to0_cure_probability + conc2to1_cure_probability);
+
                             conc2to1_cumprob = conc2to1_cure_probability + conc2to0_cure_probability;
+
                         }
                         else // cure probability decreases if other injuries are present
                         {
                             conc2to0_cure_probability = 10 - (1 * conc2_count);
                             conc2to1_cure_probability = 50 - (4 * conc2_count);
                             conc2to2_cure_probability = 40 + (5 * conc2_count);
+                            if (conc2to0_cure_probability < 5) { conc2to0_cure_probability = 5; }
+                            if (conc2to1_cure_probability < 10) { conc2to1_cure_probability = 10; }
+                            if (conc2to2_cure_probability < 15) { conc2to2_cure_probability = 15; }
+
                             conc2to1_cumprob = conc2to1_cure_probability + conc2to0_cure_probability;
+
                         }
 
                         int x;
@@ -2424,6 +3512,7 @@ namespace Uttam_Transfer_Of_Care
                             consciousness_decription = "previously unconscious but now fully conscious";
                             stopwatch_con.Reset();
                             total_success_count = total_success_count + 1;
+                            patient_con_instability_score -= 3;
                         }
                         else if (x <= conc2to1_cumprob && x > conc2to0_cure_probability)
                         {
@@ -2431,6 +3520,7 @@ namespace Uttam_Transfer_Of_Care
                             consciousness = 1;
                             consciousness_decription = "previously unconscious but coming round";
                             total_partial_success_count = total_partial_success_count + 1;
+                            patient_con_instability_score -= 2;
                         }
                         else
                         {
@@ -2443,51 +3533,59 @@ namespace Uttam_Transfer_Of_Care
                         consciousness_timedelay = consciousness2_timedelay;
                     }
 
-                    #region show treating patient message
-                    // display treatment message - requires 'async' in the private void statement
-                    var treatment_message = new Message_form();
-                    treatment_message.Show();
-                    await Task.Delay(consciousness_timedelay);
-                    treatment_message.Close();
-                    // end display treatment message
-                    #endregion
-
                     //this section all commented out for now - move to patient section? multiple checks? 
                     #region consciousness deterioration control - move to patient MDP section
 
                     #endregion // this section all commented out
 
+                    from = "treatment"; to = "UIController"; subject = "update UI";
+                    Environment_control_function();
 
+                    from = "treatment"; to = "EMS"; subject = "Recommend next treatment";
+                    Ems();
 
                 }// end of consciousness check
                 #endregion
                 #region Breathing check
                 async void Breathingcheck()
                 {
-                    int breath1to0_cure_probability = 60;
-                    int breath1_successprob_reduction = 5;
 
-                    int breath2to0_cure_probability = 20;
-                    int breath2to1_cure_probability = 60;
                     int breath2to1_cumprob = breath2to1_cure_probability + breath2to0_cure_probability;
                     int breath2_successprob_reduction = 4;
                     int breathing_timedelay = 0;
                     int breathing1_timedelay = 3000;
-                    int breathing2_timedelay = 5000;
+                    int breathing2_timedelay = 10000;
+
+                    if (breathing == 2) { breathing_timedelay = breathing2_timedelay; MessageLabel = "attempting to restore breath function"; }
+                    else if (breathing == 1) { breathing_timedelay = breathing1_timedelay; MessageLabel = "attempting to restore normal breathing to patient"; }
+                    else { breathing_timedelay = 2000; MessageLabel = "Patient breathing normally, check other injuries"; }
 
                     treatment_timeline.Items.Add("Checking breathing");
+
+                    #region show treating patient message
+                    // display treatment message - requires 'async' in the private void statement
+                    var treatment_message = new Message_form();
+                    treatment_message.Show();
+                    await Task.Delay(breathing_timedelay);
+                    treatment_message.Close();
+                    // end display treatment message
+                    #endregion
+
                     if (breathing == 0)
                     {
                         breathing_description = "no breathing problem";
                         treatment_timeline.Items.Add("Patient breathing normally");
                         breathing = 0;
+
+                        mistake_count += 1;
                     }
                     else if (breathing == 1)
                     {
                         treatment_timeline.Items.Add("Patient breathing is not normal");
                         treatment_timeline.Items.Add("providing oxygen");
-                        MessageLabel = "attempting to restore normal breathing to patient"; // Message pop up content
+
                         breath1to0_cure_probability = breath1to0_cure_probability - (breath1_successprob_reduction * breath1_count);
+                        if (breath1to0_cure_probability < 10) { breath1to0_cure_probability = 10; }
                         int x;
                         Random r = new Random();
                         x = r.Next(0, 101);
@@ -2498,6 +3596,7 @@ namespace Uttam_Transfer_Of_Care
                             treatment_timeline.Items.Add("Breathing restored");
                             stopwatch_bre.Reset();
                             total_success_count = total_success_count + 1;
+                            patient_bre_instability_score -= 2;
                         }
                         else
                         {
@@ -2505,6 +3604,7 @@ namespace Uttam_Transfer_Of_Care
                             breathing_description = "weak or irregular breathing";
                             treatment_timeline.Items.Add("breathing remains erratic");
                             total_unsuccess_count = total_unsuccess_count + 1;
+                            stopwatch_bre.Reset();
                         }
                         breath1_count = breath1_count + 1;
                         breathing_timedelay = breathing1_timedelay;
@@ -2513,9 +3613,10 @@ namespace Uttam_Transfer_Of_Care
                     {
                         treatment_timeline.Items.Add("Patient not breathing");
                         treatment_timeline.Items.Add("Aspirating Patient");
-                        MessageLabel = "attempting to restore breath function"; // Message pop up content
                         breath2to0_cure_probability = breath2to0_cure_probability - (breath2_successprob_reduction * breath2_count);
                         breath2to1_cure_probability = breath2to1_cure_probability - (breath2_successprob_reduction * breath2_count);
+                        if (breath2to0_cure_probability < 5) { breath2to0_cure_probability = 5; }
+                        if (breath2to1_cure_probability < 10) { breath2to1_cure_probability = 10; }
                         breath2to1_cumprob = breath2to1_cure_probability + breath2to0_cure_probability;
 
                         int x;
@@ -2528,13 +3629,16 @@ namespace Uttam_Transfer_Of_Care
                             breathing = 0;
                             stopwatch_bre.Reset();
                             total_success_count = total_success_count + 1;
+                            patient_bre_instability_score -= 3;
                         }
                         else if (x <= breath2to1_cumprob && x > breath2to0_cure_probability)
                         {
                             breathing_description = "previously not breathing, improved but not breathing normally";
                             treatment_timeline.Items.Add("breathing restored but still erratic");
                             breathing = 1;
+                            stopwatch_bre.Reset();
                             total_partial_success_count = total_partial_success_count + 1;
+                            patient_bre_instability_score -= 2;
                         }
                         else
                         {
@@ -2543,18 +3647,15 @@ namespace Uttam_Transfer_Of_Care
                             breathing = 2;
                             total_unsuccess_count = total_unsuccess_count + 1;
                         }
-                        breath2_count = breath2_count + 1;
+                        breath2_count += 1;
                         breathing_timedelay = breathing2_timedelay;
                     }
 
-                    #region show treating patient message
-                    // display treatment message - requires 'async' in the private void statement
-                    var treatment_message = new Message_form();
-                    treatment_message.Show();
-                    await Task.Delay(breathing_timedelay);
-                    treatment_message.Close();
-                    // end display treatment message
-                    #endregion
+                    from = "treatment"; to = "UIController"; subject = "update UI";
+                    Environment_control_function();
+
+                    from = "treatment"; to = "EMS"; subject = "Recommend next treatment";
+                    Ems();
 
                 }// end of breathing check
                 #endregion
@@ -2563,36 +3664,51 @@ namespace Uttam_Transfer_Of_Care
                 {
 
                     // *******************************SET VARIABLES FOR THE TREATMENT*********************************************************
-                    #region Treatment variables
-                    int circ1to0_cure_probability = 70; // the probability that circulation treatment from level 1 to 0 is successful
-                    int circ1_successprob_reduction = 5; // the reduction in the probability of success with each repeated treatment from level 1
-
-                    int circ2to0_cure_probability = 15; // the probability that circulation treatment from level 2 to 0 is successful
-                    int circ2to1_cure_probability = 30; // the probability that circulation treatment from level 2 to 1 is successful
-                    int circ2to1_cumprob = circ2to1_cure_probability + circ2to0_cure_probability; // cumulative success probabiligy
+                    #region Treatment variables additional to the top level variables defined at the top of code
+                    int circ1_successprob_reduction = 10; // the reduction in the probability of success with each repeated treatment from level 1
                     int circ2_0_successprob_reduction = 1; // the reduction in the probability of success with each repeated treatment from level 2 to 0
                     int circ2_1_successprob_reduction = 2; // the reduction in the probability of success with each repeated treatment from level 2 to 1
 
+                    int circ2to1_cumprob = circ2to1_cure_probability + circ2to0_cure_probability; // cumulative success probabiligy
+
                     int circ_timedelay = 0;
                     int circ1_timedelay = 3000;
-                    int circ2_timedelay = 5000;
+                    int circ2_timedelay = 10000;
+
+                    if (circulation == 2) { circ_timedelay = circ2_timedelay; MessageLabel = "attempting to re-start the heart"; }
+                    else if (circulation == 1) { circ_timedelay = circ1_timedelay; MessageLabel = "attempting to restore normal heart function to patient"; }
+                    else { circ_timedelay = 2000; MessageLabel = "heart not affected, check other injuries"; }
                     #endregion
 
                     // *********************** Treatment Logic and message to Listbox **********************************************************
                     #region Treatment Logic
                     treatment_timeline.Items.Add("Checking pulse");
+
+                    #region show treating patient message
+                    //display treatment message - requires 'async' in the private void statement
+                    var treatment_message = new Message_form();
+                    treatment_message.Show();                                                        // open message box
+                    await Task.Delay(circ_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
+                    treatment_message.Close();                                                       // close message box
+                                                                                                     // end display treatment message
+                    #endregion
+
                     if (circulation == 0)  // If there is no problem
                     {
                         circulation_description = "";
                         treatment_timeline.Items.Add("pulse is normal");                            //patient condition message
                         circulation = 0;                                                            //set patient condition quantifier to 0 'normal'
+
+                        mistake_count += 1;
                     }
                     else if (circulation == 1)  // if there is a minor problem
                     {
                         treatment_timeline.Items.Add("Pulse is elevated/weak/erratic");             //Patient condition message
                         treatment_timeline.Items.Add("providing treatment");                        //ADD treatment here
-                        MessageLabel = "attempting to restore normal heart function to patient"; // Message pop up content
                         circ1to0_cure_probability -= (circ1_successprob_reduction * circ1_count);    //partial success probability accounting for repeat procedures
+
+                        if (circ1to0_cure_probability < 2) { circ1to0_cure_probability = 2; }
+
                         int x;
                         Random r = new Random();
                         x = r.Next(0, 101);                                                         //generate random number between 1 and 100 for outcome 
@@ -2603,6 +3719,7 @@ namespace Uttam_Transfer_Of_Care
                             circulation = 0;
                             stopwatch_cir.Reset();                                                //patient condition quantifier set to 0 - 'normal'
                             total_success_count += 1;                                            //global counter for successful procedures
+                            patient_circ_instability_score -= 2;
                         }
                         else
                         {
@@ -2618,9 +3735,10 @@ namespace Uttam_Transfer_Of_Care
                     {
                         treatment_timeline.Items.Add("Patient Heart in Cardiac Arrest");            // Patient condition message
                         treatment_timeline.Items.Add("attempting resusitation");
-                        MessageLabel = "attempting to re-start the heart"; // Message pop up content
                         circ2to0_cure_probability -= (circ2_0_successprob_reduction * circ2_count); //complete success probability accounting for repeats
                         circ2to1_cure_probability -= (circ2_1_successprob_reduction * circ2_count); //partial success probability accounting for repeats
+                        if (circ2to0_cure_probability < 1) { circ2to0_cure_probability = 1; }
+                        if (circ2to1_cure_probability < 2) { circ2to1_cure_probability = 2; }
                         circ2to1_cumprob = circ2to1_cure_probability + circ2to0_cure_probability;   // set cumulative success and partial success probability
 
                         int x;
@@ -2633,6 +3751,7 @@ namespace Uttam_Transfer_Of_Care
                             circulation = 0;                                                        // patient condition quantifier set to 0 - 'normal'
                             stopwatch_cir.Reset();
                             total_success_count += 1;                                               // global counter for successful procedures
+                            patient_circ_instability_score -= 3;
                         }
                         else if (x <= circ2to1_cumprob && x > circ2to0_cure_probability)
                         {
@@ -2640,6 +3759,8 @@ namespace Uttam_Transfer_Of_Care
                             treatment_timeline.Items.Add("Heart function restored but not normal"); //patient partially stabliized message
                             circulation = 1;                                                        //patient condition quantifier set to 1 - some problems
                             total_partial_success_count += 1;                                       // counter for partial successful procedures
+                            patient_circ_instability_score -= 2;
+                            stopwatch_cir.Reset();
                         }
                         else
                         {
@@ -2653,14 +3774,11 @@ namespace Uttam_Transfer_Of_Care
                     }
                     #endregion
 
-                    #region show treating patient message
-                    //display treatment message - requires 'async' in the private void statement
-                    var treatment_message = new Message_form();
-                    treatment_message.Show();                                                        // open message box
-                    await Task.Delay(circ_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
-                    treatment_message.Close();                                                       // close message box
-                                                                                                     // end display treatment message
-                    #endregion
+                    from = "treatment"; to = "UIController"; subject = "update UI";
+                    Environment_control_function();
+
+                    from = "treatment"; to = "EMS"; subject = "Recommend next treatment";
+                    Ems();
 
                 }// end of circulation check
                 #endregion
@@ -2669,33 +3787,45 @@ namespace Uttam_Transfer_Of_Care
                 {
                     // *******************************SET VARIABLES FOR THE TREATMENT*********************************************************
                     #region Treatment variables
-                    int airway_1to0_cure_probability = 50; // the probability that airway treatment from level 1 to 0 is successful
-                    int airway1_successprob_reduction = 0; // the reduction in the probability of success with each repeated treatment from level 1
-
-                    int airway_2to0_cure_probability = 33; // the probability that airway treatment from level 2 to 0 is successful
-                    int airway_2to1_cure_probability = 33; // the probability that airway treatment from level 2 to 1 is successful
                     int airway_2to1_cumprob = airway_2to1_cure_probability + airway_2to0_cure_probability; // cumulative success probabiligy
+
+                    int airway1_successprob_reduction = 0; // the reduction in the probability of success with each repeated treatment from level 1
                     int airway_2_0_successprob_reduction = 0; // the reduction in the probability of success with each repeated treatment from level 2 to 0
                     int airway_2_1_successprob_reduction = 0; // the reduction in the probability of success with each repeated treatment from level 2 to 1
 
                     int airway_timedelay = 0;
                     int airway1_timedelay = 3000;
-                    int airway2_timedelay = 5000;
+                    int airway2_timedelay = 6000;
+
+                    if (airway == 2) { airway_timedelay = airway2_timedelay; MessageLabel = "attempting to intubate patient"; }
+                    else if (airway == 1) { airway_timedelay = airway1_timedelay; MessageLabel = "clearing airway"; }
+                    else { airway_timedelay = 2000; MessageLabel = "airway is clear, check other injuries"; }
                     #endregion
 
                     // *********************** Treatment Logic and message to Listbox **********************************************************
                     #region Treatment Logic
                     treatment_timeline.Items.Add("Checking for airway obstruction");
+
+                    #region show treating patient message
+                    // display treatment message - requires 'async' in the private void statement
+                    var treatment_message = new Message_form();
+                    treatment_message.Show();                                                        // open message box
+                    await Task.Delay(airway_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
+                    treatment_message.Close();                                                       // close message box
+                                                                                                     // end display treatment message
+                    #endregion
+
                     if (airway == 0)  // If there is no problem
                     {
                         treatment_timeline.Items.Add("no obstruction to airway");                            //patient condition message
                         airway = 0;                                                            //set patient condition quantifier to 0 'normal'
+
+                        mistake_count += 1;
                     }
                     else if (airway == 1)  // if there is a minor problem
                     {
                         treatment_timeline.Items.Add("partial blockage of airway");             //Patient condition message
                         treatment_timeline.Items.Add("attempting airway clearance");
-                        MessageLabel = "clearing airway"; // Message pop up content
                         airway_1to0_cure_probability -= (airway1_successprob_reduction * airway1_count);    //partial success probability accounting for repeat procedures
                         int x;
                         Random r = new Random();
@@ -2706,6 +3836,7 @@ namespace Uttam_Transfer_Of_Care
                             airway = 0;                                                      //patient condition quantifier set to 0 - 'normal'
                             stopwatch_air.Reset();
                             total_success_count += 1;                                             //global counter for successful procedures
+                            patient_air_instability_score -= 2;
                         }
                         else
                         {
@@ -2720,7 +3851,6 @@ namespace Uttam_Transfer_Of_Care
                     {
                         treatment_timeline.Items.Add("Patient airway is completely blocked");            // Patient condition message
                         treatment_timeline.Items.Add("attempting airway clearance");
-                        MessageLabel = "attempting to intubate patient"; // Message pop up content
                         airway_2to0_cure_probability -= (airway_2_0_successprob_reduction * airway2_count); //complete success probability accounting for repeats
                         airway_2to1_cure_probability -= (airway_2_1_successprob_reduction * airway2_count); //partial success probability accounting for repeats
                         airway_2to1_cumprob = airway_2to1_cure_probability + airway_2to0_cure_probability;   // set cumulative success and partial success probability
@@ -2730,10 +3860,14 @@ namespace Uttam_Transfer_Of_Care
                         x = r.Next(0, 101);                                                         //generate random number between 1 and 100
                         if (x <= airway_2to0_cure_probability)
                         {
-                            treatment_timeline.Items.Add("Airway cleared");                     // patient condition returned to normal message
+                            treatment_timeline.Items.Add("Intubation success - Airway clear and stable");                     // patient condition returned to normal message
                             airway = 0;                                                         // patient condition quantifier set to 0 - 'normal'
                             stopwatch_air.Reset();
                             total_success_count += 1;                                           // global counter for successful procedures
+                            patient_air_instability_score -= 10;                                // airway stabilisesd
+                            airway_close_prob0to1 = 0;
+                            airway_close_prob1to2 = 0;
+
                         }
                         else if (x <= airway_2to1_cumprob && x > airway_2to0_cure_probability)
                         {
@@ -2752,17 +3886,11 @@ namespace Uttam_Transfer_Of_Care
                     }
                     #endregion
 
-                    #region show treating patient message
-                    // display treatment message - requires 'async' in the private void statement
-                    var treatment_message = new Message_form();
-                    treatment_message.Show();                                                        // open message box
-                    await Task.Delay(airway_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
-                    treatment_message.Close();                                                       // close message box
-                                                                                                     // end display treatment message
-                    #endregion
+                    from = "treatment"; to = "UIController"; subject = "update UI";
+                    Environment_control_function();
 
-                    //sim_Current_air_box.Text = Convert.ToString(airway);                         //convert condition quantifier to string for transfer to UI and display
-
+                    from = "treatment"; to = "EMS"; subject = "Recommend next treatment";
+                    Ems();
                 }// end of airway check
 
                 #endregion
@@ -2771,19 +3899,39 @@ namespace Uttam_Transfer_Of_Care
                 {
                     // *******************************SET VARIABLES FOR THE TREATMENT*********************************************************
                     #region Treatment variables
-                    int cpr2to0_cure_probability = 5; // the probability that circulation treatment from level 2 to 0 is successful
-                    int cpr2to1_cure_probability = 10; // the probability that circulation treatment from level 2 to 1 is successful
                     int cpr2to1_cumprob = cpr2to1_cure_probability + cpr2to0_cure_probability; // cumulative success probabiligy
                     int cpr2_0_successprob_reduction = 1; // the reduction in the probability of success with each repeated treatment from level 2 to 0
                     int cpr2_1_successprob_reduction = 2; // the reduction in the probability of success with each repeated treatment from level 2 to 1
 
                     int cpr_timedelay = 0;
-                    int cpr2_timedelay = 6000;
+                    int cpr2_timedelay = 10000;
+
+                    if (circulation == 2 && breathing == 2)
+                    {
+                        cpr_timedelay = cpr2_timedelay;
+                        MessageLabel = "attempting CPR on patient"; // Message pop up content
+                    }
+                    else
+                    {
+                        cpr_timedelay = 2000;
+                        MessageLabel = "Cardio and Pulmonary function is ok, check other injuries";
+                        mistake_count += 1;
+                    }
                     #endregion
 
                     // *********************** Treatment Logic and message to Listbox **********************************************************
                     #region Treatment Logic
-                    treatment_timeline.Items.Add("Checking pulse");
+                    treatment_timeline.Items.Add("Checking cardio and pulmonary response");
+
+                    #region show treating patient message
+                    //display treatment message - requires 'async' in the private void statement
+                    var treatment_message = new Message_form();
+                    treatment_message.Show();                                                        // open message box
+                    await Task.Delay(cpr_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
+                    treatment_message.Close();                                                       // close message box
+                                                                                                     // end display treatment message
+                    #endregion
+
                     if (circulation == 2 && breathing == 2)  // If CPR needed
                     {
                         // add defibrillation after 2 repetitions
@@ -2804,6 +3952,8 @@ namespace Uttam_Transfer_Of_Care
 
                         cpr2to0_cure_probability -= (cpr2_0_successprob_reduction * cpr2_count); //complete success probability accounting for repeats
                         cpr2to1_cure_probability -= (cpr2_1_successprob_reduction * cpr2_count); //partial success probability accounting for repeats
+                        if (cpr2to0_cure_probability < 1) { cpr2to0_cure_probability = 1; }
+                        if (cpr2to1_cure_probability < 2) { cpr2to1_cure_probability = 2; }
                         cpr2to1_cumprob = cpr2to1_cure_probability + cpr2to0_cure_probability;   // set cumulative success and partial success probability
 
                         Random rCPR = new Random();
@@ -2845,29 +3995,616 @@ namespace Uttam_Transfer_Of_Care
                     }
                     #endregion
 
-                    #region show treating patient message
-                    //display treatment message - requires 'async' in the private void statement
-                    var treatment_message = new Message_form();
-                    treatment_message.Show();                                                        // open message box
-                    await Task.Delay(cpr_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
-                    treatment_message.Close();                                                       // close message box
-                                                                                                     // end display treatment message
-                    #endregion
+                    from = "treatment"; to = "UIController"; subject = "update UI";
+                    Environment_control_function();
+
+                    from = "treatment"; to = "EMS"; subject = "Recommend next treatment";
+                    Ems();
 
                 }// end of circulation check
                 #endregion
 
-                from = "treatment"; to = "UIController"; subject = "update UI";
-                Environment_control_function();
-
-                from = "treatment"; to = "EMS"; subject = "Recommend next treatment";
-                Ems();
+                //await Task.Delay(100);
 
             } // end of Treatment method
 
             #endregion
         }
         #endregion
+
+        void set_prediction_metrics()
+        {
+            #region set prediction metrics
+
+            #region hemorrhage
+            float cum_hem_0to1_prob = 0;
+            if (initial_hemorrhage > 0)
+            {
+                if (stopwatch_hem.Elapsed.TotalSeconds >= 60) { cum_hem_0to1_prob = (100-hem_deg_prob_longtime); }
+                else if (stopwatch_hem.Elapsed.TotalSeconds < 60) { cum_hem_0to1_prob = (100-hem_deg_prob_shorttime); }
+            }
+            else
+            {
+                cum_hem_0to1_prob = 0;
+            }
+            float cum_hem_1to2_prob = hem_deg_prob_shorttime;
+            if (stopwatch_hem.Elapsed.TotalSeconds >= 60) { cum_hem_1to2_prob = (100-hem_deg_prob_longtime)/2; }
+            else if (stopwatch_hem.Elapsed.TotalSeconds < 60) { cum_hem_1to2_prob = (100-hem_deg_prob_shorttime)/2; }
+            float cum_hem_0to2_prob = 0;
+            if (initial_hemorrhage == 2)
+            {
+                if (stopwatch_hem.Elapsed.TotalSeconds >= 60) { cum_hem_0to2_prob = (100-hem_deg_prob_longtime); }
+                else if (stopwatch_hem.Elapsed.TotalSeconds < 60) { cum_hem_0to2_prob = 100-hem_deg_prob_shorttime; }
+            }
+            else
+            {
+                cum_hem_0to2_prob = 0;
+            }
+            float cum_hem_0nodeg_prob = 100 - (cum_hem_0to2_prob + cum_hem_0to1_prob);
+            float cum_hem_1nodeg_prob = (50 - cum_hem_1to2_prob);
+            float cum_hem_2to1_prob = hem2to1_cure_probability;
+            float cum_hem_2to0_prob = hem2to0_cure_probability;
+            float cum_hem_1to0_prob = hem1to0_cure_probability/2;
+            float cum_hem_2noimp_prob = 100 - (cum_hem_2to0_prob + cum_hem_2to1_prob);
+            float cum_hem_1noimp_prob = 50 - cum_hem_1to0_prob;
+
+            #endregion
+
+            #region circulation
+
+            float cum_cir_0to1_prob = 1;
+            if (initial_circulation == 0 && hemorrhage == 2 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_cir_0to1_prob = hemcirc0to1_deg_prob_longtime; }
+            else if (initial_circulation == 0 && hemorrhage == 2 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_cir_0to1_prob = hemcirc0to1_deg_prob_shorttime; }
+            else if (initial_circulation == 0 && hemorrhage < 2 && circulation == 0)
+            { cum_cir_0to1_prob = 0f; }
+            else if (initial_circulation == 2 && circulation == 0 && stopwatch_cir.Elapsed.TotalSeconds < 60)
+            { cum_cir_0to1_prob = circ0to1if2_deg_prob_shorttime; }
+            else if (initial_circulation == 2 && circulation == 0 && stopwatch_cir.Elapsed.TotalSeconds >= 60)
+            { cum_cir_0to1_prob = circ0to1if2_deg_prob_longtime; }
+            else if (initial_circulation == 1 && circulation == 0 && stopwatch_cir.Elapsed.TotalSeconds < 60)
+            { cum_cir_0to1_prob = circ0to1if1_deg_prob_shorttime; }
+            else if (initial_circulation == 1 && circulation == 0 && stopwatch_cir.Elapsed.TotalSeconds >= 60)
+            { cum_cir_0to1_prob = circ0to1if1_deg_prob_longtime; }
+            float cum_cir_1to2_prob = 1;
+            if (initial_circulation == 0 && hemorrhage == 2 && circulation == 1 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_cir_1to2_prob = hemcirc1to2_deg_prob_longtime/2f; }
+            else if (initial_circulation == 0 && hemorrhage == 2 && circulation == 1 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_cir_1to2_prob = hemcirc1to2_deg_prob_shorttime/2f; }
+            else if (initial_circulation == 0 && hemorrhage < 2 && circulation == 1)
+            { cum_cir_1to2_prob = 0f; }
+            else if (initial_circulation == 2 && circulation == 1 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_cir_1to2_prob = circ1to2if2_deg_prob_shorttime/2f; }
+            else if (initial_circulation == 2 && circulation == 1 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_cir_1to2_prob = circ1to2if2_deg_prob_longtime/2f; }
+            else if (initial_circulation == 1 && circulation == 1 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_cir_1to2_prob = circ1to2if1_deg_prob_shorttime/2f; }
+            else if (initial_circulation == 1 && circulation == 1 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_cir_1to2_prob = circ1to2if1_deg_prob_longtime/2f; }
+            float cum_cir_0to2_prob = 1f;
+            if (initial_circulation == 0 && hemorrhage == 2 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_cir_0to2_prob = hemcirc0to2_deg_prob_longtime; }
+            else if (initial_circulation == 0 && hemorrhage == 2 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_cir_0to2_prob = hemcirc0to2_deg_prob_shorttime; }
+            else if (initial_circulation == 0 && hemorrhage < 2 && circulation == 0)
+            { cum_cir_0to2_prob = 0f; }
+            else if (initial_circulation == 2 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_cir_0to2_prob = circ0to2if2_deg_prob_shorttime; }
+            else if (initial_circulation == 2 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_cir_0to2_prob = circ0to2if2_deg_prob_longtime; }
+            else if (initial_circulation == 1 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_cir_0to2_prob = circ0to2if1_deg_prob_shorttime; }
+            else if (initial_circulation == 1 && circulation == 0 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_cir_0to2_prob = circ0to2if1_deg_prob_longtime; }
+            float cum_cir_0nodeg_prob = 100f - (cum_cir_0to2_prob + cum_cir_0to1_prob);
+            float cum_cir_1nodeg_prob = 50f - cum_cir_1to2_prob;
+            float cum_cir_2to1_prob;
+            if (breathing == 2) { cum_cir_2to1_prob = cpr2to1_cure_probability; }
+            else { cum_cir_2to1_prob = circ2to1_cure_probability; }
+            float cum_cir_2to0_prob;
+            if (breathing == 2) { cum_cir_2to0_prob = cpr2to0_cure_probability; }
+            else { cum_cir_2to0_prob = circ2to0_cure_probability; }
+            float cum_cir_1to0_prob = circ1to0_cure_probability/2f;
+            float cum_cir_2noimp_prob = 100 - (cum_cir_2to0_prob + cum_cir_2to1_prob);
+            float cum_cir_1noimp_prob = 50- cum_cir_1to0_prob;
+
+            #endregion
+
+            #region airway
+
+            float cum_air_0to1_prob = airway_close_prob0to1;
+            float cum_air_1to2_prob = airway_close_prob1to2/2f;
+            float cum_air_0to2_prob = 0;
+            float cum_air_0nodeg_prob = 100 - (cum_air_0to2_prob + cum_air_0to1_prob);
+            float cum_air_1nodeg_prob = 50 - cum_air_1to2_prob;
+            float cum_air_2to1_prob = airway_2to1_cure_probability;
+            float cum_air_2to0_prob = airway_2to0_cure_probability;
+            float cum_air_1to0_prob = airway_1to0_cure_probability/2f;
+            float cum_air_2noimp_prob = 100 - (cum_air_2to0_prob + cum_air_2to1_prob);
+            float cum_air_1noimp_prob = 50 - cum_air_1to0_prob;
+
+            #endregion
+
+            #region consciousness
+            float cum_con_0to1_prob = 1;
+            if (hemorrhage == 2 && breathing < 2 && consciousness == 0 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_con_0to1_prob = hemcon0to1_deg_prob_longtime; }
+            else if (hemorrhage == 2 && breathing < 2 && consciousness == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_con_0to1_prob = hemcon0to1_deg_prob_shorttime; }
+            else if (hemorrhage < 2 && breathing < 2 && consciousness == 0)
+            { cum_con_0to1_prob = 0; }
+            else if (hemorrhage < 2 && breathing == 2 && consciousness == 0 && stopwatch_bre.Elapsed.TotalSeconds >= 60)
+            { cum_con_0to1_prob = brecon0to1_deg_prob_longtime; }
+            else if (hemorrhage < 2 && breathing == 2 && consciousness == 0 && stopwatch_bre.Elapsed.TotalSeconds < 60)
+            { cum_con_0to1_prob = brecon0to1_deg_prob_shorttime; }
+            else if (hemorrhage < 2 && breathing < 2 && consciousness == 0)
+            { cum_con_0to1_prob = 0; }
+            float cum_con_1to2_prob = 1;
+            if (hemorrhage == 2 && breathing == 2 && consciousness == 1 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_con_1to2_prob = hemcon1to2_deg_prob_longtime / 2f; }
+            else if (hemorrhage == 2 && breathing == 2 && consciousness == 1 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_con_1to2_prob = hemcon1to2_deg_prob_shorttime / 2f; }
+            else if (hemorrhage == 2 && breathing < 2 && consciousness == 1 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_con_1to2_prob = hemcon1to2_deg_prob_longtime/2f; }
+            else if (hemorrhage == 2 && breathing < 2 && consciousness == 1 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_con_1to2_prob = hemcon1to2_deg_prob_shorttime/2f; }
+            else if (hemorrhage < 2 && breathing == 2 && consciousness == 1 && stopwatch_bre.Elapsed.TotalSeconds >= 60)
+            { cum_con_1to2_prob = brecon1to2_deg_prob_longtime/2f; }
+            else if (hemorrhage < 2 && breathing == 2 && consciousness == 1 && stopwatch_bre.Elapsed.TotalSeconds < 60)
+            { cum_con_1to2_prob = brecon1to2_deg_prob_shorttime/2f; }
+            else if (hemorrhage < 2 && breathing < 2 && consciousness == 1)
+            { cum_con_1to2_prob = 0; }
+            float cum_con_0to2_prob = 1;
+            if (hemorrhage == 2 && breathing < 2 && consciousness == 0 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_con_0to2_prob = hemcon0to2_deg_prob_longtime; }
+            else if (hemorrhage == 2 && breathing < 2 && consciousness == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_con_0to2_prob = hemcon0to2_deg_prob_shorttime; }
+            else if (hemorrhage < 2 && breathing < 2 && consciousness == 0)
+            { cum_con_0to2_prob = 0; }
+            else if (hemorrhage < 2 && breathing == 2 && consciousness == 0 && stopwatch_hem.Elapsed.TotalSeconds >= 60)
+            { cum_con_0to2_prob = brecon0to2_deg_prob_longtime; }
+            else if (hemorrhage < 2 && breathing == 2 && consciousness == 0 && stopwatch_hem.Elapsed.TotalSeconds < 60)
+            { cum_con_0to2_prob = brecon0to2_deg_prob_shorttime; }
+            else if (hemorrhage < 2 && breathing < 2 && consciousness == 0)
+            { cum_con_0to2_prob = 0; }
+
+            float cum_con_0nodeg_prob = 100 - (cum_con_0to2_prob + cum_con_0to1_prob);
+            float cum_con_1nodeg_prob = 50 - cum_con_1to2_prob;
+            float cum_con_2to1_prob = conc2to1_cure_probability;
+            float cum_con_2to0_prob = conc2to0_cure_probability;
+            float cum_con_1to0_prob = conc1to0_cure_probability/2f;
+            float cum_con_2noimp_prob = 100f - (cum_con_2to0_prob + cum_con_2to1_prob);
+            float cum_con_1noimp_prob = 50f - cum_con_1to0_prob;
+
+            #endregion
+
+            #region breathing
+
+            float cum_bre_0to1_prob = breair_prob0to1;
+            float cum_bre_0to2_prob = breair_prob0to2;
+            float cum_bre_0nodeg_prob = 100 - (cum_bre_0to2_prob + cum_bre_0to1_prob);
+            float cum_bre_1to2_prob = breair_prob1to2/2f;
+            float cum_bre_1nodeg_prob = 50 - cum_bre_1to2_prob;
+            float cum_bre_1to0_prob = breath1to0_cure_probability/2f;
+            float cum_bre_1noimp_prob = 50 - cum_bre_1to0_prob;
+            float cum_bre_2to0_prob;
+            if (circulation == 2) { cum_bre_2to0_prob = cpr2to0_cure_probability; }
+            else { cum_bre_2to0_prob = breath2to0_cure_probability; }
+            float cum_bre_2to1_prob;
+            if (circulation == 2) { cum_bre_2to1_prob = cpr2to1_cure_probability; }
+            else { cum_bre_2to1_prob = breath2to1_cure_probability; }
+            float cum_bre_2noimp_prob = 100 - (cum_bre_2to0_prob + cum_bre_2to1_prob);
+            #endregion
+
+            #endregion
+
+            #region set hem heights
+            float hem_zero_level = 0.3f;
+            float hem_one_level = 0.4f;
+            float hem_two_level = 0.3f;
+
+            if (hemorrhage == 0)
+            {
+                hem_zero_level = (cum_hem_0to2_prob + cum_hem_0to1_prob + cum_hem_0nodeg_prob) /100f;
+                hem_one_level = (cum_hem_0to2_prob + cum_hem_0to1_prob) / 100f;
+                hem_two_level = cum_hem_0to2_prob/100f;
+            }
+            else if (hemorrhage == 1)
+            {
+                hem_zero_level = (cum_hem_1to2_prob + cum_hem_1noimp_prob + cum_hem_1nodeg_prob + cum_hem_1to0_prob)/100f;
+                hem_one_level = (cum_hem_1to2_prob + cum_hem_1noimp_prob + cum_hem_1nodeg_prob)/100f;
+                hem_two_level = cum_hem_1to2_prob/100f;
+            }
+            else if (hemorrhage == 2)
+            {
+                hem_zero_level = (cum_hem_2noimp_prob + cum_hem_2to1_prob + cum_hem_2to0_prob)/100f;
+                hem_one_level = (cum_hem_2noimp_prob + cum_hem_2to1_prob)/100f;
+                hem_two_level = cum_hem_2noimp_prob/100f;
+            }
+            #endregion
+
+            #region set con levels
+            float con_zero_level = 0.3f;
+            float con_one_level = 0.4f;
+            float con_two_level = 0.3f;
+
+            if (consciousness == 0)
+            {
+                con_zero_level = (cum_con_0to2_prob + cum_con_0to1_prob + cum_con_0nodeg_prob) / 100f;
+                con_one_level = (cum_con_0to2_prob + cum_con_0to1_prob) / 100f;
+                con_two_level = cum_con_0to2_prob / 100f;
+            }
+            else if (consciousness == 1)
+            {
+                con_zero_level = (cum_con_1to2_prob + cum_con_1noimp_prob + cum_con_1nodeg_prob + cum_con_1to0_prob) / 100f;
+                con_one_level = (cum_con_1to2_prob + cum_con_1noimp_prob + cum_con_1nodeg_prob) / 100f;
+                con_two_level = cum_con_1to2_prob/100f;
+            }
+            else if (consciousness == 2)
+            {
+                con_zero_level = (cum_con_2noimp_prob + cum_con_2to1_prob + cum_con_2to0_prob) / 100f;
+                con_one_level = (cum_con_2noimp_prob + cum_con_2to1_prob) / 100f;
+                con_two_level = cum_con_2noimp_prob / 100f;
+            }
+
+            #endregion
+
+            #region set cir levels
+            float cir_zero_level = 0.3f;
+            float cir_one_level = 0.4f;
+            float cir_two_level = 0.3f;
+
+            if (circulation == 0)
+            {
+                cir_zero_level = (cum_cir_0to2_prob + cum_cir_0to1_prob + cum_cir_0nodeg_prob) / 100f;
+                cir_one_level = (cum_cir_0to2_prob + cum_cir_0to1_prob) / 100f;
+                cir_two_level = cum_cir_0to2_prob / 100f;
+            }
+            else if (circulation == 1)
+            {
+                cir_zero_level = (cum_cir_1to2_prob + cum_cir_1noimp_prob + cum_cir_1nodeg_prob + cum_cir_1to0_prob) / 100f;
+                cir_one_level = (cum_cir_1to2_prob + cum_cir_1noimp_prob + cum_cir_1nodeg_prob) / 100f;
+                cir_two_level = cum_cir_1to2_prob/100f;
+            }
+            else if (circulation == 2)
+            {
+                cir_zero_level = (cum_cir_2noimp_prob + cum_cir_2to1_prob + cum_cir_2to0_prob) / 100f;
+                cir_one_level = (cum_cir_2noimp_prob + cum_cir_2to1_prob) / 100f;
+                cir_two_level = cum_cir_2noimp_prob / 100f;
+            }
+
+            #endregion
+
+            #region set air levels
+            float air_zero_level = 0.3f;
+            float air_one_level = 0.4f;
+            float air_two_level = 0.3f;
+
+            if (airway == 0)
+            {
+                air_zero_level = (cum_air_0to2_prob + cum_air_0to1_prob + cum_air_0nodeg_prob) / 100f;
+                air_one_level = (cum_air_0to2_prob + cum_air_0to1_prob) / 100f;
+                air_two_level = cum_air_0to2_prob / 100f;
+            }
+            else if (airway == 1)
+            {
+                air_zero_level = (cum_air_1to2_prob + cum_air_1noimp_prob + cum_air_1nodeg_prob + cum_air_1to0_prob) / 100f;
+                air_one_level = (cum_air_1to2_prob + cum_air_1noimp_prob + cum_air_1nodeg_prob) / 100f;
+                air_two_level = cum_air_1to2_prob/100f;
+            }
+            else if (airway == 2)
+            {
+                air_zero_level = (cum_air_2noimp_prob + cum_air_2to1_prob + cum_air_2to0_prob) / 100f;
+                air_one_level = (cum_air_2noimp_prob + cum_air_2to1_prob) / 100f;
+                air_two_level = cum_air_2noimp_prob / 100f;
+            }
+
+            #endregion
+
+
+            #region set bre levels
+            float bre_zero_level = 0.3f;
+            float bre_one_level = 0.4f;
+            float bre_two_level = 0.3f;
+
+            if (breathing == 0)
+            {
+                bre_zero_level = (cum_bre_0to2_prob + cum_bre_0to1_prob + cum_bre_0nodeg_prob) / 100f;
+                bre_one_level = (cum_bre_0to2_prob + cum_bre_0to1_prob) / 100f;
+                bre_two_level = cum_bre_0to2_prob / 100f;
+            }
+            else if (breathing == 1)
+            {
+                bre_zero_level = (cum_bre_1to2_prob + cum_bre_1noimp_prob + cum_bre_1nodeg_prob + cum_bre_1to0_prob) / 100f;
+                bre_one_level = (cum_bre_1to2_prob + cum_bre_1noimp_prob + cum_bre_1nodeg_prob) / 100f;
+                bre_two_level = cum_bre_1to2_prob/100f;
+            }
+            else if (breathing == 2)
+            {
+                bre_zero_level = (cum_bre_2noimp_prob + cum_bre_2to1_prob + cum_bre_2to0_prob) / 100f;
+                bre_one_level = (cum_bre_2noimp_prob + cum_bre_2to1_prob) / 100f;
+                bre_two_level = cum_bre_2noimp_prob / 100f;
+            }
+
+            #endregion
+
+
+            float[] fail_prob = { cir_two_level, bre_two_level, con_two_level, hem_two_level, air_two_level };
+
+            overall_success_prob = (100f - (fail_prob.Max() * 100f));
+
+            success_prob.Text = Convert.ToString(overall_success_prob);
+
+            t1.Text = Convert.ToString(cir_zero_level);
+            t2.Text = Convert.ToString(cir_one_level);
+            t3.Text = Convert.ToString(cir_two_level);
+            t4.Text = Convert.ToString(bre_zero_level);
+            t5.Text = Convert.ToString(bre_one_level);
+            t6.Text = Convert.ToString(bre_two_level);
+            t7.Text = Convert.ToString(air_zero_level);
+            t8.Text = Convert.ToString(air_one_level);
+            t9.Text = Convert.ToString(air_two_level);
+
+            t10.Text = Convert.ToString(con_zero_level);
+            t11.Text = Convert.ToString(con_one_level);
+            t12.Text = Convert.ToString(con_two_level);
+
+
+            // add the indicator drawing part here
+            hem_pred_panel.BackgroundImage = DrawPredictor(hem_two_level, hem_one_level);
+            air_pred_panel.BackgroundImage = DrawPredictor(air_two_level, air_one_level);
+            bre_pred_panel.BackgroundImage = DrawPredictor(bre_two_level, bre_one_level);
+            conc_pred_panel.BackgroundImage = DrawPredictor(con_two_level, con_one_level);
+            circ_pred_panel.BackgroundImage = DrawPredictor(cir_two_level, cir_one_level);
+
+            #region draw the predictor
+            Bitmap DrawPredictor(float worse_level, float stay_level)
+            {
+                #region assign variables
+                int wid = 80; //indicator sise sizing
+                int hgt = 400;
+
+                Color bg_color = Color.FromName("White");
+                Color worsen_color = Color.FromName("Red");
+                Color outline_color = Color.FromName("Black");
+                Color improve_color = Color.FromName("green");
+                Color stay_color = Color.FromName("orange");
+
+
+                //float indicator_level = 1f - (0.333f * pat_char_stat); //determine the indicator level depending on the specific patient statistic;
+                bool striped = true; // add the stripes across the UI
+                #endregion
+
+                #region draw the indicator and return to calling class/object
+                Bitmap bm = new Bitmap(wid, hgt);
+                using (Graphics gr = Graphics.FromImage(bm))
+                {
+                    // OLD CODE FROM EXAMPLE - to rotate indicator if needed - kept in for future reference - DELETE LATER
+                    #region old code
+                    // If the indicator has a horizontal orientation,
+                    // rotate so we can draw it vertically.
+                    //if (wid > hgt)
+                    //{
+                    //    gr.RotateTransform(90, MatrixOrder.Append);
+                    //    gr.TranslateTransform(wid, 0, MatrixOrder.Append);
+                    //    int temp = wid;
+                    //    wid = hgt;
+                    //    hgt = temp;
+                    //}
+                    #endregion
+
+                    // Draw the battery.
+                    DrawVerticalpredictor(gr, stay_level, worse_level, wid, hgt, bg_color, worsen_color, outline_color, stay_color, improve_color, striped);
+                }
+                return bm;
+                #endregion
+            }
+            #endregion
+
+
+            #region code to actually construct rectangles for indicators
+            // Draw a vertically oriented battery with
+            // the indicated percentage filled in.
+            void DrawVerticalpredictor(Graphics gr, float stay_level, float worse_level, int wid, int hgt, Color bg_color, Color Worse_Color, Color outline_color, Color Stay_Color, Color Improve_Color, bool striped)
+            {
+                gr.Clear(bg_color);
+                gr.SmoothingMode = SmoothingMode.AntiAlias;
+
+                // Make a rectangle for the main body.
+                float thickness = hgt*(1f/(400f/160f)) / 20f;
+                RectangleF body_rect = new RectangleF(
+                    thickness * 0.5f, thickness * 1f,
+                    wid - thickness, hgt - thickness * 2f);
+
+                using (Pen pen = new Pen(outline_color, thickness))
+                {
+                    // Fill the body
+                    using (Brush brush = new SolidBrush(Improve_Color))
+                    {
+                        gr.FillRectangle(brush, body_rect);
+                    }
+
+                    ;
+                    //Color worse_Color = Color.FromName("red");
+
+                    // Fill the required area with color.
+                    float stay_hgt = body_rect.Height * stay_level;
+                    RectangleF stay_rect = new RectangleF(
+                        body_rect.Left, body_rect.Bottom - stay_hgt,
+                        body_rect.Width, stay_hgt);
+                    using (Brush brush = new SolidBrush(Stay_Color))
+                    {
+                        gr.FillRectangle(brush, stay_rect);
+                    }
+
+                    // Fill the required area with color.
+                    float worse_hgt = body_rect.Height * worse_level;
+                    RectangleF worse_rect = new RectangleF(
+                        body_rect.Left, body_rect.Bottom - worse_hgt,
+                        body_rect.Width, worse_hgt);
+                    using (Brush brush = new SolidBrush(Worse_Color))
+                    {
+                        gr.FillRectangle(brush, worse_rect);
+                    }
+
+
+
+
+                    // Optionally stripe multiples of 25%
+                    if (striped)
+                        for (int i = 1; i <= 3; i++)
+                        {
+                            float y = body_rect.Bottom -
+                                i * 0.25f * body_rect.Height;
+                            gr.DrawLine(pen, body_rect.Left, y,
+                                body_rect.Right, y);
+                        }
+
+                    // Draw the main body.
+                    gr.DrawPath(pen, MakeRoundedRect(
+                        body_rect, thickness, thickness,
+                        true, true, true, true));
+
+                    // Draw the positive terminal. //
+                    //RectangleF terminal_rect = new RectangleF(
+                    //    wid / 2f - thickness, 0,
+                    //    2 * thickness, thickness);
+                    //gr.DrawPath(pen, MakeRoundedRect(
+                    //    terminal_rect, thickness / 2f, thickness / 2f,
+                    //    true, true, false, false));
+                }
+            }
+
+            // Draw a rectangle in the indicated Rectangle
+            // rounding the indicated corners.
+            #region code to make rounded rectangle
+            GraphicsPath MakeRoundedRect(
+                RectangleF rect, float xradius, float yradius,
+                bool round_ul, bool round_ur, bool round_lr, bool round_ll)
+            {
+                // Make a GraphicsPath to draw the rectangle.
+                PointF point1, point2;
+                GraphicsPath path = new GraphicsPath();
+
+                // Upper left corner.
+                if (round_ul)
+                {
+                    RectangleF corner = new RectangleF(
+                        rect.X, rect.Y,
+                        2 * xradius, 2 * yradius);
+                    path.AddArc(corner, 180, 90);
+                    point1 = new PointF(rect.X + xradius, rect.Y);
+                }
+                else point1 = new PointF(rect.X, rect.Y);
+
+                // Top side.
+                if (round_ur)
+                    point2 = new PointF(rect.Right - xradius, rect.Y);
+                else
+                    point2 = new PointF(rect.Right, rect.Y);
+                path.AddLine(point1, point2);
+
+                // Upper right corner.
+                if (round_ur)
+                {
+                    RectangleF corner = new RectangleF(
+                        rect.Right - 2 * xradius, rect.Y,
+                        2 * xradius, 2 * yradius);
+                    path.AddArc(corner, 270, 90);
+                    point1 = new PointF(rect.Right, rect.Y + yradius);
+                }
+                else point1 = new PointF(rect.Right, rect.Y);
+
+                // Right side.
+                if (round_lr)
+                    point2 = new PointF(rect.Right, rect.Bottom - yradius);
+                else
+                    point2 = new PointF(rect.Right, rect.Bottom);
+                path.AddLine(point1, point2);
+
+                // Lower right corner.
+                if (round_lr)
+                {
+                    RectangleF corner = new RectangleF(
+                        rect.Right - 2 * xradius,
+                        rect.Bottom - 2 * yradius,
+                        2 * xradius, 2 * yradius);
+                    path.AddArc(corner, 0, 90);
+                    point1 = new PointF(rect.Right - xradius, rect.Bottom);
+                }
+                else point1 = new PointF(rect.Right, rect.Bottom);
+
+                // Bottom side.
+                if (round_ll)
+                    point2 = new PointF(rect.X + xradius, rect.Bottom);
+                else
+                    point2 = new PointF(rect.X, rect.Bottom);
+                path.AddLine(point1, point2);
+
+                // Lower left corner.
+                if (round_ll)
+                {
+                    RectangleF corner = new RectangleF(
+                        rect.X, rect.Bottom - 2 * yradius,
+                        2 * xradius, 2 * yradius);
+                    path.AddArc(corner, 90, 90);
+                    point1 = new PointF(rect.X, rect.Bottom - yradius);
+                }
+                else point1 = new PointF(rect.X, rect.Bottom);
+
+                // Left side.
+                if (round_ul)
+                    point2 = new PointF(rect.X, rect.Y + yradius);
+                else
+                    point2 = new PointF(rect.X, rect.Y);
+                path.AddLine(point1, point2);
+
+                // Join with the start point.
+                path.CloseFigure();
+
+                return path;
+            }
+            #endregion
+
+            #endregion
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // EMS Agent Start
         #region create New EMS Agent
@@ -3018,7 +4755,17 @@ namespace Uttam_Transfer_Of_Care
                 }
                 else
                 {
-                    MessageBox.Show("patient stable");
+                    patstablecall(overall_success_prob);
+
+                    async void patstablecall(float overall_success_prob)
+                    {
+
+
+                        var pat_stable = new Patient_Stable(overall_success_prob);
+                        pat_stable.Show();
+                        await Task.Delay(2000);
+                        pat_stable.Close();
+                    }
                 }
                 // In this block AI will perform its value function MDP and  recommend the actions
                 /*  Get the patient variable value here and recommend EMS to perform that action*/
@@ -3061,12 +4808,12 @@ namespace Uttam_Transfer_Of_Care
                 do
                 {
                     //ask EMS to check patient degradation every 10s 
-                    await Task.Delay(10000);
+                    await Task.Delay(20000);
                     subject = "check_patient_degradation";
                     Ems();
+                    await Task.Delay(50);
 
                     string current_time = Convert.ToString(stopwatch_sim.Elapsed);
-                    time_tb.Text = current_time;
 
                 } while (stopwatch_sim.Elapsed.TotalSeconds < 110);
 
@@ -3135,17 +4882,51 @@ namespace Uttam_Transfer_Of_Care
         #region AI patient transfer button click event
         private void AI_patient_transfer_button_Click(object sender, EventArgs e)
         {
-            starttime = DateTime.Now;
-            var inputform_click = new inputform(treatment_timeline.Items);
-            //Inputform1.Update();
-            inputform_click.Show();
+            //starttime = DateTime.Now;
+            //var inputform_click = new inputform(treatment_timeline.Items);
+            ////Inputform1.Update();
+            //inputform_click.Show();
+
         }
 
         private void AI_patient_transfer_button_Click_1(object sender, EventArgs e)
         {
-            starttime = DateTime.Now;
+            //starttime = DateTime.Now;
             var transfer_form_start = new inputform(treatment_timeline.Items);
-            transfer_form_start.Show();   
+            transfer_form_start.Show();
+            UICounter = 0; //Reset UI counter
+            counter = 120; // reset timer counter
+            cpr2_count = 0; //reset cpr counter
+            airway1_count = 0;
+            airway2_count = 0;
+            circ2_count = 0;
+            circ1_count = 0;
+            mistake_count = 0;
+            total_unsuccess_count = 0;
+            total_success_count = 0;
+            conc1_count = 0;
+            conc2_count = 0;
+            hem1_count = 0;
+            hem2_count = 0;
+            breath1_count = 0;
+            breath2_count = 0;
+            patient_circ_instability_score = 0;
+            patient_bre_instability_score = 0;
+            patient_con_instability_score = 0;
+            patient_hem_instability_score = 0;
+            patient_air_instability_score = 0;
+            stopwatch_air.Stop();
+            stopwatch_air.Reset();
+            stopwatch_hem.Stop();
+            stopwatch_hem.Reset();
+            stopwatch_con.Stop();
+            stopwatch_con.Reset();
+            stopwatch_cir.Stop();
+            stopwatch_cir.Reset();
+            stopwatch_bre.Stop();
+            stopwatch_bre.Reset();
+
+            this.Hide();
         }
         #endregion
 
@@ -3154,14 +4935,16 @@ namespace Uttam_Transfer_Of_Care
 
         private void Button_hemm_torniquet_Click(object sender, EventArgs e)
         {
-            Button_hemm_torniquet.BackColor = Color.Empty;
+            Button_hemm_torniquet.BackColor = Color.FromName("Menu");
+            action = "check hemorrhage";
             subject = "treatment";
             patient();
             //Treatment("check hemorrhage");
         }
         private void Button_hemm_treat_Click(object sender, EventArgs e)
         {
-            Button_hemm_treat.BackColor = Color.Empty;
+            Button_hemm_treat.BackColor = Color.FromName("Menu");
+            action = "check hemorrhage";
             subject = "treatment";
             patient();
             //Treatment("check hemorrhage");
@@ -3169,7 +4952,8 @@ namespace Uttam_Transfer_Of_Care
 
         private void Button_conc_drugs_Click(object sender, EventArgs e)
         {
-            Button_conc_drugs.BackColor = Color.Empty;
+            Button_conc_drugs.BackColor = Color.FromName("Menu");
+            action = "check consciousness";
             subject = "treatment";
             patient();
             //Treatment("check consciousness");
@@ -3177,7 +4961,8 @@ namespace Uttam_Transfer_Of_Care
 
         private void Button_air_Intubate_Click(object sender, EventArgs e)
         {
-            Button_air_Intubate.BackColor = Color.Empty;
+            Button_air_Intubate.BackColor = Color.FromName("Menu");
+            action = "check airway";
             subject = "treatment";
             patient();
             //Treatment("check airway");
@@ -3185,7 +4970,8 @@ namespace Uttam_Transfer_Of_Care
 
         private void Button_air_clearair_Click(object sender, EventArgs e)
         {
-            Button_air_clearair.BackColor = Color.Empty;
+            Button_air_clearair.BackColor = Color.FromName("Menu");
+            action = "check airway";
             subject = "treatment";
             patient();
             //Treatment("check airway");
@@ -3193,7 +4979,8 @@ namespace Uttam_Transfer_Of_Care
 
         private void Button_circ_CPR_Click(object sender, EventArgs e)
         {
-            Button_circ_chest.BackColor = Color.Empty;
+            Button_circ_chest.BackColor = Color.FromName("Menu");
+            action = "check circulation";
             subject = "treatment";
             patient();
             //Treatment("check circulation");
@@ -3201,15 +4988,17 @@ namespace Uttam_Transfer_Of_Care
 
         private void Button_circ_drugs_Click(object sender, EventArgs e)
         {
-            Button_circ_drugs.BackColor = Color.Empty;
+            Button_circ_drugs.BackColor = Color.FromName("Menu");
+            //action = "check circulation";
             subject = "treatment";
-            patient();
+            patient();            
             //Treatment("check circulation");
         }
 
         private void Button_breath_Oxygen_Click(object sender, EventArgs e)
         {
-            Button_breath_Oxygen.BackColor = Color.Empty;
+            Button_breath_Oxygen.BackColor = Color.FromName("Menu");
+            action = "check breathing";
             subject = "treatment";
             patient();
             //Treatment("check breathing");
@@ -3217,14 +5006,16 @@ namespace Uttam_Transfer_Of_Care
 
         private void Button_breath_rescuebreath_Click(object sender, EventArgs e)
         {
-            Button_breath_aspirate.BackColor = Color.Empty;
+            Button_breath_aspirate.BackColor = Color.FromName("Menu");
+            action = "check breathing";
             subject = "treatment";
             patient();
             //Treatment("check breathing");
         }
         private void Button_CPR_Click(object sender, EventArgs e)
         {
-            Button_CPR.BackColor = Color.Empty;
+            Button_CPR.BackColor = Color.FromName("Menu");
+            action = "check CPR";
             subject = "treatment";
             patient();
             //Treatment("check CPR");
@@ -3340,6 +5131,16 @@ namespace Uttam_Transfer_Of_Care
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
