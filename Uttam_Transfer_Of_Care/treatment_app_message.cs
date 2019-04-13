@@ -49,6 +49,10 @@ namespace Uttam_Transfer_Of_Care
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 
             draw_edge();
+
+
+
+
         }
 
         async void draw_edge()

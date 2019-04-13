@@ -324,32 +324,32 @@ namespace Uttam_Transfer_Of_Care
             if (AI_sim.consciousness == 0 && AI_sim.initial_consciousness == 0)
             {
                 var actual_consciousness = 0;
-                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_description);
             }
             else if (AI_sim.consciousness == 1 && AI_sim.initial_consciousness <= 1)
             {
                 var actual_consciousness = 1;
-                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_description);
             }
             else if (AI_sim.consciousness == 2)
             {
                 var actual_consciousness = 2;
-                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_description);
             }
             else if (AI_sim.consciousness == 0 && AI_sim.initial_consciousness == 1)
             {
                 var actual_consciousness = 3;
-                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_description);
             }
             else if (AI_sim.consciousness == 1 && AI_sim.initial_consciousness == 2)
             {
                 var actual_consciousness = 4;
-                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_description);
             }
             else if (AI_sim.consciousness == 0 && AI_sim.initial_consciousness == 2)
             {
                 var actual_consciousness = 5;
-                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_decription);
+                Output_actual_patient_Consciousness.Text = Convert.ToString(AI_sim.consciousness_description);
             }
             #endregion
 

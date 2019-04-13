@@ -65,7 +65,7 @@ namespace Uttam_Transfer_Of_Care
         public static string breathing_description = "no breathing problem";
         public static string airway_description = "airway clear";
         public static string hemorrhage_description = "no bleeding";
-        public static string consciousness_decription = "fully conscious";
+        public static string consciousness_description = "fully conscious";
         public static string circulation_description = "no heart or circulation problem";
         public static string MessageLabel = "null";
         public string predicted_hem;
@@ -587,7 +587,7 @@ namespace Uttam_Transfer_Of_Care
                     {
                         Patient_description_title.Visible = true;
                         Injury_level_description.Visible = true;
-                        await Task.Delay(2000);
+                        await Task.Delay(500);
                         Injury_level_description.Text = wound_level_description;
                         //MessageBox.Show(wound_level_description);
                         if (AI_assist == true)
@@ -2464,6 +2464,27 @@ namespace Uttam_Transfer_Of_Care
 
                 #endregion
 
+                #region confirm descriptions in case no treatment applied
+
+
+                if (airway == 0) { airway_description = "airway clear"; }
+                if (airway == 1) { airway_description = "airway partially blocked"; }
+                if (airway == 2) { airway_description = "airway blocked"; }
+                if (consciousness == 0) { consciousness_description = "fully conscious"; }
+                if (consciousness == 1) { consciousness_description = "partially conscious"; }
+                if (consciousness == 2) { consciousness_description = "unconscious"; }
+                if (circulation == 0) { circulation_description = "no heart problem"; }
+                if (circulation == 1) { circulation_description = "heart arrhythmia/tachycardia"; }
+                if (circulation == 2) { circulation_description = "heart attack"; }
+                if (hemorrhage == 0) { hemorrhage_description = "no bleeding"; }
+                if (hemorrhage == 1) { hemorrhage_description = "light bleeding"; }
+                if (hemorrhage == 2) { hemorrhage_description = "heavy bleeding"; }
+                if (breathing == 0) { breathing_description = "no breathing difficulties"; }
+                if (breathing == 1) { breathing_description = "some breathing difficulties"; }
+                if (breathing == 2) { breathing_description = "not breathing"; }
+
+                #endregion
+
                 #region Update UI
                 subject = "update patient initialization info"; //check if this is ok! 
                 Environment_control_function();
@@ -3494,10 +3515,34 @@ namespace Uttam_Transfer_Of_Care
                     treatment_timeline.Items.Add("Checking hemorrhage");
 
                     #region show patient treating message
+                    Button_air_Intubate.Enabled = false;
+                    Button_air_clearair.Enabled = false;
+                    Button_breath_aspirate.Enabled = false;
+                    Button_breath_Oxygen.Enabled = false;
+                    Button_circ_chest.Enabled = false;
+                    Button_circ_drugs.Enabled = false;
+                    Button_conc_drugs.Enabled = false;
+                    Button_hemm_torniquet.Enabled = false;
+                    Button_hemm_treat.Enabled = false;
+                    Button_CPR.Enabled = false;
+
+
                     var treatment_message = new Message_form();
                     treatment_message.Show();
                     await Task.Delay(hemorrhage_timedelay);
                     treatment_message.Close();
+
+                    Button_air_Intubate.Enabled = true;
+                    Button_air_clearair.Enabled = true;
+                    Button_breath_aspirate.Enabled = true;
+                    Button_breath_Oxygen.Enabled = true;
+                    Button_circ_chest.Enabled = true;
+                    Button_circ_drugs.Enabled = true;
+                    Button_conc_drugs.Enabled = true;
+                    Button_hemm_torniquet.Enabled = true;
+                    Button_hemm_treat.Enabled = true;
+                    Button_CPR.Enabled = true;
+
                     // end display treatment message
                     #endregion
 
@@ -3609,10 +3654,35 @@ namespace Uttam_Transfer_Of_Care
 
                     #region show treating patient message
                     // display treatment message - requires 'async' in the private void statement
+
+                    Button_air_Intubate.Enabled = false;
+                    Button_air_clearair.Enabled = false;
+                    Button_breath_aspirate.Enabled = false;
+                    Button_breath_Oxygen.Enabled = false;
+                    Button_circ_chest.Enabled = false;
+                    Button_circ_drugs.Enabled = false;
+                    Button_conc_drugs.Enabled = false;
+                    Button_hemm_torniquet.Enabled = false;
+                    Button_hemm_treat.Enabled = false;
+                    Button_CPR.Enabled = false;
+
+
                     var treatment_message = new Message_form();
                     treatment_message.Show();
                     await Task.Delay(consciousness_timedelay);
                     treatment_message.Close();
+
+                    Button_air_Intubate.Enabled = true;
+                    Button_air_clearair.Enabled = true;
+                    Button_breath_aspirate.Enabled = true;
+                    Button_breath_Oxygen.Enabled = true;
+                    Button_circ_chest.Enabled = true;
+                    Button_circ_drugs.Enabled = true;
+                    Button_conc_drugs.Enabled = true;
+                    Button_hemm_torniquet.Enabled = true;
+                    Button_hemm_treat.Enabled = true;
+                    Button_CPR.Enabled = true;
+
                     // end display treatment message
                     #endregion
 
@@ -3620,7 +3690,7 @@ namespace Uttam_Transfer_Of_Care
                     {
                         treatment_timeline.Items.Add("Patient fully Conscious");
                         consciousness = 0;
-                        consciousness_decription = "fully conscious";
+                        consciousness_description = "fully conscious";
 
                         mistake_count += 1;
                     }
@@ -3653,7 +3723,7 @@ namespace Uttam_Transfer_Of_Care
                         if (x <= conc1to0_cure_probability)
                         {
                             consciousness = 0;
-                            consciousness_decription = "previously partially conscious but now fully conscious";
+                            consciousness_description = "previously partially conscious but now fully conscious";
                             treatment_timeline.Items.Add("Full consciousness restored");
                             stopwatch_con.Reset();
                             total_success_count = total_success_count + 1;
@@ -3662,7 +3732,7 @@ namespace Uttam_Transfer_Of_Care
                         else
                         {
                             consciousness = 1;
-                            consciousness_decription = "partially conscious";
+                            consciousness_description = "partially conscious";
                             treatment_timeline.Items.Add("Patient Still not fully conscious");
                             total_unsuccess_count = total_unsuccess_count + 1;
 
@@ -3706,7 +3776,7 @@ namespace Uttam_Transfer_Of_Care
                         {
                             treatment_timeline.Items.Add("Full consciousness restored");
                             consciousness = 0;
-                            consciousness_decription = "previously unconscious but now fully conscious";
+                            consciousness_description = "previously unconscious but now fully conscious";
                             stopwatch_con.Reset();
                             total_success_count = total_success_count + 1;
                             patient_con_instability_score -= 3;
@@ -3715,7 +3785,7 @@ namespace Uttam_Transfer_Of_Care
                         {
                             treatment_timeline.Items.Add("Patient partially responsive");
                             consciousness = 1;
-                            consciousness_decription = "previously unconscious but coming round";
+                            consciousness_description = "previously unconscious but coming round";
                             total_partial_success_count = total_partial_success_count + 1;
                             patient_con_instability_score -= 2;
                         }
@@ -3723,7 +3793,7 @@ namespace Uttam_Transfer_Of_Care
                         {
                             treatment_timeline.Items.Add("Patient still unconscious");
                             consciousness = 2;
-                            consciousness_decription = "unconscious";
+                            consciousness_description = "unconscious";
                             total_unsuccess_count = total_unsuccess_count + 1;
                         }
                         conc2_count = conc2_count + 1;
@@ -3761,10 +3831,35 @@ namespace Uttam_Transfer_Of_Care
 
                     #region show treating patient message
                     // display treatment message - requires 'async' in the private void statement
+
+                    Button_air_Intubate.Enabled = false;
+                    Button_air_clearair.Enabled = false;
+                    Button_breath_aspirate.Enabled = false;
+                    Button_breath_Oxygen.Enabled = false;
+                    Button_circ_chest.Enabled = false;
+                    Button_circ_drugs.Enabled = false;
+                    Button_conc_drugs.Enabled = false;
+                    Button_hemm_torniquet.Enabled = false;
+                    Button_hemm_treat.Enabled = false;
+                    Button_CPR.Enabled = false;
+
+
                     var treatment_message = new Message_form();
                     treatment_message.Show();
                     await Task.Delay(breathing_timedelay);
                     treatment_message.Close();
+
+                    Button_air_Intubate.Enabled = true;
+                    Button_air_clearair.Enabled = true;
+                    Button_breath_aspirate.Enabled = true;
+                    Button_breath_Oxygen.Enabled = true;
+                    Button_circ_chest.Enabled = true;
+                    Button_circ_drugs.Enabled = true;
+                    Button_conc_drugs.Enabled = true;
+                    Button_hemm_torniquet.Enabled = true;
+                    Button_hemm_treat.Enabled = true;
+                    Button_CPR.Enabled = true;
+
                     // end display treatment message
                     #endregion
 
@@ -3883,11 +3978,36 @@ namespace Uttam_Transfer_Of_Care
 
                     #region show treating patient message
                     //display treatment message - requires 'async' in the private void statement
+
+                    Button_air_Intubate.Enabled = false;
+                    Button_air_clearair.Enabled = false;
+                    Button_breath_aspirate.Enabled = false;
+                    Button_breath_Oxygen.Enabled = false;
+                    Button_circ_chest.Enabled = false;
+                    Button_circ_drugs.Enabled = false;
+                    Button_conc_drugs.Enabled = false;
+                    Button_hemm_torniquet.Enabled = false;
+                    Button_hemm_treat.Enabled = false;
+                    Button_CPR.Enabled = false;
+
+
                     var treatment_message = new Message_form();
                     treatment_message.Show();                                                        // open message box
                     await Task.Delay(circ_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
                     treatment_message.Close();                                                       // close message box
                                                                                                      // end display treatment message
+
+                    Button_air_Intubate.Enabled = true;
+                    Button_air_clearair.Enabled = true;
+                    Button_breath_aspirate.Enabled = true;
+                    Button_breath_Oxygen.Enabled = true;
+                    Button_circ_chest.Enabled = true;
+                    Button_circ_drugs.Enabled = true;
+                    Button_conc_drugs.Enabled = true;
+                    Button_hemm_torniquet.Enabled = true;
+                    Button_hemm_treat.Enabled = true;
+                    Button_CPR.Enabled = true;
+
                     #endregion
 
                     if (circulation == 0)  // If there is no problem
@@ -4005,16 +4125,43 @@ namespace Uttam_Transfer_Of_Care
 
                     #region show treating patient message
                     // display treatment message - requires 'async' in the private void statement
+
+                    Button_air_Intubate.Enabled = false;
+                    Button_air_clearair.Enabled = false;
+                    Button_breath_aspirate.Enabled = false;
+                    Button_breath_Oxygen.Enabled = false;
+                    Button_circ_chest.Enabled = false;
+                    Button_circ_drugs.Enabled = false;
+                    Button_conc_drugs.Enabled = false;
+                    Button_hemm_torniquet.Enabled = false;
+                    Button_hemm_treat.Enabled = false;
+                    Button_CPR.Enabled = false;
+
+
                     var treatment_message = new Message_form();
                     treatment_message.Show();                                                        // open message box
                     await Task.Delay(airway_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
                     treatment_message.Close();                                                       // close message box
                                                                                                      // end display treatment message
+
+
+                    Button_air_Intubate.Enabled = true;
+                    Button_air_clearair.Enabled = true;
+                    Button_breath_aspirate.Enabled = true;
+                    Button_breath_Oxygen.Enabled = true;
+                    Button_circ_chest.Enabled = true;
+                    Button_circ_drugs.Enabled = true;
+                    Button_conc_drugs.Enabled = true;
+                    Button_hemm_torniquet.Enabled = true;
+                    Button_hemm_treat.Enabled = true;
+                    Button_CPR.Enabled = true;
+
                     #endregion
 
                     if (airway == 0)  // If there is no problem
                     {
                         treatment_timeline.Items.Add("no obstruction to airway");                            //patient condition message
+                        airway_description = "airway clear";
                         airway = 0;                                                            //set patient condition quantifier to 0 'normal'
 
                         mistake_count += 1;
@@ -4030,6 +4177,7 @@ namespace Uttam_Transfer_Of_Care
                         if (x <= airway_1to0_cure_probability)
                         {
                             treatment_timeline.Items.Add("airway cleared");             //Patient condition returned to normal message
+                            airway_description = "partially blocked airway now clear";
                             airway = 0;                                                      //patient condition quantifier set to 0 - 'normal'
                             stopwatch_air.Reset();
                             total_success_count += 1;                                             //global counter for successful procedures
@@ -4038,6 +4186,7 @@ namespace Uttam_Transfer_Of_Care
                         else
                         {
                             treatment_timeline.Items.Add("airway still blocked");      //Patient condition unchanged message
+                            airway_description = "airway still partially blocked";
                             airway = 1;                                                        //Patient condition quantifier set to 1 - no change - still some problem
                             total_unsuccess_count += 1;                                             //global counter for unsucessful procedures
                         }
@@ -4058,6 +4207,7 @@ namespace Uttam_Transfer_Of_Care
                         if (x <= airway_2to0_cure_probability)
                         {
                             treatment_timeline.Items.Add("Intubation success - Airway clear and stable");                     // patient condition returned to normal message
+                            airway_description = "blocked airway now clear";
                             airway = 0;                                                         // patient condition quantifier set to 0 - 'normal'
                             stopwatch_air.Reset();
                             total_success_count += 1;                                           // global counter for successful procedures
@@ -4069,12 +4219,14 @@ namespace Uttam_Transfer_Of_Care
                         else if (x <= airway_2to1_cumprob && x > airway_2to0_cure_probability)
                         {
                             treatment_timeline.Items.Add("Airway partially cleared");           //patient partially stabliized message
+                            airway_description = "airway partially clear";
                             airway = 1;                                                         //patient condition quantifier set to 1 - some problems
                             total_partial_success_count += 1;                                   // counter for partial successful procedures
                         }
                         else
                         {
                             treatment_timeline.Items.Add("Airway still blocked");               //patient still critical
+                            airway_description = "airway blocked";
                             airway = 2;                                                         //patient condition quantifier set to 2 - critical
                             total_unsuccess_count += 1;                                         // counter for unsuccessful procedures
                         }
@@ -4122,11 +4274,36 @@ namespace Uttam_Transfer_Of_Care
 
                     #region show treating patient message
                     //display treatment message - requires 'async' in the private void statement
+
+                    Button_air_Intubate.Enabled = false;
+                    Button_air_clearair.Enabled = false;
+                    Button_breath_aspirate.Enabled = false;
+                    Button_breath_Oxygen.Enabled = false;
+                    Button_circ_chest.Enabled = false;
+                    Button_circ_drugs.Enabled = false;
+                    Button_conc_drugs.Enabled = false;
+                    Button_hemm_torniquet.Enabled = false;
+                    Button_hemm_treat.Enabled = false;
+                    Button_CPR.Enabled = false;
+
+
                     var treatment_message = new Message_form();
                     treatment_message.Show();                                                        // open message box
                     await Task.Delay(cpr_timedelay);                                                //leave message on screen for as long as delay is set dependent on procedure
                     treatment_message.Close();                                                       // close message box
-                                                                                                     // end display treatment message
+
+                    Button_air_Intubate.Enabled = true;
+                    Button_air_clearair.Enabled = true;
+                    Button_breath_aspirate.Enabled = true;
+                    Button_breath_Oxygen.Enabled = true;
+                    Button_circ_chest.Enabled = true;
+                    Button_circ_drugs.Enabled = true;
+                    Button_conc_drugs.Enabled = true;
+                    Button_hemm_torniquet.Enabled = true;
+                    Button_hemm_treat.Enabled = true;
+                    Button_CPR.Enabled = true;
+
+                    // end display treatment message
                     #endregion
 
                     if (circulation == 2 && breathing == 2)  // If CPR needed
@@ -4201,7 +4378,7 @@ namespace Uttam_Transfer_Of_Care
                 }// end of circulation check
                 #endregion
 
-                //await Task.Delay(100);
+
 
             } // end of Treatment method
 
@@ -4942,6 +5119,8 @@ namespace Uttam_Transfer_Of_Care
                         pat_stable.Show();
                         await Task.Delay(2000);
                         pat_stable.Close();
+
+                        treatment_timeline.Items.Add("Patient stablized");
                     }
                 }
                 // In this block AI will perform its value function MDP and  recommend the actions
@@ -4984,7 +5163,7 @@ namespace Uttam_Transfer_Of_Care
                 
                 do
                 {
-                    //ask EMS to check patient degradation every 10s 
+                    //ask EMS to check patient degradation every 20s 
                     await Task.Delay(20200);
                     subject = "check_patient_degradation";
                     Ems();
