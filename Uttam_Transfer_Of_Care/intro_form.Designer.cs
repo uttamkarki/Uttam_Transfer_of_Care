@@ -39,11 +39,13 @@
             this.Participant_ID_box = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Top_bar_panel = new System.Windows.Forms.Panel();
+            this.close = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Action_dummy = new System.Windows.Forms.Button();
             this.message_label = new System.Windows.Forms.Label();
             this.Top_bar_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             this.SuspendLayout();
             // 
             // aisimstartbutton
@@ -76,7 +78,7 @@
             this.Experience_entry.Location = new System.Drawing.Point(1100, 900);
             this.Experience_entry.Name = "Experience_entry";
             this.Experience_entry.Size = new System.Drawing.Size(1150, 60);
-            this.Experience_entry.TabIndex = 13;
+            this.Experience_entry.TabIndex = 2;
             this.Experience_entry.TextChanged += new System.EventHandler(this.Experience_entry_TextChanged_1);
             // 
             // label4
@@ -94,7 +96,8 @@
             this.Role_entry.Location = new System.Drawing.Point(1100, 800);
             this.Role_entry.Name = "Role_entry";
             this.Role_entry.Size = new System.Drawing.Size(1150, 60);
-            this.Role_entry.TabIndex = 11;
+            this.Role_entry.TabIndex = 1;
+            this.Role_entry.TextChanged += new System.EventHandler(this.Role_entry_TextChanged_1);
             // 
             // label3
             // 
@@ -122,7 +125,7 @@
             this.Participant_ID_box.Location = new System.Drawing.Point(1100, 1000);
             this.Participant_ID_box.Name = "Participant_ID_box";
             this.Participant_ID_box.Size = new System.Drawing.Size(1150, 60);
-            this.Participant_ID_box.TabIndex = 17;
+            this.Participant_ID_box.TabIndex = 3;
             this.Participant_ID_box.TextChanged += new System.EventHandler(this.Participant_ID_box_TextChanged);
             // 
             // label1
@@ -137,6 +140,7 @@
             // Top_bar_panel
             // 
             this.Top_bar_panel.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.Top_bar_panel.Controls.Add(this.close);
             this.Top_bar_panel.Controls.Add(this.textBox1);
             this.Top_bar_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.Top_bar_panel.Location = new System.Drawing.Point(0, 0);
@@ -146,11 +150,22 @@
             this.Top_bar_panel.TabIndex = 122;
             this.Top_bar_panel.Tag = "EMS";
             // 
+            // close
+            // 
+            this.close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("close.BackgroundImage")));
+            this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.close.Location = new System.Drawing.Point(2885, 10);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(80, 80);
+            this.close.TabIndex = 159;
+            this.close.TabStop = false;
+            this.close.Click += new System.EventHandler(this.close_Click);
+            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.PaleTurquoise;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(1, 15);
             this.textBox1.Margin = new System.Windows.Forms.Padding(100);
             this.textBox1.Multiline = true;
@@ -220,6 +235,7 @@
             this.Load += new System.EventHandler(this.intro_form_Load);
             this.Top_bar_panel.ResumeLayout(false);
             this.Top_bar_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,5 +257,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Action_dummy;
         private System.Windows.Forms.Label message_label;
+        private System.Windows.Forms.PictureBox close;
     }
 }

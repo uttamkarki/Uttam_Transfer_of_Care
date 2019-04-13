@@ -105,6 +105,7 @@
             this.display_breathing.TabIndex = 33;
             this.display_breathing.Text = "label12";
             this.display_breathing.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.display_breathing.Click += new System.EventHandler(this.display_breathing_Click);
             // 
             // display_consciousness
             // 

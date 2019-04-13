@@ -475,5 +475,10 @@ namespace Uttam_Transfer_Of_Care
         {
 
         }
+
+        private void display_breathing_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AI_sim));
             this.AI_patient_transfer_button = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -71,6 +72,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.Injury_level_description = new System.Windows.Forms.TextBox();
             this.Top_bar_panel = new System.Windows.Forms.Panel();
+            this.close = new System.Windows.Forms.PictureBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.Timerlbl = new System.Windows.Forms.Label();
             this.Patient_description_title = new System.Windows.Forms.TextBox();
@@ -87,18 +89,6 @@
             this.bre_pred_panel = new System.Windows.Forms.Panel();
             this.air_pred_panel = new System.Windows.Forms.Panel();
             this.conc_pred_panel = new System.Windows.Forms.Panel();
-            this.t1 = new System.Windows.Forms.TextBox();
-            this.t3 = new System.Windows.Forms.TextBox();
-            this.t2 = new System.Windows.Forms.TextBox();
-            this.t5 = new System.Windows.Forms.TextBox();
-            this.t6 = new System.Windows.Forms.TextBox();
-            this.t4 = new System.Windows.Forms.TextBox();
-            this.t9 = new System.Windows.Forms.TextBox();
-            this.t10 = new System.Windows.Forms.TextBox();
-            this.t8 = new System.Windows.Forms.TextBox();
-            this.t7 = new System.Windows.Forms.TextBox();
-            this.t11 = new System.Windows.Forms.TextBox();
-            this.t12 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -107,9 +97,11 @@
             this.success_prob = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.blocker = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.Top_bar_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             this.SuspendLayout();
             // 
             // AI_patient_transfer_button
@@ -182,7 +174,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(2000, 507);
+            this.label2.Location = new System.Drawing.Point(11, 517);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(962, 103);
             this.label2.TabIndex = 76;
@@ -232,7 +224,7 @@
             this.Button_conc_drugs.Name = "Button_conc_drugs";
             this.Button_conc_drugs.Size = new System.Drawing.Size(473, 100);
             this.Button_conc_drugs.TabIndex = 104;
-            this.Button_conc_drugs.Text = "Give Drugs";
+            this.Button_conc_drugs.Text = "Treat Consciousness";
             this.Button_conc_drugs.UseVisualStyleBackColor = false;
             this.Button_conc_drugs.Click += new System.EventHandler(this.Button_conc_drugs_Click);
             // 
@@ -301,7 +293,7 @@
             this.Button_circ_chest.Name = "Button_circ_chest";
             this.Button_circ_chest.Size = new System.Drawing.Size(230, 100);
             this.Button_circ_chest.TabIndex = 110;
-            this.Button_circ_chest.Text = "Chest compression";
+            this.Button_circ_chest.Text = "Chest Compression";
             this.Button_circ_chest.UseVisualStyleBackColor = false;
             this.Button_circ_chest.Click += new System.EventHandler(this.Button_circ_CPR_Click);
             // 
@@ -310,7 +302,7 @@
             this.treatment_timeline.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treatment_timeline.FormattingEnabled = true;
             this.treatment_timeline.ItemHeight = 39;
-            this.treatment_timeline.Location = new System.Drawing.Point(2013, 630);
+            this.treatment_timeline.Location = new System.Drawing.Point(19, 625);
             this.treatment_timeline.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treatment_timeline.Name = "treatment_timeline";
             this.treatment_timeline.Size = new System.Drawing.Size(952, 1291);
@@ -358,7 +350,7 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 606);
+            this.groupBox1.Location = new System.Drawing.Point(990, 606);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1125, 329);
             this.groupBox1.TabIndex = 114;
@@ -425,7 +417,7 @@
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.Button_breath_Oxygen);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(1160, 606);
+            this.groupBox3.Location = new System.Drawing.Point(2132, 606);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(830, 777);
             this.groupBox3.TabIndex = 116;
@@ -537,7 +529,7 @@
             this.Button_circ_drugs.Name = "Button_circ_drugs";
             this.Button_circ_drugs.Size = new System.Drawing.Size(230, 100);
             this.Button_circ_drugs.TabIndex = 113;
-            this.Button_circ_drugs.Text = "Give Drugs";
+            this.Button_circ_drugs.Text = "Heart Medication";
             this.Button_circ_drugs.UseVisualStyleBackColor = false;
             this.Button_circ_drugs.Click += new System.EventHandler(this.Button_circ_drugs_Click);
             // 
@@ -570,7 +562,7 @@
             // 
             this.titlebox.BackColor = System.Drawing.Color.PaleTurquoise;
             this.titlebox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.titlebox.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titlebox.Font = new System.Drawing.Font("Century Gothic", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titlebox.Location = new System.Drawing.Point(1, 15);
             this.titlebox.Margin = new System.Windows.Forms.Padding(0);
             this.titlebox.Multiline = true;
@@ -583,7 +575,7 @@
             // label27
             // 
             this.label27.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(1160, 500);
+            this.label27.Location = new System.Drawing.Point(2132, 500);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(830, 120);
             this.label27.TabIndex = 118;
@@ -594,7 +586,7 @@
             // label28
             // 
             this.label28.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(10, 500);
+            this.label28.Location = new System.Drawing.Point(988, 500);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(1125, 120);
             this.label28.TabIndex = 119;
@@ -618,6 +610,7 @@
             // Top_bar_panel
             // 
             this.Top_bar_panel.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.Top_bar_panel.Controls.Add(this.close);
             this.Top_bar_panel.Controls.Add(this.textBox10);
             this.Top_bar_panel.Controls.Add(this.Timerlbl);
             this.Top_bar_panel.Controls.Add(this.titlebox);
@@ -628,6 +621,17 @@
             this.Top_bar_panel.TabIndex = 121;
             this.Top_bar_panel.Tag = "EMS";
             this.Top_bar_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // close
+            // 
+            this.close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("close.BackgroundImage")));
+            this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.close.Location = new System.Drawing.Point(2885, 10);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(80, 80);
+            this.close.TabIndex = 157;
+            this.close.TabStop = false;
+            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // textBox10
             // 
@@ -670,7 +674,7 @@
             // 
             this.treatment_succ_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treatment_succ_text.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treatment_succ_text.Location = new System.Drawing.Point(1783, 1571);
+            this.treatment_succ_text.Location = new System.Drawing.Point(2755, 1571);
             this.treatment_succ_text.Multiline = true;
             this.treatment_succ_text.Name = "treatment_succ_text";
             this.treatment_succ_text.Size = new System.Drawing.Size(54, 77);
@@ -682,7 +686,7 @@
             // 
             this.treatment_uns_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treatment_uns_text.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treatment_uns_text.Location = new System.Drawing.Point(1783, 1654);
+            this.treatment_uns_text.Location = new System.Drawing.Point(2755, 1654);
             this.treatment_uns_text.Multiline = true;
             this.treatment_uns_text.Name = "treatment_uns_text";
             this.treatment_uns_text.Size = new System.Drawing.Size(54, 77);
@@ -694,7 +698,7 @@
             // 
             this.treatment_NR_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treatment_NR_text.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treatment_NR_text.Location = new System.Drawing.Point(1783, 1725);
+            this.treatment_NR_text.Location = new System.Drawing.Point(2755, 1725);
             this.treatment_NR_text.Multiline = true;
             this.treatment_NR_text.Name = "treatment_NR_text";
             this.treatment_NR_text.Size = new System.Drawing.Size(54, 77);
@@ -705,7 +709,7 @@
             // treatment_succ_lbl
             // 
             this.treatment_succ_lbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treatment_succ_lbl.Location = new System.Drawing.Point(1358, 1571);
+            this.treatment_succ_lbl.Location = new System.Drawing.Point(2330, 1571);
             this.treatment_succ_lbl.Name = "treatment_succ_lbl";
             this.treatment_succ_lbl.Size = new System.Drawing.Size(404, 50);
             this.treatment_succ_lbl.TabIndex = 130;
@@ -716,7 +720,7 @@
             // treatment_uns_lbl
             // 
             this.treatment_uns_lbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treatment_uns_lbl.Location = new System.Drawing.Point(1358, 1654);
+            this.treatment_uns_lbl.Location = new System.Drawing.Point(2330, 1654);
             this.treatment_uns_lbl.Name = "treatment_uns_lbl";
             this.treatment_uns_lbl.Size = new System.Drawing.Size(404, 50);
             this.treatment_uns_lbl.TabIndex = 131;
@@ -726,7 +730,7 @@
             // treatment_NR_lbl
             // 
             this.treatment_NR_lbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treatment_NR_lbl.Location = new System.Drawing.Point(1358, 1725);
+            this.treatment_NR_lbl.Location = new System.Drawing.Point(2330, 1725);
             this.treatment_NR_lbl.Name = "treatment_NR_lbl";
             this.treatment_NR_lbl.Size = new System.Drawing.Size(404, 50);
             this.treatment_NR_lbl.TabIndex = 132;
@@ -737,7 +741,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1160, 1390);
+            this.label1.Location = new System.Drawing.Point(2132, 1390);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(830, 120);
             this.label1.TabIndex = 133;
@@ -747,7 +751,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 951);
+            this.label3.Location = new System.Drawing.Point(1001, 1317);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(1125, 120);
             this.label3.TabIndex = 134;
@@ -756,128 +760,44 @@
             // 
             // hem_pred_panel
             // 
-            this.hem_pred_panel.Location = new System.Drawing.Point(106, 1110);
+            this.hem_pred_panel.Location = new System.Drawing.Point(1095, 1491);
             this.hem_pred_panel.Name = "hem_pred_panel";
             this.hem_pred_panel.Size = new System.Drawing.Size(80, 400);
             this.hem_pred_panel.TabIndex = 135;
             // 
             // circ_pred_panel
             // 
-            this.circ_pred_panel.Location = new System.Drawing.Point(326, 1110);
+            this.circ_pred_panel.Location = new System.Drawing.Point(1315, 1491);
             this.circ_pred_panel.Name = "circ_pred_panel";
             this.circ_pred_panel.Size = new System.Drawing.Size(80, 400);
             this.circ_pred_panel.TabIndex = 136;
             // 
             // bre_pred_panel
             // 
-            this.bre_pred_panel.Location = new System.Drawing.Point(546, 1110);
+            this.bre_pred_panel.Location = new System.Drawing.Point(1535, 1491);
             this.bre_pred_panel.Name = "bre_pred_panel";
             this.bre_pred_panel.Size = new System.Drawing.Size(80, 400);
             this.bre_pred_panel.TabIndex = 136;
             // 
             // air_pred_panel
             // 
-            this.air_pred_panel.Location = new System.Drawing.Point(766, 1110);
+            this.air_pred_panel.Location = new System.Drawing.Point(1755, 1491);
             this.air_pred_panel.Name = "air_pred_panel";
             this.air_pred_panel.Size = new System.Drawing.Size(80, 400);
             this.air_pred_panel.TabIndex = 136;
             // 
             // conc_pred_panel
             // 
-            this.conc_pred_panel.Location = new System.Drawing.Point(986, 1110);
+            this.conc_pred_panel.Location = new System.Drawing.Point(1975, 1491);
             this.conc_pred_panel.Name = "conc_pred_panel";
             this.conc_pred_panel.Size = new System.Drawing.Size(80, 400);
             this.conc_pred_panel.TabIndex = 136;
-            // 
-            // t1
-            // 
-            this.t1.Location = new System.Drawing.Point(326, 1543);
-            this.t1.Name = "t1";
-            this.t1.Size = new System.Drawing.Size(100, 31);
-            this.t1.TabIndex = 137;
-            // 
-            // t3
-            // 
-            this.t3.Location = new System.Drawing.Point(326, 1652);
-            this.t3.Name = "t3";
-            this.t3.Size = new System.Drawing.Size(100, 31);
-            this.t3.TabIndex = 138;
-            // 
-            // t2
-            // 
-            this.t2.Location = new System.Drawing.Point(326, 1599);
-            this.t2.Name = "t2";
-            this.t2.Size = new System.Drawing.Size(100, 31);
-            this.t2.TabIndex = 139;
-            // 
-            // t5
-            // 
-            this.t5.Location = new System.Drawing.Point(546, 1599);
-            this.t5.Name = "t5";
-            this.t5.Size = new System.Drawing.Size(100, 31);
-            this.t5.TabIndex = 142;
-            // 
-            // t6
-            // 
-            this.t6.Location = new System.Drawing.Point(546, 1652);
-            this.t6.Name = "t6";
-            this.t6.Size = new System.Drawing.Size(100, 31);
-            this.t6.TabIndex = 141;
-            // 
-            // t4
-            // 
-            this.t4.Location = new System.Drawing.Point(546, 1543);
-            this.t4.Name = "t4";
-            this.t4.Size = new System.Drawing.Size(100, 31);
-            this.t4.TabIndex = 140;
-            // 
-            // t9
-            // 
-            this.t9.Location = new System.Drawing.Point(766, 1655);
-            this.t9.Name = "t9";
-            this.t9.Size = new System.Drawing.Size(100, 31);
-            this.t9.TabIndex = 145;
-            // 
-            // t10
-            // 
-            this.t10.Location = new System.Drawing.Point(986, 1543);
-            this.t10.Name = "t10";
-            this.t10.Size = new System.Drawing.Size(100, 31);
-            this.t10.TabIndex = 144;
-            // 
-            // t8
-            // 
-            this.t8.Location = new System.Drawing.Point(766, 1599);
-            this.t8.Name = "t8";
-            this.t8.Size = new System.Drawing.Size(100, 31);
-            this.t8.TabIndex = 143;
-            // 
-            // t7
-            // 
-            this.t7.Location = new System.Drawing.Point(766, 1543);
-            this.t7.Name = "t7";
-            this.t7.Size = new System.Drawing.Size(100, 31);
-            this.t7.TabIndex = 146;
-            // 
-            // t11
-            // 
-            this.t11.Location = new System.Drawing.Point(986, 1599);
-            this.t11.Name = "t11";
-            this.t11.Size = new System.Drawing.Size(100, 31);
-            this.t11.TabIndex = 147;
-            // 
-            // t12
-            // 
-            this.t12.Location = new System.Drawing.Point(986, 1655);
-            this.t12.Name = "t12";
-            this.t12.Size = new System.Drawing.Size(100, 31);
-            this.t12.TabIndex = 148;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(0, 1388);
+            this.label4.Location = new System.Drawing.Point(989, 1769);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 44);
             this.label4.TabIndex = 149;
@@ -887,7 +807,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(0, 1288);
+            this.label6.Location = new System.Drawing.Point(989, 1669);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 44);
             this.label6.TabIndex = 150;
@@ -897,7 +817,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(0, 1188);
+            this.label7.Location = new System.Drawing.Point(989, 1569);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 44);
             this.label7.TabIndex = 151;
@@ -907,7 +827,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(0, 1088);
+            this.label8.Location = new System.Drawing.Point(989, 1469);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 44);
             this.label8.TabIndex = 152;
@@ -917,7 +837,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(0, 1488);
+            this.label9.Location = new System.Drawing.Point(989, 1869);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 44);
             this.label9.TabIndex = 153;
@@ -926,7 +846,7 @@
             // success_prob
             // 
             this.success_prob.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.success_prob.Location = new System.Drawing.Point(986, 1741);
+            this.success_prob.Location = new System.Drawing.Point(1724, 1068);
             this.success_prob.Name = "success_prob";
             this.success_prob.Size = new System.Drawing.Size(100, 81);
             this.success_prob.TabIndex = 154;
@@ -936,7 +856,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1092, 1741);
+            this.label5.Location = new System.Drawing.Point(1830, 1068);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 81);
             this.label5.TabIndex = 155;
@@ -946,12 +866,21 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(537, 1741);
+            this.label10.Location = new System.Drawing.Point(1270, 1068);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(429, 81);
             this.label10.TabIndex = 156;
             this.label10.Text = "Success Probability";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // blocker
+            // 
+            this.blocker.BackColor = System.Drawing.Color.White;
+            this.blocker.Location = new System.Drawing.Point(604, 119);
+            this.blocker.Name = "blocker";
+            this.blocker.Size = new System.Drawing.Size(1809, 410);
+            this.blocker.TabIndex = 157;
+            this.blocker.Visible = false;
             // 
             // AI_sim
             // 
@@ -962,18 +891,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.success_prob);
-            this.Controls.Add(this.t12);
-            this.Controls.Add(this.t11);
-            this.Controls.Add(this.t7);
-            this.Controls.Add(this.t9);
-            this.Controls.Add(this.t10);
-            this.Controls.Add(this.t8);
-            this.Controls.Add(this.t5);
-            this.Controls.Add(this.t6);
-            this.Controls.Add(this.t4);
-            this.Controls.Add(this.t2);
-            this.Controls.Add(this.t3);
-            this.Controls.Add(this.t1);
             this.Controls.Add(this.conc_pred_panel);
             this.Controls.Add(this.air_pred_panel);
             this.Controls.Add(this.bre_pred_panel);
@@ -1003,6 +920,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.blocker);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AI_sim";
@@ -1014,6 +932,7 @@
             this.groupBox3.PerformLayout();
             this.Top_bar_panel.ResumeLayout(false);
             this.Top_bar_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1080,18 +999,6 @@
         private System.Windows.Forms.Panel bre_pred_panel;
         private System.Windows.Forms.Panel air_pred_panel;
         private System.Windows.Forms.Panel conc_pred_panel;
-        private System.Windows.Forms.TextBox t1;
-        private System.Windows.Forms.TextBox t3;
-        private System.Windows.Forms.TextBox t2;
-        private System.Windows.Forms.TextBox t5;
-        private System.Windows.Forms.TextBox t6;
-        private System.Windows.Forms.TextBox t4;
-        private System.Windows.Forms.TextBox t9;
-        private System.Windows.Forms.TextBox t10;
-        private System.Windows.Forms.TextBox t8;
-        private System.Windows.Forms.TextBox t7;
-        private System.Windows.Forms.TextBox t11;
-        private System.Windows.Forms.TextBox t12;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -1100,5 +1007,7 @@
         private System.Windows.Forms.Label success_prob;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox close;
+        private System.Windows.Forms.Label blocker;
     }
 }

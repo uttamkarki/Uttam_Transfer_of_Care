@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Uttam_Transfer_Of_Care.Properties {
+namespace Transfer_Of_Care.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Uttam_Transfer_Of_Care.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Uttam_Transfer_Of_Care.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Transfer_Of_Care.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,6 +66,16 @@ namespace Uttam_Transfer_Of_Care.Properties {
         internal static System.Drawing.Bitmap img_ajax_processing {
             get {
                 object obj = ResourceManager.GetObject("img_ajax_processing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap processing {
+            get {
+                object obj = ResourceManager.GetObject("processing", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

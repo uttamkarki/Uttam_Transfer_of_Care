@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3F00370E-B357-4CC9-BFDA-B06521932BA3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Uttam_Transfer_Of_Care</RootNamespace>
-    <AssemblyName>Uttam_Transfer_Of_Care</AssemblyName>
+    <RootNamespace>Transfer_Of_Care</RootNamespace>
+    <AssemblyName>Transfer_Of_Care</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -53,6 +53,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_VGY_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AIMLbot">
@@ -270,6 +273,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\img_ajax_processing.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon_VGY_icon.ico" />
+    <None Include="Resources\processing.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

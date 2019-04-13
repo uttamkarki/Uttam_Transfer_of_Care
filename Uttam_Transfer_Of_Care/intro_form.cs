@@ -23,6 +23,9 @@ namespace Uttam_Transfer_Of_Care
         public intro_form()
         {
             InitializeComponent();
+            //this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.ControlBox = false;
+            this.Text = String.Empty;
         }
 
         private void intro_form_Load(object sender, EventArgs e)
@@ -61,6 +64,10 @@ namespace Uttam_Transfer_Of_Care
 
         private void aisimstartbutton_Click_1(object sender, EventArgs e)
         {
+            Participant_ID = Participant_ID_box.Text;
+            Participant_role = Role_entry.Text;
+            Participant_experience = Experience_entry.Text;
+
             if (Role_entry.Text == "enter role" || Role_entry.Text == "")
             {
                 MessageBox.Show("please enter a role");
@@ -80,13 +87,34 @@ namespace Uttam_Transfer_Of_Care
                 standardSimclick.Show();
             }
 
+            //this.Hide();
         }
 
         private void standardsimstartbutton_Click_1(object sender, EventArgs e)
         {
-            var standardSimclick = new AI_sim();
-            ai_on = false;
-            standardSimclick.Show();
+            Participant_ID = Participant_ID_box.Text;
+            Participant_role = Role_entry.Text;
+            Participant_experience = Experience_entry.Text;
+
+            if (Role_entry.Text == "enter role" || Role_entry.Text == "")
+            {
+                MessageBox.Show("please enter a role");
+            }
+            else if (Experience_entry.Text == "enter experience (in years)" || Role_entry.Text == "")
+            {
+                MessageBox.Show("please enter experience");
+            }
+            else if (Participant_ID_box.Text == "")
+            {
+                MessageBox.Show("please enter ID");
+            }
+            else
+            {
+                var standardSimclick = new AI_sim();
+                ai_on = false;
+                standardSimclick.Show();
+            }
+            //this.Hide();
         }
 
         private void Experience_entry_TextChanged_1(object sender, EventArgs e)
@@ -133,6 +161,16 @@ namespace Uttam_Transfer_Of_Care
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Role_entry_TextChanged_1(object sender, EventArgs e)
+        {
+            Participant_role = Role_entry.Text;
+        }
+
+        private void close_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

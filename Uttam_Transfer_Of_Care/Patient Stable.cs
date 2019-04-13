@@ -97,6 +97,11 @@ namespace Uttam_Transfer_Of_Care
         {
 
         }
+
+        private void stable_label_box_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

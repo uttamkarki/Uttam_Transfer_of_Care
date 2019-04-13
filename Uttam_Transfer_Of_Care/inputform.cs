@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows;
-
+using System.Speech.Synthesis;
 using System.Drawing.Drawing2D;
 
 namespace Uttam_Transfer_Of_Care
@@ -15,6 +15,21 @@ namespace Uttam_Transfer_Of_Care
        
     public partial class inputform : Form
     {
+        public static string conf_age = "enter age!";
+        public static string conf_hem = "enter bleed!";
+        public static string conf_airway = "enter airway!";
+        public static string conf_breath = "enter breath!";
+        public static string conf_crit = "enter criticality!";
+        public static string conf_gender = "enter gender!";
+        public static string conf_consc = "enter consciousness!";
+        public static string conf_heart = "enter circulation!";
+        public static string conf_medication = "medication?";
+        public static string injury_location = "injuries to";
+        public static string injury_type_f2 = "injury type?";
+        public static string injury_type_and_location = "type and location?";
+        public static string criticality_description;
+        public static float crit_count = 0;
+
         System.Windows.Forms.Timer input_timer1;
         public static int input_endtime = 0;
         public static int input_counter = 300;
@@ -25,6 +40,10 @@ namespace Uttam_Transfer_Of_Care
         public static string input_string_seconds1 = "0";
         public static string input_string_seconds2 = "0";
         public static string compound_time = "0";
+
+        public static int var_check_count = 0;
+        public static int patient_condition_check = 0;
+
 
         #region set body image scale location on/off indication and colours
         public static bool torso_on = false;
@@ -93,6 +112,9 @@ namespace Uttam_Transfer_Of_Care
         {
             InitializeComponent();
             this.treatment_timeline_result.Items.AddRange(objectCollection);
+            //this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.ControlBox = false;
+            this.Text = String.Empty;
         }
         #endregion
 
@@ -1335,6 +1357,8 @@ namespace Uttam_Transfer_Of_Care
             button_backleftarm.BackColor = offColor;
             backleftlowarm_on = false;
             button_backleftlowarm.BackColor = offColor;
+
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
             #endregion
         }
         #endregion
@@ -1402,6 +1426,7 @@ namespace Uttam_Transfer_Of_Care
                 head_on = true;
                 button_head.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         //torso
         private void button_torso_Click(object sender, EventArgs e)
@@ -1465,6 +1490,7 @@ namespace Uttam_Transfer_Of_Care
                 torso_on = true;
                 button_torso.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
 
         private void button_ms_Click(object sender, EventArgs e)
@@ -1528,7 +1554,7 @@ namespace Uttam_Transfer_Of_Care
                 ms_on = true;
                 button_ms.BackColor = onColor;
             }
-
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         private void button_rightleg_Click(object sender, EventArgs e)
         {
@@ -1591,6 +1617,7 @@ namespace Uttam_Transfer_Of_Care
                 rightleg_on = true;
                 button_rightleg.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         private void button_rightlowleg_Click(object sender, EventArgs e)
         {
@@ -1653,6 +1680,7 @@ namespace Uttam_Transfer_Of_Care
                 rightlowleg_on = true;
                 button_rightlowleg.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         private void button_leftleg_Click(object sender, EventArgs e)
         {
@@ -1715,6 +1743,7 @@ namespace Uttam_Transfer_Of_Care
                 leftleg_on = true;
                 button_leftleg.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         private void button_leftlowleg_Click(object sender, EventArgs e)
         {
@@ -1777,6 +1806,7 @@ namespace Uttam_Transfer_Of_Care
                 leftlowleg_on = true;
                 button_leftlowleg.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         private void button_rightlowarm_Click(object sender, EventArgs e)
         {
@@ -1902,6 +1932,7 @@ namespace Uttam_Transfer_Of_Care
                 rightarm_on = true;
                 button_rightarm.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         private void button_leftarm_Click(object sender, EventArgs e)
         {
@@ -1964,6 +1995,7 @@ namespace Uttam_Transfer_Of_Care
                 leftarm_on = true;
                 button_leftarm.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
 
         private void button_leftlowarm_Click(object sender, EventArgs e)
@@ -2027,6 +2059,7 @@ namespace Uttam_Transfer_Of_Care
                 leftlowarm_on = true;
                 button_leftlowarm.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         #endregion
 
@@ -2095,6 +2128,7 @@ namespace Uttam_Transfer_Of_Care
                 button_backhead.BackColor = onColor;
 
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
 
         private void button_backtorso_Click(object sender, EventArgs e)
@@ -2159,6 +2193,7 @@ namespace Uttam_Transfer_Of_Care
                 button_backtorso.BackColor = onColor;
 
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
 
         private void button_backms_Click(object sender, EventArgs e)
@@ -2223,6 +2258,7 @@ namespace Uttam_Transfer_Of_Care
                 button_backms.BackColor = onColor;
 
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
 
         private void button_backrightleg_Click(object sender, EventArgs e)
@@ -2286,6 +2322,7 @@ namespace Uttam_Transfer_Of_Care
                 backrightleg_on = true;
                 button_backrightleg.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
 
         private void button_backrightlowleg_Click(object sender, EventArgs e)
@@ -2349,6 +2386,7 @@ namespace Uttam_Transfer_Of_Care
                 backrightlowleg_on = true;
                 button_backrightlowleg.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
 
         private void button_backleftleg_Click(object sender, EventArgs e)
@@ -2475,6 +2513,7 @@ namespace Uttam_Transfer_Of_Care
                 backleftlowleg_on = true;
                 button_backleftlowleg.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         private void button_backleftarm_Click(object sender, EventArgs e)
         {
@@ -2537,6 +2576,7 @@ namespace Uttam_Transfer_Of_Care
                 backleftarm_on = true;
                 button_backleftarm.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
 
         private void button_backleftlowarm_Click(object sender, EventArgs e)
@@ -2600,6 +2640,7 @@ namespace Uttam_Transfer_Of_Care
                 backleftlowarm_on = true;
                 button_backleftlowarm.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         private void button_backrightarm_Click(object sender, EventArgs e)
         {
@@ -2662,6 +2703,7 @@ namespace Uttam_Transfer_Of_Care
                 backrightarm_on = true;
                 button_backrightarm.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         private void button_backrightlowarm_Click(object sender, EventArgs e)
         {
@@ -2724,6 +2766,7 @@ namespace Uttam_Transfer_Of_Care
                 backrightlowarm_on = true;
                 button_backrightlowarm.BackColor = onColor;
             }
+            injury_location_label.Text = "Injury location: " + var_injury_location_text;
         }
         #endregion
 
@@ -2731,13 +2774,333 @@ namespace Uttam_Transfer_Of_Care
 
         public void Submit_toc_button_Click(object sender, EventArgs e)
         {
+            #region set criticality description
 
-            input_timer1.Stop();
+            if (crit_count > 0.5 && crit_count < 1.5)
+            {
+                criticality_description = "priority";
+            }
+            else if (crit_count < 0.5)
+            {
+                criticality_description = "routine";
+            }
+            else
+            {
+                criticality_description = "critical";
+            }
+            #endregion
 
-            input_endtime = input_counter;
-            var output = new Output();
-            output.Show();
-            //this.Hide();
+            #region set age string 
+            if (inputform.var_age == 0)
+            {
+                conf_age = "infant";
+            }
+            else if (inputform.var_age == 1)
+            {
+                conf_age = "child";
+            }
+            else if (inputform.var_age == 2)
+            {
+                conf_age = "adult";
+            }
+            else
+            {
+                conf_age = "over 70";
+            }
+            #endregion
+
+            #region set gender string 
+            if (inputform.var_gender == 0)
+            {
+                conf_gender = "Male";
+                //MessageBox.Show("male");
+            }
+            else if (inputform.var_gender == 1)
+            {
+                conf_gender = "Female";
+                //MessageBox.Show("female");
+            }
+
+            #endregion
+
+            #region set airway string 
+            if (inputform.var_airways == 0)
+            {
+                conf_airway = "airway clear";
+            }
+            else if (inputform.var_airways == 1)
+            {
+                conf_airway = "airway partially blocked";
+            }
+            else if (inputform.var_airways == 2)
+            {
+                conf_airway = "airway blocked";
+            }
+            else if (inputform.var_airways == 3)
+            {
+                conf_airway = "airway was partially blocked but now clear";
+            }
+            else if (inputform.var_airways == 4)
+            {
+                conf_airway = "airway was blocked but now partially clear";
+            }
+            else if (inputform.var_airways == 5)
+            {
+                conf_airway = "airway was blocked but now clear";
+            }
+
+            #endregion
+
+            #region set haemorrage string 
+            if (inputform.var_hemorrage == 0)
+            {
+                conf_hem = "no bleeding";
+            }
+            else if (inputform.var_hemorrage == 1)
+            {
+                conf_hem = "some bleeding";
+            }
+            else if (inputform.var_hemorrage == 2)
+            {
+                conf_hem = "heavy bleeding";
+                crit_count = crit_count + 1;
+            }
+            else if (inputform.var_hemorrage == 3)
+            {
+                conf_hem = "light bleeding stopped";
+            }
+            else if (inputform.var_hemorrage == 4)
+            {
+                conf_hem = "heavy bleeding partially stopped";
+            }
+            else if (inputform.var_hemorrage == 5)
+            {
+                conf_hem = "heavy bleeding stopped";
+            }
+
+            #endregion
+
+            #region set circulation string 
+            if (inputform.var_circulation == 0)
+            {
+                conf_heart = "no heart or circulation problem";
+            }
+            else if (inputform.var_circulation == 1)
+            {
+                conf_heart = "weak or irregular pulse or heartbeat";
+            }
+            else if (inputform.var_circulation == 2)
+            {
+                conf_heart = "in cardiac arrest";
+                crit_count = crit_count + 1;
+            }
+            else if (inputform.var_circulation == 3)
+            {
+                conf_heart = "weak or irregular pulse now normal";
+            }
+            else if (inputform.var_circulation == 4)
+            {
+                conf_heart = "previously in cardiac arrest but now pulse is weak or irregular";
+            }
+            else if (inputform.var_circulation == 5)
+            {
+                conf_heart = "previously in cardiac arrest but now normal";
+            }
+            #endregion
+
+            #region set criticality string 
+            if (inputform.var_criticality == 0)
+            {
+                conf_crit = "routine";
+            }
+            else if (inputform.var_criticality == 1)
+            {
+                conf_crit = "priority";
+            }
+            else if (inputform.var_criticality == 2)
+            {
+                conf_crit = "critical";
+            }
+
+            #endregion
+
+            #region set consciousness string 
+            if (inputform.var_consciousness == 0)
+            {
+                conf_consc = "fully conscious";
+            }
+            else if (inputform.var_consciousness == 1)
+            {
+                conf_consc = "partially conscious";
+            }
+            else if (inputform.var_consciousness == 2)
+            {
+                conf_consc = "unconscious";
+                crit_count = crit_count + 1;
+            }
+            else if (inputform.var_consciousness == 3)
+            {
+                conf_consc = "previously partially conscious but now fully conscious";
+            }
+            else if (inputform.var_consciousness == 4)
+            {
+                conf_consc = "previously unconscious but coming round";
+            }
+            else if (inputform.var_consciousness == 5)
+            {
+                conf_consc = "previously unconscious but now fully conscious";
+            }
+            #endregion
+
+            #region set breathing string 
+            if (inputform.var_breathing == 0)
+            {
+                conf_breath = "no breathing problem";
+            }
+            else if (inputform.var_breathing == 1)
+            {
+                conf_breath = "weak or irregular breathing";
+            }
+            else if (inputform.var_breathing == 2)
+            {
+                conf_breath = "not breathing";
+                crit_count = crit_count + 1;
+            }
+            else if (inputform.var_breathing == 3)
+            {
+                conf_breath = "previously had breathing problems but now normal";
+            }
+            else if (inputform.var_breathing == 4)
+            {
+                conf_breath = "previously not breathing, improved but not breathing normally";
+            }
+            else if (inputform.var_breathing == 5)
+            {
+                conf_breath = "previously not breathing but now normal";
+            }
+            #endregion
+
+            #region set medication string 
+            if (inputform.var_medication == 0)
+            {
+                conf_medication = "no medication";
+            }
+            else if (inputform.var_medication == 1)
+            {
+                conf_medication = "fluids given";
+            }
+            else if (inputform.var_medication == 2)
+            {
+                conf_medication = "adrenaline given";
+            }
+            else if (inputform.var_medication == 3)
+            {
+                conf_medication = "morphine given";
+            }
+            #endregion
+
+
+            injury_type_and_location = injury_type_f2 + injury_location;
+
+            // Initialize a new instance of the SpeechSynthesizer.
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+
+            // Configure the audio output. 
+            synth.SetOutputToDefaultAudioDevice();
+
+            if (AI_sim.AI_assist == true)
+
+            {
+
+                #region check to see if injury type or location given
+                if (inputform.var_injury_type == "")
+                {
+                    injury_type_f2 = "no injury type given"; //please add, the injury was sustained to the
+                }
+                else
+                {
+                    injury_type_f2 = inputform.var_injury_type + " ";
+                }
+
+                if (injury_location == "injuries to")
+                {
+                    injury_location = "no injury location given, please close this form and select on the previous form";
+                }
+                else
+                {
+                    injury_location = injury_location + "of the patient";
+                }
+                #endregion
+
+
+
+
+                #region check if variables are unticked and criticalities don't match
+
+                if (var_check_count == 0)
+                {
+                    if (var_breathing == 6 || var_hemorrage == 6 || var_consciousness == 6 || var_airways == 6 || var_circulation == 6
+                        || var_criticality == 6 || var_age == 6 || var_gender == 6 || var_injury_type == "no injury mechanism given")
+                    {
+                        //MessageBox.Show("not all boxes are ticked, please ensure you are happy with ToC");
+                        synth.SpeakAsync("not all boxes are ticked, please ensure you are happy with Transfer of Care Information");
+
+                        var_check_count = 1;
+                    }
+                    else
+                    {
+                        criticality_check();
+                    }
+                }
+                else
+                {
+                    criticality_check();
+                }
+
+                void criticality_check()
+                {
+                    /// #region messagebox and voice feedback for potential errors in TOC information
+                    if (conf_crit == "routine" && (AI_sim.criticality == "critical" || AI_sim.criticality == "priority") && patient_condition_check == 0)
+                    {
+                        //MessageBox.Show("patient condition is identified as routine but at least one characteristic indicates actual status is worse, please confirm patient condition status");
+                        synth.SpeakAsync("patient condition is identified as routine but at least one characteristic indicates actual status is worse, please confirm patient condition status");
+                        patient_condition_check = 1;
+                    }
+                    else if (AI_sim.criticality == "critical" && (conf_crit == "routine" || conf_crit == "priority") && patient_condition_check == 0)
+                    {
+                        //MessageBox.Show("patient condition is identified as priority but at least one characteristic was critical in nature, please confirm patient condition status");
+                        synth.SpeakAsync("patient condition is identified as priority but at least one characteristic was critical in nature, please confirm patient condition status");
+                        patient_condition_check = 1;
+                    }
+                    else
+                    {
+                        input_timer1.Stop();
+                        input_endtime = 300-input_counter;
+                        var output = new Output();
+                        output.Show();
+                        this.Hide();
+                    }
+                   
+                }
+            }
+            else
+            {
+                input_timer1.Stop();
+                input_endtime = 300-input_counter;
+                var output = new Output();
+                output.Show();
+                this.Hide();
+            }
+            #endregion
+
+
+
+
+
+
+
+
+
         }
 
         //old button action controls
@@ -2838,5 +3201,9 @@ namespace Uttam_Transfer_Of_Care
 
         #endregion
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

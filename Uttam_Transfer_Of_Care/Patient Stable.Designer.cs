@@ -39,6 +39,7 @@
             this.stable_label_box.Size = new System.Drawing.Size(600, 200);
             this.stable_label_box.TabIndex = 0;
             this.stable_label_box.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.stable_label_box.Click += new System.EventHandler(this.stable_label_box_Click);
             // 
             // Patient_Stable
             // 

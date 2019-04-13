@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(inputform));
             this.BreathingGroup = new System.Windows.Forms.GroupBox();
             this.rb_breathing_1to0 = new System.Windows.Forms.RadioButton();
             this.rb_breathing_2to1 = new System.Windows.Forms.RadioButton();
@@ -105,13 +106,15 @@
             this.button_torso = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Top_bar_panel = new System.Windows.Forms.Panel();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.InputTimerlbl = new System.Windows.Forms.Label();
             this.titlebox = new System.Windows.Forms.TextBox();
             this.dropbox_injury = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.int_button = new System.Windows.Forms.RadioButton();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.InputTimerlbl = new System.Windows.Forms.Label();
             this.Warning_label = new System.Windows.Forms.Label();
+            this.injury_location_label = new System.Windows.Forms.Label();
+            this.close = new System.Windows.Forms.PictureBox();
             this.BreathingGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.CirculationGroup.SuspendLayout();
@@ -122,6 +125,7 @@
             this.groupBox4.SuspendLayout();
             this.Top_bar_panel.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             this.SuspendLayout();
             // 
             // BreathingGroup
@@ -727,7 +731,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1426, 304);
+            this.label2.Location = new System.Drawing.Point(1427, 290);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(140, 49);
             this.label2.TabIndex = 105;
@@ -737,7 +741,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(963, 304);
+            this.label1.Location = new System.Drawing.Point(959, 290);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 49);
             this.label1.TabIndex = 104;
@@ -748,7 +752,7 @@
             this.button_backrightlowarm.BackColor = System.Drawing.Color.LightGray;
             this.button_backrightlowarm.FlatAppearance.BorderSize = 0;
             this.button_backrightlowarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backrightlowarm.Location = new System.Drawing.Point(1643, 918);
+            this.button_backrightlowarm.Location = new System.Drawing.Point(1648, 877);
             this.button_backrightlowarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_backrightlowarm.Name = "button_backrightlowarm";
             this.button_backrightlowarm.Size = new System.Drawing.Size(46, 120);
@@ -761,7 +765,7 @@
             this.button_backrightarm.BackColor = System.Drawing.Color.LightGray;
             this.button_backrightarm.FlatAppearance.BorderSize = 0;
             this.button_backrightarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backrightarm.Location = new System.Drawing.Point(1623, 678);
+            this.button_backrightarm.Location = new System.Drawing.Point(1628, 637);
             this.button_backrightarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_backrightarm.Name = "button_backrightarm";
             this.button_backrightarm.Size = new System.Drawing.Size(66, 240);
@@ -774,7 +778,7 @@
             this.button_backleftlowarm.BackColor = System.Drawing.Color.LightGray;
             this.button_backleftlowarm.FlatAppearance.BorderSize = 0;
             this.button_backleftlowarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backleftlowarm.Location = new System.Drawing.Point(1318, 918);
+            this.button_backleftlowarm.Location = new System.Drawing.Point(1323, 877);
             this.button_backleftlowarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_backleftlowarm.Name = "button_backleftlowarm";
             this.button_backleftlowarm.Size = new System.Drawing.Size(46, 120);
@@ -787,7 +791,7 @@
             this.button_backleftarm.BackColor = System.Drawing.Color.LightGray;
             this.button_backleftarm.FlatAppearance.BorderSize = 0;
             this.button_backleftarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backleftarm.Location = new System.Drawing.Point(1318, 678);
+            this.button_backleftarm.Location = new System.Drawing.Point(1323, 637);
             this.button_backleftarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_backleftarm.Name = "button_backleftarm";
             this.button_backleftarm.Size = new System.Drawing.Size(66, 240);
@@ -800,7 +804,7 @@
             this.button_leftlowarm.BackColor = System.Drawing.Color.LightGray;
             this.button_leftlowarm.FlatAppearance.BorderSize = 0;
             this.button_leftlowarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_leftlowarm.Location = new System.Drawing.Point(1175, 918);
+            this.button_leftlowarm.Location = new System.Drawing.Point(1180, 877);
             this.button_leftlowarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_leftlowarm.Name = "button_leftlowarm";
             this.button_leftlowarm.Size = new System.Drawing.Size(46, 120);
@@ -813,7 +817,7 @@
             this.button_rightlowarm.BackColor = System.Drawing.Color.LightGray;
             this.button_rightlowarm.FlatAppearance.BorderSize = 0;
             this.button_rightlowarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_rightlowarm.Location = new System.Drawing.Point(850, 918);
+            this.button_rightlowarm.Location = new System.Drawing.Point(855, 877);
             this.button_rightlowarm.Name = "button_rightlowarm";
             this.button_rightlowarm.Size = new System.Drawing.Size(46, 120);
             this.button_rightlowarm.TabIndex = 98;
@@ -825,7 +829,7 @@
             this.button_rightarm.BackColor = System.Drawing.Color.LightGray;
             this.button_rightarm.FlatAppearance.BorderSize = 0;
             this.button_rightarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_rightarm.Location = new System.Drawing.Point(850, 678);
+            this.button_rightarm.Location = new System.Drawing.Point(855, 637);
             this.button_rightarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_rightarm.Name = "button_rightarm";
             this.button_rightarm.Size = new System.Drawing.Size(66, 240);
@@ -838,7 +842,7 @@
             this.button_leftarm.BackColor = System.Drawing.Color.LightGray;
             this.button_leftarm.FlatAppearance.BorderSize = 0;
             this.button_leftarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_leftarm.Location = new System.Drawing.Point(1155, 678);
+            this.button_leftarm.Location = new System.Drawing.Point(1160, 637);
             this.button_leftarm.Margin = new System.Windows.Forms.Padding(0);
             this.button_leftarm.Name = "button_leftarm";
             this.button_leftarm.Size = new System.Drawing.Size(66, 240);
@@ -851,7 +855,7 @@
             this.button_backleftlowleg.BackColor = System.Drawing.Color.LightGray;
             this.button_backleftlowleg.FlatAppearance.BorderSize = 0;
             this.button_backleftlowleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backleftlowleg.Location = new System.Drawing.Point(1383, 1406);
+            this.button_backleftlowleg.Location = new System.Drawing.Point(1388, 1365);
             this.button_backleftlowleg.Name = "button_backleftlowleg";
             this.button_backleftlowleg.Size = new System.Drawing.Size(100, 240);
             this.button_backleftlowleg.TabIndex = 95;
@@ -863,7 +867,7 @@
             this.button_backrightlowleg.BackColor = System.Drawing.Color.LightGray;
             this.button_backrightlowleg.FlatAppearance.BorderSize = 0;
             this.button_backrightlowleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backrightlowleg.Location = new System.Drawing.Point(1492, 1406);
+            this.button_backrightlowleg.Location = new System.Drawing.Point(1497, 1365);
             this.button_backrightlowleg.Margin = new System.Windows.Forms.Padding(0);
             this.button_backrightlowleg.Name = "button_backrightlowleg";
             this.button_backrightlowleg.Size = new System.Drawing.Size(100, 240);
@@ -876,7 +880,7 @@
             this.button_backrightleg.BackColor = System.Drawing.Color.LightGray;
             this.button_backrightleg.FlatAppearance.BorderSize = 0;
             this.button_backrightleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backrightleg.Location = new System.Drawing.Point(1512, 1086);
+            this.button_backrightleg.Location = new System.Drawing.Point(1517, 1045);
             this.button_backrightleg.Margin = new System.Windows.Forms.Padding(0);
             this.button_backrightleg.Name = "button_backrightleg";
             this.button_backrightleg.Size = new System.Drawing.Size(110, 320);
@@ -889,7 +893,7 @@
             this.button_backleftleg.BackColor = System.Drawing.Color.LightGray;
             this.button_backleftleg.FlatAppearance.BorderSize = 0;
             this.button_backleftleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backleftleg.Location = new System.Drawing.Point(1383, 1086);
+            this.button_backleftleg.Location = new System.Drawing.Point(1388, 1045);
             this.button_backleftleg.Name = "button_backleftleg";
             this.button_backleftleg.Size = new System.Drawing.Size(110, 320);
             this.button_backleftleg.TabIndex = 92;
@@ -901,7 +905,7 @@
             this.button_backms.BackColor = System.Drawing.Color.LightGray;
             this.button_backms.FlatAppearance.BorderSize = 0;
             this.button_backms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backms.Location = new System.Drawing.Point(1383, 1049);
+            this.button_backms.Location = new System.Drawing.Point(1388, 1008);
             this.button_backms.Margin = new System.Windows.Forms.Padding(0);
             this.button_backms.Name = "button_backms";
             this.button_backms.Size = new System.Drawing.Size(240, 80);
@@ -914,7 +918,7 @@
             this.button_backtorso.BackColor = System.Drawing.Color.LightGray;
             this.button_backtorso.FlatAppearance.BorderSize = 0;
             this.button_backtorso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backtorso.Location = new System.Drawing.Point(1383, 649);
+            this.button_backtorso.Location = new System.Drawing.Point(1388, 608);
             this.button_backtorso.Margin = new System.Windows.Forms.Padding(0);
             this.button_backtorso.Name = "button_backtorso";
             this.button_backtorso.Size = new System.Drawing.Size(240, 400);
@@ -927,7 +931,7 @@
             this.button_backhead.BackColor = System.Drawing.Color.LightGray;
             this.button_backhead.FlatAppearance.BorderSize = 0;
             this.button_backhead.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_backhead.Location = new System.Drawing.Point(1411, 399);
+            this.button_backhead.Location = new System.Drawing.Point(1416, 358);
             this.button_backhead.Margin = new System.Windows.Forms.Padding(0);
             this.button_backhead.Name = "button_backhead";
             this.button_backhead.Size = new System.Drawing.Size(172, 250);
@@ -940,7 +944,7 @@
             this.button_leftlowleg.BackColor = System.Drawing.Color.LightGray;
             this.button_leftlowleg.FlatAppearance.BorderSize = 0;
             this.button_leftlowleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_leftlowleg.Location = new System.Drawing.Point(1024, 1406);
+            this.button_leftlowleg.Location = new System.Drawing.Point(1029, 1365);
             this.button_leftlowleg.Margin = new System.Windows.Forms.Padding(0);
             this.button_leftlowleg.Name = "button_leftlowleg";
             this.button_leftlowleg.Size = new System.Drawing.Size(100, 240);
@@ -953,7 +957,7 @@
             this.button_leftleg.BackColor = System.Drawing.Color.LightGray;
             this.button_leftleg.FlatAppearance.BorderSize = 0;
             this.button_leftleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_leftleg.Location = new System.Drawing.Point(1044, 1086);
+            this.button_leftleg.Location = new System.Drawing.Point(1049, 1045);
             this.button_leftleg.Name = "button_leftleg";
             this.button_leftleg.Size = new System.Drawing.Size(110, 320);
             this.button_leftleg.TabIndex = 87;
@@ -965,7 +969,7 @@
             this.button_rightlowleg.BackColor = System.Drawing.Color.LightGray;
             this.button_rightlowleg.FlatAppearance.BorderSize = 0;
             this.button_rightlowleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_rightlowleg.Location = new System.Drawing.Point(915, 1406);
+            this.button_rightlowleg.Location = new System.Drawing.Point(920, 1365);
             this.button_rightlowleg.Margin = new System.Windows.Forms.Padding(0);
             this.button_rightlowleg.Name = "button_rightlowleg";
             this.button_rightlowleg.Size = new System.Drawing.Size(100, 240);
@@ -978,7 +982,7 @@
             this.button_rightleg.BackColor = System.Drawing.Color.LightGray;
             this.button_rightleg.FlatAppearance.BorderSize = 0;
             this.button_rightleg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_rightleg.Location = new System.Drawing.Point(915, 1086);
+            this.button_rightleg.Location = new System.Drawing.Point(920, 1045);
             this.button_rightleg.Margin = new System.Windows.Forms.Padding(0);
             this.button_rightleg.Name = "button_rightleg";
             this.button_rightleg.Size = new System.Drawing.Size(110, 320);
@@ -991,7 +995,7 @@
             this.button_ms.BackColor = System.Drawing.Color.LightGray;
             this.button_ms.FlatAppearance.BorderSize = 0;
             this.button_ms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_ms.Location = new System.Drawing.Point(915, 1049);
+            this.button_ms.Location = new System.Drawing.Point(920, 1008);
             this.button_ms.Margin = new System.Windows.Forms.Padding(0);
             this.button_ms.Name = "button_ms";
             this.button_ms.Size = new System.Drawing.Size(240, 80);
@@ -1004,7 +1008,7 @@
             this.button_head.BackColor = System.Drawing.Color.LightGray;
             this.button_head.FlatAppearance.BorderSize = 0;
             this.button_head.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_head.Location = new System.Drawing.Point(945, 399);
+            this.button_head.Location = new System.Drawing.Point(950, 358);
             this.button_head.Name = "button_head";
             this.button_head.Size = new System.Drawing.Size(172, 250);
             this.button_head.TabIndex = 82;
@@ -1067,7 +1071,7 @@
             this.button_torso.BackColor = System.Drawing.Color.LightGray;
             this.button_torso.FlatAppearance.BorderSize = 0;
             this.button_torso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_torso.Location = new System.Drawing.Point(915, 649);
+            this.button_torso.Location = new System.Drawing.Point(920, 608);
             this.button_torso.Margin = new System.Windows.Forms.Padding(0);
             this.button_torso.Name = "button_torso";
             this.button_torso.Size = new System.Drawing.Size(240, 400);
@@ -1082,6 +1086,7 @@
             // Top_bar_panel
             // 
             this.Top_bar_panel.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.Top_bar_panel.Controls.Add(this.close);
             this.Top_bar_panel.Controls.Add(this.textBox10);
             this.Top_bar_panel.Controls.Add(this.InputTimerlbl);
             this.Top_bar_panel.Controls.Add(this.titlebox);
@@ -1091,6 +1096,29 @@
             this.Top_bar_panel.Size = new System.Drawing.Size(2974, 100);
             this.Top_bar_panel.TabIndex = 122;
             this.Top_bar_panel.Tag = "EMS";
+            // 
+            // textBox10
+            // 
+            this.textBox10.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox10.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(2320, 25);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(286, 53);
+            this.textBox10.TabIndex = 126;
+            this.textBox10.Text = "Transfer Time:";
+            // 
+            // InputTimerlbl
+            // 
+            this.InputTimerlbl.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.InputTimerlbl.Font = new System.Drawing.Font("DS-Digital", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputTimerlbl.Location = new System.Drawing.Point(2600, 1);
+            this.InputTimerlbl.Name = "InputTimerlbl";
+            this.InputTimerlbl.Size = new System.Drawing.Size(350, 98);
+            this.InputTimerlbl.TabIndex = 125;
+            this.InputTimerlbl.Text = "0:00";
+            this.InputTimerlbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // titlebox
             // 
@@ -1141,7 +1169,7 @@
             // 
             this.int_button.AutoSize = true;
             this.int_button.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.int_button.Location = new System.Drawing.Point(1069, 222);
+            this.int_button.Location = new System.Drawing.Point(1069, 212);
             this.int_button.Name = "int_button";
             this.int_button.Size = new System.Drawing.Size(457, 48);
             this.int_button.TabIndex = 125;
@@ -1150,29 +1178,6 @@
             this.int_button.UseVisualStyleBackColor = true;
             this.int_button.CheckedChanged += new System.EventHandler(this.int_button_CheckedChanged);
             this.int_button.Click += new System.EventHandler(this.int_button_Click);
-            // 
-            // textBox10
-            // 
-            this.textBox10.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox10.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(2320, 25);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(286, 53);
-            this.textBox10.TabIndex = 126;
-            this.textBox10.Text = "Transfer Time:";
-            // 
-            // InputTimerlbl
-            // 
-            this.InputTimerlbl.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.InputTimerlbl.Font = new System.Drawing.Font("DS-Digital", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputTimerlbl.Location = new System.Drawing.Point(2600, 1);
-            this.InputTimerlbl.Name = "InputTimerlbl";
-            this.InputTimerlbl.Size = new System.Drawing.Size(350, 98);
-            this.InputTimerlbl.TabIndex = 125;
-            this.InputTimerlbl.Text = "0:00";
-            this.InputTimerlbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Warning_label
             // 
@@ -1184,12 +1189,33 @@
             this.Warning_label.TabIndex = 126;
             this.Warning_label.Text = "Exceeded Optimal Transfer Time";
             // 
+            // injury_location_label
+            // 
+            this.injury_location_label.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.injury_location_label.Location = new System.Drawing.Point(808, 1636);
+            this.injury_location_label.Name = "injury_location_label";
+            this.injury_location_label.Size = new System.Drawing.Size(997, 49);
+            this.injury_location_label.TabIndex = 127;
+            this.injury_location_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // close
+            // 
+            this.close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("close.BackgroundImage")));
+            this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.close.Location = new System.Drawing.Point(2885, 10);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(80, 80);
+            this.close.TabIndex = 127;
+            this.close.TabStop = false;
+            this.close.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // inputform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2974, 1929);
+            this.Controls.Add(this.injury_location_label);
             this.Controls.Add(this.Warning_label);
             this.Controls.Add(this.int_button);
             this.Controls.Add(this.groupBox7);
@@ -1253,6 +1279,7 @@
             this.Top_bar_panel.ResumeLayout(false);
             this.Top_bar_panel.PerformLayout();
             this.groupBox7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1343,5 +1370,7 @@
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label InputTimerlbl;
         private System.Windows.Forms.Label Warning_label;
+        public System.Windows.Forms.Label injury_location_label;
+        private System.Windows.Forms.PictureBox close;
     }
 }
