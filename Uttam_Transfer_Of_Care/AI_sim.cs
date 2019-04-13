@@ -5524,5 +5524,10 @@ namespace Uttam_Transfer_Of_Care
         {
             System.Windows.Forms.Application.Exit();
         }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -98,6 +98,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.blocker = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.Top_bar_panel.SuspendLayout();
@@ -751,44 +756,45 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Century Gothic", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1001, 1317);
+            this.label3.Location = new System.Drawing.Point(1001, 1260);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(1125, 120);
             this.label3.TabIndex = 134;
             this.label3.Text = "Predicted Patient Condition";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label3.Click += new System.EventHandler(this.label3_Click_1);
             // 
             // hem_pred_panel
             // 
-            this.hem_pred_panel.Location = new System.Drawing.Point(1095, 1491);
+            this.hem_pred_panel.Location = new System.Drawing.Point(1095, 1434);
             this.hem_pred_panel.Name = "hem_pred_panel";
             this.hem_pred_panel.Size = new System.Drawing.Size(80, 400);
             this.hem_pred_panel.TabIndex = 135;
             // 
             // circ_pred_panel
             // 
-            this.circ_pred_panel.Location = new System.Drawing.Point(1315, 1491);
+            this.circ_pred_panel.Location = new System.Drawing.Point(1315, 1434);
             this.circ_pred_panel.Name = "circ_pred_panel";
             this.circ_pred_panel.Size = new System.Drawing.Size(80, 400);
             this.circ_pred_panel.TabIndex = 136;
             // 
             // bre_pred_panel
             // 
-            this.bre_pred_panel.Location = new System.Drawing.Point(1535, 1491);
+            this.bre_pred_panel.Location = new System.Drawing.Point(1535, 1434);
             this.bre_pred_panel.Name = "bre_pred_panel";
             this.bre_pred_panel.Size = new System.Drawing.Size(80, 400);
             this.bre_pred_panel.TabIndex = 136;
             // 
             // air_pred_panel
             // 
-            this.air_pred_panel.Location = new System.Drawing.Point(1755, 1491);
+            this.air_pred_panel.Location = new System.Drawing.Point(1755, 1434);
             this.air_pred_panel.Name = "air_pred_panel";
             this.air_pred_panel.Size = new System.Drawing.Size(80, 400);
             this.air_pred_panel.TabIndex = 136;
             // 
             // conc_pred_panel
             // 
-            this.conc_pred_panel.Location = new System.Drawing.Point(1975, 1491);
+            this.conc_pred_panel.Location = new System.Drawing.Point(1975, 1434);
             this.conc_pred_panel.Name = "conc_pred_panel";
             this.conc_pred_panel.Size = new System.Drawing.Size(80, 400);
             this.conc_pred_panel.TabIndex = 136;
@@ -797,7 +803,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(989, 1769);
+            this.label4.Location = new System.Drawing.Point(989, 1712);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 44);
             this.label4.TabIndex = 149;
@@ -807,7 +813,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(989, 1669);
+            this.label6.Location = new System.Drawing.Point(989, 1612);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 44);
             this.label6.TabIndex = 150;
@@ -817,7 +823,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(989, 1569);
+            this.label7.Location = new System.Drawing.Point(989, 1512);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 44);
             this.label7.TabIndex = 151;
@@ -827,7 +833,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(989, 1469);
+            this.label8.Location = new System.Drawing.Point(989, 1412);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 44);
             this.label8.TabIndex = 152;
@@ -837,7 +843,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(989, 1869);
+            this.label9.Location = new System.Drawing.Point(989, 1812);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 44);
             this.label9.TabIndex = 153;
@@ -882,16 +888,76 @@
             this.blocker.TabIndex = 157;
             this.blocker.Visible = false;
             // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(1017, 1856);
+            this.label16.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(224, 52);
+            this.label16.TabIndex = 102;
+            this.label16.Text = "Hemmorhage";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label22
+            // 
+            this.label22.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(1247, 1856);
+            this.label22.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(189, 52);
+            this.label22.TabIndex = 103;
+            this.label22.Text = "Circulation";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label23
+            // 
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(1472, 1856);
+            this.label23.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(189, 52);
+            this.label23.TabIndex = 104;
+            this.label23.Text = "Breathing";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label24
+            // 
+            this.label24.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(1696, 1854);
+            this.label24.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(189, 52);
+            this.label24.TabIndex = 105;
+            this.label24.Text = "Airway";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label25
+            // 
+            this.label25.Font = new System.Drawing.Font("Century Gothic", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(1887, 1854);
+            this.label25.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(225, 52);
+            this.label25.TabIndex = 106;
+            this.label25.Text = "Consciousness";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // AI_sim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(2974, 1929);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.success_prob);
+            this.Controls.Add(this.label24);
             this.Controls.Add(this.conc_pred_panel);
+            this.Controls.Add(this.label25);
             this.Controls.Add(this.air_pred_panel);
             this.Controls.Add(this.bre_pred_panel);
             this.Controls.Add(this.circ_pred_panel);
@@ -1009,5 +1075,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox close;
         private System.Windows.Forms.Label blocker;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
     }
 }
